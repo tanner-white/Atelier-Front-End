@@ -1,16 +1,16 @@
 import React from 'react';
+import ReviewList from './components/reviewList.jsx';
 
 class RatingsApp extends React.Component {
   constructor(props) {
     super(props);
-    this.state({
-      val: '',
-    });
+    this.state = {
+    };
   }
 
   render() {
     return (
-      <div>Filler</div>
+      <div><ReviewList /></div>
     );
   }
 }
