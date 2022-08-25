@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Overview from './overview/index.jsx';
 
 function App() {
   return (
     <div>
       <h1>Hello World</h1>
+      <Overview />
     </div>
   );
 }
