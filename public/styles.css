@@ -1,1 +1,15 @@
-
+.tile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+#individual {
+  display: flex;
+  flex-direction: column;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 20%;
+}
