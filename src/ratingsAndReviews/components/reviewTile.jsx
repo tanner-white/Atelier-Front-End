@@ -11,20 +11,25 @@ class ReviewTile extends React.Component {
 
   render() {
     return (this.state.list.results.map((review) => (
-      <div className="tile">
-        <div id="stars">Stars</div>
+      <div className="tile" id={review.review_id}>
+        <div id="stars">
+          {`${review.rating} `}
+          Stars
+        </div>
         <div id="user-date-stamp">
           {review.reviewer_name}
           {review.date}
         </div>
         <h4 id="summary">{review.summary}</h4>
         <p id="body">{review.body}</p>
-        <div id="recommendation">Recommendation</div>
-        <div id="responses">Responses</div>
-        <div id="pics">
-          <img alt="failed to load" src="http://www.placebear.com/75/55" />
-          <img alt="failed to load" src="http://www.placebear.com/72/52" />
-          <img alt="failed to load" src="http://www.placebear.com/70/50" />
+        <div id="recommendation">
+          {review.recommend ? 'This person recommends this product' : ''}
+        </div>
+        <div id="responses">
+          {review.response ? `${review.response}` : ''}
+        </div>
+        <div className="pics">
+          {review.photos.map((image) => (<img id={image.id} alt="failed to load" src={image.url} />))}
         </div>
         <button type="submit" id="moreReviews">MORE REVIEWS</button>
         <button type="submit">ADD REVIEW</button>
