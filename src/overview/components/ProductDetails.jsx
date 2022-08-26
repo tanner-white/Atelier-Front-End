@@ -1,10 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function ProductDetail() {
+function ProductDetails({ item }) {
+  const { slogan } = item;
+  const { description } = item;
   return (
-    <div>
-      <div><h2>This is going to be a slogan</h2></div>
-      <div>This is the description</div>
+    <div className="product-details">
+      <div><h2>{slogan}</h2></div>
+      <div>{description}</div>
       <div>
         ✓ Organic NON-GMO
         ✓ Vegan
@@ -13,5 +16,7 @@ function ProductDetail() {
     </div>
   );
 }
-
-export default ProductDetail;
+ProductDetails.propTypes = {
+  item: PropTypes.shape.isRequired,
+};
+export default ProductDetails;

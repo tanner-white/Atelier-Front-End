@@ -1,1 +1,26 @@
+/* main app */
 
+/* overview */
+.overview-widget {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  width: 80%;
+  margin: 0px 0px;
+}
+.basic-info-container {
+  display: flex;
+  padding: 5%;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.product-details {
+  align-self: flex-end;
+
+}
+.image-gallery {
+  width: 60%;
+}
+img {
+  width: 100%;
+}

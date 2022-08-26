@@ -3,11 +3,11 @@ import React from 'react';
 function AddToCart() {
   return (
     <div>
-      <button>Select size</button>
-      <button>Qty</button>
+      <button type="button">Select size</button>
+      <button type="button">Qty</button>
       <br />
-      <button>Add to bag</button>
-      <button>☆</button>
+      <button type="button">Add to bag</button>
+      <button type="button">☆</button>
     </div>
   );
 }
