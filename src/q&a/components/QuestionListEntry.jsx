@@ -1,17 +1,17 @@
 import React from 'react';
+import Answers from './Answers.jsx';
 
-function QuestionListEntry(props) {
+function QuestionListEntry({ item }) {
   return (
-    <div>
+    <div className="question-entry">
       <div>
-        This will be the question
+        Q:
+        {item.question_body}
         <button type="button" className="link-button" onClick={() => (console.log('helpful incrementer'))}>Helpful?</button>
         <button type="button" className="link-button" onClick={() => (console.log('add and answer'))}>add answer</button>
       </div>
       <div>
-        This will be the answer
-        <button type="button" className="link-button" onClick={() => (console.log('helpful incrementer'))}>Helpful?</button>
-        <button type="button" className="link-button" onClick={() => (console.log('report user'))}>report</button>
+        {Object.keys(item.answers).map((answer) => <Answers answer={item.answers[answer]} />)}
       </div>
     </div>
   );

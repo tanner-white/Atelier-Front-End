@@ -2,11 +2,10 @@ import React from 'react';
 // eslint-disable-next-line import/extensions
 import QuestionListEntry from './QuestionListEntry.jsx';
 
-function QuestionList(props) {
+function QuestionList({ props }) {
   return (
     <div>
-      This is the QuestionList component
-      <QuestionListEntry props={props} />
+      {props.results.map((item) => <QuestionListEntry item={item} />) }
     </div>
   );
 }
