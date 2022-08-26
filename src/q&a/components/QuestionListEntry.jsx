@@ -4,7 +4,7 @@ function QuestionListEntry(props) {
   return (
     <div>
       <div>
-        This will be the Question
+        This will be the question
         <button type="button" className="link-button" onClick={() => (console.log('helpful incrementer'))}>Helpful?</button>
         <button type="button" className="link-button" onClick={() => (console.log('add and answer'))}>add answer</button>
       </div>
@@ -14,7 +14,7 @@ function QuestionListEntry(props) {
         <button type="button" className="link-button" onClick={() => (console.log('report user'))}>report</button>
       </div>
     </div>
-  )
+  );
 }
 
 export default QuestionListEntry;

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// eslint-disable-next-line import/extensions
 import Questions from './q&a/QuestionsApp.jsx';
 
 function App() {
