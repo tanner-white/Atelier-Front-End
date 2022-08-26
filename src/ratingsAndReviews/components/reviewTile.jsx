@@ -10,13 +10,16 @@ class ReviewTile extends React.Component {
   }
 
   render() {
+    console.log(SampleData.results[0].body);
     return (
       <div className="tile">
-        <div>{this.props.tiles}</div>
         <div id="stars">Stars</div>
-        <div id="user-date-stamp">User, Date</div>
-        <h4 id="summary">Summary</h4>
-        <p id="body">Body</p>
+        <div id="user-date-stamp">
+          {SampleData.results[0].reviewer_name}
+          {SampleData.results[0].date}
+        </div>
+        <h4 id="summary">{SampleData.results[0].summary}</h4>
+        <p id="body">{SampleData.results[0].body}</p>
         <div id="recommendation">Recommendation</div>
         <div id="responses">Responses</div>
         <div id="pics">
