@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Overview from './overview/index.jsx';
+import Overview from './overview/overviewIndex.jsx';
 
 function App() {
   return (
