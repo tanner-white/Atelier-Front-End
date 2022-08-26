@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // eslint-disable-next-line import/extensions
-import RatingsApp from './ratingsAndReviews/index.jsx';
+import RatingsApp from './ratingsAndReviews/RatingsApp.jsx';
 
 function App() {
   return (

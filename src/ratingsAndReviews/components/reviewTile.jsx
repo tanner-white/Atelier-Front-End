@@ -12,6 +12,7 @@ class ReviewTile extends React.Component {
   render() {
     return (
       <div className="tile">
+        <div>{this.props.tiles}</div>
         <div id="stars">Stars</div>
         <div id="user-date-stamp">User, Date</div>
         <h4 id="summary">Summary</h4>
