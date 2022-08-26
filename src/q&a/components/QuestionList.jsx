@@ -1,10 +1,11 @@
 import React from 'react';
+import QuestionListEntry from './QuestionListEntry.jsx';
 
 function QuestionList(props) {
   return (
     <div>
       This is the QuestionList component
-      {/* <QuestionListEntry /> */}
+      <QuestionListEntry props={props} />
     </div>
   );
 }
