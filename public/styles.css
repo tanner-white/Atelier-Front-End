@@ -1,3 +1,18 @@
+.tile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 20%;
+}
+#individual {
+  display: flex;
+  flex-direction: column;
+}
 .link-button {
   background-color: transparent;
   border: none;
@@ -8,22 +23,18 @@
   float: right;
   padding: 0;
 }
-
 .question-entry {
   border: 2px solid grey;
   margin: 10px;
   padding: 5px;
 }
-
 .answer {
   border: 1px solid grey;
   margin: 5px;
 }
-
 .answer-spans {
   margin: 8px;
 }
-
 .answer-body {
   margin: 8px;
 }
