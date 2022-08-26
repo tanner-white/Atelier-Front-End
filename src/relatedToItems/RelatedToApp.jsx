@@ -5,8 +5,8 @@ import { useState, useEffect } from 'react';
 import RelatedToList from '/src/relatedToItems/RelatedToList.jsx';
 
 function RelatedToApp() {
-  const [relatedToList, setrelatedToList] = useState([]);
-  const [yourOutfitList, setyourOutfitList] = useState([]);
+  // const [relatedToList, setrelatedToList] = useState(['stuff', 'stuff', 'stuff', 'stuff', 'stuff', 'stuff', 'stuff']);
+  // const [yourOutfitList, setyourOutfitList] = useState([]);
 
   return (
     <div>
