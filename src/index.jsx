@@ -8,6 +8,7 @@ import RatingsApp from './ratingsAndReviews/RatingsApp.jsx';
 import Questions from './q&a/QuestionsApp.jsx';
 import RelatedToIndex from './relatedToItems/relatedToIndex.jsx'
 import Questions from './q&a/QuestionsApp.jsx';
+import RelatedToApp from '/src/relatedToItems/RelatedToApp.jsx';
 
 function App() {
   return (
