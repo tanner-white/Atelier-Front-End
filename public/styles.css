@@ -13,3 +13,28 @@
   display: flex;
   flex-direction: column;
 }
+.link-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline;
+  margin: 5px;
+  float: right;
+  padding: 0;
+}
+.question-entry {
+  border: 2px solid grey;
+  margin: 10px;
+  padding: 5px;
+}
+.answer {
+  border: 1px solid grey;
+  margin: 5px;
+}
+.answer-spans {
+  margin: 8px;
+}
+.answer-body {
+  margin: 8px;
+}
