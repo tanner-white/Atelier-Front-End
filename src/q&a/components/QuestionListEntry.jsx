@@ -1,4 +1,6 @@
+/* eslint-disable import/extensions */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Answers from './Answers.jsx';
 
 function QuestionListEntry({ item }) {
@@ -16,5 +18,9 @@ function QuestionListEntry({ item }) {
     </div>
   );
 }
+
+QuestionListEntry.propTypes = {
+  item: PropTypes.arrayOf.isRequired,
+};
 
 export default QuestionListEntry;

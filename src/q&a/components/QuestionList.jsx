@@ -1,5 +1,6 @@
+/* eslint-disable import/extensions */
 import React from 'react';
-// eslint-disable-next-line import/extensions
+import PropTypes from 'prop-types';
 import QuestionListEntry from './QuestionListEntry.jsx';
 
 function QuestionList({ props }) {
@@ -9,5 +10,10 @@ function QuestionList({ props }) {
     </div>
   );
 }
+
+QuestionList.propTypes = {
+  props: PropTypes.shape.isRequired,
+  results: PropTypes.arrayOf.isRequired,
+};
 
 export default QuestionList;

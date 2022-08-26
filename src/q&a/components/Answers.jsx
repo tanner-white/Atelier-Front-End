@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Answers({ answer }) {
   return (
@@ -18,5 +19,9 @@ function Answers({ answer }) {
     </div>
   );
 }
+
+Answers.propTypes = {
+  answer: PropTypes.shape.isRequired,
+};
 
 export default Answers;
