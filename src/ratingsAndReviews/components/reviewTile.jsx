@@ -10,16 +10,15 @@ class ReviewTile extends React.Component {
   }
 
   render() {
-    console.log(SampleData.results[0].body);
-    return (
+    return (this.state.list.results.map((review) => (
       <div className="tile">
         <div id="stars">Stars</div>
         <div id="user-date-stamp">
-          {SampleData.results[0].reviewer_name}
-          {SampleData.results[0].date}
+          {review.reviewer_name}
+          {review.date}
         </div>
-        <h4 id="summary">{SampleData.results[0].summary}</h4>
-        <p id="body">{SampleData.results[0].body}</p>
+        <h4 id="summary">{review.summary}</h4>
+        <p id="body">{review.body}</p>
         <div id="recommendation">Recommendation</div>
         <div id="responses">Responses</div>
         <div id="pics">
@@ -30,6 +29,7 @@ class ReviewTile extends React.Component {
         <button type="submit" id="moreReviews">MORE REVIEWS</button>
         <button type="submit">ADD REVIEW</button>
       </div>
+    ))
     );
   }
 }
