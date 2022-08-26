@@ -6,6 +6,7 @@ import Overview from './overview/overviewIndex.jsx';
 import RatingsApp from './ratingsAndReviews/RatingsApp.jsx';
 // eslint-disable-next-line import/extensions
 import Questions from './q&a/QuestionsApp.jsx';
+import RelatedToIndex from './relatedToItems/relatedToIndex.jsx'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Overview />
       <Questions />
       <RatingsApp />
+      <RelatedToIndex />
     </div>
   );
 }
