@@ -1,5 +1,7 @@
+/* eslint-disable import/extensions */
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Overview from './overview/overviewIndex.jsx';
 // eslint-disable-next-line import/extensions
 import RatingsApp from './ratingsAndReviews/RatingsApp.jsx';
 // eslint-disable-next-line import/extensions
@@ -9,8 +11,9 @@ function App() {
   return (
     <div>
       <h1>Hello World</h1>
-      <RatingsApp />
+      <Overview />
       <Questions />
+      <RatingsApp />
     </div>
   );
 }
