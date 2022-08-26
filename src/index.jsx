@@ -6,9 +6,8 @@ import Overview from './overview/overviewIndex.jsx';
 import RatingsApp from './ratingsAndReviews/RatingsApp.jsx';
 // eslint-disable-next-line import/extensions
 import Questions from './q&a/QuestionsApp.jsx';
-import RelatedToIndex from './relatedToItems/relatedToIndex.jsx'
-import Questions from './q&a/QuestionsApp.jsx';
 import RelatedToApp from '/src/relatedToItems/RelatedToApp.jsx';
+// import RelatedToList from '/src/relatedToItems/RelatedToList.jsx';
 
 function App() {
   return (
@@ -17,10 +16,11 @@ function App() {
       <Overview />
       <Questions />
       <RatingsApp />
-      <RelatedToIndex />
+      <RelatedToApp />
       <Questions />
     </div>
   );
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
+// export default index;
