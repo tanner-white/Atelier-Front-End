@@ -21,12 +21,16 @@ function QuestionList({ props }) {
       setMatches(props.results);
     }
   };
-
+  if (matches) {
+    return (
+      <div>
+        <SearchForm handleSubmit={handleSubmit} />
+        {matches.map((match) => <QuestionListEntry item={match} />) }
+      </div>
+    );
+  }
   return (
-    <div>
-      <SearchForm handleSubmit={handleSubmit} />
-      {matches.map((match) => <QuestionListEntry item={match} />) }
-    </div>
+    <div>No Questions Being Asked</div>
   );
 }
 
