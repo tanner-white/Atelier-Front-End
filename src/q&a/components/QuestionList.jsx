@@ -9,15 +9,18 @@ function QuestionList({ props }) {
   const [matches, setMatches] = useState(props.results);
 
   const handleSubmit = (input) => {
-    console.log('this is what the user typed in search bar: ', input);
-    const display = [];
-    matches.forEach((match) => {
-      const question = match.question_body.toLowerCase();
-      if (question.includes(input)) {
-        display.push(match);
-      }
-    });
-    setMatches(display);
+    if (input.length >= 3) {
+      const display = [];
+      matches.forEach((match) => {
+        const question = match.question_body.toLowerCase();
+        if (question.includes(input)) {
+          display.push(match);
+        }
+      });
+      setMatches(display);
+    } else {
+      setMatches(questions);
+    }
   };
 
   return (

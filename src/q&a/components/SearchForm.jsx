@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 function SearchForm({ handleSubmit }) {
   const [entry, setEntry] = useState('');
 
-  const onSubmit = (input) => {
-    event.preventDefault();
+  const onChange = (input) => {
+    setEntry(input);
     handleSubmit(input);
   };
 
@@ -16,18 +16,9 @@ function SearchForm({ handleSubmit }) {
         type="text"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         onChange={(e) => {
-          setEntry(e.target.value);
+          onChange(e.target.value);
         }}
       />
-      <button
-        type="submit"
-        onClick={() => {
-          onSubmit(entry);
-          setEntry('');
-        }}
-      >
-        Search
-      </button>
     </form>
   );
 }
