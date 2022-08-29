@@ -14,6 +14,7 @@ function SearchForm() {
           setEntry(e.target.value);
         }}
       />
+      <button type="submit">Search</button>
     </form>
   );
 }
