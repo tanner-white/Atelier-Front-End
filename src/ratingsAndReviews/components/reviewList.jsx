@@ -3,6 +3,8 @@ import React from 'react';
 import ReviewTile from './reviewTile.jsx';
 // eslint-disable-next-line import/extensions
 import RatingTile from './ratingTile.jsx';
+// eslint-disable-next-line import/extensions
+import Filter from './filter.jsx';
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -17,6 +19,7 @@ class ReviewList extends React.Component {
       <div className="rar_section">
         <div className="rar_ratingBox"><RatingTile /></div>
         <div className="rar_tileBox">
+          <div><Filter /></div>
           <ReviewTile tiles={this.state.tiles} />
           <div className="rar_reviewButtons">
             <button className="button" type="submit" id="moreReviews">MORE REVIEWS</button>

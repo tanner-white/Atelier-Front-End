@@ -26,11 +26,26 @@ class RatingTile extends React.Component {
           <div>VAR% of reviews recommend this product</div>
         </div>
         <div>
-          <li>5☆</li>
-          <li>4☆</li>
-          <li>3☆</li>
-          <li>2☆</li>
-          <li>1☆</li>
+          <li>
+            5 stars
+            <meter />
+          </li>
+          <li>
+            4 stars
+            <meter />
+          </li>
+          <li>
+            3 stars
+            <meter />
+          </li>
+          <li>
+            2 stars
+            <meter />
+          </li>
+          <li>
+            1 stars
+            <meter />
+          </li>
         </div>
         <div>Size Bar</div>
         <div>Comfort Bar</div>
