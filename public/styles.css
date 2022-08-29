@@ -16,8 +16,10 @@
   justify-content: space-evenly;
 }
 .product-details {
-  align-self: flex-end;
-
+  margin-bottom: 70px;
+  margin-left: 1%;
+  display: block;
+  width: 50%;
 }
 .image-gallery {
   width: 60%;
