@@ -5,7 +5,6 @@ import SearchForm from './SearchForm.jsx';
 import QuestionListEntry from './QuestionListEntry.jsx';
 
 function QuestionList({ props }) {
-  const [questions, setQuestions] = useState(props.results);
   const [matches, setMatches] = useState(props.results);
 
   const handleSubmit = (input) => {
@@ -19,7 +18,7 @@ function QuestionList({ props }) {
       });
       setMatches(display);
     } else {
-      setMatches(questions);
+      setMatches(props.results);
     }
   };
 
