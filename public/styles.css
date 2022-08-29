@@ -24,8 +24,20 @@
 .image-gallery {
   width: 60%;
 }
-img {
+.main-image {
   width: 100%;
+}
+.thumbnail-div {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.style-thumbnails {
+  width: auto;
+  height: auto;
 }
 
 .tile {

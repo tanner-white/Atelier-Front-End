@@ -11,28 +11,30 @@ function Overview() {
   const [product, setProduct] = useState({});
   useEffect(() => {
     axios.get('http://localhost:3001/products/66642')
-      .then(async (response) => {
-        await setProduct(response.data);
+      .then((response) => {
+        setProduct(response.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-  const [styles, setStyles] = useState({});
+  const [styles, setStyles] = useState([]);
+  const [currentStyle, setCurrentStyle] = useState({});
   useEffect(() => {
     axios.get('http://localhost:3001/styles/66642')
-      .then(async (response) => {
-        await setStyles(response.data);
+      .then((response) => {
+        setStyles(response.data.results);
+        setCurrentStyle(response.data.results[0]);
+        setCurrentPhotos(response.data.results[0].photos);
       });
   }, []);
   return (
-
     <div>
       <div className="overview-widget">
-        <ImageGallery />
+        <ImageGallery current={currentStyle} />
         <div className="basic-info-container">
           <BasicInfo product={product} />
-          <StyleSelector styles={styles} />
+          <StyleSelector styles={styles} current={currentStyle} setCurrentStyle={setCurrentStyle} />
           <AddToCart />
         </div>
       </div>
