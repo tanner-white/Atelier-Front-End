@@ -100,3 +100,7 @@ img {
 .answer-body {
   margin: 8px;
 }
+
+.question-searchbar {
+  width: 90%;
+}
