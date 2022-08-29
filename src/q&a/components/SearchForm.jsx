@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
-function SearchForm() {
+function SearchForm({ handleSubmit }) {
   const [entry, setEntry] = useState('');
+
+  const onSubmit = (input) => {
+    event.preventDefault();
+    handleSubmit(input);
+  };
 
   return (
     <form>
@@ -10,13 +16,24 @@ function SearchForm() {
         type="text"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         onChange={(e) => {
-          console.log(entry);
           setEntry(e.target.value);
         }}
       />
-      <button type="submit">Search</button>
+      <button
+        type="submit"
+        onClick={() => {
+          onSubmit(entry);
+          setEntry('');
+        }}
+      >
+        Search
+      </button>
     </form>
   );
 }
+
+SearchForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 export default SearchForm;

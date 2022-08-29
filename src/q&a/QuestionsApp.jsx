@@ -1,7 +1,6 @@
 /* eslint-disable import/extensions */
 import React from 'react';
 import QuestionList from './components/QuestionList.jsx';
-import SearchForm from './components/SearchForm.jsx';
 
 const response = {
   product_id: '5',
@@ -57,7 +56,6 @@ const response = {
 function Questions() {
   return (
     <div>
-      <SearchForm />
       <QuestionList props={response} />
     </div>
   );
