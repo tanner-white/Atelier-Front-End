@@ -7,7 +7,7 @@ function Questions() {
   const [questions, setQuestions] = useState({});
 
   useEffect(() => {
-    axios.get('/qa/questions/?product_id=66642')
+    axios.get('http://localhost:3001/qa/questions')
       .then((data) => (console.log(data)))
       .catch((err) => (console.error(err)));
   });

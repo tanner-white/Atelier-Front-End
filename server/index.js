@@ -25,9 +25,8 @@ app.get('/products', (req, res) => {
   axios.get(`${API}products`, options).then((response) => res.send(response.data));
 });
 app.get('/qa/questions', (req, res) => {
-  console.log(req.query);
-  axios.get(`${API}qa/questions/${req.query}`, options)
-    .then((data) => res.send(data))
+  axios.get(`${API}qa/questions?product_id=66642`, options)
+    .then((response) => res.send(response.data))
     .catch((err) => console.error('backend error ', err));
 });
 
