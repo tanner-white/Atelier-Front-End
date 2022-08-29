@@ -14,10 +14,9 @@ function App() {
     <div>
       <h1>Hello World</h1>
       <Overview />
-      <Questions />
-      <RatingsApp />
       <RelatedToApp />
       <Questions />
+      <RatingsApp />
     </div>
   );
 }
