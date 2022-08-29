@@ -12,7 +12,7 @@ class ReviewTile extends React.Component {
 
   render() {
     return (this.state.list.results.map((review) => (
-      <div className="rar_tile" key={review.review_id}>
+      <div key={review.review_id} className="rar_tile">
         <div id="rar_userDateHeader">
           <div>{review.reviewer_name}</div>
           <div>{review.date}</div>
