@@ -14,7 +14,7 @@ class RatingTile extends React.Component {
     return (
       <div className="rar_reviewData">
         Ratings & Reviews
-        <div id="stars">
+        <div id="rar_stars">
           { /*`${this.state.list.count} `*/ }
           <span>☆</span>
           <span>☆</span>
@@ -25,6 +25,15 @@ class RatingTile extends React.Component {
         <div>
           <div>VAR% of reviews recommend this product</div>
         </div>
+        <div>
+          <li>5☆</li>
+          <li>4☆</li>
+          <li>3☆</li>
+          <li>2☆</li>
+          <li>1☆</li>
+        </div>
+        <div>Size Bar</div>
+        <div>Comfort Bar</div>
       </div>
     );
   }

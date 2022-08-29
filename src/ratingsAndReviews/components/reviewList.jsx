@@ -15,8 +15,8 @@ class ReviewList extends React.Component {
   render() {
     return (
       <div className="rar_section">
-        <div><RatingTile /></div>
-        <div className="tileBox">
+        <div className="rar_ratingBox"><RatingTile /></div>
+        <div className="rar_tileBox">
           <ReviewTile tiles={this.state.tiles} />
           <div className="rar_reviewButtons">
             <button className="button" type="submit" id="moreReviews">MORE REVIEWS</button>
