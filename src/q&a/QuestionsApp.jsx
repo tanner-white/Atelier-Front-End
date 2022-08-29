@@ -8,7 +8,7 @@ function Questions() {
 
   useEffect(() => {
     axios.get('http://localhost:3001/qa/questions')
-      .then((data) => (console.log(data)))
+      .then((list) => (setQuestions(list.data)))
       .catch((err) => (console.error(err)));
   });
 
