@@ -6,22 +6,30 @@ class ReviewTile extends React.Component {
     super(props);
     this.state = {
       list: SampleData,
+      all: [], // on event this list will populate by two
     };
   }
 
   render() {
     return (this.state.list.results.map((review) => (
       <div className="tile" id={review.review_id}>
-        <span id="individual">
+        <div className="reviewData">
           <div id="stars">
             {`${review.rating} `}
+            <span>☆</span>
+            <span>☆</span>
+            <span>☆</span>
+            <span>☆</span>
+            <span>☆</span>
             Stars
           </div>
+        </div>
+        <div className="ratingData">
           <div id="user-date-stamp">
             {review.reviewer_name}
             {review.date}
           </div>
-          <h4 id="summary">{review.summary}</h4>
+          <p id="summary">{review.summary}</p>
           <p id="body">{review.body}</p>
           <div id="recommendation">
             {review.recommend ? 'This person recommends this product' : ''}
@@ -36,7 +44,7 @@ class ReviewTile extends React.Component {
             <button className="button" type="submit" id="moreReviews">MORE REVIEWS</button>
             <button className="button" type="submit">ADD REVIEW</button>
           </table>
-        </span>
+        </div>
       </div>
     ))
     );

@@ -12,7 +12,7 @@ class ReviewList extends React.Component {
 
   render() {
     return (
-      <div><ReviewTile tiles={this.state.tiles}/></div>
+      <div className="tileBox"><ReviewTile tiles={this.state.tiles}/></div>
     );
   }
 }
