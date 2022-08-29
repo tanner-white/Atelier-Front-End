@@ -11,7 +11,7 @@ function RelatedToApp() {
   return (
     <div>
       <h1>Related Products</h1>
-      <relatedToList />
+      <RelatedToList />
     </div>
   );
 }
