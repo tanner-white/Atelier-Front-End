@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function BasicInfo() {
+function BasicInfo({ product }) {
   // const { category } = item;
   // const { name } = item;
   return (
@@ -12,13 +12,13 @@ function BasicInfo() {
           See all reviews...
         </span>
       </div>
-      <div>Category</div>
-      <div>Name</div>
+      <div>{product.category}</div>
+      <div>{product.name}</div>
       <small>Price</small>
     </div>
   );
 }
-// BasicInfo.propTypes = {
-//   item: PropTypes.shape.isRequired,
-// };
+BasicInfo.propTypes = {
+  product: PropTypes.shape.isRequired,
+};
 export default BasicInfo;

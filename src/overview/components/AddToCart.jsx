@@ -3,7 +3,6 @@ import React from 'react';
 function AddToCart() {
   const handleClick = (e) => {
     e.preventDefault();
-    console.log('click!');
   };
   return (
     <div>

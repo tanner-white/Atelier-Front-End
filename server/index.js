@@ -21,8 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get('/styles/:productId', (req, res) => {
   axios.get(`${API}products/${req.params.productId}/styles`, options).then((response) => res.send(response.data)).catch((err) => res.send(err));
 });
-app.get('/products', (req, res) => {
-  axios.get(`${API}products`, options).then((response) => res.send(response.data));
+app.get('/products/:productId', (req, res) => {
+  axios.get(`${API}products/${req.params.productId}`, options).then((response) => res.send(response.data));
 });
 
 const PORT = process.env.PORT || 3001;
