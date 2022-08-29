@@ -3,21 +3,18 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QuestionList from './components/QuestionList.jsx';
 
-const product = {
-  id: '5',
-};
-
 function Questions() {
-  const [response, setResponse] = useState({});
+  const [questions, setQuestions] = useState({});
 
   useEffect(() => {
-    axios.get('/qa/questions', { id: product.id })
-      .then((data) => (console.log(data)));
+    axios.get('/qa/questions/?product_id=66642')
+      .then((data) => (console.log(data)))
+      .catch((err) => (console.error(err)));
   });
 
   return (
     <div>
-      <QuestionList props={response} />
+      <QuestionList props={questions} />
     </div>
   );
 }

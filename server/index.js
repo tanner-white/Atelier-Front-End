@@ -25,10 +25,10 @@ app.get('/products', (req, res) => {
   axios.get(`${API}products`, options).then((response) => res.send(response.data));
 });
 app.get('/qa/questions', (req, res) => {
-  console.log('I have received a get request from client');
-  axios.get(`${API}qa/questions`, req.body.id)
-    .then((response) => res.send(response))
-    .catch((err) => console.error(err));
+  console.log(req.query);
+  axios.get(`${API}qa/questions/${req.query}`, options)
+    .then((data) => res.send(data))
+    .catch((err) => console.error('backend error ', err));
 });
 
 const PORT = process.env.PORT || 3001;
