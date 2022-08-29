@@ -5,6 +5,7 @@ function Answers({ answer }) {
   return (
     <div className="answer">
       <div className="answer-body">
+        A:
         {answer.body}
         <button type="button" className="link-button" onClick={() => (console.log('helpful incrementer'))}>Helpful?</button>
         <button type="button" className="link-button" onClick={() => (console.log('report user'))}>report</button>
