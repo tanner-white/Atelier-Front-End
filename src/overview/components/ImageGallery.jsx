@@ -18,9 +18,11 @@ function ImageGallery({ current }) {
   }
   return (
     <div className="image-gallery">
-      <div className="carousel-left-arrow" onClick={previous}>&#8249;</div>
       <img className="main-image" src={current[currentIndex]} alt="pants" />
-      <div className="carousel-right-arrow" onClick={next}>&#8250;</div>
+      {currentIndex > 0
+      && <h1 className="carousel-left-arrow" onClick={previous}>&#8249;</h1>}
+      {currentIndex < length - 1
+      && <h1 className="carousel-right-arrow" onClick={next}>&#8250;</h1>}
     </div>
   );
 }
