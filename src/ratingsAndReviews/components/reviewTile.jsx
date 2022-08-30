@@ -1,11 +1,10 @@
 import React from 'react';
-import SampleData from './data';
 
 class ReviewTile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: SampleData,
+      list: props.tiles,
       all: [], // on event this list will populate by two
     };
   }
@@ -25,7 +24,7 @@ class ReviewTile extends React.Component {
           <span>☆</span>
           <span>☆</span>
         </div>
-        <p id="rar_summary">{review.summary}</p>
+        <h3 id="rar_summary">{review.summary}</h3>
         <p id="rar_fullSummary">{review.body}</p>
         <div id="rar_recommendation">
           {review.recommend ? 'This person recommends this product' : ''}
@@ -34,7 +33,9 @@ class ReviewTile extends React.Component {
           {review.response ? `${review.response}` : ''}
         </div>
         <div className="rar_pics">
-          {review.photos.map((image) => (<img id={image.id} alt="failed to load" src="https://placebear.com/50/50.jpg"/*{image.url}*/ />))}
+          {review.photos.map((image) => (
+          <img id={image.id} alt="failed to load" src="https://placebear.com/50/50.jpg"/*{image.url}*/ />
+          ))}
         </div>
       </div>
     ))
