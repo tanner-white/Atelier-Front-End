@@ -32,7 +32,7 @@ const SampleData = {
       body: "They are very dark. But that's good because I'm in very sunny spots",
       date: '2019-06-23T00:00:00.000Z',
       reviewer_name: 'bigbrotherbenjamin',
-      helpfulness: 5,
+      helpfulness: 6,
       photos: [],
     },
     {
@@ -64,7 +64,7 @@ const SampleData = {
       body: "They are very dark. But that's good because I'm in very sunny spots",
       date: '2019-06-23T00:00:00.000Z',
       reviewer_name: 'bigbrotherbenjamin',
-      helpfulness: 5,
+      helpfulness: 6,
       photos: [],
     },
   ],
