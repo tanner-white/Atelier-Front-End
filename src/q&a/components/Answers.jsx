@@ -20,7 +20,6 @@ function Answers({ answer }) {
           helpful?&nbsp;
           {`(${helpful})`}
         </button>
-        |
         <button type="button" className="link-button" onClick={() => (console.log('report user'))}>report</button>
       </div>
       <span className="answer-spans">
