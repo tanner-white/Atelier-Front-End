@@ -9,12 +9,22 @@ function AddToCart({ current }) {
       setCurrentSizeQty(Object.values(skus));
     }
   }, [current]);
+  const [size, setSize] = useState('');
   const handleClick = (e) => {
     e.preventDefault();
   };
+  const handleSizeChange = (e) => {
+    e.preventDefault();
+    setSize(e.target.value);
+  };
   return (
     <form>
-      <select value="Select size" placeholder="Select size">
+      <select
+        value={size}
+        name="Select size"
+        onChange={handleSizeChange}
+      >
+        <option>Select size</option>
         {currentSizeQty.map((item) => <option>{item.size}</option>)}
       </select>
       <select value="quantity">
