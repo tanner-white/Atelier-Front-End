@@ -50,6 +50,14 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
     .catch((err) => res.send(err));
 });
 
+app.put('/answers/helpful', (req, res) => {
+  axios.put(`${API}qa/answers/${req.body.id}/helpful`, { answer_id: req.body.id }, options)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => res.send(err));
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT);
 console.log('Listening on port 3001');
