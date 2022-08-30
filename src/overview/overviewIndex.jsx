@@ -20,21 +20,27 @@ function Overview() {
   }, []);
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
+  const [currentPhotos, setCurrentPhotos] = useState([]);
   useEffect(() => {
     axios.get('http://localhost:3001/styles/66642')
       .then((response) => {
         setStyles(response.data.results);
         setCurrentStyle(response.data.results[0]);
-        setCurrentPhotos(response.data.results[0].photos);
+        setCurrentPhotos(response.data.results[0].photos.map((current) => current.url));
       });
   }, []);
   return (
     <div>
       <div className="overview-widget">
-        <ImageGallery current={currentStyle} />
+        <ImageGallery current={currentPhotos} />
         <div className="basic-info-container">
           <BasicInfo product={product} />
-          <StyleSelector styles={styles} current={currentStyle} setCurrentStyle={setCurrentStyle} />
+          <StyleSelector
+            styles={styles}
+            current={currentStyle}
+            setCurrentStyle={setCurrentStyle}
+            setCurrentPhotos={setCurrentPhotos}
+          />
           <AddToCart />
         </div>
       </div>

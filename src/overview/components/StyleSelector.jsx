@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/extensions
 import Thumbnail from './Thumbnail.jsx';
 
-function StyleSelector({ styles, current, setCurrentStyle }) {
+function StyleSelector({
+  styles, current, setCurrentStyle, setCurrentPhotos,
+}) {
   let price;
   if (current.sale_price) {
     price = (
@@ -29,6 +32,7 @@ function StyleSelector({ styles, current, setCurrentStyle }) {
             url={style.photos[0].thumbnail_url}
             current={style}
             setCurrentStyle={setCurrentStyle}
+            setCurrentPhotos={setCurrentPhotos}
           />
         ))}
       </div>
@@ -38,5 +42,7 @@ function StyleSelector({ styles, current, setCurrentStyle }) {
 StyleSelector.propTypes = {
   styles: PropTypes.shape.isRequired,
   current: PropTypes.shape.isRequired,
+  setCurrentPhotos: PropTypes.func.isRequired,
+  setCurrentStyle: PropTypes.func.isRequired,
 };
 export default StyleSelector;
