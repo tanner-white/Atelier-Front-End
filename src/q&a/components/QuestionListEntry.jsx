@@ -23,7 +23,7 @@ function QuestionListEntry({ item }) {
   return (
     <div className="question-entry">
       <div>
-        Q:
+        Q:&nbsp;
         {item.question_body}
         <button type="button" className="link-button" onClick={() => handleHelpful()}>
           helpful?&nbsp;

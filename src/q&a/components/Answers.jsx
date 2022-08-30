@@ -14,7 +14,7 @@ function Answers({ answer }) {
   return (
     <div className="answer">
       <div className="answer-body">
-        A:
+        A:&nbsp;
         {answer.body}
         <button type="button" className="link-button" onClick={() => (handleHelpful())}>
           helpful?&nbsp;
