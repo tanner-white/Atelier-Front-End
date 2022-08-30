@@ -10,12 +10,13 @@ class ReviewList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      origin: null,
-      tiles: props.reviews,
+      origin: props.productInfo,
+      product: props.productInfo,
     };
   }
 
   componentDidMount() {
+
   }
 
   /*
@@ -26,42 +27,42 @@ class ReviewList extends React.Component {
   top,but should yield to more recent reviews if they are older.
   */
   sortByRelevance() {
-    const originals = this.state.tiles.results;
-    const sorted = this.state.tiles.results;
+    const originals = this.state.product;
+    const sorted = this.state.product.results || this.state.product;
 
     sorted.sort((a, b) => a - b);
     console.log('RELEVANCE', sorted);
 
     this.setState({
       origin: originals,
-      tiles: sorted,
+      product: originals.results = sorted,
     });
   }
 
   sortByHelpful() {
-    const originals = this.state.tiles.results;
-    const sorted = this.state.tiles.results;
+    const originals = this.state.product;
+    const sorted = this.state.product.results || this.state.product;
 
     sorted.sort((a, b) => b.helpfulness.toString() - a.helpfulness.toString());
-    console.log('HELPFUL', sorted);
 
     this.setState({
       origin: originals,
-      tiles: sorted,
+      product: originals.results = sorted,
     });
+    console.log(this.state.product);
   }
 
   sortByNewest() {
-    const originals = this.state.tiles.results;
-    const sorted = this.state.tiles.results;
+    const originals = this.state.product;
+    const sorted = this.state.product.results || this.state.product;
 
     sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
-    console.log('NEWEST', sorted);
 
     this.setState({
       origin: originals,
-      tiles: sorted,
+      product: originals.results = sorted,
     });
+    console.log(this.state.product);
   }
 
   render() {
@@ -76,7 +77,7 @@ class ReviewList extends React.Component {
               sortNew={this.sortByNewest.bind(this)}
             />
           </div>
-          <ReviewTile tiles={this.state.tiles} />
+          <ReviewTile product={this.state.product} />
           <div className="rar_reviewButtons">
             <button className="button" type="submit" id="moreReviews">MORE REVIEWS</button>
             <button className="button" type="submit">ADD A REVIEW +</button>

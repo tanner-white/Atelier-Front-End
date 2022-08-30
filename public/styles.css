@@ -88,9 +88,8 @@
 }
 #rar_userDateHeader {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
-  gap: 100px;
+  justify-content: space-between;
 }
 .rar_pics {
   display:flex;

@@ -17,7 +17,7 @@ class RatingsApp extends React.Component {
 
   render() {
     return (
-      <div><ReviewList reviews={this.state.currentItem} /></div>
+      <div><ReviewList productInfo={this.state.currentItem} /></div>
     );
   }
 }

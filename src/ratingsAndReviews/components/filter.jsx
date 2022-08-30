@@ -18,9 +18,9 @@ function Filter({ sortRel, sortHelp, sortNew }) {
     <h3 className="rar_sortDropDown">
       # reviews, sorted by:
       <select id="reviewSelector" onChange={handleSelect.bind(this)}>
-        <option value="0">Relevant</option>
-        <option value="1">Helpful</option>
-        <option value="2">Newest</option>
+        <option value="0">relevance</option>
+        <option value="1">helpfulness</option>
+        <option value="2">newest</option>
       </select>
     </h3>
   );
