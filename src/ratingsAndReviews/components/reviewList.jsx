@@ -1,7 +1,11 @@
 import React from 'react';
 // eslint-disable-next-line import/extensions
 import ReviewTile from './reviewTile.jsx';
-// this will eventually map over all of the tiles in state and send them to reviewTile
+// eslint-disable-next-line import/extensions
+import RatingTile from './ratingTile.jsx';
+// eslint-disable-next-line import/extensions
+import Filter from './filter.jsx';
+
 class ReviewList extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +16,17 @@ class ReviewList extends React.Component {
 
   render() {
     return (
-      <div><ReviewTile tiles={this.state.tiles}/></div>
+      <div className="rar_section">
+        <div className="rar_ratingBox"><RatingTile /></div>
+        <div className="rar_tileBox">
+          <div><Filter /></div>
+          <ReviewTile tiles={this.state.tiles} />
+          <div className="rar_reviewButtons">
+            <button className="button" type="submit" id="moreReviews">MORE REVIEWS</button>
+            <button className="button" type="submit">ADD A REVIEW +</button>
+          </div>
+        </div>
+      </div>
     );
   }
 }
