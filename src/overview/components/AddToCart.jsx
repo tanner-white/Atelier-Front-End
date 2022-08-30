@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 function AddToCart({ current }) {
   const [currentSizeQty, setCurrentSizeQty] = useState([]);
@@ -23,5 +24,9 @@ function AddToCart({ current }) {
     </form>
   );
 }
+
+AddToCart.propTypes = {
+  current: PropTypes.shape.isRequired,
+};
 
 export default AddToCart;
