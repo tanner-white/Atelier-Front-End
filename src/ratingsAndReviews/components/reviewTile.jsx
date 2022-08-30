@@ -20,13 +20,9 @@ class ReviewTile extends React.Component {
     return (this.state.list.results.map((review) => (
       <div key={review.review_id} className="rar_tile">
         <div id="rar_userDateHeader">
-          <div id="rar_stars">
+          <div id="rar_tileStars">
             { /*`${this.state.list.count} `*/ }
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
-            <span>☆</span>
+            <span>☆☆☆☆☆</span>
           </div>
           <div>
             {review.reviewer_name}

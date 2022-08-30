@@ -72,6 +72,21 @@
 .rar_reviewData {
   text-align: center;
 }
+#starRow {
+  text-decoration: underline;
+}
+#rar_numAndStars {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4%;
+}
+
+#rar_bigNum {
+  font-weight: bolder;
+  font-size: 200%;
+}
 .rar_tileBox {
   display: flex;
   flex-direction: column;
@@ -81,6 +96,7 @@
   margin-top: 4%;
   border-bottom: 2px solid grey;
   flex-direction: column;
+  width: 125%;
 }
 .rar_ratingData {
   display: flex;
@@ -102,6 +118,12 @@
   margin-top: 5%;
   margin-bottom: 5%;
   gap: 20px;
+}
+#reviewSelector {
+  text-decoration: underline;
+  border: none;
+  font-size: 110%;
+  font-weight: bold;
 }
 /* Other */
 

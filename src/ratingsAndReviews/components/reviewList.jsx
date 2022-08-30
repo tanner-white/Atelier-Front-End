@@ -10,7 +10,7 @@ class ReviewList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      origin: props.productInfo,
+      origin: null,
       product: props.productInfo,
     };
   }
@@ -19,23 +19,19 @@ class ReviewList extends React.Component {
 
   }
 
-  /*
-  Relevant - Relevance will be determined by a combination of both the date that the review
-  was submitted as well as ‘helpfulness’ feedback received. This combination should weigh the
-  two characteristics such that recent reviews appear near the top, but do not outweigh reviews
-  that have been found helpful. Similarly, reviews that have been helpful should appear near the
-  top,but should yield to more recent reviews if they are older.
-  */
   sortByRelevance() {
     const originals = this.state.product;
     const sorted = this.state.product.results || this.state.product;
 
-    sorted.sort((a, b) => a - b);
-    console.log('RELEVANCE', sorted);
+    sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
+    sorted.sort((a, b) => b.helpfulness.toString() - a.helpfulness.toString());
+
+    const sortedAndMerged = originals;
+    sortedAndMerged.results = sorted;
 
     this.setState({
       origin: originals,
-      product: originals.results = sorted,
+      product: sortedAndMerged,
     });
   }
 
@@ -45,11 +41,13 @@ class ReviewList extends React.Component {
 
     sorted.sort((a, b) => b.helpfulness.toString() - a.helpfulness.toString());
 
+    const sortedAndMerged = originals;
+    sortedAndMerged.results = sorted;
+
     this.setState({
       origin: originals,
-      product: originals.results = sorted,
+      product: sortedAndMerged,
     });
-    console.log(this.state.product);
   }
 
   sortByNewest() {
@@ -58,11 +56,13 @@ class ReviewList extends React.Component {
 
     sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
 
+    const sortedAndMerged = originals;
+    sortedAndMerged.results = sorted;
+
     this.setState({
       origin: originals,
-      product: originals.results = sorted,
+      product: sortedAndMerged,
     });
-    console.log(this.state.product);
   }
 
   render() {
@@ -72,6 +72,7 @@ class ReviewList extends React.Component {
         <div className="rar_tileBox">
           <div>
             <Filter
+              numReviews={5}
               sortRel={this.sortByRelevance.bind(this)}
               sortHelp={this.sortByHelpful.bind(this)}
               sortNew={this.sortByNewest.bind(this)}
