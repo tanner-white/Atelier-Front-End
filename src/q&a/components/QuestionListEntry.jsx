@@ -18,7 +18,10 @@ function QuestionListEntry({ item }) {
       <div>
         Q:
         {item.question_body}
-        <button type="button" className="link-button" onClick={() => (console.log('helpful incrementer'))}>Helpful?</button>
+        <button type="button" className="link-button" onClick={() => (console.log('helpful incrementer'))}>
+          Helpful?&nbsp;
+          {item.question_helpfulness}
+        </button>
         <button type="button" className="link-button" onClick={() => (console.log('add and answer'))}>add answer</button>
       </div>
       <div>
