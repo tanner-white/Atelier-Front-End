@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 function AddToCart({ current }) {
   const [currentSizeQty, setCurrentSizeQty] = useState([]);
   useEffect(() => {
-    setCurrentSizeQty(Object.values(current));
+    const { skus } = current;
+    if (Object.keys(current).length) {
+      setCurrentSizeQty(Object.values(skus));
+    }
   }, [current]);
-
   const handleClick = (e) => {
     e.preventDefault();
   };
