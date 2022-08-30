@@ -18,6 +18,7 @@ function Overview() {
         console.log(err);
       });
   }, []);
+
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentPhotos, setCurrentPhotos] = useState([]);
@@ -29,6 +30,7 @@ function Overview() {
         setCurrentPhotos(response.data.results[0].photos.map((current) => current.url));
       });
   }, []);
+
   return (
     <div>
       <div className="overview-widget">
@@ -41,7 +43,7 @@ function Overview() {
             setCurrentStyle={setCurrentStyle}
             setCurrentPhotos={setCurrentPhotos}
           />
-          <AddToCart />
+          <AddToCart current={currentStyle} />
         </div>
       </div>
       <ProductDetails product={product} />
