@@ -41,21 +41,55 @@
   height: auto;
 }
 
-.tile {
+/* Adam */
+.rar_section {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  margin-top: 2%;
+  margin-left: 22.5%;
+  gap: 50px;
 }
-.buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 20%;
-}
-#individual {
+.rar_ratingBox {
   display: flex;
   flex-direction: column;
 }
+.rar_reviewData {
+  text-align: center;
+}
+.rar_tileBox {
+  display: flex;
+  flex-direction: column;
+}
+.rar_tile {
+  display:flex;
+  margin-top: 4%;
+  border-bottom: 2px solid grey;
+  flex-direction: column;
+}
+.rar_ratingData {
+  display: flex;
+  flex-direction: column;
+}
+#rar_userDateHeader {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 100px;
+}
+.rar_pics {
+  display:flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 5%;
+}
+.rar_reviewButtons {
+  display: flex;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  gap: 20px;
+}
+/* Other */
+
 .link-button {
   background-color: transparent;
   border: none;
