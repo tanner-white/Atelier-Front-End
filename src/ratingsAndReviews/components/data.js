@@ -36,7 +36,7 @@ const SampleData = {
       photos: [],
     },
     {
-      review_id: 5,
+      review_id: 6,
       rating: 3,
       summary: "I'm enjoying wearing these shades",
       recommend: false,
@@ -56,7 +56,7 @@ const SampleData = {
       ],
     },
     {
-      review_id: 3,
+      review_id: 4,
       rating: 4,
       summary: 'I am liking these glasses',
       recommend: true,

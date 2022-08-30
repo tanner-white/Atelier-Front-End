@@ -10,9 +10,13 @@ class ReviewList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modifiedList: [],
+      firstRender: null,
       tiles: props.reviews,
     };
+  }
+
+  componentDidMount() {
+
   }
 
   /*
@@ -45,21 +49,19 @@ class ReviewList extends React.Component {
   sortByNewest() {
     // this is actually a big can of worms. I can simply call sort() but if I were worried about
     // time complexity I would have to give the method I use serious thought...
+    const originals = this.state.tiles.results;
     const sorted = this.state.tiles.results;
 
-    function compareNumbers(a, b) {
-      return a.date - b.date;
-    }
-
-    sorted.date.sort();
-    console.log(sorted);
-    sorted.sort(compareNumbers);
+    sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
     console.log(sorted);
 
     this.setState({
+      firstRender: originals,
       tiles: sorted,
     });
   }
+
+
 
   render() {
     return (

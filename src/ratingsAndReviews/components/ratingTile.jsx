@@ -10,7 +10,6 @@ class RatingTile extends React.Component {
   }
 
   render() {
-    console.log(this.state.list);
     return (
       <div key={this.state.list.product} className="rar_reviewData">
         Ratings & Reviews
