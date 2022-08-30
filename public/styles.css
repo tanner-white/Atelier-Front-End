@@ -16,14 +16,29 @@
   justify-content: space-evenly;
 }
 .product-details {
-  align-self: flex-end;
-
+  margin-bottom: 70px;
+  margin-left: 1%;
+  display: block;
+  width: 50%;
 }
 .image-gallery {
   width: 60%;
 }
-img {
+.main-image {
   width: 100%;
+}
+.thumbnail-div {
+  display: inline-block;
+  position: relative;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 1px black solid;
+}
+.style-thumbnails {
+  width: auto;
+  height: auto;
 }
 
 /* Adam */
