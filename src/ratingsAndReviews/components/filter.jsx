@@ -8,11 +8,15 @@ class Filter extends React.Component {
     };
   }
 
+  handleRelSelect() {
+    this.props.sortRel();
+  }
+
   render() {
     return (
       <h3 className="rar_sortDropDown">
         # reviews, sorted by:
-        <select>
+        <select id="reviewSelector" onChange={this.handleRelSelect()}>
           <option value="0">Relevant</option>
           <option value="1">Helpful</option>
           <option value="2">Newest</option>

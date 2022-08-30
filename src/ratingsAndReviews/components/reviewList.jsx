@@ -10,7 +10,7 @@ class ReviewList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tileList: [1, 2, 3],
+      modifiedList: [],
       tiles: props.reviews,
     };
   }
@@ -43,7 +43,22 @@ class ReviewList extends React.Component {
   The most recent reviews should appear first.
   */
   sortByNewest() {
-    // map over the reviews and sort by results.date
+    // this is actually a big can of worms. I can simply call sort() but if I were worried about
+    // time complexity I would have to give the method I use serious thought...
+    const sorted = this.state.tiles.results;
+
+    function compareNumbers(a, b) {
+      return a.date - b.date;
+    }
+
+    sorted.date.sort();
+    console.log(sorted);
+    sorted.sort(compareNumbers);
+    console.log(sorted);
+
+    this.setState({
+      tiles: sorted,
+    });
   }
 
   render() {

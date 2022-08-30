@@ -34,7 +34,7 @@ class ReviewTile extends React.Component {
         </div>
         <div className="rar_pics">
           {review.photos.map((image) => (
-          <img id={image.id} alt="failed to load" src="https://placebear.com/50/50.jpg"/*{image.url}*/ />
+            <img id={image.id} alt="failed to load" src="https://placebear.com/50/50.jpg"/*{image.url}*/ />
           ))}
         </div>
       </div>
