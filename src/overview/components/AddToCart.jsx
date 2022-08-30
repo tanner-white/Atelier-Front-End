@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 function AddToCart({ current }) {
+  const [size, setSize] = useState('');
   const [currentSizeQty, setCurrentSizeQty] = useState([]);
   useEffect(() => {
     const { skus } = current;
@@ -9,10 +10,11 @@ function AddToCart({ current }) {
       setCurrentSizeQty(Object.values(skus));
     }
   }, [current]);
-  const [size, setSize] = useState('');
+
   const handleClick = (e) => {
     e.preventDefault();
   };
+
   const handleSizeChange = (e) => {
     e.preventDefault();
     setSize(e.target.value);
@@ -28,6 +30,7 @@ function AddToCart({ current }) {
         {currentSizeQty.map((item) => <option>{item.size}</option>)}
       </select>
       <select value="quantity">
+        <option>Quantity</option>
         {currentSizeQty.map((item) => <option>{item.quantity}</option>)}
       </select>
       <br />
