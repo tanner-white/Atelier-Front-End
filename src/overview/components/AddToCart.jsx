@@ -1,20 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-function AddToCart() {
+function AddToCart({ current }) {
+  const [currentSizeQty, setCurrentSizeQty] = useState([]);
+  useEffect(() => {
+    setCurrentSizeQty(Object.values(current));
+  }, [current]);
+
   const handleClick = (e) => {
     e.preventDefault();
   };
-  const qtys = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   return (
     <form>
       <select value="Select size" placeholder="Select size">
-        <option>S</option>
-        <option>M</option>
-        <option>L</option>
-        <option>XL</option>
+        {currentSizeQty.map((item) => <option>{item.size}</option>)}
       </select>
       <select value="quantity">
-        {qtys.map((number) => <option>{number}</option>)}
+        {currentSizeQty.map((item) => <option>{item.quantity}</option>)}
       </select>
       <br />
       <button type="button" onClick={handleClick}>Add to bag</button>

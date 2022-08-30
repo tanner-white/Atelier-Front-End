@@ -18,17 +18,21 @@ function Overview() {
         console.log(err);
       });
   }, []);
+
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentPhotos, setCurrentPhotos] = useState([]);
+  const [currentSkus, setCurrentSkus] = useState({});
   useEffect(() => {
     axios.get('http://localhost:3001/styles/66642')
       .then((response) => {
         setStyles(response.data.results);
         setCurrentStyle(response.data.results[0]);
         setCurrentPhotos(response.data.results[0].photos.map((current) => current.url));
+        setCurrentSkus(response.data.results[0].skus);
       });
   }, []);
+
   return (
     <div>
       <div className="overview-widget">
@@ -41,7 +45,7 @@ function Overview() {
             setCurrentStyle={setCurrentStyle}
             setCurrentPhotos={setCurrentPhotos}
           />
-          <AddToCart />
+          <AddToCart current={currentSkus} />
         </div>
       </div>
       <ProductDetails product={product} />
