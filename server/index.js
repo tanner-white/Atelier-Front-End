@@ -19,10 +19,27 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/styles/:productId', (req, res) => {
-  axios.get(`${API}products/${req.params.productId}/styles`, options).then((response) => res.send(response.data)).catch((err) => res.send(err));
+  axios.get(`${API}products/${req.params.productId}/styles`, options)
+    .then((response) => res.send(response.data))
+    .catch((err) => res.send(err));
 });
+
 app.get('/products/:productId', (req, res) => {
-  axios.get(`${API}products/${req.params.productId}`, options).then((response) => res.send(response.data));
+  axios.get(`${API}products/${req.params.productId}`, options)
+    .then((response) => res.send(response.data))
+    .catch((err) => res.send(err));
+});
+
+app.get('/qa/questions', (req, res) => {
+  axios.get(`${API}qa/questions?product_id=66642`, options)
+    .then((response) => res.send(response.data))
+    .catch((err) => res.send(err));
+});
+
+app.get('/qa/questions/:question_id/answers', (req, res) => {
+  axios.get(`${API}qa/questions/${req.params.question_id}/answers`, options)
+    .then((response) => res.send(response.data.results))
+    .catch((err) => res.send(err));
 });
 
 const PORT = process.env.PORT || 3001;
