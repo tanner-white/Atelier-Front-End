@@ -8,9 +8,11 @@ function Questions() {
 
   useEffect(() => {
     axios.get('http://localhost:3001/qa/questions')
-      .then((list) => (setQuestions(list.data)))
+      .then((list) => {
+        setQuestions(list.data);
+      })
       .catch((err) => (console.error(err)));
-  });
+  }, []);
 
   return (
     <div>
