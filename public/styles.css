@@ -8,24 +8,22 @@
   justify-content: space-evenly;
   width: 80%;
   margin: 0px 0px;
+  margin-top: 5%;
 }
 .basic-info-container {
   display: flex;
   padding: 5%;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
+}
+.basic-info {
+
 }
 .product-details {
   margin-bottom: 70px;
-  margin-left: 1%;
+  margin-left: 3%;
   display: block;
-  width: 50%;
-}
-.image-gallery {
-  width: 60%;
-}
-.main-image {
-  width: 100%;
+  width: 40%;
 }
 .thumbnail-div {
   display: inline-block;
@@ -39,6 +37,24 @@
 .style-thumbnails {
   width: auto;
   height: auto;
+}
+.image-gallery {
+  display: flex;
+  margin-left: 6%;
+  flex-direction: column;
+  max-width: 60%;
+}
+.main-image {
+  max-width: 85%;
+  max-height: 80%;
+}
+.carousel-left-arrow {
+  position: absolute;
+  left: 1%;
+}
+.carousel-right-arrow {
+  position: absolute;
+  right: 50%;
 }
 
 /* Adam */
