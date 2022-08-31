@@ -7,12 +7,16 @@ class RatingTile extends React.Component {
     this.state = {
       list: this.props.product_data2,
       rating: 3.5 || newRating,
-      fives: 5 || fiveCount,
-      fours: 5 || fourCount,
-      threes: 5 || threeCount,
-      twos: 5 || twoCount,
-      ones: 5 || oneCount,
+      fives: 0,
+      fours: 0,
+      threes: 0,
+      twos: 0,
+      ones: 0,
     };
+  }
+
+  componentDidMount() {
+
   }
 
   getAvgStars() {
@@ -34,7 +38,7 @@ class RatingTile extends React.Component {
   getAvgRec() {
     const resultArray = this.props.product_data2.results;
     const recArray = [];
-
+    console.log(resultArray);
     resultArray.forEach((result) => {
       if (result.recommend) {
         recArray.push(true);
@@ -46,8 +50,16 @@ class RatingTile extends React.Component {
     return avgRec;
   }
 
-  getStarScores() {
+  getStarScores(val) {
     const resultArray = this.props.product_data2.results;
+
+    let valCount = 0;
+
+    resultArray.forEach((result) => {
+      if (result.rating === val) valCount += 1;
+    });
+
+    return valCount;
   }
 
   getSizeFeedback() {
@@ -59,7 +71,6 @@ class RatingTile extends React.Component {
   }
 
   render() {
-    this.getAvgStars();
     return (
       <div key={this.state.list.product} className="rar_reviewData">
         <h3>Ratings & Reviews</h3>
@@ -83,25 +94,25 @@ class RatingTile extends React.Component {
           </div>
         </div>
         <div id="starRow">
-          <li>
+          <li id="rar_barName">
             5 stars
-            <meter />
+            <meter value={this.getStarScores(5)} min="0" max={this.props.product_data2.results.length}/>
           </li>
-          <li>
+          <li id="rar_barName">
             4 stars
-            <meter />
+            <meter value={this.getStarScores(4)} min="0" max={this.props.product_data2.results.length}/>
           </li>
-          <li>
+          <li id="rar_barName">
             3 stars
-            <meter />
+            <meter value={this.getStarScores(3)} min="0" max={this.props.product_data2.results.length}/>
           </li>
-          <li>
+          <li id="rar_barName">
             2 stars
-            <meter />
+            <meter value={this.getStarScores(2)} min="0" max={this.props.product_data2.results.length}/>
           </li>
-          <li>
+          <li id="rar_barName">
             1 stars
-            <meter />
+            <meter value={this.getStarScores(1)} min="0" max={this.props.product_data2.results.length}/>
           </li>
         </div>
         <div>Size Bar</div>
