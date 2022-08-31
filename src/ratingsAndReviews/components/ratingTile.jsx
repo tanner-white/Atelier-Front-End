@@ -7,11 +7,6 @@ class RatingTile extends React.Component {
     this.state = {
       list: this.props.product_data2,
       rating: 3.5 || newRating,
-      fives: 0,
-      fours: 0,
-      threes: 0,
-      twos: 0,
-      ones: 0,
     };
   }
 
@@ -115,8 +110,14 @@ class RatingTile extends React.Component {
             <meter value={this.getStarScores(1)} min="0" max={this.props.product_data2.results.length}/>
           </li>
         </div>
-        <div>Size Bar</div>
-        <div>Comfort Bar</div>
+        <div>
+          Size Bar
+          <meter />
+        </div>
+        <div>
+          Comfort Bar
+          <meter />
+        </div>
       </div>
     );
   }
