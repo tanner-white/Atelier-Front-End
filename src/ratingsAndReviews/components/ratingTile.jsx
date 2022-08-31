@@ -1,12 +1,11 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
-import SampleData from './data';
 
 class RatingTile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: SampleData,
+      list: this.props.product_data2,
       rating: 3.5 || newRating,
       fives: 5 || fiveCount,
       fours: 5 || fourCount,
@@ -17,11 +16,38 @@ class RatingTile extends React.Component {
   }
 
   getAvgStars() {
+    const resultArray = this.props.product_data2.results;
+    const ratingArray = resultArray.map((result) => (result.rating));
 
+    let sum = 0;
+
+    for (let i = 0; i < ratingArray.length; i++) {
+      sum += ratingArray[i];
+    }
+
+    sum /= ratingArray.length;
+    const average = Math.round(sum * 10) / 10;
+
+    return average;
+  }
+
+  getAvgRec() {
+    const resultArray = this.props.product_data2.results;
+    const recArray = [];
+
+    resultArray.forEach((result) => {
+      if (result.recommend) {
+        recArray.push(true);
+      }
+    });
+
+    const avgRec = Math.round((recArray.length / resultArray.length) * 100);
+
+    return avgRec;
   }
 
   getStarScores() {
-
+    const resultArray = this.props.product_data2.results;
   }
 
   getSizeFeedback() {
@@ -33,11 +59,12 @@ class RatingTile extends React.Component {
   }
 
   render() {
+    this.getAvgStars();
     return (
       <div key={this.state.list.product} className="rar_reviewData">
         <h3>Ratings & Reviews</h3>
         <div id="rar_numAndStars">
-          <div id="rar_bigNum">{this.state.rating}</div>
+          <div id="rar_bigNum">{this.getAvgStars()}</div>
           <span className="rar_boxStars">
             <StarRatings
               rating={this.state.rating}
@@ -50,7 +77,10 @@ class RatingTile extends React.Component {
           </span>
         </div>
         <div>
-          <div>VAR% of reviews recommend this product</div>
+          <div>
+            {this.getAvgRec()}
+            % of reviews recommend this product
+          </div>
         </div>
         <div id="starRow">
           <li>

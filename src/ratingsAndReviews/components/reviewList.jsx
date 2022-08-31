@@ -11,17 +11,13 @@ class ReviewList extends React.Component {
     super(props);
     this.state = {
       origin: null,
-      product: props.productInfo,
+      product: this.props.productInfo,
     };
-  }
-
-  componentDidMount() {
-
   }
 
   sortByRelevance() {
     const originals = this.state.product;
-    const sorted = this.state.product.results || this.state.product;
+    const sorted = this.props.productInfo.results;
 
     sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
     sorted.sort((a, b) => b.helpfulness.toString() - a.helpfulness.toString());
@@ -37,9 +33,9 @@ class ReviewList extends React.Component {
 
   sortByHelpful() {
     const originals = this.state.product;
-    const sorted = this.state.product.results || this.state.product;
+    const sorted = this.props.productInfo.results;
 
-    sorted.sort((a, b) => b.helpfulness.toString() - a.helpfulness.toString());
+    sorted.sort((a, b) => b.helpfulness - a.helpfulness);
 
     const sortedAndMerged = originals;
     sortedAndMerged.results = sorted;
@@ -52,7 +48,7 @@ class ReviewList extends React.Component {
 
   sortByNewest() {
     const originals = this.state.product;
-    const sorted = this.state.product.results || this.state.product;
+    const sorted = this.props.productInfo.results;
 
     sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
 
@@ -68,7 +64,7 @@ class ReviewList extends React.Component {
   render() {
     return (
       <div className="rar_section">
-        <div className="rar_ratingBox"><RatingTile /></div>
+        <div className="rar_ratingBox"><RatingTile product_data2={this.props.productInfo} /></div>
         <div className="rar_tileBox">
           <div>
             <Filter
@@ -78,7 +74,7 @@ class ReviewList extends React.Component {
               sortNew={this.sortByNewest.bind(this)}
             />
           </div>
-          <ReviewTile product={this.state.product} />
+          <ReviewTile product_data1={this.props.productInfo} />
           <div className="rar_reviewButtons">
             <button className="button" type="submit" id="moreReviews">MORE REVIEWS</button>
             <button className="button" type="submit">ADD A REVIEW +</button>
