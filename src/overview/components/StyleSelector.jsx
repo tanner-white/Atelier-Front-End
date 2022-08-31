@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Thumbnail from './Thumbnail.jsx';
 
 function StyleSelector({
-  styles, current, setCurrentStyle, setCurrentPhotos,
+  styles, current, setCurrentStyle, setCurrentPhotos, setCurrentThumbnails
 }) {
   let price;
   if (current.sale_price) {
@@ -26,13 +26,14 @@ function StyleSelector({
         <b>Style ﹥</b>
         {current.name}
       </div>
-      <div>
+      <div className="style-thumbnails">
         {styles.map((style) => (
           <Thumbnail
             url={style.photos[0].thumbnail_url}
             current={style}
             setCurrentStyle={setCurrentStyle}
             setCurrentPhotos={setCurrentPhotos}
+            setCurrentThumbnails={setCurrentThumbnails}
           />
         ))}
       </div>

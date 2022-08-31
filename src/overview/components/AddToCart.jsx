@@ -31,7 +31,6 @@ function AddToCart({ current }) {
       </select>
       <select value="quantity">
         <option>Quantity</option>
-        {currentSizeQty.map((item) => <option>{item.quantity}</option>)}
       </select>
       <br />
       <button type="button" onClick={handleClick}>Add to bag</button>
