@@ -1,4 +1,5 @@
 import React from 'react';
+import StarRatings from 'react-star-ratings';
 
 class ReviewTile extends React.Component {
   constructor(props) {
@@ -21,8 +22,15 @@ class ReviewTile extends React.Component {
       <div key={review.review_id} className="rar_tile">
         <div id="rar_userDateHeader">
           <div id="rar_tileStars">
-            { /*`${this.state.list.count} `*/ }
-            <span>☆☆☆☆☆</span>
+            <span>
+              <StarRatings
+                rating={review.rating}
+                starRatedColor="black"
+                numberOfStars={5}
+                starDimension="20px"
+                starSpacing="1px"
+              />
+            </span>
           </div>
           <div>
             {review.reviewer_name}
@@ -33,10 +41,10 @@ class ReviewTile extends React.Component {
         <h3 id="rar_summary">{review.summary}</h3>
         <p id="rar_fullSummary">{review.body}</p>
         <div id="rar_recommendation">
-          {review.recommend ? 'I recommend this product' : ''}
+          {review.recommend ? 'CHECK I recommend this product' : ''}
         </div>
         <div id="rar_responses">
-          {review.response ? `${review.response}` : ''}
+          {review.response ? `${'Response:'}${review.response}` : ''}
         </div>
         <div className="rar_pics">
           {review.photos.map((image) => (
