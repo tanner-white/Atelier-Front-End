@@ -1,11 +1,13 @@
 /* eslint-disable import/extensions */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import SearchForm from './SearchForm.jsx';
 import QuestionListEntry from './QuestionListEntry.jsx';
+import AddQuestion from './AddQuestionModal.jsx';
 
 function QuestionList({ props }) {
   const [matches, setMatches] = useState([]);
+  const qModal = useRef(null);
 
   useEffect(() => {
     setMatches(props.results);
@@ -30,6 +32,8 @@ function QuestionList({ props }) {
       <div>
         <SearchForm handleSubmit={handleSubmit} />
         {matches.map((match) => <QuestionListEntry item={match} />) }
+        <button type="button" onClick={() => qModal.current.open()}>Add a Question</button>
+        <AddQuestion ref={qModal} />
       </div>
     );
   }
