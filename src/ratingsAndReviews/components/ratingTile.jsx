@@ -1,4 +1,5 @@
 import React from 'react';
+import StarRatings from 'react-star-ratings';
 import SampleData from './data';
 
 class RatingTile extends React.Component {
@@ -6,6 +7,12 @@ class RatingTile extends React.Component {
     super(props);
     this.state = {
       list: SampleData,
+      rating: 3.5 || newRating,
+      fives: 5 || fiveCount,
+      fours: 5 || fourCount,
+      threes: 5 || threeCount,
+      twos: 5 || twoCount,
+      ones: 5 || oneCount,
     };
   }
 
@@ -30,8 +37,17 @@ class RatingTile extends React.Component {
       <div key={this.state.list.product} className="rar_reviewData">
         <h3>Ratings & Reviews</h3>
         <div id="rar_numAndStars">
-          <div id="rar_bigNum">3.5</div>
-          <span className="rar_boxStars">☆☆☆☆☆</span>
+          <div id="rar_bigNum">{this.state.rating}</div>
+          <span className="rar_boxStars">
+            <StarRatings
+              rating={this.state.rating}
+              starRatedColor="grey"
+              starDimension="20px"
+              starSpacing="1px"
+              numberOfStars={5}
+              name="rating"
+            />
+          </span>
         </div>
         <div>
           <div>VAR% of reviews recommend this product</div>
