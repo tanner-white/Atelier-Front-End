@@ -4,20 +4,20 @@ import PropTypes from 'prop-types';
 import Thumbnail from './Thumbnail.jsx';
 
 function StyleSelector({
-  styles, current, setCurrentStyle, setCurrentPhotos,
+  styles, current, setCurrentStyle, setCurrentPhotos, setCurrentThumbnails
 }) {
   let price;
   if (current.sale_price) {
     price = (
-      <small>
+      <small className="price">
         <s>
           {current.original_price}
         </s>
-        {current.sale_price}
+        <span className="sale-price">{current.sale_price}</span>
       </small>
     );
   } else {
-    price = <small>{current.original_price}</small>;
+    price = <small className="price">{current.original_price}</small>;
   }
   return (
     <div className="style-selector">
@@ -26,13 +26,14 @@ function StyleSelector({
         <b>Style ﹥</b>
         {current.name}
       </div>
-      <div>
+      <div className="style-thumbnails">
         {styles.map((style) => (
           <Thumbnail
             url={style.photos[0].thumbnail_url}
             current={style}
             setCurrentStyle={setCurrentStyle}
             setCurrentPhotos={setCurrentPhotos}
+            setCurrentThumbnails={setCurrentThumbnails}
           />
         ))}
       </div>
@@ -40,8 +41,8 @@ function StyleSelector({
   );
 }
 StyleSelector.propTypes = {
-  styles: PropTypes.shape.isRequired,
-  current: PropTypes.shape.isRequired,
+  styles: PropTypes.objectOf.isRequired,
+  current: PropTypes.objectOf.isRequired,
   setCurrentPhotos: PropTypes.func.isRequired,
   setCurrentStyle: PropTypes.func.isRequired,
 };

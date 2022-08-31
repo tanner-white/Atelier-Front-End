@@ -22,19 +22,22 @@ function Overview() {
   const [styles, setStyles] = useState([]);
   const [currentStyle, setCurrentStyle] = useState({});
   const [currentPhotos, setCurrentPhotos] = useState([]);
+  const [currentThumbnails, setCurrentThumbnails] = useState([]);
   useEffect(() => {
     axios.get('http://localhost:3001/styles/66642')
       .then((response) => {
         setStyles(response.data.results);
         setCurrentStyle(response.data.results[0]);
         setCurrentPhotos(response.data.results[0].photos.map((current) => current.url));
+        setCurrentThumbnails(response.data.results[0]
+          .photos.map((current) => current.thumbnail_url));
       });
   }, []);
 
   return (
     <div>
       <div className="overview-widget">
-        <ImageGallery current={currentPhotos} />
+        <ImageGallery current={currentPhotos} currentThumbnails={currentThumbnails} />
         <div className="basic-info-container">
           <BasicInfo product={product} />
           <StyleSelector
@@ -42,6 +45,7 @@ function Overview() {
             current={currentStyle}
             setCurrentStyle={setCurrentStyle}
             setCurrentPhotos={setCurrentPhotos}
+            setCurrentThumbnails={setCurrentThumbnails}
           />
           <AddToCart current={currentStyle} />
         </div>
