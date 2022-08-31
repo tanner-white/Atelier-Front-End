@@ -9,6 +9,22 @@ class RatingTile extends React.Component {
     };
   }
 
+  getAvgStars() {
+
+  }
+
+  getStarScores() {
+
+  }
+
+  getSizeFeedback() {
+
+  }
+
+  getComfortFeedback() {
+
+  }
+
   render() {
     return (
       <div key={this.state.list.product} className="rar_reviewData">
