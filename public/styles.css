@@ -1,6 +1,9 @@
 
 /* main app */
-
+body {
+  background-color: #faf9f8;
+  font-family: 'Nunito Sans', sans-serif;
+}
 /* overview */
 .overview-widget {
   display: flex;
@@ -15,46 +18,91 @@
   padding: 5%;
   flex-direction: column;
   justify-content: space-around;
+  min-width: 30%;
 }
-.basic-info {
-
+.sale-price {
+  color: rgb(181, 2, 2);
+}
+.see-reviews {
+  margin-bottom: 20px;
+}
+.size-select {
+  width: 120px;
+  height: 40px;
+  border-radius: 2px;
+}
+.quantity-select {
+  width: 80px;
+  height: 40px;
+  border-radius: 2px;
+}
+.add-to-bag {
+  background-color: #ffffff;
+  width: 140px;
+  height: 40px;
+}
+.add-to-outfit {
+  background-color: #ffffff;
+  width: 60px;
+  height: 40px;
 }
 .product-details {
+  background-color: #ffffff;
   margin-bottom: 70px;
-  margin-left: 3%;
+  margin-left: 6%;
   display: block;
   width: 40%;
 }
 .thumbnail-div {
   display: inline-block;
   position: relative;
-  width: 60px;
-  height: 60px;
+  width: 45px;
+  height: 45px;
   overflow: hidden;
   border-radius: 50%;
-  border: 1px black solid;
+  border: 2px rgba(0, 0, 0, 0.156) solid;
 }
 .style-thumbnails {
   width: auto;
   height: auto;
+  cursor: pointer;
+  min-width: 200px;
 }
 .image-gallery {
   display: flex;
-  margin-left: 6%;
+  margin-left: 20%;
   flex-direction: column;
-  max-width: 60%;
-}
+  min-width: 65%;
+  max-width: 100px;
+  min-height: 400px;}
 .main-image {
-  max-width: 85%;
-  max-height: 80%;
+  cursor: zoom-in;
+}
+.thumbnail-selector {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 5%;
+  margin: 1% 0px 10% 3%;
+}
+.gallery-thumbnail {
+  width: 100%;
+  margin-bottom: 30%;
+  cursor: pointer;
+  border-right: 2px solid rgba(0, 0, 0, 0.358);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.358);
+  border-radius: 2px;
 }
 .carousel-left-arrow {
   position: absolute;
-  left: 1%;
+  left: 4%;
+  cursor: pointer;
 }
 .carousel-right-arrow {
   position: absolute;
-  right: 50%;
+  right: 40%;
+  cursor: pointer;
 }
 
 /* Adam */
