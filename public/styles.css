@@ -120,6 +120,21 @@ body {
 .rar_reviewData {
   text-align: center;
 }
+#starRow {
+  text-decoration: underline;
+}
+#rar_numAndStars {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4%;
+}
+
+#rar_bigNum {
+  font-weight: bolder;
+  font-size: 200%;
+}
 .rar_tileBox {
   display: flex;
   flex-direction: column;
@@ -129,6 +144,7 @@ body {
   margin-top: 4%;
   border-bottom: 2px solid grey;
   flex-direction: column;
+  width: 125%;
 }
 .rar_ratingData {
   display: flex;
@@ -136,9 +152,8 @@ body {
 }
 #rar_userDateHeader {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
-  gap: 100px;
+  justify-content: space-between;
 }
 .rar_pics {
   display:flex;
@@ -146,11 +161,28 @@ body {
   gap: 20px;
   margin-bottom: 5%;
 }
+.rar_thumbs {
+  border: 1px solid black;
+  border-radius: 4px;
+  padding: 5px;
+  width: 75px;
+}
 .rar_reviewButtons {
   display: flex;
   margin-top: 5%;
   margin-bottom: 5%;
   gap: 20px;
+}
+#reviewSelector {
+  text-decoration: underline;
+  border: none;
+  font-size: 110%;
+  font-weight: bold;
+}
+meter {
+  background: grey;
+  -ms-progress-appearance: ring;
+
 }
 /* Other */
 

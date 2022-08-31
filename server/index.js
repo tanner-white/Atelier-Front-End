@@ -42,6 +42,28 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
     .catch((err) => res.send(err));
 });
 
+app.get('/reviews/', (req, res) => {
+  axios.get(`${API}reviews?product_id=66642`, options)
+    .then((response) => res.send(response.data))
+    .catch((err) => res.send(err));
+});
+
+app.put('/qa/questions/:question_id/helpful', (req, res) => {
+  axios.put(`${API}qa/questions/${req.body.id}/helpful`, { question_id: req.body.id }, options)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => res.send(err));
+});
+
+app.put('/answers/helpful', (req, res) => {
+  axios.put(`${API}qa/answers/${req.body.id}/helpful`, { answer_id: req.body.id }, options)
+    .then((response) => {
+      res.send(response);
+    })
+    .catch((err) => res.send(err));
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT);
 console.log('Listening on port 3001');

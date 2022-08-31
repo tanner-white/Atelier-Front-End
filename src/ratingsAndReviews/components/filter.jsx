@@ -1,25 +1,30 @@
 import React from 'react';
 
-class Filter extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      val: null,
-    };
-  }
+function Filter({ numReviews, sortRel, sortHelp, sortNew }) {
+  const handleSelect = function(event) {
+    const trigger = event.target.value;
+    if (trigger === '0') {
+      sortRel();
+    }
+    if (trigger === '1') {
+      sortHelp();
+    }
+    if (trigger === '2') {
+      sortNew();
+    }
+  };
 
-  render() {
-    return (
-      <div className="rar_sortDropDown">
-        # reviews, sorted by:
-        <select>
-          <option value="0">Relavant</option>
-          <option value="1">Helpful</option>
-          <option value="2">Newest</option>
-        </select>
-      </div>
-    );
-  }
+  return (
+    <h3 className="rar_sortDropDown">
+      {numReviews + ' '}
+      reviews, sorted by
+      <select id="reviewSelector" onChange={handleSelect.bind(this)}>
+        <option value="0">relevance</option>
+        <option value="1">helpfulness</option>
+        <option value="2">newest</option>
+      </select>
+    </h3>
+  );
 }
 
 export default Filter;
