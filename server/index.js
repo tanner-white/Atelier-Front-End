@@ -37,7 +37,7 @@ app.get('/qa/questions', (req, res) => {
 });
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  axios.get(`${API}qa/questions/${req.params.question_id}/answers`, options)
+  axios.get(`${API}qa/questions/${req.params.question_id}/answers?count=20`, options)
     .then((response) => res.send(response.data.results))
     .catch((err) => res.send(err));
 });
@@ -61,6 +61,12 @@ app.put('/answers/helpful', (req, res) => {
     .then((response) => {
       res.send(response);
     })
+    .catch((err) => res.send(err));
+});
+
+app.post('/addanswer/:question_id', (req, res) => {
+  axios.post(`${API}qa/questions/${req.params.question_id}/answers`, req.body, options)
+    .then((response) => res.send(response.data))
     .catch((err) => res.send(err));
 });
 

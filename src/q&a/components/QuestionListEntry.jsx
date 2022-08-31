@@ -8,18 +8,25 @@ import AddAnswer from './AddAnswerModal.jsx';
 function QuestionListEntry({ item }) {
   const [answers, setAnswers] = useState([]);
   const [helpful, setHelpful] = useState(item.question_helpfulness);
+  const [answerAdded, setAnswerAdded] = useState(0);
   const aModal = useRef(null);
 
   useEffect(() => {
     axios.get(`http://localhost:3001/qa/questions/${item.question_id}/answers`)
       .then((response) => setAnswers(response.data))
       .catch((err) => console.error(err));
-  }, [item, helpful]);
+  }, [item, helpful, answerAdded]);
 
   const handleHelpful = () => {
     axios.put('http://localhost:3001/qa/questions/:question_id/helpful', { id: item.question_id })
       .then(() => setHelpful(helpful + 1))
       .catch((err) => console.error('client side helpful error: ', err));
+  };
+
+  const handleAnswerSubmit = (answer) => {
+    axios.post(`http://localhost:3001/addanswer/${item.question_id}`, answer)
+      .then(() => setAnswerAdded(answerAdded + 1))
+      .catch((err) => console.error(err));
   };
 
   return (
@@ -32,7 +39,7 @@ function QuestionListEntry({ item }) {
           {`(${helpful})`}
         </button>
         <button type="button" className="link-button" onClick={() => aModal.current.open()}>add answer</button>
-        <AddAnswer ref={aModal} />
+        <AddAnswer ref={aModal} handleSubmit={handleAnswerSubmit} />
       </div>
       <div>
         {answers.map((answer) => <Answers answer={answer} />)}
