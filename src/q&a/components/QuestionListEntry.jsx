@@ -1,12 +1,14 @@
 /* eslint-disable import/extensions */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Answers from './Answers.jsx';
+import AddAnswer from './AddAnswerModal.jsx';
 
 function QuestionListEntry({ item }) {
   const [answers, setAnswers] = useState([]);
   const [helpful, setHelpful] = useState(item.question_helpfulness);
+  const aModal = useRef(null);
 
   useEffect(() => {
     axios.get(`http://localhost:3001/qa/questions/${item.question_id}/answers`)
@@ -29,7 +31,8 @@ function QuestionListEntry({ item }) {
           helpful?&nbsp;
           {`(${helpful})`}
         </button>
-        <button type="button" className="link-button" onClick={() => (console.log('add and answer'))}>add answer</button>
+        <button type="button" className="link-button" onClick={() => aModal.current.open()}>add answer</button>
+        <AddAnswer ref={aModal} />
       </div>
       <div>
         {answers.map((answer) => <Answers answer={answer} />)}

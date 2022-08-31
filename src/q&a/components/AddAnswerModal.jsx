@@ -2,7 +2,7 @@ import React, {
   useState, useEffect, useImperativeHandle, forwardRef, useCallback,
 } from 'react';
 
-function AddQuestion({ children }, ref) {
+function AddAnswer({ children }, ref) {
   const [display, setDisplay] = useState(false);
 
   const close = useCallback(() => setDisplay(false), []);
@@ -32,10 +32,10 @@ function AddQuestion({ children }, ref) {
           <div>
             <h3>Ask Your Question</h3>
             <h4>About the Product Here</h4>
-            <textarea placeholder="Add Question Here..." maxLength="1000" />
+            <textarea placeholder="Add Answer Here..." maxLength="1000" />
             <br />
-            <input type="text" maxLength="60" placeholder="Example: jackson11!" />
-            <input type="text" maxLength="60" placeholder="Why did you like the product or not?" />
+            <input type="text" maxLength="60" placeholder="Example: jack543!" />
+            <input type="text" maxLength="60" placeholder="Example: jack@email.com" />
           </div>
           <button type="submit">submit</button>
         </div>
@@ -44,4 +44,4 @@ function AddQuestion({ children }, ref) {
   } return (null);
 }
 
-export default forwardRef(AddQuestion);
+export default forwardRef(AddAnswer);

@@ -216,12 +216,13 @@ meter {
   width: 90%;
 }
 
-.Q-modal {
+.modal {
   border: 1px solid grey;
   z-index: 1;
+  text-align: center;
 }
 
-.Q-modal-content {/* Hidden by default */
+.modal-content {/* Hidden by default */
   display: block;
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
