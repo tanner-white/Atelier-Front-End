@@ -41,8 +41,8 @@ function StyleSelector({
   );
 }
 StyleSelector.propTypes = {
-  styles: PropTypes.shape.isRequired,
-  current: PropTypes.shape.isRequired,
+  styles: PropTypes.objectOf.isRequired,
+  current: PropTypes.objectOf.isRequired,
   setCurrentPhotos: PropTypes.func.isRequired,
   setCurrentStyle: PropTypes.func.isRequired,
 };

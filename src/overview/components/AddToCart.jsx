@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 function AddToCart({ current }) {
   const [size, setSize] = useState('');
+  const [quantity, setQuantity] = useState(0);
+  const [availableQty, setAvailableQty] = useState([]);
   const [currentSizeQty, setCurrentSizeQty] = useState([]);
   useEffect(() => {
     const { skus } = current;
@@ -14,7 +16,19 @@ function AddToCart({ current }) {
   const handleClick = (e) => {
     e.preventDefault();
   };
-
+  useEffect(() => {
+    currentSizeQty.forEach((item) => {
+      if (item.size === size) {
+        let x = 1;
+        const qtys = [];
+        while (x < item.quantity) {
+          qtys.push(x);
+          x += 1;
+        }
+        setAvailableQty(qtys);
+      }
+    });
+  }, [size, currentSizeQty]);
   const handleSizeChange = (e) => {
     e.preventDefault();
     setSize(e.target.value);
@@ -27,10 +41,11 @@ function AddToCart({ current }) {
         onChange={handleSizeChange}
       >
         <option>Select size</option>
-        {currentSizeQty.map((item) => <option>{item.size}</option>)}
+        {currentSizeQty.map((item, index) => <option key={index}>{item.size}</option>)}
       </select>
       <select value="quantity">
         <option>Quantity</option>
+        {availableQty.length && availableQty.slice(0, 15).map((num) => <option>{num}</option>)}
       </select>
       <br />
       <button type="button" onClick={handleClick}>Add to bag</button>
@@ -40,7 +55,7 @@ function AddToCart({ current }) {
 }
 
 AddToCart.propTypes = {
-  current: PropTypes.shape.isRequired,
+  current: PropTypes.objectOf.isRequired,
 };
 
 export default AddToCart;
