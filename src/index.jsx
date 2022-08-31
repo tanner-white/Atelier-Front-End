@@ -12,7 +12,7 @@ import RelatedToApp from './relatedToItems/RelatedToApp.jsx';
 function App() {
   return (
     <div>
-      <h1>Hello World</h1>
+      <h1>Atelier</h1>
       <Overview />
       <RelatedToApp />
       <Questions />

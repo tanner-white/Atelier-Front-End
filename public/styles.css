@@ -2,6 +2,7 @@
 /* main app */
 body {
   background-color: #faf9f8;
+  font-family: 'Nunito Sans', sans-serif;
 }
 /* overview */
 .overview-widget {
@@ -19,12 +20,36 @@ body {
   justify-content: space-around;
   min-width: 30%;
 }
-.basic-info {
-
+.sale-price {
+  color: rgb(181, 2, 2);
+}
+.see-reviews {
+  margin-bottom: 20px;
+}
+.size-select {
+  width: 120px;
+  height: 40px;
+  border-radius: 2px;
+}
+.quantity-select {
+  width: 80px;
+  height: 40px;
+  border-radius: 2px;
+}
+.add-to-bag {
+  background-color: #ffffff;
+  width: 140px;
+  height: 40px;
+}
+.add-to-outfit {
+  background-color: #ffffff;
+  width: 60px;
+  height: 40px;
 }
 .product-details {
+  background-color: #ffffff;
   margin-bottom: 70px;
-  margin-left: 3%;
+  margin-left: 6%;
   display: block;
   width: 40%;
 }
@@ -65,11 +90,13 @@ body {
   width: 100%;
   margin-bottom: 30%;
   cursor: pointer;
-  border: 2px solid rgba(0, 0, 0, 0.213);
+  border-right: 2px solid rgba(0, 0, 0, 0.358);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.358);
+  border-radius: 2px;
 }
 .carousel-left-arrow {
   position: absolute;
-  left: 1%;
+  left: 4%;
   cursor: pointer;
 }
 .carousel-right-arrow {

@@ -9,15 +9,15 @@ function StyleSelector({
   let price;
   if (current.sale_price) {
     price = (
-      <small>
+      <small className="price">
         <s>
           {current.original_price}
         </s>
-        {current.sale_price}
+        <span className="sale-price">{current.sale_price}</span>
       </small>
     );
   } else {
-    price = <small>{current.original_price}</small>;
+    price = <small className="price">{current.original_price}</small>;
   }
   return (
     <div className="style-selector">

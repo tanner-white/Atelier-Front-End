@@ -36,6 +36,7 @@ function AddToCart({ current }) {
   return (
     <form>
       <select
+        className="size-select"
         value={size}
         name="Select size"
         onChange={handleSizeChange}
@@ -43,13 +44,13 @@ function AddToCart({ current }) {
         <option>Select size</option>
         {currentSizeQty.map((item, index) => <option key={index}>{item.size}</option>)}
       </select>
-      <select value="quantity">
+      <select value="quantity" className="quantity-select">
         <option>Quantity</option>
         {availableQty.length && availableQty.slice(0, 15).map((num) => <option>{num}</option>)}
       </select>
       <br />
-      <button type="button" onClick={handleClick}>Add to bag</button>
-      <button type="button">☆</button>
+      <button className="add-to-bag" type="button" onClick={handleClick}>Add to bag</button>
+      <button className="add-to-outfit" type="button">☆</button>
     </form>
   );
 }
