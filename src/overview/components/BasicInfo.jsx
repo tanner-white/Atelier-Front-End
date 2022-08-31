@@ -1,17 +1,22 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 function BasicInfo({ product }) {
+  function handleClick(e) {
+    e.preventDefault();
+    ReactDOM.getElementByClassName('rar-section').scrollIntoView();
+  }
   return (
     <div className="basic-info">
-      <div>
+      <div className="see-reviews">
         ★★★★★
-        <span>
+        <span onClick={handleClick}>
           See all reviews...
         </span>
       </div>
       <div>{product.category}</div>
-      <div>{product.name}</div>
+      <h1>{product.name}</h1>
     </div>
   );
 }
