@@ -10,19 +10,22 @@ function QuestionListEntry({ item }) {
   const [answers, setAnswers] = useState([]);
   const [helpful, setHelpful] = useState(item.question_helpfulness);
   const [answerAdded, setAnswerAdded] = useState(0);
+  const [index, setIndex] = useState(2);
   const aModal = useRef(null);
 
   useEffect(() => {
     axios.get(`http://localhost:3001/qa/questions/${item.question_id}/answers`)
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           setList(response.data);
-          setAnswers(response.data.slice(0, 2));
         }
       })
       .catch((err) => console.error(err));
   }, [item, helpful, answerAdded]);
+
+  useEffect(() => {
+    setAnswers(list.slice(0, index));
+  }, [index, list]);
 
   const handleHelpful = () => {
     axios.put('http://localhost:3001/qa/questions/:question_id/helpful', { id: item.question_id })
@@ -35,6 +38,30 @@ function QuestionListEntry({ item }) {
       .then(() => setAnswerAdded(answerAdded + 1))
       .catch((err) => console.error(err));
   };
+
+  const handleMoreAnswers = (e) => {
+    e.preventDefault();
+    setIndex(list.length);
+  };
+
+  const handleLessAnswers = (e) => {
+    e.preventDefault();
+    setIndex(2);
+  };
+
+  const moreAnswersButton = list.length > answers.length
+    ? (
+      <button type="submit" onClick={(e) => handleMoreAnswers(e)}>
+        More Answers
+      </button>
+    ) : null;
+
+  const lessAnswersButton = answers.length > 2
+    ? (
+      <button type="submit" onClick={(e) => handleLessAnswers(e)}>
+        Collapse Answers
+      </button>
+    ) : null;
 
   return (
     <div className="question-entry">
@@ -49,8 +76,10 @@ function QuestionListEntry({ item }) {
         <AddAnswer ref={aModal} handleSubmit={handleAnswerSubmit} />
       </div>
       <div>
-        {answers.map((answer) => <Answers answer={answer} />)}
+        {answers.map((answer) => <Answers answer={answer} key={answer.answer_id} />)}
       </div>
+      {moreAnswersButton}
+      {lessAnswersButton}
     </div>
   );
 }

@@ -1,8 +1,9 @@
 import React, {
   useState, useEffect, useImperativeHandle, forwardRef, useCallback,
 } from 'react';
+import PropTypes from 'prop-types';
 
-function AddAnswer({ children, handleSubmit }, ref) {
+function AddAnswer({ handleSubmit }, ref) {
   const [display, setDisplay] = useState(false);
   const [answer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
@@ -33,9 +34,11 @@ function AddAnswer({ children, handleSubmit }, ref) {
   useEffect(() => {
     if (display) {
       document.addEventListener('keydown', handleEscape, false);
+      document.addEventListener('click', handleEscape, false);
     }
     return () => {
       document.removeEventListener('keydown', handleEscape, false);
+      document.removeEventListener('click', handleEscape, false);
     };
   }, [handleEscape, display]);
 
@@ -57,5 +60,9 @@ function AddAnswer({ children, handleSubmit }, ref) {
     );
   } return (null);
 }
+
+AddAnswer.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 export default forwardRef(AddAnswer);
