@@ -28,14 +28,19 @@ function AddAnswer({ children, handleSubmit }, ref) {
 
   const handleEscape = useCallback((event) => {
     if (event.keyCode === 27) close();
+    else if (!event.target.innerHTML.includes('Add Answer Here')) {
+      close();
+    }
   }, [close]);
 
   useEffect(() => {
     if (display) {
       document.addEventListener('keydown', handleEscape, false);
+      document.addEventListener('click', handleEscape, false);
     }
     return () => {
       document.removeEventListener('keydown', handleEscape, false);
+      document.removeEventListener('click', handleEscape, false);
     };
   }, [handleEscape, display]);
 
