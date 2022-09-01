@@ -11,24 +11,30 @@ function QuestionList({ props, handleQuestionSubmit }) {
   const qModal = useRef(null);
 
   useEffect(() => {
-    setList(props.results);
-    setMatches(list);
-  }, [props.results, list]);
+    if (props.results) {
+      setList(props.results);
+      setMatches(props.results.slice(0, 4));
+    }
+  }, [list, props.results]);
 
   const handleSubmit = (input) => {
     if (input.length >= 3) {
       const display = [];
-      list.forEach((item) => {
-        const question = item.question_body.toLowerCase();
+      matches.forEach((match) => {
+        const question = match.question_body.toLowerCase();
         if (question.includes(input.toLowerCase())) {
-          display.push(item);
+          display.push(match);
         }
       });
       setMatches(display);
     } else {
-      setMatches(props.results);
+      setMatches(props.results.slice(0, 4));
     }
   };
+
+  // const showMoreQuestions = () => {
+
+  // }
 
   if (matches) {
     return (

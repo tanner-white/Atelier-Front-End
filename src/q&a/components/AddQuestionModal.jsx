@@ -16,7 +16,7 @@ function AddQuestion({ children, submit, props }, ref) {
       body,
       name,
       email,
-      product_id: Number(props.product_id),
+      product_id: 66642,
     };
     submit(question);
     close();

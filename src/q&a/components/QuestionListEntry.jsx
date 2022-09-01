@@ -6,6 +6,7 @@ import Answers from './Answers.jsx';
 import AddAnswer from './AddAnswerModal.jsx';
 
 function QuestionListEntry({ item }) {
+  const [list, setList] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [helpful, setHelpful] = useState(item.question_helpfulness);
   const [answerAdded, setAnswerAdded] = useState(0);
@@ -13,7 +14,13 @@ function QuestionListEntry({ item }) {
 
   useEffect(() => {
     axios.get(`http://localhost:3001/qa/questions/${item.question_id}/answers`)
-      .then((response) => setAnswers(response.data))
+      .then((response) => {
+        if (response.data) {
+          console.log(response.data);
+          setList(response.data);
+          setAnswers(response.data.slice(0, 2));
+        }
+      })
       .catch((err) => console.error(err));
   }, [item, helpful, answerAdded]);
 

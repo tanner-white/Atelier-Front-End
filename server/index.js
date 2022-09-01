@@ -37,7 +37,7 @@ app.get('/qa/questions', (req, res) => {
 });
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  axios.get(`${API}qa/questions/${req.params.question_id}/answers?count=1`, options)
+  axios.get(`${API}qa/questions/${req.params.question_id}/answers?count=10`, options)
     .then((response) => res.send(response.data.results))
     .catch((err) => res.send(err));
 });
