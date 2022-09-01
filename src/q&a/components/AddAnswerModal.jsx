@@ -41,8 +41,8 @@ function AddAnswer({ children, handleSubmit }, ref) {
 
   if (display) {
     return (
-      <div className="modal">
-        <div className="modal-content">
+      <div className="QandA-modal">
+        <div className="QandA-modal-content">
           <div>
             <h3>Ask Your Question</h3>
             <h4>About the Product Here</h4>
