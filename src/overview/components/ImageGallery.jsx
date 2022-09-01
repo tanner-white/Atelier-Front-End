@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import ReactImageMagnify from 'react-image-magnify';
 import ImageGalleryThumbnail from './ImageGalleryThumbnail.jsx';
 
 function ImageGallery({ current, currentThumbnails }) {
@@ -32,7 +33,21 @@ function ImageGallery({ current, currentThumbnails }) {
           />
         ))}
       </div>
-      <img className="main-image" src={current[currentIndex]} alt="pants" />
+      <div className="main-image">
+        <ReactImageMagnify {...{
+          smallImage: {
+            alt: '',
+            isFluidWidth: true,
+            src: current[currentIndex],
+          },
+          largeImage: {
+            src: current[currentIndex],
+            width: 1200,
+            height: 1800,
+          },
+        }}
+        />
+      </div>
       {currentIndex > 0
       && <h1 className="carousel-left-arrow" onClick={previous}>&#8249;</h1>}
       {currentIndex < length - 1

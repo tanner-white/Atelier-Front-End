@@ -38,6 +38,7 @@ header {
 }
 .see-reviews {
   margin-bottom: 20px;
+  margin-top: 4vw;
   cursor: pointer;
 }
 .see-reviews:hover {
@@ -73,7 +74,7 @@ header {
   border-top: solid black 1px;
   background-color: #ffffff;
   margin-bottom: 70px;
-  margin-left: 5.4%;
+  margin-left: 7%;
   margin-top: 20px;
   padding: 4%;
   display: block;
@@ -98,10 +99,11 @@ header {
 .image-gallery {
   display: flex;
   background-color: #ffffff;
-  margin-left: 15%;
+  margin-left: 18%;
+  margin-right: 3.5vw;
   flex-direction: column;
-  min-width: 80%;
-  height: 45vw;
+  min-width: 83%;
+  height: 55vw;
   align-items: center;
   justify-content: center;
 }
@@ -109,6 +111,7 @@ header {
   align-self: center;
   cursor: zoom-in;
   width: 45%;
+  z-index: 10;
 }
 .thumbnail-selector {
   align-self: flex-start;
@@ -117,7 +120,7 @@ header {
   flex-direction: column;
   justify-content: space-between;
   width: 4%;
-  margin: 3% 0px 10% 5%;
+  margin: 3% 0px 10% 8%;
 }
 .gallery-thumbnail {
   width: 100%;
