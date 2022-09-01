@@ -4,6 +4,15 @@ body {
   background-color: #faf9f8;
   font-family: 'Nunito Sans', sans-serif;
 }
+button, select {
+  font-weight: 600;
+}
+header {
+  background-color: black;
+}
+.business-name {
+  color: #faf9f8;
+}
 /* overview */
 .overview-widget {
   display: flex;
@@ -15,76 +24,100 @@ body {
 }
 .basic-info-container {
   display: flex;
-  padding: 5%;
+  margin-left: 10px;
   flex-direction: column;
   justify-content: space-around;
-  min-width: 30%;
+  min-width: 40%;
+  max-width: 40%;
+}
+.product-name {
+  font-size: 3vw;
 }
 .sale-price {
   color: rgb(181, 2, 2);
 }
 .see-reviews {
   margin-bottom: 20px;
+  cursor: pointer;
+}
+.see-reviews:hover {
+  text-decoration: underline;
 }
 .size-select {
-  width: 120px;
-  height: 40px;
+  width: 18vw;
+  height: 5vw;
   border-radius: 2px;
+  margin-bottom: 1vw;
+  margin-right: 1vw;
+  margin-top: 30px;
 }
 .quantity-select {
-  width: 80px;
-  height: 40px;
+  width: 11vw;
+  height: 5vw;
   border-radius: 2px;
 }
 .add-to-bag {
   background-color: #ffffff;
-  width: 140px;
-  height: 40px;
+  width: 24vw;
+  height: 5vw;
+  margin-right: 1vw;
 }
 .add-to-outfit {
   background-color: #ffffff;
-  width: 60px;
-  height: 40px;
+  width: 5vw;
+  height: 5vw;
 }
 .product-details {
+  display: flex;
+  border-right: solid black 1px;
+  border-top: solid black 1px;
   background-color: #ffffff;
   margin-bottom: 70px;
-  margin-left: 6%;
+  margin-left: 5.4%;
+  margin-top: 20px;
+  padding: 4%;
   display: block;
-  width: 40%;
+  width: 43.8%;
 }
-.thumbnail-div {
-  display: inline-block;
-  position: relative;
-  width: 45px;
-  height: 45px;
-  overflow: hidden;
-  border-radius: 50%;
-  border: 2px rgba(0, 0, 0, 0.156) solid;
-}
+
 .style-thumbnails {
   width: auto;
   height: auto;
   cursor: pointer;
-  min-width: 200px;
+}
+.thumbnail-div {
+  display: inline-block;
+  position: relative;
+  width: 5vw;
+  height: 5vw;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px rgba(0, 0, 0, 0.156) solid;
+  margin-right: 3%;
 }
 .image-gallery {
   display: flex;
-  margin-left: 20%;
+  background-color: #ffffff;
+  margin-left: 15%;
   flex-direction: column;
-  min-width: 65%;
-  max-width: 100px;
-  min-height: 400px;}
+  min-width: 80%;
+  height: 45vw;
+  align-items: center;
+  justify-content: center;
+}
 .main-image {
+  align-self: center;
   cursor: zoom-in;
+  width: 45%;
 }
 .thumbnail-selector {
+  align-self: flex-start;
   display: flex;
   position: absolute;
   flex-direction: column;
   justify-content: space-between;
-  width: 5%;
-  margin: 1% 0px 10% 3%;
+  width: 4%;
+  margin: 2% 0px 10% 3%;
 }
 .gallery-thumbnail {
   width: 100%;
@@ -94,9 +127,16 @@ body {
   border-bottom: 2px solid rgba(0, 0, 0, 0.358);
   border-radius: 2px;
 }
+.gallery-thumbnail-current {
+  width: 100%;
+  margin-bottom: 30%;
+  cursor: pointer;
+  border: 3px solid #faf9f8;
+  border-radius: 1px;
+}
 .carousel-left-arrow {
   position: absolute;
-  left: 4%;
+  left: 8%;
   cursor: pointer;
 }
 .carousel-right-arrow {

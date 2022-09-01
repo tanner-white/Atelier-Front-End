@@ -28,6 +28,7 @@ function ImageGallery({ current, currentThumbnails }) {
             thumbnail={thumbnail}
             index={index}
             setCurrentIndex={setCurrentIndex}
+            currentIndex={currentIndex}
           />
         ))}
       </div>
