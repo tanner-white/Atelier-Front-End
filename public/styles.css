@@ -230,7 +230,7 @@ meter {
 }
 /* Other */
 .QandA-list {
-  max-height: 100vw;
+  max-height: 95vw;
   overflow-y: scroll;
 }
 
@@ -244,7 +244,16 @@ meter {
   float: right;
   padding: 0;
 }
+
 .question-entry {
+  border: 2px solid grey;
+  padding: 5px;
+  margin: 10px;
+}
+
+.question-entry-answer {
+  max-height: 50vw;
+  overflow-y: scroll;
   border: 2px solid grey;
   margin: 10px;
   padding: 5px;

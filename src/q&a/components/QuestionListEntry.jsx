@@ -10,7 +10,7 @@ function QuestionListEntry({ item }) {
   const [answers, setAnswers] = useState([]);
   const [helpful, setHelpful] = useState(item.question_helpfulness);
   const [answerAdded, setAnswerAdded] = useState(0);
-  const [index, setIndex] = useState(1);
+  const [index, setIndex] = useState(2);
   const aModal = useRef(null);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function QuestionListEntry({ item }) {
   }, [item, helpful, answerAdded]);
 
   useEffect(() => {
-    setAnswers(list.slice(0, index * 2));
+    setAnswers(list.slice(0, index));
   }, [index, list]);
 
   const handleHelpful = () => {
@@ -41,7 +41,7 @@ function QuestionListEntry({ item }) {
 
   const handleMoreAnswers = (e) => {
     e.preventDefault();
-    setIndex(index + 1);
+    setIndex(list.length);
   };
 
   const handleLessAnswers = (e) => {
@@ -49,7 +49,7 @@ function QuestionListEntry({ item }) {
     setIndex(1);
   };
 
-  const moreAnswersButton = list.slice(index * 2).length > 0
+  const moreAnswersButton = list.length > answers.length
     ? (
       <button type="submit" onClick={(e) => handleMoreAnswers(e)}>
         More Answers
@@ -59,7 +59,7 @@ function QuestionListEntry({ item }) {
   const lessAnswersButton = answers.length > 2
     ? (
       <button type="submit" onClick={(e) => handleLessAnswers(e)}>
-        Less Answers
+        Collapse Answers
       </button>
     ) : null;
 
