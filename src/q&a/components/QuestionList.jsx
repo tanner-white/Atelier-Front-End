@@ -1,15 +1,21 @@
 /* eslint-disable import/extensions */
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import SearchForm from './SearchForm.jsx';
 import QuestionListEntry from './QuestionListEntry.jsx';
+import AddQuestion from './AddQuestionModal.jsx';
 
-function QuestionList({ props }) {
+function QuestionList({ props, handleQuestionSubmit }) {
+  const [list, setList] = useState([]);
   const [matches, setMatches] = useState([]);
+  const qModal = useRef(null);
 
   useEffect(() => {
-    setMatches(props.results);
-  }, [props.results]);
+    if (props.results) {
+      setList(props.results);
+      setMatches(props.results.slice(0, 4));
+    }
+  }, [list, props.results]);
 
   const handleSubmit = (input) => {
     if (input.length >= 3) {
@@ -22,14 +28,21 @@ function QuestionList({ props }) {
       });
       setMatches(display);
     } else {
-      setMatches(props.results);
+      setMatches(props.results.slice(0, 4));
     }
   };
+
+  // const showMoreQuestions = () => {
+
+  // }
+
   if (matches) {
     return (
       <div>
         <SearchForm handleSubmit={handleSubmit} />
         {matches.map((match) => <QuestionListEntry item={match} />) }
+        <button type="button" onClick={() => qModal.current.open()}>Add a Question</button>
+        <AddQuestion ref={qModal} submit={handleQuestionSubmit} props={props} />
       </div>
     );
   }
