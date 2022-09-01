@@ -8,7 +8,7 @@ function ProductDetails({ product }) {
     <div className="product-details">
       <div><h2>{product.slogan}</h2></div>
       <div>{product.description}</div>
-      <div>
+      <div className="features">
         ✓ Organic NON-GMO
         ✓ Vegan
         ✓ Cruelty-Free

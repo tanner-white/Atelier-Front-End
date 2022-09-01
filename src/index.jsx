@@ -13,7 +13,9 @@ import RelatedToApp from './relatedToItems/RelatedToApp.jsx';
 function App() {
   return (
     <div>
-      <h1>Atelier</h1>
+      <header>
+        <h1 className="business-name">Atelier</h1>
+      </header>
       <Overview />
       <RelatedToApp />
       <Questions />
