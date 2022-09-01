@@ -10,7 +10,7 @@ function AddAnswer({ children, handleSubmit }, ref) {
 
   const close = useCallback(() => setDisplay(false), []);
 
-  const onSubmit = () => {
+  const onSubmit = (event) => {
     event.preventDefault();
     const input = {
       body: answer,
