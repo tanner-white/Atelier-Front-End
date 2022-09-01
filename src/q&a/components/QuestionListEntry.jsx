@@ -44,10 +44,22 @@ function QuestionListEntry({ item }) {
     setIndex(index + 1);
   };
 
+  const handleLessAnswers = (e) => {
+    e.preventDefault();
+    setIndex(1);
+  };
+
   const moreAnswersButton = list.slice(index * 2).length > 0
     ? (
       <button type="submit" onClick={(e) => handleMoreAnswers(e)}>
         More Answers
+      </button>
+    ) : null;
+
+  const lessAnswersButton = answers.length > 2
+    ? (
+      <button type="submit" onClick={(e) => handleLessAnswers(e)}>
+        Less Answers
       </button>
     ) : null;
 
@@ -67,6 +79,7 @@ function QuestionListEntry({ item }) {
         {answers.map((answer) => <Answers answer={answer} />)}
       </div>
       {moreAnswersButton}
+      {lessAnswersButton}
     </div>
   );
 }
