@@ -46,7 +46,7 @@ function QuestionListEntry({ item }) {
 
   const handleLessAnswers = (e) => {
     e.preventDefault();
-    setIndex(1);
+    setIndex(2);
   };
 
   const moreAnswersButton = list.length > answers.length
