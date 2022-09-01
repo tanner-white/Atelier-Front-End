@@ -6,20 +6,22 @@ import QuestionListEntry from './QuestionListEntry.jsx';
 import AddQuestion from './AddQuestionModal.jsx';
 
 function QuestionList({ props, handleQuestionSubmit }) {
+  const [list, setList] = useState([]);
   const [matches, setMatches] = useState([]);
   const qModal = useRef(null);
 
   useEffect(() => {
-    setMatches(props.results);
-  }, [props.results]);
+    setList(props.results);
+    setMatches(list);
+  }, [props.results, list]);
 
   const handleSubmit = (input) => {
     if (input.length >= 3) {
       const display = [];
-      matches.forEach((match) => {
-        const question = match.question_body.toLowerCase();
+      list.forEach((item) => {
+        const question = item.question_body.toLowerCase();
         if (question.includes(input.toLowerCase())) {
-          display.push(match);
+          display.push(item);
         }
       });
       setMatches(display);

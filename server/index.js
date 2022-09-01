@@ -31,13 +31,13 @@ app.get('/products/:productId', (req, res) => {
 });
 
 app.get('/qa/questions', (req, res) => {
-  axios.get(`${API}qa/questions/?product_id=66642&page=1&count=5`, options)
+  axios.get(`${API}qa/questions/?product_id=66642&count=100`, options)
     .then((response) => res.send(response.data))
     .catch((err) => res.send(err));
 });
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  axios.get(`${API}qa/questions/${req.params.question_id}/answers?count=20`, options)
+  axios.get(`${API}qa/questions/${req.params.question_id}/answers?count=1`, options)
     .then((response) => res.send(response.data.results))
     .catch((err) => res.send(err));
 });
