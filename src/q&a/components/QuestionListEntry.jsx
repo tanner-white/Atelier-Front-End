@@ -10,19 +10,22 @@ function QuestionListEntry({ item }) {
   const [answers, setAnswers] = useState([]);
   const [helpful, setHelpful] = useState(item.question_helpfulness);
   const [answerAdded, setAnswerAdded] = useState(0);
+  const [index, setIndex] = useState(1);
   const aModal = useRef(null);
 
   useEffect(() => {
     axios.get(`http://localhost:3001/qa/questions/${item.question_id}/answers`)
       .then((response) => {
         if (response.data) {
-          console.log(response.data);
           setList(response.data);
-          setAnswers(response.data.slice(0, 2));
         }
       })
       .catch((err) => console.error(err));
-  }, [item, helpful, answerAdded]);
+  }, [item, helpful, answerAdded, index]);
+
+  useEffect(() => {
+    setAnswers(list.slice(0, index * 2));
+  }, [index, list]);
 
   const handleHelpful = () => {
     axios.put('http://localhost:3001/qa/questions/:question_id/helpful', { id: item.question_id })
@@ -35,6 +38,18 @@ function QuestionListEntry({ item }) {
       .then(() => setAnswerAdded(answerAdded + 1))
       .catch((err) => console.error(err));
   };
+
+  const handleMoreAnswers = (e) => {
+    e.preventDefault();
+    setIndex(index + 1);
+  };
+
+  const moreAnswersButton = list.slice(index * 2).length > 0
+    ? (
+      <button type="submit" onClick={(e) => handleMoreAnswers(e)}>
+        More Answers
+      </button>
+    ) : null;
 
   return (
     <div className="question-entry">
@@ -51,6 +66,7 @@ function QuestionListEntry({ item }) {
       <div>
         {answers.map((answer) => <Answers answer={answer} />)}
       </div>
+      {moreAnswersButton}
     </div>
   );
 }
