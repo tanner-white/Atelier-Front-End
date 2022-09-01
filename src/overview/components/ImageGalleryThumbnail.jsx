@@ -3,33 +3,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ImageGalleryThumbnail({ thumbnail, index, setCurrentIndex, currentIndex }) {
+function ImageGalleryThumbnail({
+  thumbnail, index, setCurrentIndex, currentIndex,
+}) {
   function handleClick(e) {
     e.preventDefault();
     setCurrentIndex(index);
   }
   return (
-    index === currentIndex ?
-    <img
-      onClick={handleClick}
-      src={thumbnail}
-      alt="style thumbnail"
-      className="gallery-thumbnail-current"
-      key={index}
-    />
-    :
-    <img
-      onClick={handleClick}
-      src={thumbnail}
-      alt="style thumbnail"
-      className="gallery-thumbnail"
-      key={index}
-    />
+    index === currentIndex
+      ? (
+        <img
+          onClick={handleClick}
+          src={thumbnail}
+          alt="style thumbnail"
+          className="gallery-thumbnail-current"
+          key={index}
+        />
+      )
+      : (
+        <img
+          onClick={handleClick}
+          src={thumbnail}
+          alt="style thumbnail"
+          className="gallery-thumbnail"
+          key={index}
+        />
+      )
   );
 }
 ImageGalleryThumbnail.propTypes = {
   thumbnail: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
+  currentIndex: PropTypes.number.isRequired,
   setCurrentIndex: PropTypes.func.isRequired,
 };
 export default ImageGalleryThumbnail;

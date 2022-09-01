@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Thumbnail from './Thumbnail.jsx';
 
 function StyleSelector({
-  styles, current, setCurrentStyle, setCurrentPhotos, setCurrentThumbnails
+  styles, current, setCurrentStyle, setCurrentPhotos, setCurrentThumbnails,
 }) {
   let price;
   if (current.sale_price) {
@@ -45,5 +45,6 @@ StyleSelector.propTypes = {
   current: PropTypes.objectOf.isRequired,
   setCurrentPhotos: PropTypes.func.isRequired,
   setCurrentStyle: PropTypes.func.isRequired,
+  setCurrentThumbnails: PropTypes.func.isRequired,
 };
 export default StyleSelector;

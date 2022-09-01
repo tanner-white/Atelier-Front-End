@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
@@ -26,9 +27,6 @@ function AddToCart({ current }) {
     });
   }, [size, currentSizeQty]);
 
-  const handleClick = (e) => {
-    e.preventDefault();
-  };
   const handleSizeChange = (e) => {
     e.preventDefault();
     setSize(e.target.value);
@@ -58,14 +56,28 @@ function AddToCart({ current }) {
         {availableQty.length && availableQty.slice(0, 15).map((num) => <option>{num}</option>)}
       </select>
       <br />
-      <button className="add-to-bag" type="button" onClick={handleClick}>Add to bag</button>
+      <button className="add-to-bag" type="button">Add to bag</button>
       <button className="add-to-outfit" type="button">☆</button>
     </form>
   );
 }
 
 AddToCart.propTypes = {
-  current: PropTypes.objectOf.isRequired,
+  current: PropTypes.shape({
+    id: PropTypes.number,
+    campus: PropTypes.string,
+    name: PropTypes.string,
+    slogan: PropTypes.string,
+    description: PropTypes.string,
+    category: PropTypes.string,
+    default_price: PropTypes.string,
+    created_at: PropTypes.string,
+    updated_at: PropTypes.string,
+    features: PropTypes.arrayOf(PropTypes.shape({
+      feature: PropTypes.string,
+      value: PropTypes.string,
+    })),
+  }).isRequired,
 };
 
 export default AddToCart;
