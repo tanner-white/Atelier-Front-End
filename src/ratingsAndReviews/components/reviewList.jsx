@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/extensions
+import AddReview from './addReview.jsx';
+// eslint-disable-next-line import/extensions
 import ReviewTile from './reviewTile.jsx';
 // eslint-disable-next-line import/extensions
 import RatingTile from './ratingTile.jsx';
@@ -63,7 +65,6 @@ class ReviewList extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="rar_section">
         <div className="rar_ratingBox"><RatingTile product_data2={this.props.productInfo} /></div>
@@ -78,8 +79,9 @@ class ReviewList extends React.Component {
           </div>
           <ReviewTile product_data1={this.props.productInfo} />
           <div className="rar_reviewButtons">
+
             <button className="button" type="submit" id="moreReviews">MORE REVIEWS</button>
-            <button className="button" type="submit">ADD A REVIEW +</button>
+            <div><AddReview /></div>
           </div>
         </div>
       </div>
