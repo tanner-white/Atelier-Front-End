@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 // eslint-disable-next-line import/extensions
 import ReviewTile from './reviewTile.jsx';
 // eslint-disable-next-line import/extensions
@@ -62,6 +63,7 @@ class ReviewList extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="rar_section">
         <div className="rar_ratingBox"><RatingTile product_data2={this.props.productInfo} /></div>
@@ -85,4 +87,7 @@ class ReviewList extends React.Component {
   }
 }
 
+// ReviewList.propTypes = {
+//   productInfo: PropTypes.shape.isRequired,
+// };
 export default ReviewList;
