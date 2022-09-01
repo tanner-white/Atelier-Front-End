@@ -179,10 +179,12 @@ body {
   font-size: 110%;
   font-weight: bold;
 }
-meter {
-  background: grey;
-  -ms-progress-appearance: ring;
-
+meter::-webkit-meter-bar {
+  background: none;
+  background: lightgrey;
+}
+meter::-webkit-meter-optimum-value {
+  background-image: linear-gradient(90deg, #5c5c5c 50%, #5c5c5c 100%);
 }
 /* Other */
 

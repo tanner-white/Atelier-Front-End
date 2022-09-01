@@ -16,7 +16,7 @@ class RatingTile extends React.Component {
   }
 
   componentDidMount() {
-
+    console.log(this.props);
   }
 
   getAvgStars() {
