@@ -1,19 +1,8 @@
-import React, { useRef } from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import PropTypes from 'prop-types';
 import StarRatings from 'react-star-ratings';
-import RatingsApp from '/Users/tannerwhite/HackReactor/FEC/rfc2207-FEC/src/ratingsAndReviews/RatingsApp.jsx'
 
 function BasicInfo({ product }) {
-  const myRef = useRef(RatingsApp);
-  function executeScroll() {
-    myRef.current.ScrollIntoView();
-  }
-  function handleClick(e) {
-    e.preventDefault();
-    window.RatingsApp.prototype.ScrollIntoView();
-  }
-
   return (
     <div className="basic-info">
       <div className="see-reviews">
@@ -25,7 +14,7 @@ function BasicInfo({ product }) {
           numberOfStars={5}
           name="rating"
         />
-        <small onClick={handleClick}>
+        <small>
           &nbsp;See all reviews...
         </small>
       </div>
