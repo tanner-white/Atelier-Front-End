@@ -108,8 +108,14 @@ class RatingTile extends React.Component {
             <meter value={this.getStarScores(1)} min="0" max={reviewArray.length} />
           </li>
         </div>
-        <div>Size Bar</div>
-        <div>Comfort Bar</div>
+        <div>
+          Size Bar
+          <meter />
+        </div>
+        <div>
+          Comfort Bar
+          <meter />
+        </div>
       </div>
     );
   }
