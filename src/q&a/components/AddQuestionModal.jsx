@@ -1,8 +1,9 @@
 import React, {
   useState, useEffect, useImperativeHandle, forwardRef, useCallback,
 } from 'react';
+import PropTypes from 'prop-types';
 
-function AddQuestion({ children, submit, props }, ref) {
+function AddQuestion({ submit, props }, ref) {
   const [display, setDisplay] = useState(false);
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
@@ -16,7 +17,7 @@ function AddQuestion({ children, submit, props }, ref) {
       body,
       name,
       email,
-      product_id: 66642,
+      product_id: props.product_id,
     };
     submit(question);
     close();
@@ -29,9 +30,6 @@ function AddQuestion({ children, submit, props }, ref) {
 
   const handleEscape = useCallback((event) => {
     if (event.keyCode === 27) close();
-    else if (!event.target.innerHTML.includes('Ask Your Question')) {
-      close();
-    }
   }, [close]);
 
   useEffect(() => {
@@ -63,5 +61,11 @@ function AddQuestion({ children, submit, props }, ref) {
     );
   } return (null);
 }
+
+AddQuestion.propTypes = {
+  submit: PropTypes.func.isRequired,
+  props: PropTypes.shape.isRequired,
+  product_id: PropTypes.number.isRequired,
+};
 
 export default forwardRef(AddQuestion);

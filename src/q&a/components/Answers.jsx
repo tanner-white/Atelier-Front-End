@@ -40,7 +40,17 @@ function Answers({ answer }) {
 }
 
 Answers.propTypes = {
-  answer: PropTypes.shape.isRequired,
+  answer: PropTypes.shape({
+    answer_id: PropTypes.number,
+    body: PropTypes.string,
+    date: PropTypes.string,
+    answerer_name: PropTypes.string,
+    helpfulness: PropTypes.number,
+    photos: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      url: PropTypes.string,
+    })),
+  }).isRequired,
 };
 
 export default Answers;

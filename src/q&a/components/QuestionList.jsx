@@ -60,7 +60,7 @@ function QuestionList({ props, handleQuestionSubmit }) {
     return (
       <div>
         <SearchForm handleSubmit={handleSubmit} />
-        {matches.map((match) => <QuestionListEntry item={match} />) }
+        {matches.map((match) => <QuestionListEntry item={match} key={match.question_id} />) }
         {moreQuestionsButton}
         {lessQuestionsButton}
         <button type="button" onClick={() => qModal.current.open()}>Add a Question</button>
@@ -76,6 +76,7 @@ function QuestionList({ props, handleQuestionSubmit }) {
 QuestionList.propTypes = {
   props: PropTypes.shape.isRequired,
   results: PropTypes.arrayOf.isRequired,
+  handleQuestionSubmit: PropTypes.func.isRequired,
 };
 
 export default QuestionList;

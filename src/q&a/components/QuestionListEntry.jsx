@@ -76,7 +76,7 @@ function QuestionListEntry({ item }) {
         <AddAnswer ref={aModal} handleSubmit={handleAnswerSubmit} />
       </div>
       <div>
-        {answers.map((answer) => <Answers answer={answer} />)}
+        {answers.map((answer) => <Answers answer={answer} key={answer.answer_id} />)}
       </div>
       {moreAnswersButton}
       {lessAnswersButton}
