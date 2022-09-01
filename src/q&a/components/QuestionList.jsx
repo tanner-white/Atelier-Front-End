@@ -15,7 +15,7 @@ function QuestionList({ props, handleQuestionSubmit }) {
     if (props.results) {
       setList(props.results);
     }
-  }, [list, props.results]);
+  }, [props.results]);
 
   useEffect(() => {
     setMatches(list.slice(0, index));
@@ -24,15 +24,17 @@ function QuestionList({ props, handleQuestionSubmit }) {
   const handleSubmit = (input) => {
     if (input.length >= 3) {
       const display = [];
-      matches.forEach((match) => {
+      list.forEach((match) => {
         const question = match.question_body.toLowerCase();
         if (question.includes(input.toLowerCase())) {
           display.push(match);
         }
       });
-      setMatches(display);
+      setIndex(4);
+      setList(display);
     } else {
-      setMatches(props.results.slice(0, 4));
+      setIndex(4);
+      setList(props.results);
     }
   };
 
