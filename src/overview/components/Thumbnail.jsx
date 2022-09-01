@@ -1,12 +1,13 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 
 function Thumbnail({
-  url, current, setCurrentStyle, setCurrentPhotos, setCurrentThumbnails
+  url, current, setCurrentStyle, setCurrentPhotos, setCurrentThumbnails,
 }) {
   function handleClick(e) {
     e.preventDefault();
-    console.log('click!');
     setCurrentStyle(current);
     setCurrentPhotos(current.photos.map((style) => style.url));
     setCurrentThumbnails(current.photos.map((style) => style.thumbnail_url));
@@ -24,6 +25,7 @@ Thumbnail.propTypes = {
   current: PropTypes.shape.isRequired,
   setCurrentStyle: PropTypes.func.isRequired,
   setCurrentPhotos: PropTypes.func.isRequired,
+  setCurrentThumbnails: PropTypes.func.isRequired,
 };
 
 export default Thumbnail;
