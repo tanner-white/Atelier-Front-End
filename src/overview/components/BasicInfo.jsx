@@ -3,6 +3,13 @@ import PropTypes from 'prop-types';
 import StarRatings from 'react-star-ratings';
 
 function BasicInfo({ product }) {
+  function handleReviewClick(e) {
+    e.preventDefault();
+    window.scrollTo({
+      top: 1360,
+      behavior: 'smooth',
+    });
+  }
   return (
     <div className="basic-info">
       <div className="see-reviews">
@@ -14,7 +21,7 @@ function BasicInfo({ product }) {
           numberOfStars={5}
           name="rating"
         />
-        <small>
+        <small onClick={handleReviewClick}>
           &nbsp;See all reviews...
         </small>
       </div>

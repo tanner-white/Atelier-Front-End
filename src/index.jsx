@@ -7,7 +7,7 @@ import RatingsApp from './ratingsAndReviews/RatingsApp.jsx';
 // eslint-disable-next-line import/extensions
 import Questions from './q&a/QuestionsApp.jsx';
 // eslint-disable-next-line import/extensions
-import RelatedToApp from './relatedToItems/RelatedToApp.jsx';
+// import RelatedToApp from './relatedToItems/RelatedToApp.jsx';
 // import RelatedToList from '/src/relatedToItems/RelatedToList.jsx';
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
         <h1 className="business-name">Atelier</h1>
       </header>
       <Overview />
-      <RelatedToApp />
+      {/* <RelatedToApp /> */}
       <Questions />
       <RatingsApp />
     </div>

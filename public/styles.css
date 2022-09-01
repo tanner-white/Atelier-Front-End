@@ -3,12 +3,16 @@
 body {
   background-color: #faf9f8;
   font-family: 'Nunito Sans', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 button, select {
   font-weight: 600;
 }
 header {
   background-color: black;
+  height: 7vw;
+  top: 0;
 }
 .business-name {
   color: #faf9f8;
@@ -37,7 +41,7 @@ header {
   color: rgb(181, 2, 2);
 }
 .see-reviews {
-  margin-bottom: 20px;
+  margin-bottom: 1vw;
   margin-top: 4vw;
   cursor: pointer;
 }
