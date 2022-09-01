@@ -21,7 +21,7 @@ function QuestionListEntry({ item }) {
         }
       })
       .catch((err) => console.error(err));
-  }, [item, helpful, answerAdded, index]);
+  }, [item, helpful, answerAdded]);
 
   useEffect(() => {
     setAnswers(list.slice(0, index * 2));
