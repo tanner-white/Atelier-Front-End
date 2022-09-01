@@ -59,17 +59,19 @@ function QuestionList({ props, handleQuestionSubmit }) {
   if (matches) {
     return (
       <div>
-        <SearchForm handleSubmit={handleSubmit} />
-        {matches.map((match) => <QuestionListEntry item={match} key={match.question_id} />) }
+        <div className="QandA-list">
+          <SearchForm handleSubmit={handleSubmit} />
+          {matches.map((match) => <QuestionListEntry item={match} key={match.question_id} />) }
+          <AddQuestion ref={qModal} submit={handleQuestionSubmit} props={props} />
+        </div>
         {moreQuestionsButton}
         {lessQuestionsButton}
         <button type="button" onClick={() => qModal.current.open()}>Add a Question</button>
-        <AddQuestion ref={qModal} submit={handleQuestionSubmit} props={props} />
       </div>
     );
   }
   return (
-    <div>No Questions Being Asked</div>
+    <button type="button" onClick={() => qModal.current.open()}>Add a Question</button>
   );
 }
 

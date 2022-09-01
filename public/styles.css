@@ -229,6 +229,10 @@ meter {
 
 }
 /* Other */
+.QandA-list {
+  max-height: 100vw;
+  overflow-y: scroll;
+}
 
 .link-button {
   background-color: transparent;
