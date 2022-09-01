@@ -12,10 +12,6 @@ function AddToCart({ current }) {
       setCurrentSizeQty(Object.values(skus));
     }
   }, [current]);
-
-  const handleClick = (e) => {
-    e.preventDefault();
-  };
   useEffect(() => {
     currentSizeQty.forEach((item) => {
       if (item.size === size) {
@@ -29,9 +25,17 @@ function AddToCart({ current }) {
       }
     });
   }, [size, currentSizeQty]);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+  };
   const handleSizeChange = (e) => {
     e.preventDefault();
     setSize(e.target.value);
+  };
+  const handleQtyChange = (e) => {
+    e.preventDefault();
+    setQuantity(e.target.value);
   };
   return (
     <form>
@@ -44,7 +48,12 @@ function AddToCart({ current }) {
         <option>Select size</option>
         {currentSizeQty.map((item, index) => <option key={index}>{item.size}</option>)}
       </select>
-      <select value="quantity" className="quantity-select">
+      <select
+        className="quantity-select"
+        value={quantity}
+        name="Quantity select"
+        onChange={handleQtyChange}
+      >
         <option>Quantity</option>
         {availableQty.length && availableQty.slice(0, 15).map((num) => <option>{num}</option>)}
       </select>

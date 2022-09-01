@@ -63,12 +63,15 @@ header {
 }
 .add-to-bag {
   background-color: #ffffff;
+  border: 1px solid black;
   width: 24vw;
   height: 5vw;
   margin-right: 1vw;
+  text-align: left;
 }
 .add-to-outfit {
   background-color: #ffffff;
+  border: 1px solid black;
   width: 5vw;
   height: 5vw;
 }
@@ -106,7 +109,7 @@ header {
   margin-left: 18%;
   margin-right: 3.5vw;
   flex-direction: column;
-  min-width: 83%;
+  min-width: 70vw;
   height: 55vw;
   align-items: center;
   justify-content: center;

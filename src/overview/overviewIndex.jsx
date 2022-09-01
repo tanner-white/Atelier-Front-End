@@ -7,12 +7,13 @@ import StyleSelector from './components/StyleSelector.jsx';
 import AddToCart from './components/AddToCart.jsx';
 import ProductDetails from './components/ProductDetails.jsx';
 
-function Overview({ scrollToReviews }) {
+function Overview({ setCurrentProductName }) {
   const [product, setProduct] = useState({});
   useEffect(() => {
     axios.get('http://localhost:3001/products/66644')
       .then((response) => {
         setProduct(response.data);
+        setCurrentProductName(response.data.name);
       })
       .catch((err) => {
         console.log(err);
@@ -39,7 +40,7 @@ function Overview({ scrollToReviews }) {
       <div className="overview-widget">
         <ImageGallery current={currentPhotos} currentThumbnails={currentThumbnails} />
         <div className="basic-info-container">
-          <BasicInfo product={product} scrollToReviews={scrollToReviews} />
+          <BasicInfo product={product} />
           <StyleSelector
             styles={styles}
             current={currentStyle}
