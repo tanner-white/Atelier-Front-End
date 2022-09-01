@@ -12,13 +12,11 @@ function ImageGallery({ current, currentThumbnails }) {
   function next() {
     if (currentIndex !== length - 1) {
       setCurrentIndex(currentIndex + 1);
-      console.log(currentIndex);
     }
   }
   function previous() {
     if (currentIndex !== 0) {
       setCurrentIndex(currentIndex - 1);
-      console.log(currentIndex);
     }
   }
   return (

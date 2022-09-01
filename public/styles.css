@@ -3,12 +3,16 @@
 body {
   background-color: #faf9f8;
   font-family: 'Nunito Sans', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 button, select {
   font-weight: 600;
 }
 header {
   background-color: black;
+  height: 7vw;
+  top: 0;
 }
 .business-name {
   color: #faf9f8;
@@ -37,7 +41,7 @@ header {
   color: rgb(181, 2, 2);
 }
 .see-reviews {
-  margin-bottom: 20px;
+  margin-bottom: 1vw;
   margin-top: 4vw;
   cursor: pointer;
 }
@@ -59,12 +63,15 @@ header {
 }
 .add-to-bag {
   background-color: #ffffff;
+  border: 1px solid black;
   width: 24vw;
   height: 5vw;
   margin-right: 1vw;
+  text-align: left;
 }
 .add-to-outfit {
   background-color: #ffffff;
+  border: 1px solid black;
   width: 5vw;
   height: 5vw;
 }
@@ -102,7 +109,7 @@ header {
   margin-left: 18%;
   margin-right: 3.5vw;
   flex-direction: column;
-  min-width: 83%;
+  min-width: 70vw;
   height: 55vw;
   align-items: center;
   justify-content: center;
