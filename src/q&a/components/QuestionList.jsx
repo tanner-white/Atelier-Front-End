@@ -5,7 +5,7 @@ import SearchForm from './SearchForm.jsx';
 import QuestionListEntry from './QuestionListEntry.jsx';
 import AddQuestion from './AddQuestionModal.jsx';
 
-function QuestionList({ props }) {
+function QuestionList({ props, handleQuestionSubmit }) {
   const [matches, setMatches] = useState([]);
   const qModal = useRef(null);
 
@@ -27,13 +27,14 @@ function QuestionList({ props }) {
       setMatches(props.results);
     }
   };
+
   if (matches) {
     return (
       <div>
         <SearchForm handleSubmit={handleSubmit} />
         {matches.map((match) => <QuestionListEntry item={match} />) }
         <button type="button" onClick={() => qModal.current.open()}>Add a Question</button>
-        <AddQuestion ref={qModal} />
+        <AddQuestion ref={qModal} submit={handleQuestionSubmit} props={props} />
       </div>
     );
   }

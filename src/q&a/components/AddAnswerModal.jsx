@@ -18,7 +18,7 @@ function AddAnswer({ children, handleSubmit }, ref) {
       email,
     };
     handleSubmit(input);
-    setDisplay(false);
+    close();
   };
 
   useImperativeHandle(ref, () => ({
