@@ -3,12 +3,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ImageGalleryThumbnail({ thumbnail, index, setCurrentIndex }) {
+function ImageGalleryThumbnail({ thumbnail, index, setCurrentIndex, currentIndex }) {
   function handleClick(e) {
     e.preventDefault();
     setCurrentIndex(index);
   }
   return (
+    index === currentIndex ?
+    <img
+      onClick={handleClick}
+      src={thumbnail}
+      alt="style thumbnail"
+      className="gallery-thumbnail-current"
+      key={index}
+    />
+    :
     <img
       onClick={handleClick}
       src={thumbnail}
