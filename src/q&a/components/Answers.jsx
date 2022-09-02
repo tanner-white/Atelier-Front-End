@@ -22,10 +22,6 @@ function Answers({ answer }) {
       <div className="answer-body">
         A:&nbsp;
         {answer.body}
-        <button type="button" className="link-button" onClick={() => (handleHelpful())}>
-          helpful?&nbsp;
-          {`(${helpful})`}
-        </button>
         <button type="button" className="link-button" onClick={() => (console.log('report user'))}>report</button>
       </div>
       <div className="answer-pic-container">
@@ -37,7 +33,12 @@ function Answers({ answer }) {
         <span className="answer-spans">
           {answer.answerer_name}
         </span>
-        |
+        <span>
+          <button type="button" className="link-button" id="answer-helpful" onClick={() => (handleHelpful())}>
+            helpful?&nbsp;
+            {`(${helpful})`}
+          </button>
+        </span>
         <span className="answer-spans">
           {formatDate(answer.date)}
         </span>

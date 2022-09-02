@@ -310,3 +310,9 @@ meter {
   height: 10vw;
   width: 10vw;
 }
+
+#answer-helpful {
+  float: none;
+  border-left: grey;
+  border-right: grey;
+}

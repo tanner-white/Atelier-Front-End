@@ -8,6 +8,7 @@ function AddAnswer({ handleSubmit }, ref) {
   const [answer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
+  const [photos, setPhotos] = useState([]);
 
   const close = useCallback(() => setDisplay(false), []);
 
@@ -54,6 +55,9 @@ function AddAnswer({ handleSubmit }, ref) {
             <input type="text" maxLength="60" placeholder="Example: jack543!" onChange={(e) => setNickname(e.target.value)} />
             <input type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
           </div>
+          <form>
+            <input type="file" name="upload" accept="image/*" />
+          </form>
           <button type="submit" onClick={onSubmit}>submit</button>
         </div>
       </div>
