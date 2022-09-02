@@ -21,7 +21,7 @@ class ReviewList extends React.Component {
 
   sortByRelevance() {
     const originals = this.state.product;
-    const sorted = this.props.productInfo.results;
+    const sorted = this.props.productInfo.results.slice();
 
     sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
     sorted.sort((a, b) => b.helpfulness.toString() - a.helpfulness.toString());
@@ -37,7 +37,7 @@ class ReviewList extends React.Component {
 
   sortByHelpful() {
     const originals = this.state.product;
-    const sorted = this.props.productInfo.results;
+    const sorted = this.props.productInfo.results.slice();
 
     sorted.sort((a, b) => b.helpfulness - a.helpfulness);
 
@@ -52,7 +52,7 @@ class ReviewList extends React.Component {
 
   sortByNewest() {
     const originals = this.state.product;
-    const sorted = this.props.productInfo.results;
+    const sorted = this.props.productInfo.results.slice();
 
     sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
 
@@ -65,13 +65,28 @@ class ReviewList extends React.Component {
     });
   }
 
-  updateIndex(event) {
+  sortByOldest() {
+    const originals = this.state.product;
+    const sorted = this.props.productInfo.results.slice();
+    console.log('triggered');
+    sorted.sort(((a, b) => new Date(b.date) - new Date(b.date)));
+
+    const sortedAndMerged = originals;
+    sortedAndMerged.results = sorted;
+
+    this.setState({
+      origin: originals,
+      product: sortedAndMerged,
+    });
+  }
+
+  updateIndex() {
     this.setState({
       index: this.state.index + 2,
     });
   }
 
-  resetIndex(event) {
+  resetIndex() {
     this.setState({
       index: 2,
     });
@@ -84,10 +99,11 @@ class ReviewList extends React.Component {
         <div className="rar_tileBox">
           <div>
             <Filter
-              numReviews={5}
+              numReviews={this.props.productInfo.results.length}
               sortRel={this.sortByRelevance.bind(this)}
               sortHelp={this.sortByHelpful.bind(this)}
               sortNew={this.sortByNewest.bind(this)}
+              sortOld={this.sortByOldest.bind(this)}
             />
           </div>
           <ReviewTile product_data1={this.props.productInfo} index={this.state.index} />
