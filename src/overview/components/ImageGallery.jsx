@@ -10,6 +10,12 @@ function ImageGallery({ current, currentThumbnails }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const { length } = current;
+  let classname;
+  if (!expanded) {
+    classname = 'image-gallery-default';
+  } else {
+    classname = 'image-gallery-expanded';
+  }
   function next() {
     if (currentIndex !== length - 1) {
       setCurrentIndex(currentIndex + 1);
@@ -25,85 +31,43 @@ function ImageGallery({ current, currentThumbnails }) {
     setExpanded(!expanded);
   }
   return (
-    !expanded
-      ? (
-        <div className="image-gallery-default">
-          <img
-            className="full-screen"
-            src="https://img.icons8.com/ios/500/full-screen--v2.png"
-            alt="wide screen button"
-            onClick={handleExpandedClick}
+    <div className={classname}>
+      <img
+        className="full-screen"
+        src="https://img.icons8.com/ios/500/full-screen--v2.png"
+        alt="wide screen button"
+        onClick={handleExpandedClick}
+      />
+      <div className="thumbnail-selector">
+        {currentThumbnails.map((thumbnail, index) => (
+          <ImageGalleryThumbnail
+            thumbnail={thumbnail}
+            index={index}
+            setCurrentIndex={setCurrentIndex}
+            currentIndex={currentIndex}
           />
-          <div className="thumbnail-selector">
-            {currentThumbnails.map((thumbnail, index) => (
-              <ImageGalleryThumbnail
-                thumbnail={thumbnail}
-                index={index}
-                setCurrentIndex={setCurrentIndex}
-                currentIndex={currentIndex}
-              />
-            ))}
-          </div>
-          <div className="main-image">
-            <ReactImageMagnify {...{
-              smallImage: {
-                alt: '',
-                isFluidWidth: true,
-                src: current[currentIndex],
-              },
-              largeImage: {
-                src: current[currentIndex],
-                width: 1200,
-                height: 1800,
-              },
-            }}
-            />
-          </div>
-          {currentIndex > 0
+        ))}
+      </div>
+      <div className="main-image">
+        <ReactImageMagnify {...{
+          smallImage: {
+            alt: '',
+            isFluidWidth: true,
+            src: current[currentIndex],
+          },
+          largeImage: {
+            src: current[currentIndex],
+            width: 1200,
+            height: 1800,
+          },
+        }}
+        />
+      </div>
+      {currentIndex > 0
       && <h1 className="carousel-left-arrow" onClick={previous}>&#8249;</h1>}
-          {currentIndex < length - 1
+      {currentIndex < length - 1
       && <h1 className="carousel-right-arrow" onClick={next}>&#8250;</h1>}
-        </div>
-      )
-      : (
-        <div className="image-gallery-expanded">
-          <img
-            className="full-screen"
-            src="https://img.icons8.com/ios/500/full-screen--v2.png"
-            alt="wide screen button"
-            onClick={handleExpandedClick}
-          />
-          <div className="thumbnail-selector">
-            {currentThumbnails.map((thumbnail, index) => (
-              <ImageGalleryThumbnail
-                thumbnail={thumbnail}
-                index={index}
-                setCurrentIndex={setCurrentIndex}
-                currentIndex={currentIndex}
-              />
-            ))}
-          </div>
-          <div className="main-image">
-            <ReactImageMagnify {...{
-              smallImage: {
-                alt: '',
-                isFluidWidth: true,
-                src: current[currentIndex],
-              },
-              largeImage: {
-                src: current[currentIndex],
-                width: 1200,
-                height: 1800,
-              },
-            }}
-            />
-          </div>
-          {currentIndex > 0
-    && <h1 className="carousel-left-arrow" onClick={previous}>&#8249;</h1>}
-          {currentIndex < length - 1
-    && <h1 className="carousel-right-arrow" onClick={next}>&#8250;</h1>}
-        </div>
-      )
+    </div>
   );
 }
 ImageGallery.propTypes = {
