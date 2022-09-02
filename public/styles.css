@@ -199,15 +199,21 @@ h2 {
   display: flex;
   flex-direction: row;
   margin-top: 2%;
-  margin-left: 22.5%;
+  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10vw;
   gap: 50px;
 }
 .rar_ratingBox {
   display: flex;
   flex-direction: column;
+  width: 40vw;
 }
 .rar_reviewData {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+
 }
 #starRow {
   text-decoration: underline;
@@ -227,13 +233,14 @@ h2 {
 .rar_tileBox {
   display: flex;
   flex-direction: column;
+  width: 60vw;
+
 }
 .rar_tile {
   display:flex;
   margin-top: 4%;
   border-bottom: 2px solid grey;
   flex-direction: column;
-  width: 100%;
 }
 .rar_ratingData {
   display: flex;
@@ -288,6 +295,32 @@ meter::-webkit-meter-bar {
 }
 meter::-webkit-meter-optimum-value {
   background-image: linear-gradient(90deg, #5c5c5c 50%, #5c5c5c 100%);
+}
+#rar_recOverview {
+  font-size: medium;
+  margin-bottom: 5%;
+}
+.rar_dataMeter {
+text-align: left;
+}
+#rar_met {
+  width: 70%;
+}
+#rar_barName {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+#rar_sizeBar,
+#rar_comfortBar {
+  display: flex;
+  width: 100%;
+}
+#starRow {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 1px;
 }
 #myModal {
   display: none;
