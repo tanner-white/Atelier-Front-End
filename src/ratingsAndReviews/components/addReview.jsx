@@ -5,6 +5,13 @@ class AddReview extends React.Component {
     super(props);
     this.state = {
       style: { display: 'none' },
+      ratings: { 1: null, 2: null, 3: null, 4: null, 5: null },
+      size: { id: 14, value: null },
+      width: { id: 15, value: null },
+      comfort: { id: 16, value: null },
+      quality: { id: 17, value: null },
+      length: { id: 18, value: null },
+      fit: { id: 19, value: null },
     };
 
     this.handleWindowClick = this.handleWindowClick.bind(this);
@@ -46,8 +53,40 @@ class AddReview extends React.Component {
     }
   }
 
-  handleSelectorChange() {
+  handleSizeChange(event) {
+    this.setState({
+      size: {id: 14, value: event.target.value},
+    });
+  }
 
+  handleWidthChange(event) {
+    this.setState({
+      width: {id: 15, value: event.target.value},
+    });
+  }
+
+  handleComfortChange(event) {
+    this.setState({
+      comfort: {id: 16, value: event.target.value},
+    });
+  }
+
+  handleQualityChange(event) {
+    this.setState({
+      quality: {id: 17, value: event.target.value},
+    });
+  }
+
+  handleLengthChange(event) {
+    this.setState({
+      length: {id: 18, value: event.target.value},
+    });
+  }
+
+  handleFitChange(event) {
+    this.setState({
+      fit: {id: 19, value: event.target.value},
+    });
   }
 
   render() {
@@ -61,7 +100,7 @@ class AddReview extends React.Component {
             <h3>Write Your Review</h3>
             <p>About the TANNER</p>
             <input type="text" name="Type here" />
-            <select id="addReviewSelector" onChange={this.handleSelectorChange.bind(this)}>
+            <select id="addReviewSelector" onChange={this.handleSizeChange.bind(this)}>
               <option value="1">1 star - &quot;Poor&quot;</option>
               <option value="2">2 stars - &quot;Fair&quot;</option>
               <option value="3">3 stars - &quot;Average&quot;</option>
@@ -92,138 +131,138 @@ class AddReview extends React.Component {
                   <td>Size</td>
                   <td id="rar_eachColumn">
                     A size too small
-                    <input type="radio" id="radioTableSelector" name="rar_row1" />
+                    <input type="radio" id="radioTableSelector" name="rar_row1" value="1.000" onChange={this.handleSizeChange.bind(this)} />
                   </td>
                   <td id="rar_eachColumn">
                     1/2 a size too small
-                    <input type="radio" id="radioTableSelector" name="rar_row1" />
+                    <input type="radio" id="radioTableSelector" name="rar_row1" value="2.000" onChange={this.handleSizeChange.bind(this)} />
                   </td>
                   <td id="rar_eachColumn">
                     Perfect
-                    <input type="radio" id="radioTableSelector" name="rar_row1" />
+                    <input type="radio" id="radioTableSelector" name="rar_row1" value="3.000" onChange={this.handleSizeChange.bind(this)} />
                   </td>
                   <td id="rar_eachColumn">
                     1/2 a size too big
-                    <input type="radio" id="radioTableSelector" name="rar_row1" />
+                    <input type="radio" id="radioTableSelector" name="rar_row1" value="4.000" onChange={this.handleSizeChange.bind(this)} />
                   </td>
                   <td id="rar_eachColumn">
                     A size too wide
-                    <input type="radio" id="radioTableSelector" name="rar_row1" />
+                    <input type="radio" id="radioTableSelector" name="rar_row1" value="5.000" onChange={this.handleSizeChange.bind(this)} />
                   </td>
                 </tr>
                 <tr id="rar_radioTableRow">
                   <td>Width</td>
                   <td id="rar_eachColumn">
                     Too narrow
-                    <input type="radio" id="radioTableSelector" name="rar_row2" />
+                    <input type="radio" id="radioTableSelector" name="rar_row2" value="1.000" onChange={this.handleWidthChange.bind(this)} />
                   </td>
                   <td id="rar_eachColumn">
                     Slightly narrow
-                    <input type="radio" id="radioTableSelector" name="rar_row2" />
+                    <input type="radio" id="radioTableSelector" name="rar_row2" value="2.000" onChange={this.handleWidthChange.bind(this)} />
                   </td>
                   <td id="rar_eachColumn">
                     Perfect
-                    <input type="radio" id="radioTableSelector" name="rar_row2" />
+                    <input type="radio" id="radioTableSelector" name="rar_row2" value="3.000" onChange={this.handleWidthChange.bind(this)} />
                   </td>
                   <td id="rar_eachColumn">
                     Slightly wide
-                    <input type="radio" id="radioTableSelector" name="rar_row2" />
+                    <input type="radio" id="radioTableSelector" name="rar_row2" value="4.000" onChange={this.handleWidthChange.bind(this)} />
                   </td>
                   <td id="rar_eachColumn">
                     Too wide
-                    <input type="radio" id="radioTableSelector" name="rar_row2" />
+                    <input type="radio" id="radioTableSelector" name="rar_row2" value="5.000" onChange={this.handleWidthChange.bind(this)} />
                   </td>
                 </tr>
                 <tr id="rar_radioTableRow">
                   <td>Comfort</td>
                   <td>
                     Uncomfortable
-                    <input type="radio" id="radioTableSelector" name="rar_row3" />
+                    <input type="radio" id="radioTableSelector" name="rar_row3" value="1.000" onChange={this.handleComfortChange.bind(this)} />
                   </td>
                   <td>
                     Slightly uncomfortable
-                    <input type="radio" id="radioTableSelector" name="rar_row3" />
+                    <input type="radio" id="radioTableSelector" name="rar_row3" value="2.000" onChange={this.handleComfortChange.bind(this)} />
                   </td>
                   <td>
                     Ok
-                    <input type="radio" id="radioTableSelector" name="rar_row3" />
+                    <input type="radio" id="radioTableSelector" name="rar_row3" value="3.000" onChange={this.handleComfortChange.bind(this)} />
                   </td>
                   <td>
                     Comfortable
-                    <input type="radio" id="radioTableSelector" name="rar_row3" />
+                    <input type="radio" id="radioTableSelector" name="rar_row3" value="4.000" onChange={this.handleComfortChange.bind(this)} />
                   </td>
                   <td>
                     Perfect
-                    <input type="radio" id="radioTableSelector" name="rar_row3" />
+                    <input type="radio" id="radioTableSelector" name="rar_row3" value="5.000" onChange={this.handleComfortChange.bind(this)} />
                   </td>
                 </tr>
                 <tr id="rar_radioTableRow">
                   <td>Quality</td>
                   <td>
                     Poor
-                    <input type="radio" id="radioTableSelector" name="rar_row4" />
+                    <input type="radio" id="radioTableSelector" name="rar_row4" value="1.000" onChange={this.handleQualityChange.bind(this)} />
                   </td>
                   <td>
                     Below average
-                    <input type="radio" id="radioTableSelector" name="rar_row4" />
+                    <input type="radio" id="radioTableSelector" name="rar_row4" value="2.000" onChange={this.handleQualityChange.bind(this)} />
                   </td>
                   <td>
                     What I expected
-                    <input type="radio" id="radioTableSelector" name="rar_row4" />
+                    <input type="radio" id="radioTableSelector" name="rar_row4" value="3.000" onChange={this.handleQualityChange.bind(this)} />
                   </td>
                   <td>
                     Pretty great
-                    <input type="radio" id="radioTableSelector" name="rar_row4" />
+                    <input type="radio" id="radioTableSelector" name="rar_row4" value="4.000" onChange={this.handleQualityChange.bind(this)} />
                   </td>
                   <td>
                     Perfect
-                    <input type="radio" id="radioTableSelector" name="rar_row4" />
+                    <input type="radio" id="radioTableSelector" name="rar_row4" value="5.000" onChange={this.handleQualityChange.bind(this)} />
                   </td>
                 </tr>
                 <tr id="rar_radioTableRow">
                   <td>Length</td>
                   <td>
                     Runs short
-                    <input type="radio" id="radioTableSelector" name="rar_row5" />
+                    <input type="radio" id="radioTableSelector" name="rar_row5" value="1.000" onChange={this.handleLengthChange.bind(this)} />
                   </td>
                   <td>
                     Runs slightly short
-                    <input type="radio" id="radioTableSelector" name="rar_row5" />
+                    <input type="radio" id="radioTableSelector" name="rar_row5" value="2.000" onChange={this.handleLengthChange.bind(this)} />
                   </td>
                   <td>
                     Perfect
-                    <input type="radio" id="radioTableSelector" name="rar_row5" />
+                    <input type="radio" id="radioTableSelector" name="rar_row5" value="3.000" onChange={this.handleLengthChange.bind(this)} />
                   </td>
                   <td>
                     Runs slightly long
-                    <input type="radio" id="radioTableSelector" name="rar_row5" />
+                    <input type="radio" id="radioTableSelector" name="rar_row5" value="4.000" onChange={this.handleLengthChange.bind(this)} />
                   </td>
                   <td>
                     Runs long
-                    <input type="radio" id="radioTableSelector" name="rar_row5" />
+                    <input type="radio" id="radioTableSelector" name="rar_row5" value="5.000" onChange={this.handleLengthChange.bind(this)} />
                   </td>
                 </tr>
                 <tr id="rar_radioTableRow6">
                   <td>Fit</td>
                   <td id="rar_td_header">
                     Runs tight
-                    <input type="radio" id="radioTableSelector" name="rar_row6" />
+                    <input type="radio" id="radioTableSelector" name="rar_row6" value="1.000" onChange={this.handleFitChange.bind(this)} />
                   </td>
                   <td id="rar_td_header">
                     Runs slightly tight
-                    <input type="radio" id="radioTableSelector" name="rar_row6" />
+                    <input type="radio" id="radioTableSelector" name="rar_row6" value="2.000" onChange={this.handleFitChange.bind(this)} />
                   </td>
                   <td id="rar_td_header">
                     Perfect
-                    <input type="radio" id="radioTableSelector" name="rar_row6" />
+                    <input type="radio" id="radioTableSelector" name="rar_row6" value="3.000" onChange={this.handleFitChange.bind(this)} />
                   </td>
                   <td id="rar_td_header">
                     Runs slightly long
-                    <input type="radio" id="radioTableSelector" name="rar_row6" />
+                    <input type="radio" id="radioTableSelector" name="rar_row6" value="4.000" onChange={this.handleFitChange.bind(this)} />
                   </td>
                   <td id="rar_td_header">
                     Runs long
-                    <input type="radio" id="radioTableSelector" name="rar_row6" />
+                    <input type="radio" id="radioTableSelector" name="rar_row6" value="5.000" onChange={this.handleFitChange.bind(this)} />
                   </td>
                 </tr>
               </table>
