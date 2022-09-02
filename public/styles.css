@@ -396,9 +396,12 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 .QandA-modal {
-  border: 1px solid grey;
+  display: block;
+  position: fixed;
   z-index: 1;
   text-align: center;
+  height: 100vw;
+  width: 100vw;
 }
 
 .QandA-modal-content {/* Hidden by default */
