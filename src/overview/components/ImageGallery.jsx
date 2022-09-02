@@ -8,7 +8,14 @@ import ImageGalleryThumbnail from './ImageGalleryThumbnail.jsx';
 
 function ImageGallery({ current, currentThumbnails }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [expanded, setExpanded] = useState(false);
   const { length } = current;
+  let classname;
+  if (!expanded) {
+    classname = 'image-gallery-default';
+  } else {
+    classname = 'image-gallery-expanded';
+  }
   function next() {
     if (currentIndex !== length - 1) {
       setCurrentIndex(currentIndex + 1);
@@ -19,8 +26,18 @@ function ImageGallery({ current, currentThumbnails }) {
       setCurrentIndex(currentIndex - 1);
     }
   }
+  function handleExpandedClick(e) {
+    e.preventDefault();
+    setExpanded(!expanded);
+  }
   return (
-    <div className="image-gallery">
+    <div className={classname}>
+      <img
+        className="full-screen"
+        src="https://img.icons8.com/ios/500/full-screen--v2.png"
+        alt="wide screen button"
+        onClick={handleExpandedClick}
+      />
       <div className="thumbnail-selector">
         {currentThumbnails.map((thumbnail, index) => (
           <ImageGalleryThumbnail
