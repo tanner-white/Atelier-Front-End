@@ -18,9 +18,19 @@ function AddAnswer({ handleSubmit }, ref) {
       body: answer,
       name: nickname,
       email,
+      photos,
     };
     handleSubmit(input);
     close();
+  };
+
+  const onInput = (event) => {
+    console.log(event);
+    const temp = photos;
+    if (temp.length < 5) {
+      temp.push(event.target.value);
+      setPhotos(temp);
+    }
   };
 
   useImperativeHandle(ref, () => ({
@@ -56,7 +66,7 @@ function AddAnswer({ handleSubmit }, ref) {
             <input type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
           </div>
           <form>
-            <input type="file" name="upload" accept="image/*" />
+            <input type="file" name="upload" accept="image/*" onInput={onInput} />
           </form>
           <button type="submit" onClick={onSubmit}>submit</button>
         </div>
