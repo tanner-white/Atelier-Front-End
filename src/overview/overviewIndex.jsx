@@ -10,7 +10,7 @@ import ProductDetails from './components/ProductDetails.jsx';
 function Overview({ setCurrentProductName }) {
   const [product, setProduct] = useState({});
   useEffect(() => {
-    axios.get('http://localhost:3001/products/66644')
+    axios.get('http://localhost:3001/products/66642')
       .then((response) => {
         setProduct(response.data);
         setCurrentProductName(response.data.name);
@@ -25,7 +25,7 @@ function Overview({ setCurrentProductName }) {
   const [currentPhotos, setCurrentPhotos] = useState([]);
   const [currentThumbnails, setCurrentThumbnails] = useState([]);
   useEffect(() => {
-    axios.get('http://localhost:3001/styles/66644')
+    axios.get('http://localhost:3001/styles/66642')
       .then((response) => {
         setStyles(response.data.results);
         setCurrentStyle(response.data.results[0]);
