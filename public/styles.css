@@ -424,6 +424,10 @@ td { /*this may cause issues but I can go back later and fix */
   margin-left: 1.5vw;
 }
 
+.answer-pic-container {
+  margin-left: 2vw;
+}
+
 .question-searchbar {
   width: 92.5vw;
   padding: 5px;

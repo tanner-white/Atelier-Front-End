@@ -26,10 +26,14 @@ function AddAnswer({ handleSubmit }, ref) {
 
   const onInput = (event) => {
     const temp = photos;
-    if (temp.length < 5) {
-      temp.push(URL.createObjectURL(event.target.files));
-      setPhotos(temp);
+    if (Object.keys(event.target.files).length <= 5) {
+      Object.values(event.target.files).forEach(
+        (file) => {
+          temp.push(URL.createObjectURL(file));
+        },
+      );
     }
+    setPhotos(temp.slice(0, 5));
   };
 
   useImperativeHandle(ref, () => ({
@@ -69,7 +73,7 @@ function AddAnswer({ handleSubmit }, ref) {
             <input className="amodal" type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
           </div>
           <form>
-            <input className="amodal" type="file" name="upload" accept="image/*" onInput={onInput} />
+            <input className="amodal" type="file" name="upload" accept="image/*" multiple onInput={onInput} />
           </form>
           <button className="amodal" type="submit" onClick={onSubmit}>submit</button>
         </div>
