@@ -23,9 +23,7 @@ function Questions() {
   };
 
   return (
-    <div>
-      <QuestionList props={questions} handleQuestionSubmit={handleQuestionSubmit} />
-    </div>
+    <QuestionList props={questions} handleQuestionSubmit={handleQuestionSubmit} />
   );
 }
 

@@ -20,7 +20,7 @@ function Answers({ answer }) {
   return (
     <div className="answer">
       <div className="answer-body">
-        A:&nbsp;
+        <b>A:&nbsp;</b>
         {answer.body}
         <button type="button" className="link-button" onClick={() => (console.log('report user'))}>report</button>
       </div>
@@ -29,18 +29,19 @@ function Answers({ answer }) {
           <img className="answer-pics" src={photo.url} alt="Failed to Load Img" />
         ))}
       </div>
-      <div>
+      <div className="answerer-info">
         <span className="answer-spans">
           {answer.answerer_name}
         </span>
-        <span>
-          <button type="button" className="link-button" id="answer-helpful" onClick={() => (handleHelpful())}>
-            helpful?&nbsp;
-            {`(${helpful})`}
-          </button>
-        </span>
         <span className="answer-spans">
           {formatDate(answer.date)}
+        </span>
+        <span className="answer-spans">
+          Helpful?
+          <button type="button" className="link-button" id="answer-helpful" onClick={() => (handleHelpful())}>
+            Yes
+            {`(${helpful})`}
+          </button>
         </span>
       </div>
     </div>

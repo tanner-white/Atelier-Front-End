@@ -27,7 +27,7 @@ function AddAnswer({ handleSubmit }, ref) {
   const onInput = (event) => {
     const temp = photos;
     if (temp.length < 5) {
-      temp.push(event.target.value);
+      temp.push(URL.createObjectURL(event.target.files));
       setPhotos(temp);
     }
   };
