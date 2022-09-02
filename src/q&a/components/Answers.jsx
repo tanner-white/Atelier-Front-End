@@ -28,13 +28,20 @@ function Answers({ answer }) {
         </button>
         <button type="button" className="link-button" onClick={() => (console.log('report user'))}>report</button>
       </div>
-      <span className="answer-spans">
-        {answer.answerer_name}
-      </span>
-      |
-      <span className="answer-spans">
-        {formatDate(answer.date)}
-      </span>
+      <div className="answer-pic-container">
+        {answer.photos.map((photo) => (
+          <img className="answer-pics" src={photo.url} alt="Failed to Load Img" />
+        ))}
+      </div>
+      <div>
+        <span className="answer-spans">
+          {answer.answerer_name}
+        </span>
+        |
+        <span className="answer-spans">
+          {formatDate(answer.date)}
+        </span>
+      </div>
     </div>
   );
 }
