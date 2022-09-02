@@ -28,7 +28,7 @@ function BasicInfo({ product }) {
         </small>
       </div>
       <div>{product.category}</div>
-      <h1 className="product-name">{product.name}</h1>
+      <h2>{product.name}</h2>
     </div>
   );
 }
