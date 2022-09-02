@@ -11,6 +11,12 @@ function Answers({ answer }) {
       .catch((err) => console.error('client side helpful error: ', err));
   };
 
+  const formatDate = (strDate) => {
+    let date = (new Date(strDate));
+    date = date.toString().slice(3, 15);
+    return date;
+  };
+
   return (
     <div className="answer">
       <div className="answer-body">
@@ -27,14 +33,24 @@ function Answers({ answer }) {
       </span>
       |
       <span className="answer-spans">
-        {answer.date}
+        {formatDate(answer.date)}
       </span>
     </div>
   );
 }
 
 Answers.propTypes = {
-  answer: PropTypes.shape.isRequired,
+  answer: PropTypes.shape({
+    answer_id: PropTypes.number,
+    body: PropTypes.string,
+    date: PropTypes.string,
+    answerer_name: PropTypes.string,
+    helpfulness: PropTypes.number,
+    photos: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number,
+      url: PropTypes.string,
+    })),
+  }).isRequired,
 };
 
 export default Answers;
