@@ -81,7 +81,7 @@ class RatingTile extends React.Component {
           </span>
         </div>
         <div>
-          <div>
+          <div id="rar_recOverview">
             {this.getAvgRec()}
             % of reviews recommend this product
           </div>
@@ -89,32 +89,32 @@ class RatingTile extends React.Component {
         <div id="starRow">
           <li id="rar_barName">
             5 stars
-            <meter value={this.getStarScores(5)} min="0" max={reviewArray.length} />
+            <meter id="rar_met" value={this.getStarScores(5)} min="0" max={reviewArray.length} />
           </li>
           <li id="rar_barName">
             4 stars
-            <meter value={this.getStarScores(4)} min="0" max={reviewArray.length} />
+            <meter id="rar_met" value={this.getStarScores(4)} min="0" max={reviewArray.length} />
           </li>
           <li id="rar_barName">
             3 stars
-            <meter value={this.getStarScores(3)} min="0" max={reviewArray.length} />
+            <meter id="rar_met" value={this.getStarScores(3)} min="0" max={reviewArray.length} />
           </li>
           <li id="rar_barName">
             2 stars
-            <meter value={this.getStarScores(2)} min="0" max={reviewArray.length} />
+            <meter id="rar_met" value={this.getStarScores(2)} min="0" max={reviewArray.length} />
           </li>
           <li id="rar_barName">
             1 stars
-            <meter value={this.getStarScores(1)} min="0" max={reviewArray.length} />
+            <meter id="rar_met" value={this.getStarScores(1)} min="0" max={reviewArray.length} />
           </li>
         </div>
-        <div>
-          Size Bar
-          <meter />
+        <div className="rar_dataMeter">
+          <p>Size</p>
+          <meter id="rar_sizeBar" />
         </div>
-        <div>
-          Comfort Bar
-          <meter />
+        <div className="rar_dataMeter">
+          <p>Comfort</p>
+          <meter id="rar_comfortBar" />
         </div>
       </div>
     );
