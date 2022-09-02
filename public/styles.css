@@ -22,7 +22,6 @@ h2 {
 }
 /* overview */
 .overview-widget {
-  display: flex;
   align-items: flex-start;
   justify-content: space-evenly;
   width: 80%;
@@ -30,12 +29,12 @@ h2 {
   margin-top: 5%;
 }
 .basic-info-container {
-  display: flex;
-  margin-left: 10px;
-  flex-direction: column;
-  justify-content: space-around;
-  min-width: 40%;
-  max-width: 40%;
+  position: absolute;
+  display: inline-block;
+  top: 12vw;
+  left: 65vw;
+  width: 35vw;
+  z-index: 0;
 }
 .sale-price {
   color: rgb(181, 2, 2);
@@ -90,19 +89,19 @@ h2 {
   margin-bottom: 70px;
   margin-left: 7%;
   margin-top: 20px;
-  padding: 4%;
   display: inline-block;
-  width: 51vw;
+  width: 56vw;
   height: 20vw;
+  padding: 1vw;
 }
 .features {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  gap: 3vw;
   background-color: white;
   margin-top: 20px;
   width: 20vw;
-  height: 28vw;
+  height: 22vw;
   padding-left: 3vw;
 }
 .social-media-icons {
@@ -127,7 +126,7 @@ h2 {
 }
 
 .style-thumbnails {
-  width: auto;
+  width: 30vw;
   height: auto;
   cursor: pointer;
 }
@@ -141,19 +140,43 @@ h2 {
   border: 2px rgba(0, 0, 0, 0.156) solid;
   margin-right: 3%;
 }
-.image-gallery {
+.image-gallery-default {
   display: flex;
+  position: sticky;
   background-color: #ffffff;
-  margin-left: 18%;
-  margin-right: 3.5vw;
   flex-direction: column;
-  min-width: 65vw;
+  margin: 0px 0px;
+  width: 60vw;
   height: 55vw;
   align-items: center;
   justify-content: center;
+  z-index: 5;
+}
+.image-gallery-expanded {
+  display: flex;
+  position: sticky;
+  background-color: #ffffff;
+  flex-direction: column;
+  margin: 0px 0px;
+  width: 100vw;
+  height: 55vw;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+.full-screen {
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  width: 1.5vw;
+}
+.full-screen:hover {
+  width: 1.8vw;
+  cursor: pointer;
 }
 .main-image {
   align-self: center;
+  position: absolute;
   cursor: zoom-in;
   width: 30vw;
   height: auto;
@@ -165,8 +188,8 @@ h2 {
   position: absolute;
   flex-direction: column;
   justify-content: space-between;
-  width: 4%;
-  margin: 3% 0px 10% 8%;
+  width: 4vw;
+  margin: 0 0px 10% 2%;
 }
 .gallery-thumbnail {
   width: 100%;
@@ -186,13 +209,14 @@ h2 {
 }
 .carousel-left-arrow {
   position: absolute;
-  left: 9%;
+  left: 10%;
   cursor: pointer;
 }
 .carousel-right-arrow {
   position: absolute;
-  right: 40%;
+  right: 10%;
   cursor: pointer;
+  z-index: 9;
 }
 
 /* Adam */
@@ -354,6 +378,9 @@ td { /*this may cause issues but I can go back later and fix */
 .QandA-list {
   max-height: 95vw;
   overflow-y: scroll;
+}
+.question-title {
+  font-weight: 800;
 }
 
 .link-button {
