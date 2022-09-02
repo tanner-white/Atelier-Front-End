@@ -34,6 +34,11 @@ class ReviewList extends React.Component {
       origin: originals,
       product: sortedAndMerged,
     });
+
+    this.sortByHelpful.bind(this);
+    this.sortByNewest.bind(this);
+    this.sortByOldest.bind(this);
+    this.sortByRelevance.bind(this);
   }
 
   sortByHelpful() {
@@ -103,10 +108,10 @@ class ReviewList extends React.Component {
           <div>
             <Filter
               numReviews={this.props.productInfo.results.length}
-              sortRel={this.sortByRelevance.bind(this)}
-              sortHelp={this.sortByHelpful.bind(this)}
-              sortNew={this.sortByNewest.bind(this)}
-              sortOld={this.sortByOldest.bind(this)}
+              sortRel={this.sortByRelevance}
+              sortHelp={this.sortByHelpful}
+              sortNew={this.sortByNewest}
+              sortOld={this.sortByOldest}
             />
           </div>
           <ReviewTile product_data1={this.props.productInfo} index={this.state.index} />
