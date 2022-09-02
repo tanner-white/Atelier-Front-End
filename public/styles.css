@@ -229,7 +229,7 @@ meter::-webkit-meter-bar {
 meter::-webkit-meter-optimum-value {
   background-image: linear-gradient(90deg, #5c5c5c 50%, #5c5c5c 100%);
 }
-.modal {
+#myModal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -241,7 +241,12 @@ meter::-webkit-meter-optimum-value {
   background-color: rgb(0,0,0);
   background-color: rgba(0,0,0,0.4);
 }
-.modal-content {
+#myModal-content { /* this is the only way to access my modal */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
@@ -260,6 +265,43 @@ meter::-webkit-meter-optimum-value {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+#radioTable {
+}
+#radioTable2 {
+  display: table;
+  width: 65vw;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td { /*this may cause issues but I can go back later and fix */
+  border: 1px solid black;
+  text-align: center;
+
+}
+#rar_td_footer {
+  text-align: center;
+}
+.rar_selectorTable {}
+.rar_selectorTableHeaders {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid black;
+
+}
+.rar_selectorTableRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid black;
+}
+.rar_selectorTableColumnOne {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 /* Other */
 
