@@ -15,6 +15,7 @@ class ReviewList extends React.Component {
     this.state = {
       origin: null,
       product: this.props.productInfo,
+      index: 2,
     };
   }
 
@@ -64,6 +65,18 @@ class ReviewList extends React.Component {
     });
   }
 
+  updateIndex(event) {
+    this.setState({
+      index: this.state.index + 2,
+    });
+  }
+
+  resetIndex(event) {
+    this.setState({
+      index: 2,
+    });
+  }
+
   render() {
     return (
       <div className="rar_section">
@@ -77,10 +90,11 @@ class ReviewList extends React.Component {
               sortNew={this.sortByNewest.bind(this)}
             />
           </div>
-          <ReviewTile product_data1={this.props.productInfo} />
+          <ReviewTile product_data1={this.props.productInfo} index={this.state.index} />
           <div className="rar_reviewButtons">
 
-            <button className="button" type="submit" id="moreReviews">MORE REVIEWS</button>
+            <button className="button" type="submit" id="moreReviews" onClick={this.updateIndex.bind(this)}>MORE REVIEWS</button>
+            <button className="button" type="submit" id="lessReviews" onClick={this.resetIndex.bind(this)}>LESS REVIEWS</button>
             <div><AddReview /></div>
           </div>
         </div>

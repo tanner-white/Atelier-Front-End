@@ -17,7 +17,7 @@ class ReviewTile extends React.Component {
   }
 
   render() {
-    return (this.props.product_data1.results.map((review) => (
+    return (this.props.product_data1.results.slice(0, this.props.index).map((review) => (
       <div key={review.review_id} className="rar_tile">
         <div id="rar_userDateHeader">
           <div id="rar_tileStars">
@@ -47,7 +47,7 @@ class ReviewTile extends React.Component {
         </div>
         <div className="rar_pics">
           {review.photos.map((image) => (
-            <img className="rar_thumbs" id={image.id} alt="failed to load" src={image.url} />
+            <img className="rar_thumbs" id={image.id} alt="not found" src={image.url} />
           ))}
         </div>
       </div>
