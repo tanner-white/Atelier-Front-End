@@ -31,13 +31,13 @@ app.get('/products/:productId', (req, res) => {
 });
 
 app.get('/qa/questions', (req, res) => {
-  axios.get(`${API}qa/questions?product_id=66642`, options)
+  axios.get(`${API}qa/questions/?product_id=66642&count=100`, options)
     .then((response) => res.send(response.data))
     .catch((err) => res.send(err));
 });
 
 app.get('/qa/questions/:question_id/answers', (req, res) => {
-  axios.get(`${API}qa/questions/${req.params.question_id}/answers`, options)
+  axios.get(`${API}qa/questions/${req.params.question_id}/answers?count=10`, options)
     .then((response) => res.send(response.data.results))
     .catch((err) => res.send(err));
 });
@@ -60,6 +60,21 @@ app.put('/answers/helpful', (req, res) => {
   axios.put(`${API}qa/answers/${req.body.id}/helpful`, { answer_id: req.body.id }, options)
     .then((response) => {
       res.send(response);
+    })
+    .catch((err) => res.send(err));
+});
+
+app.post('/addanswer/:question_id', (req, res) => {
+  axios.post(`${API}qa/questions/${req.params.question_id}/answers`, req.body, options)
+    .then((response) => res.send(response.data))
+    .catch((err) => res.send(err));
+});
+
+app.post('/addquestion', (req, res) => {
+  axios.post(`${API}qa/questions`, req.body, options)
+    .then((response) => {
+      console.log(response);
+      res.send(response.data);
     })
     .catch((err) => res.send(err));
 });
