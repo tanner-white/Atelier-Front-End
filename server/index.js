@@ -43,7 +43,7 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 });
 
 app.get('/reviews/', (req, res) => {
-  axios.get(`${API}reviews?product_id=66642`, options)
+  axios.get(`${API}reviews?product_id=66642&count=10`, options)
     .then((response) => res.send(response.data))
     .catch((err) => res.send(err));
 });
