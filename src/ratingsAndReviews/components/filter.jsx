@@ -25,7 +25,7 @@ function Filter({ numReviews, sortRel, sortHelp, sortNew, sortOld }) {
         <option value="0">relevance</option>
         <option value="1">helpfulness</option>
         <option value="2">newest</option>
-        <option oldest="3">oldest</option>
+        <option value="3">oldest</option>
       </select>
     </h3>
   );

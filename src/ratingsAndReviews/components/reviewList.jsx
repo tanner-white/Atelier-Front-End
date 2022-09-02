@@ -20,8 +20,9 @@ class ReviewList extends React.Component {
   }
 
   sortByRelevance() {
+    console.log('triggered');
     const originals = this.state.product;
-    const sorted = this.props.productInfo.results.slice();
+    const sorted = this.props.productInfo.results;
 
     sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
     sorted.sort((a, b) => b.helpfulness.toString() - a.helpfulness.toString());
@@ -36,11 +37,12 @@ class ReviewList extends React.Component {
   }
 
   sortByHelpful() {
+    console.log('triggered');
     const originals = this.state.product;
-    const sorted = this.props.productInfo.results.slice();
-
+    const sorted = this.props.productInfo.results;
+    console.log(sorted);
     sorted.sort((a, b) => b.helpfulness - a.helpfulness);
-
+    console.log(sorted);
     const sortedAndMerged = originals;
     sortedAndMerged.results = sorted;
 
@@ -51,10 +53,11 @@ class ReviewList extends React.Component {
   }
 
   sortByNewest() {
+    console.log('triggered');
     const originals = this.state.product;
-    const sorted = this.props.productInfo.results.slice();
+    const sorted = this.props.productInfo.results;
 
-    sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
+    sorted.sort(((a, b) => new Date(b.date) - new Date(a.date)));
 
     const sortedAndMerged = originals;
     sortedAndMerged.results = sorted;
@@ -66,11 +69,11 @@ class ReviewList extends React.Component {
   }
 
   sortByOldest() {
-    const originals = this.state.product;
-    const sorted = this.props.productInfo.results.slice();
     console.log('triggered');
-    sorted.sort(((a, b) => new Date(b.date) - new Date(b.date)));
+    const originals = this.state.product;
+    const sorted = this.props.productInfo.results;
 
+    sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
     const sortedAndMerged = originals;
     sortedAndMerged.results = sorted;
 

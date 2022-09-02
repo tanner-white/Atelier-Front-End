@@ -50,6 +50,17 @@ class ReviewTile extends React.Component {
             <img className="rar_thumbs" id={image.id} alt="not found" src={image.url} />
           ))}
         </div>
+        <div id="rar_helpAndReport">
+          <div id="rar_helpful">Helpful?</div>
+          <div id="rar_yes">Yes</div>
+          <a href="">
+            (
+            {1}
+            )
+            </a>
+          <div id="rar_symbol">|</div>
+          <div id="rar_report"> report</div>
+        </div>
       </div>
     ))
     );
