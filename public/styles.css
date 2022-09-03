@@ -421,12 +421,12 @@ td { /*this may cause issues but I can go back later and fix */
 .QandA-widget {
   text-align: left;
   justify-content: left;
-  max-width: 1000px;
-  padding: 5%;
+  max-width: 1280px;
+  padding: 3%;
 }
 
 .QandA-list {
-  max-height: 95vw;
+  max-height: 75vw;
   width: 100%;
   overflow-y: scroll;
 }
@@ -610,6 +610,7 @@ td { /*this may cause issues but I can go back later and fix */
 #answer-helpful {
   float: none;
   border: none;
+  font-size: 1.5vw;
   font-weight: 300;
 }
 
