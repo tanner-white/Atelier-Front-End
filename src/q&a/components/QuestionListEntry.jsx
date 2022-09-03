@@ -65,7 +65,7 @@ function QuestionListEntry({ item }) {
 
   return (
     <div className="question-entry">
-      <div>
+      <div id="question-title">
         <span id="question-body">
           <b>
             Q:&nbsp;
@@ -73,9 +73,9 @@ function QuestionListEntry({ item }) {
           </b>
         </span>
         <span id="question-spans">
-          <button type="button" className="link-button" id="add-answer-button" onClick={() => aModal.current.open()}>add answer</button>
+          Helpful?&nbsp;
+          <button type="button" className="link-button" id="add-answer-button" onClick={() => aModal.current.open()}>Add Answer</button>
           <button type="button" className="link-button" onClick={() => handleHelpful()}>
-            <span id="question-helpful">Helpful?&nbsp;</span>
             Yes
             {`(${helpful})`}
           </button>

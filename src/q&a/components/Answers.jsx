@@ -36,7 +36,7 @@ function Answers({ answer }) {
           {formatDate(answer.date)}
         </span>
         <span className="answer-spans">
-          Helpful?
+          Helpful?&nbsp;
           <button type="button" className="link-button" id="answer-helpful" onClick={() => (handleHelpful())}>
             Yes
             {`(${helpful})`}
