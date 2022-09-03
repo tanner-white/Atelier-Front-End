@@ -5,7 +5,12 @@ class AddReview extends React.Component {
     super(props);
     this.state = {
       style: { display: 'none' },
-      ratings: { 1: null, 2: null, 3: null, 4: null, 5: null },
+      productId: null,
+      recommendedYes: null,
+      recommendedNo: null,
+      ratings: {
+        1: null, 2: null, 3: null, 4: null, 5: null,
+      },
       size: { id: 14, value: null },
       width: { id: 15, value: null },
       comfort: { id: 16, value: null },
@@ -29,6 +34,56 @@ class AddReview extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    // invoke axios call to add a review
+    const {
+      ratings, productId, recommendedNo, recommendedYes, size, width, comfort, quality, length, fit,
+    } = this.state;
+    const { addReview } = this.props;
+
+    const message = {
+      product_id: productId,
+      ratings: {
+        1: ratings[1],
+        2: ratings[2],
+        3: ratings[3],
+        4: ratings[4],
+        5: ratings[5],
+      },
+      recommended: {
+        0: recommendedNo,
+        1: recommendedYes,
+
+      },
+      characteristics: {
+        Size: {
+          id: 14,
+          value: size.value,
+        },
+        Width: {
+          id: 15,
+          value: width.value,
+        },
+        Comfort: {
+          id: 16,
+          value: comfort.value,
+        },
+        Quality: {
+          id: 17,
+          value: quality.value,
+        },
+        Length: {
+          id: 18,
+          value: length.value,
+        },
+        Fit: {
+          id: 19,
+          value: fit.value,
+        },
+      },
+    };
+
+    addReview(message);
+
     this.setState({
       style: { display: 'none' },
     });
@@ -55,47 +110,49 @@ class AddReview extends React.Component {
 
   handleSizeChange(event) {
     this.setState({
-      size: {id: 14, value: event.target.value},
+      size: { id: 14, value: event.target.value },
     });
   }
 
   handleWidthChange(event) {
     this.setState({
-      width: {id: 15, value: event.target.value},
+      width: { id: 15, value: event.target.value },
     });
   }
 
   handleComfortChange(event) {
     this.setState({
-      comfort: {id: 16, value: event.target.value},
+      comfort: { id: 16, value: event.target.value },
     });
   }
 
   handleQualityChange(event) {
     this.setState({
-      quality: {id: 17, value: event.target.value},
+      quality: { id: 17, value: event.target.value },
     });
   }
 
   handleLengthChange(event) {
     this.setState({
-      length: {id: 18, value: event.target.value},
+      length: { id: 18, value: event.target.value },
     });
   }
 
   handleFitChange(event) {
     this.setState({
-      fit: {id: 19, value: event.target.value},
+      fit: { id: 19, value: event.target.value },
     });
   }
 
   render() {
+    const { style } = this.state;
+    console.log(this.props);
     return (
       <div id="modalChunk">
         <button type="button" id="modalButton" onClick={this.handleModalClick.bind(this)}>
           ADD A REVIEW
         </button>
-        <div id="myModal" className="modal" style={this.state.style}>
+        <div id="myModal" className="modal" style={style}>
           <div id="myModal-content">
             <h3>Write Your Review</h3>
             <p>About the TANNER</p>
@@ -327,7 +384,7 @@ class AddReview extends React.Component {
               </div> */}
             </div>
             <div className="close">
-              <button id="modalSubmit" type="button" style={this.state.style} onClick={this.handleSubmit.bind(this)}>Submit</button>
+              <button id="modalSubmit" type="button" style={style} onClick={this.handleSubmit.bind(this)}>Submit</button>
             </div>
           </div>
         </div>

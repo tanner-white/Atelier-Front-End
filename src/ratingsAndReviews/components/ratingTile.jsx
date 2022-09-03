@@ -63,6 +63,7 @@ class RatingTile extends React.Component {
   render() {
     const productInfo = this.props.product_data2;
     const reviewArray = this.props.product_data2.results;
+    const { rating } = this.state;
 
     return (
       <div key={productInfo.product} className="rar_reviewData">
@@ -71,7 +72,7 @@ class RatingTile extends React.Component {
           <div id="rar_bigNum">{this.getAvgStars()}</div>
           <span className="rar_boxStars">
             <StarRatings
-              rating={this.state.rating}
+              rating={rating}
               starRatedColor="grey"
               starDimension="20px"
               starSpacing="1px"

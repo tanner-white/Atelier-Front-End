@@ -18,9 +18,16 @@ class RatingsApp extends React.Component {
       .catch((err) => (console.log('error in app get', err)));
   }
 
+  addReview(message) {
+    axios.post('http://localhost:3001/reviews/addReview', message)
+      .then((response) => console.log('Post request to reviews API successful', response))
+      .catch((error) => console.log('error posting to API', error));
+  }
+
   render() {
+    const { currentItem } = this.state;
     return (
-      <div><ReviewList productInfo={this.state.currentItem} /></div>
+      <div><ReviewList productInfo={currentItem} addReview={this.addReview.bind(this)} /></div>
     );
   }
 }
