@@ -490,13 +490,10 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 #question-spans {
-  vertical-align: middle;
   background-color: transparent;
   border: none;
   display: inline;
-  margin: 1vw;
   float: right;
-  padding: 1vw;
   font-size: 1.5vw;
   font-weight: 300;
 }
