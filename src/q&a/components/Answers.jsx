@@ -29,10 +29,9 @@ function Answers({ answer }) {
         ))}
       </div>
       <div className="answerer-info">
-        <span className="answer-spans">
+        <span className="answer-spans" id="answer-date">
           {answer.answerer_name}
-        </span>
-        <span className="answer-spans">
+          , &nbsp;
           {formatDate(answer.date)}
         </span>
         <span className="answer-spans">

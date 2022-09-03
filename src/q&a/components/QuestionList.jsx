@@ -64,9 +64,11 @@ function QuestionList({ props, handleQuestionSubmit }) {
           {matches.map((match) => <QuestionListEntry item={match} key={match.question_id} />) }
           <AddQuestion ref={qModal} submit={handleQuestionSubmit} props={props} />
         </div>
-        {moreQuestionsButton}
-        {lessQuestionsButton}
-        <button className="question-buttons" type="button" onClick={() => qModal.current.open()}>Add a Question +</button>
+        <div>
+          {moreQuestionsButton}
+          {lessQuestionsButton}
+          <button className="question-buttons" type="button" onClick={() => qModal.current.open()}>Add a Question +</button>
+        </div>
       </div>
     );
   }

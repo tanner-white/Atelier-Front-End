@@ -8,7 +8,7 @@ function SearchForm({ handleSubmit }) {
   };
 
   return (
-    <form>
+    <form id="search-form">
       <input
         className="question-searchbar"
         type="text"
