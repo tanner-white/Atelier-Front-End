@@ -7,10 +7,6 @@ import StarRatings from 'react-star-ratings';
 function BasicInfo({ product, scrollToReviews }) {
   function handleReviewClick(e) {
     e.preventDefault();
-    // window.scrollTo({
-    //   top: 1360,
-    //   behavior: 'smooth',
-    // });
     scrollToReviews();
   }
   return (
@@ -28,8 +24,8 @@ function BasicInfo({ product, scrollToReviews }) {
           &nbsp;See all reviews...
         </small>
       </div>
-      <div>{product.category}</div>
-      <h2>{product.name}</h2>
+      <div>{product.category && product.category.toUpperCase()}</div>
+      <h2 className="product-name">{product.name}</h2>
     </div>
   );
 }

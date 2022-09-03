@@ -19,20 +19,24 @@ header {
 h2 {
   font-size: 3vw;
 }
+#root {
+  max-width: 1040px;
+  margin: auto;
+}
 /* overview */
 .overview-widget {
   align-items: flex-start;
   justify-content: space-evenly;
-  width: 80%;
   margin: 0px 0px;
   margin-top: 5%;
 }
 .basic-info-container {
   position: absolute;
   display: inline-block;
-  top: 12vw;
+  top: 12.3vw;
   left: 65vw;
   width: 35vw;
+  max-width: 364px;
   z-index: 0;
 }
 .sale-price {
@@ -45,6 +49,10 @@ h2 {
 }
 .see-reviews:hover {
   text-decoration: underline;
+}
+.product-name {
+  margin-top: 0;
+  margin-bottom: 1vw;
 }
 .size-select {
   width: 18vw;
@@ -123,7 +131,10 @@ h2 {
   border: 1px solid black;
   cursor: pointer;
 }
-
+.style-name {
+  margin-top: 1.4vw;
+  margin-bottom: 1vw;
+}
 .style-thumbnails {
   width: 30vw;
   height: auto;
@@ -137,7 +148,13 @@ h2 {
   overflow: hidden;
   border-radius: 50%;
   border: 2px rgba(0, 0, 0, 0.156) solid;
-  margin-right: 3%;
+  margin-right: 6%;
+  margin-bottom: 5%;
+}
+#current-thumb {
+  position: absolute;
+  top: 0.3vw;
+  left: 3vw;
 }
 .image-gallery-default {
   display: flex;
@@ -146,6 +163,7 @@ h2 {
   flex-direction: column;
   margin: 0px 0px;
   width: 60vw;
+  max-width: 624px;
   height: 55vw;
   align-items: center;
   justify-content: center;
