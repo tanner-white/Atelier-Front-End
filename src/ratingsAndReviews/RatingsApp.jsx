@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 // eslint-disable-next-line import/extensions
 import ReviewList from './components/reviewList.jsx';
-import SampleData from './components/data';
 
 class RatingsApp extends React.Component {
   constructor(props) {
