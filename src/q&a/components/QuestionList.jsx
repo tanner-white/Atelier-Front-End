@@ -48,17 +48,17 @@ function QuestionList({ props, handleQuestionSubmit }) {
 
   const moreQuestionsButton = list.slice(index).length > 0
     ? (
-      <button type="submit" onClick={showMoreQuestions}>More Questions</button>
+      <button className="question-buttons" type="submit" onClick={showMoreQuestions}>More Questions</button>
     ) : null;
 
   const lessQuestionsButton = matches.length > 4
     ? (
-      <button type="submit" onClick={showLessQuestions}>Less Questions</button>
+      <button className="question-buttons" type="submit" onClick={showLessQuestions}>Less Questions</button>
     ) : null;
 
   if (matches) {
     return (
-      <div>
+      <div className="QandA-widget">
         <div className="QandA-list">
           <SearchForm handleSubmit={handleSubmit} />
           {matches.map((match) => <QuestionListEntry item={match} key={match.question_id} />) }
@@ -66,7 +66,7 @@ function QuestionList({ props, handleQuestionSubmit }) {
         </div>
         {moreQuestionsButton}
         {lessQuestionsButton}
-        <button type="button" onClick={() => qModal.current.open()}>Add a Question</button>
+        <button className="question-buttons" type="button" onClick={() => qModal.current.open()}>Add a Question +</button>
       </div>
     );
   }

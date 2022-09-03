@@ -30,6 +30,10 @@ function AddQuestion({ submit, props }, ref) {
 
   const handleEscape = useCallback((event) => {
     if (event.keyCode === 27) close();
+    if (event.target.className !== 'QandA-modal-content'
+    && event.target.className !== 'qmodal') {
+      close();
+    }
   }, [close]);
 
   useEffect(() => {
@@ -50,12 +54,15 @@ function AddQuestion({ submit, props }, ref) {
           <div>
             <h3>Ask Your Question</h3>
             <h4>About the Product Here</h4>
-            <textarea placeholder="Add Question Here..." maxLength="1000" onChange={(e) => setBody(e.target.value)} />
+            <textarea className="qmodal" placeholder="Add Question Here..." maxLength="1000" onChange={(e) => setBody(e.target.value)} />
             <br />
-            <input type="text" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setName(e.target.value)} />
-            <input type="text" maxLength="60" placeholder="Why did you like the product or not?" onChange={(e) => setEmail(e.target.value)} />
+            <input className="qmodal" type="text" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setName(e.target.value)} />
+            <input className="qmodal" type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
           </div>
-          <button type="submit" onClick={(e) => onSubmit(e)}>submit</button>
+          For privacy reasons, do not use your full name or email address
+          <button className="qmodal" type="submit" onClick={(e) => onSubmit(e)}>submit</button>
+          <br />
+          For authentication reasons, you will not be emailed” will appear
         </div>
       </div>
     );

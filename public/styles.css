@@ -418,9 +418,16 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 /* Other */
+.QandA-widget {
+  text-align: left;
+  justify-content: left;
+  width: 100vw;
+}
 
 .QandA-list {
   max-height: 95vw;
+  width: 100vw;
+  margin-right: 2vw;
   overflow-y: scroll;
 }
 .question-title {
@@ -436,10 +443,33 @@ td { /*this may cause issues but I can go back later and fix */
   margin: 5px;
   float: right;
   padding: 0;
+  font-size: 1.5vw;
+}
+
+.question-buttons {
+  background-color: white;
+  cursor: pointer;
+  margin: 2vw;
+  width: 19vw;
+  height: 5vw;
+}
+
+.question-buttons:hover {
+  background-color: rgb(215, 215, 215, 0.95);
+}
+
+.answer-buttons {
+  background-color: white;
+  cursor: pointer;
+  margin-left: 2.5vw;
+}
+
+.answer-buttons:hover {
+  background-color: rgb(225, 225, 225, 0.95);
 }
 
 .question-entry {
-  border: 2px solid grey;
+  font-size: 2.0vw;
   padding: 5px;
   margin: 10px;
 }
@@ -447,29 +477,40 @@ td { /*this may cause issues but I can go back later and fix */
 .question-entry-answer {
   max-height: 50vw;
   overflow-y: scroll;
-  border: 2px solid grey;
   margin: 10px;
   padding: 5px;
 }
 .answer {
-  border: 1px solid grey;
-  margin: 5px;
+  margin-bottom: 2vw;
 }
 .answer-spans {
-  margin: 8px;
+  margin: 1vw;
+  padding-right: 2vw;
+  border-right: 1px solid grey;
 }
-.answer-body {
-  margin: 8px;
+
+.answerer-info {
+  font-size: 1.5vw;
+  margin-left: 1.5vw;
+}
+
+.answer-pic-container {
+  margin-left: 2vw;
 }
 
 .question-searchbar {
-  width: 90%;
+  width: 92.5vw;
+  padding: 5px;
+  margin-left: 2vw;
 }
 
 .QandA-modal {
-  border: 1px solid grey;
+  display: block;
+  position: fixed;
   z-index: 1;
   text-align: center;
+  height: 100vw;
+  width: 100vw;
 }
 
 .QandA-modal-content {/* Hidden by default */
@@ -483,4 +524,31 @@ td { /*this may cause issues but I can go back later and fix */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgb(128, 128, 128, 0.95);
+}
+
+.answer-pic-container {
+  display:flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.answer-pics {
+  margin: 5px;
+  height: 10vw;
+  width: 10vw;
+}
+
+.answer-body {
+  margin-bottom: 1vw;
+}
+
+#answer-helpful {
+  float: none;
+  border: none;
+  font-weight: 300;
+}
+
+#question-body {
+  font-weight: 600;
+  margin-bottom: 15vw;
 }
