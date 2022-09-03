@@ -8,6 +8,7 @@ function AddAnswer({ handleSubmit }, ref) {
   const [answer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
   const [email, setEmail] = useState('');
+  const [photos, setPhotos] = useState([]);
 
   const close = useCallback(() => setDisplay(false), []);
 
@@ -17,9 +18,22 @@ function AddAnswer({ handleSubmit }, ref) {
       body: answer,
       name: nickname,
       email,
+      photos,
     };
     handleSubmit(input);
     close();
+  };
+
+  const onInput = (event) => {
+    const temp = photos;
+    if (Object.keys(event.target.files).length <= 5) {
+      Object.values(event.target.files).forEach(
+        (file) => {
+          temp.push(URL.createObjectURL(file));
+        },
+      );
+    }
+    setPhotos(temp.slice(0, 5));
   };
 
   useImperativeHandle(ref, () => ({
@@ -29,6 +43,10 @@ function AddAnswer({ handleSubmit }, ref) {
 
   const handleEscape = useCallback((event) => {
     if (event.keyCode === 27) close();
+    if (event.target.className !== 'QandA-modal-content'
+    && event.target.className !== 'amodal') {
+      close();
+    }
   }, [close]);
 
   useEffect(() => {
@@ -49,12 +67,15 @@ function AddAnswer({ handleSubmit }, ref) {
           <div>
             <h3>Ask Your Question</h3>
             <h4>About the Product Here</h4>
-            <textarea placeholder="Add Answer Here..." maxLength="1000" onChange={(e) => setAnswer(e.target.value)} />
+            <textarea className="amodal" placeholder="Add Answer Here..." maxLength="1000" onChange={(e) => setAnswer(e.target.value)} />
             <br />
-            <input type="text" maxLength="60" placeholder="Example: jack543!" onChange={(e) => setNickname(e.target.value)} />
-            <input type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
+            <input className="amodal" type="text" maxLength="60" placeholder="Example: jack543!" onChange={(e) => setNickname(e.target.value)} />
+            <input className="amodal" type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
           </div>
-          <button type="submit" onClick={onSubmit}>submit</button>
+          <form>
+            <input className="amodal" type="file" name="upload" accept="image/*" multiple onInput={onInput} />
+          </form>
+          <button className="amodal" type="submit" onClick={onSubmit}>submit</button>
         </div>
       </div>
     );

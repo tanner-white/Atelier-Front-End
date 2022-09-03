@@ -10,7 +10,6 @@ function Questions() {
   useEffect(() => {
     axios.get('http://localhost:3001/qa/questions')
       .then((list) => {
-        console.log('client side GET request: ', list);
         setQuestions(list.data);
       })
       .catch((err) => (console.error(err)));
@@ -23,9 +22,7 @@ function Questions() {
   };
 
   return (
-    <div>
-      <QuestionList props={questions} handleQuestionSubmit={handleQuestionSubmit} />
-    </div>
+    <QuestionList props={questions} handleQuestionSubmit={handleQuestionSubmit} />
   );
 }
 
