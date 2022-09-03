@@ -101,7 +101,12 @@ class ReviewList extends React.Component {
   render() {
     return (
       <div className="rar_section">
-        <div className="rar_ratingBox"><RatingTile product_data2={this.props.productInfo} /></div>
+        <div className="rar_ratingBox">
+          <RatingTile
+            product_data2={this.props.productInfo}
+            setAverageStars={this.props.setAverageStars}
+          />
+        </div>
         <div className="rar_tileBox">
           <div>
             <Filter
@@ -112,12 +117,20 @@ class ReviewList extends React.Component {
               sortOld={this.sortByOldest.bind(this)}
             />
           </div>
-          <ReviewTile product_data1={this.props.productInfo} index={this.state.index} />
+          <ReviewTile
+            product_data1={this.props.productInfo}
+            index={this.state.index}
+          />
           <div className="rar_reviewButtons">
-
             <button className="button" type="submit" id="moreReviews" onClick={this.updateIndex.bind(this)}>MORE REVIEWS</button>
             <button className="button" type="submit" id="lessReviews" onClick={this.resetIndex.bind(this)}>LESS REVIEWS</button>
-            <div><AddReview addReview={this.props.addReview} /></div>
+            <div>
+              <AddReview
+                addReview={this.props.addReview}
+                currentProductName={this.props.currentProductName}
+                productId={this.props.productInfo.product}
+              />
+            </div>
           </div>
         </div>
       </div>

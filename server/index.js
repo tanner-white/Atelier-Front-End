@@ -49,7 +49,7 @@ app.get('/reviews/', (req, res) => {
 });
 
 app.post('/reviews/addReview', (req, res) => {
-  axios.post(`${API}reviews?product_id=66642`, options)
+  axios.post(`${API}reviews?product_id=66642`, options) // body object
     .then((response) => res.send(response.data))
     .catch((error) => res.send(error));
 });

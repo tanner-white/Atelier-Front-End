@@ -13,6 +13,7 @@ class RatingTile extends React.Component {
   getAvgStars() {
     const resultArray = this.props.product_data2.results;
     const ratingArray = resultArray.map((result) => (result.rating));
+    const { setAverageStars } = this.props;
 
     let sum = 0;
 
@@ -23,6 +24,7 @@ class RatingTile extends React.Component {
     sum /= ratingArray.length;
     const average = Math.round(sum * 10) / 10;
 
+    setAverageStars(average);
     return average;
   }
 

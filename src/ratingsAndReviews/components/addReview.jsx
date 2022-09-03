@@ -5,11 +5,11 @@ class AddReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      rating: 0,
+      ratingStar: 0,
       style: { display: 'none' },
       productId: null,
-      recommendedYes: null,
-      recommendedNo: null,
+      revbody: '',
+      recommendedBoolean: null,
       ratings: {
         1: null, 2: null, 3: null, 4: null, 5: null,
       },
@@ -38,50 +38,21 @@ class AddReview extends React.Component {
     event.preventDefault();
     // invoke axios call to add a review
     const {
-      ratings, productId, recommendedNo, recommendedYes, size, width, comfort, quality, length, fit,
+      ratings, ratingStar, recommendedBoolean, size, width, comfort, quality,
+      length, fit, revbody,
     } = this.state;
-    const { addReview } = this.props;
+    const { addReview, productId } = this.props;
 
     const message = {
       product_id: productId,
-      ratings: {
-        1: ratings[1],
-        2: ratings[2],
-        3: ratings[3],
-        4: ratings[4],
-        5: ratings[5],
-      },
-      recommended: {
-        0: recommendedNo,
-        1: recommendedYes,
-
-      },
-      characteristics: {
-        Size: {
-          id: 14,
-          value: size.value,
-        },
-        Width: {
-          id: 15,
-          value: width.value,
-        },
-        Comfort: {
-          id: 16,
-          value: comfort.value,
-        },
-        Quality: {
-          id: 17,
-          value: quality.value,
-        },
-        Length: {
-          id: 18,
-          value: length.value,
-        },
-        Fit: {
-          id: 19,
-          value: fit.value,
-        },
-      },
+      rating: ratingStar,
+      summary: null,
+      body: revbody,
+      recommend: recommendedBoolean,
+      name: null,
+      email: null,
+      photos: null,
+      characteristics: null,
     };
 
     addReview(message);
@@ -105,6 +76,13 @@ class AddReview extends React.Component {
         style: { display: 'none' },
       });
     }
+  }
+
+  handlebodyChange(event) {
+    const text = event.target.value;
+    this.setState({
+      revbody: text,
+    });
   }
 
   handleSizeChange(event) {
@@ -143,17 +121,31 @@ class AddReview extends React.Component {
     });
   }
 
+  handleRecRadioClick(event) {
+    if (event.target.value === 'Yes') {
+      this.setState({
+        recommendedBoolean: true,
+      });
+    } else if (event.target.value === 'No') {
+      this.setState({
+        recommendedBoolean: false,
+      });
+    }
+    console.log(this.state.recommendedBoolean);
+  }
+
   changeRating(event) {
     // todo: hook this up to state values for ratings
     const eventVal = event;
     const { ratings } = this.state;
     this.setState({
-      rating: event,
+      ratingStar: event,
     });
   }
 
   render() {
     const { style } = this.state;
+    const { currentProductName } = this.props;
     return (
       <div id="modalChunk">
         <button type="button" id="modalButton" onClick={this.handleModalClick.bind(this)}>
@@ -162,32 +154,25 @@ class AddReview extends React.Component {
         <div id="myModal" className="modal" style={style}>
           <div id="myModal-content">
             <h3>Write Your Review</h3>
-            <p>About the [Product Name Here]</p>
-            <input type="text" name="Type here" />
+            <p>About the {currentProductName}</p>
+            <input type="text" name="Type here" onChange={this.handlebodyChange.bind(this)} />
             Overall rating
             <StarRatings
               name="react-star-rating"
               totalStars={5}
-              rating={this.state.rating}
+              rating={this.state.ratingStar}
               changeRating={this.changeRating.bind(this)}
               starRatedColor="black"
               starHoverColor="black"
             />
-            <select id="addReviewSelector" onChange={this.handleSizeChange.bind(this)}>
-              <option value="1">1 star - &quot;Poor&quot;</option>
-              <option value="2">2 stars - &quot;Fair&quot;</option>
-              <option value="3">3 stars - &quot;Average&quot;</option>
-              <option value="4">4 stars - &quot;Good&quot;</option>
-              <option value="5">5 stars - &quot;Great&quot;</option>
-            </select>
             <div id="checkBoxRecommend">
               <label htmlFor="happy">
                 Yes
-                <input type="radio" id="recommendBoolean" name="happy" value="Yes" checked />
+                <input type="radio" id="recommendBoolean" name="approve" value="Yes" onChange={this.handleRecRadioClick.bind(this)} />
               </label>
               <label htmlFor="sad">
                 No
-                <input type="radio" id="recommendBoolean" name="sad" value="No" />
+                <input type="radio" id="recommendBoolean" name="approve" value="No" onChange={this.handleRecRadioClick.bind(this)} />
               </label>
             </div>
             <div>
