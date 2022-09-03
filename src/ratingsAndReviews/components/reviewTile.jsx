@@ -31,7 +31,7 @@ class ReviewTile extends React.Component {
               />
             </span>
           </div>
-          <div>
+          <div id="rar_name-date">
             {review.reviewer_name}
             ,
             {this.formatDate(review.date)}
@@ -52,12 +52,12 @@ class ReviewTile extends React.Component {
         </div>
         <div id="rar_helpAndReport">
           <div id="rar_helpful">Helpful?</div>
-          <div id="rar_yes">Yes</div>
-          <a href="">
+          <div id="rar_yes">Yes(1)</div>
+          {/* <a href="">
             (
             {1}
             )
-            </a>
+            </a> */}
           <div id="rar_symbol">|</div>
           <div id="rar_report"> report</div>
         </div>

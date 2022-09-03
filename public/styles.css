@@ -268,45 +268,55 @@ h2 {
 }
 
 /* Adam */
+#rarMain {
+  display: flex;
+  justify-content: center;
+}
 .rar_section {
   display: flex;
   flex-direction: row;
   margin-top: 2vw;
-  justify-content: center;
-  margin-left: 10vw;
-  margin-right: 10vw;
-  gap: 50px;
+  margin-top: 5vw;
+  max-width: 60vw;
+  gap: 2vw;
 }
 .rar_ratingBox {
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  justify-content: start;
+  width: 30vw;
+  max-width: 30vw;
+
 }
 .rar_reviewData {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   text-align: center;
+  gap: 15px;
+  width: 25vw;
+  max-width: 25vw;
 
 }
 #starRow {
   text-decoration: underline;
+  width: 28vw;
 }
 #rar_numAndStars {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
   gap: 10px;
   margin-bottom: 4vw;
 }
-
 #rar_bigNum {
-  font-weight: bolder;
-  font-size: 200%;
+  font-weight: 900;
+  font-size: 5vw;
 }
 .rar_tileBox {
   display: flex;
   flex-direction: column;
-  width: 60vw;
+  margin-top: 2vw;
 
 }
 .rar_tile {
@@ -314,6 +324,12 @@ h2 {
   margin-top: 4vw;
   border-bottom: 2px solid grey;
   flex-direction: column;
+  max-width: 40vw;
+
+}
+#rar_header {
+  display: flex;
+
 }
 .rar_ratingData {
   display: flex;
@@ -323,6 +339,23 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+#rar_name-date {
+  font-size: medium;
+}
+#rar_summary {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  font-weight: bold;
+}
+#rar_fullSummary {
+  margin-top: 1vw;
+  font-size: medium;
+}
+#rar_recommendation {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  font-size: medium;
 }
 .rar_pics {
   display:flex;
@@ -370,14 +403,19 @@ meter::-webkit-meter-optimum-value {
   background-image: linear-gradient(90deg, #5c5c5c 50%, #5c5c5c 100%);
 }
 #rar_recOverview {
-  font-size: medium;
+  text-align: left;
+  font-size: small;
+  white-space: nowrap;
   margin-bottom: 5%;
+  max-width: 20vw;
 }
 .rar_dataMeter {
 text-align: left;
+width: 20vw;
+max-width: 20vw;
 }
 #rar_met {
-  width: 70%;
+  width: 55%;
 }
 #rar_barName {
   display: flex;
@@ -393,7 +431,7 @@ text-align: left;
   display: flex;
   flex-direction: column;
   list-style: none;
-  gap: 1px;
+  gap: 5px;
 }
 #myModal {
   display: none;
@@ -409,18 +447,26 @@ text-align: left;
 }
 #myModal-content { /* this is the only way to access my modal */
   display: flex;
+  border-radius: 2vw;
+  border-color: #5c5c5c;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   gap: 10px;
-  background-color: #fefefe;
+  background-color: #eae4e4;
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
   height: 100%;
   width: 80%;
 }
-
+#rar_summaryBox {
+  width: 50vw;
+  height: 15vw;
+}
+#modalButton {
+  display: flex;
+}
 .close {
   color: #aaa;
   float: right;
@@ -435,15 +481,17 @@ text-align: left;
 }
 #radioTable2 {
   display: table;
-  width: 65vw;
+  font-size: large;
+  text-align: center;
+  width: 60vw;
   border: 1px solid black;
   border-collapse: collapse;
 }
-
 td { /*this may cause issues but I can go back later and fix */
   border: 1px solid black;
   text-align: center;
 }
+
 #rar_td_footer {
   text-align: center;
 }
@@ -452,8 +500,8 @@ td { /*this may cause issues but I can go back later and fix */
   flex-direction: row;
   justify-content: space-around;
   border: 1px solid black;
-
 }
+
 .rar_selectorTableRow {
   display: flex;
   flex-direction: row;
@@ -465,7 +513,6 @@ td { /*this may cause issues but I can go back later and fix */
   flex-direction: column;
   align-items: center;
 }
-
 /* Other */
 .QandA-widget {
   text-align: left;

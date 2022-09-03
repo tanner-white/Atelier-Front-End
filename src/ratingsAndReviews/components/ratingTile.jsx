@@ -69,7 +69,7 @@ class RatingTile extends React.Component {
 
     return (
       <div key={productInfo.product} className="rar_reviewData">
-        <h3>Ratings & Reviews</h3>
+        <h3 id="rar_header">Ratings & Reviews</h3>
         <div id="rar_numAndStars">
           <div id="rar_bigNum">{this.getAvgStars()}</div>
           <span className="rar_boxStars">

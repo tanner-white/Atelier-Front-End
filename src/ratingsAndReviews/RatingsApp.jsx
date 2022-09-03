@@ -29,7 +29,7 @@ class RatingsApp extends React.Component {
     const { setNumberReviews, setAverageStars, currentProductName } = this.props;
     setNumberReviews(currentItem.results.length);
     return (
-      <div>
+      <div id="rarMain">
         <ReviewList
           productInfo={currentItem}
           currentProductName={currentProductName}
