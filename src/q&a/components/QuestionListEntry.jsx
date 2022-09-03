@@ -51,14 +51,14 @@ function QuestionListEntry({ item }) {
 
   const moreAnswersButton = list.length > answers.length
     ? (
-      <button type="submit" onClick={(e) => handleMoreAnswers(e)}>
+      <button className="answer-buttons" type="submit" onClick={(e) => handleMoreAnswers(e)}>
         More Answers
       </button>
     ) : null;
 
   const lessAnswersButton = answers.length > 2
     ? (
-      <button type="submit" onClick={(e) => handleLessAnswers(e)}>
+      <button className="answer-buttons" type="submit" onClick={(e) => handleLessAnswers(e)}>
         Collapse Answers
       </button>
     ) : null;
@@ -66,8 +66,12 @@ function QuestionListEntry({ item }) {
   return (
     <div className="question-entry">
       <div>
-        Q:&nbsp;
-        {item.question_body}
+        <span id="question-body">
+          <b>
+            Q:&nbsp;
+            {item.question_body}
+          </b>
+        </span>
         <button type="button" className="link-button" onClick={() => handleHelpful()}>
           helpful?&nbsp;
           {`(${helpful})`}
@@ -75,6 +79,7 @@ function QuestionListEntry({ item }) {
         <button type="button" className="link-button" onClick={() => aModal.current.open()}>add answer</button>
         <AddAnswer ref={aModal} handleSubmit={handleAnswerSubmit} />
       </div>
+      <br />
       <div>
         {answers.map((answer) => <Answers answer={answer} key={answer.answer_id} />)}
       </div>
