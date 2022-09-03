@@ -18,8 +18,19 @@ function App() {
   return (
     <div>
       <header>
-        <h1 className="business-name">Atelier</h1>
+        <p className="business-name">Atelier&nbsp;</p>
       </header>
+      <div className="sitewide-sale">
+        <em>SITE-WIDE ANNOUNCEMENT MESSAGE!</em>
+        {' '}
+        -- SALE / DISCOUNT
+        {' '}
+        <b>OFFER</b>
+        {' '}
+        --
+        {' '}
+        <u>NEW PRODUCT HIGHLIGHT</u>
+      </div>
       <Overview setCurrentProductName={setCurrentProductName} scrollToReviews={scrollToReviews} />
       <Questions />
       <div ref={reviewsRef} />

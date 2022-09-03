@@ -1,3 +1,51 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 body {
   background-color: #faf9f8;
   font-family: 'Nunito Sans', sans-serif;
@@ -11,31 +59,42 @@ button, select {
 header {
   background-color: black;
   height: 7vw;
-  top: 0;
 }
 .business-name {
   color: #faf9f8;
+  font-family: Caveat, sans-serif;
+  text-decoration: underline;
+  font-size: 6vw;
+  margin-left: 2vw;
 }
 h2 {
   font-size: 3vw;
+  font-weight: 600;
 }
 #root {
-  max-width: 1040px;
+  max-width: 1280px;
   margin: auto;
+}
+.sitewide-sale {
+  display: flex;
+  font-size: 1.1vw;
+  margin-top: 0.5vw;
+  padding: 0.5vw;
+  justify-content: center;
 }
 /* overview */
 .overview-widget {
   align-items: flex-start;
   justify-content: space-evenly;
   margin: 0px 0px;
-  margin-top: 5%;
+  margin-top: 1%;
 }
 .basic-info-container {
   position: absolute;
   display: inline-block;
-  top: 12.3vw;
+  top: 9vw;
   left: 65vw;
-  width: 35vw;
+  width: 30vw;
   max-width: 364px;
   z-index: 0;
 }
@@ -52,19 +111,21 @@ h2 {
 }
 .product-name {
   margin-top: 0;
-  margin-bottom: 1vw;
+  margin-bottom: 2vw;
+  font-size: 200%;
 }
 .size-select {
   width: 18vw;
+  max-width: 220px;
   height: 5vw;
   font-size: 1.5vw;
   border-radius: 2px;
   margin-bottom: 1vw;
   margin-right: 1vw;
-  margin-top: 30px;
 }
 .quantity-select {
   width: 11vw;
+  max-width: 120px;
   height: 5vw;
   font-size: 1.5vw;
   border-radius: 2px;
@@ -74,6 +135,7 @@ h2 {
   border: 1px solid black;
   font-size: 1.5vw;
   width: 24vw;
+  max-width: 270px;
   height: 5vw;
   margin-right: 1vw;
   text-align: left;
@@ -83,6 +145,7 @@ h2 {
   border: 1px solid black;
   font-size: 1.5vw;
   width: 5vw;
+  max-width: 70px;
   height: 5vw;
 }
 .details-and-features {
@@ -92,28 +155,38 @@ h2 {
 .product-details {
   display: flex;
   border-right: solid black 1px;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   margin-bottom: 70px;
   margin-left: 7%;
   margin-top: 20px;
   display: inline-block;
   width: 56vw;
-  height: 20vw;
+  height: 12vw;
   padding: 1vw;
+}
+.slogan {
+  font-size: 2vw;
+}
+.description {
+  font-size: 1.2vw;
+}
+.slogan, .description {
+  margin: 2vw 2vw;
 }
 .features {
   display: flex;
   flex-direction: column;
+  font-size: 1.2vw;
   gap: 3vw;
-  background-color: white;
-  margin-top: 20px;
+  /* background-color: white; */
+  margin-top: 3.5vw;
   width: 20vw;
   height: 22vw;
   padding-left: 3vw;
 }
 .social-media-icons {
   align-self: flex-end;
-  margin-top: 2vw;
+  margin: 4vw 2vw;
 }
 .sm-icon {
   width: 2vw;
@@ -132,11 +205,12 @@ h2 {
   cursor: pointer;
 }
 .style-name {
-  margin-top: 1.4vw;
+  margin-top: 2vw;
   margin-bottom: 1vw;
 }
 .style-thumbnails {
   width: 30vw;
+  max-width: 380px;
   height: auto;
   cursor: pointer;
 }
@@ -144,7 +218,9 @@ h2 {
   display: inline-block;
   position: relative;
   width: 5vw;
+  max-width: 68px;
   height: 5vw;
+  max-height: 68px;
   overflow: hidden;
   border-radius: 50%;
   border: 2px rgba(0, 0, 0, 0.156) solid;
@@ -162,9 +238,10 @@ h2 {
   background-color: #ffffff;
   flex-direction: column;
   margin: 0px 0px;
-  width: 60vw;
-  max-width: 624px;
-  height: 55vw;
+  width: 62vw;
+  max-width: 768px;
+  height: 49vw;
+  max-height: 601px;
   align-items: center;
   justify-content: center;
   z-index: 5;
@@ -176,6 +253,7 @@ h2 {
   flex-direction: column;
   margin: 0px 0px;
   width: 100vw;
+  max-width: 1280px;
   height: 55vw;
   align-items: center;
   justify-content: center;
@@ -196,6 +274,7 @@ h2 {
   position: absolute;
   cursor: zoom-in;
   width: 30vw;
+  max-width: 384px;
   height: auto;
   z-index: 10;
 }
@@ -206,10 +285,11 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   width: 4vw;
-  margin: 0 0px 10% 2%;
+  margin: 4vw 0px 10% 2%;
 }
 .gallery-thumbnail {
   width: 100%;
+  max-width: 51px;
   margin-bottom: 30%;
   cursor: pointer;
   border-right: 2px solid rgba(0, 0, 0, 0.358);
@@ -226,11 +306,15 @@ h2 {
 }
 .carousel-left-arrow {
   position: absolute;
+  font-weight: 600;
+  font-size: 3vw;
   left: 10%;
   cursor: pointer;
 }
 .carousel-right-arrow {
   position: absolute;
+  font-weight: 600;
+  font-size: 3vw;
   right: 10%;
   cursor: pointer;
   z-index: 9;
