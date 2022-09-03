@@ -1,9 +1,11 @@
 import React from 'react';
+import StarRatings from 'react-star-ratings';
 
 class AddReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      rating: 0,
       style: { display: 'none' },
       productId: null,
       recommendedYes: null,
@@ -98,9 +100,6 @@ class AddReview extends React.Component {
   }
 
   handleWindowClick(event) {
-    // console.log(event.target, document.getElementById('myModal'));
-    // This is really odd, it seems like this should be !event.... but when I click the background
-    // that is actually the 'myModal' div!
     if (event.target === document.getElementById('myModal')) {
       this.setState({
         style: { display: 'none' },
@@ -144,9 +143,17 @@ class AddReview extends React.Component {
     });
   }
 
+  changeRating(event) {
+    // todo: hook this up to state values for ratings
+    const eventVal = event;
+    const { ratings } = this.state;
+    this.setState({
+      rating: event,
+    });
+  }
+
   render() {
     const { style } = this.state;
-    console.log(this.props);
     return (
       <div id="modalChunk">
         <button type="button" id="modalButton" onClick={this.handleModalClick.bind(this)}>
@@ -155,8 +162,17 @@ class AddReview extends React.Component {
         <div id="myModal" className="modal" style={style}>
           <div id="myModal-content">
             <h3>Write Your Review</h3>
-            <p>About the TANNER</p>
+            <p>About the [Product Name Here]</p>
             <input type="text" name="Type here" />
+            Overall rating
+            <StarRatings
+              name="react-star-rating"
+              totalStars={5}
+              rating={this.state.rating}
+              changeRating={this.changeRating.bind(this)}
+              starRatedColor="black"
+              starHoverColor="black"
+            />
             <select id="addReviewSelector" onChange={this.handleSizeChange.bind(this)}>
               <option value="1">1 star - &quot;Poor&quot;</option>
               <option value="2">2 stars - &quot;Fair&quot;</option>
