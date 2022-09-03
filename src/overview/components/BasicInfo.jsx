@@ -4,13 +4,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StarRatings from 'react-star-ratings';
 
-function BasicInfo({ product }) {
+function BasicInfo({ product, scrollToReviews }) {
   function handleReviewClick(e) {
     e.preventDefault();
-    window.scrollTo({
-      top: 1360,
-      behavior: 'smooth',
-    });
+    // window.scrollTo({
+    //   top: 1360,
+    //   behavior: 'smooth',
+    // });
+    scrollToReviews();
   }
   return (
     <div className="basic-info">
