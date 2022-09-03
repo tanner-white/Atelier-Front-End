@@ -20,9 +20,8 @@ function Answers({ answer }) {
   return (
     <div className="answer">
       <div className="answer-body">
-        <b>A:&nbsp;</b>
+        <span id="answer-header">A:&nbsp;</span>
         {answer.body}
-        <button type="button" className="link-button" onClick={() => (console.log('report user'))}>report</button>
       </div>
       <div className="answer-pic-container">
         {answer.photos.map((photo) => (
@@ -42,6 +41,9 @@ function Answers({ answer }) {
             Yes
             {`(${helpful})`}
           </button>
+        </span>
+        <span className="answer-spans" id="answer-report-span">
+          <button type="button" className="link-button" id="answer-report-button" onClick={() => (console.log('report user'))}>report</button>
         </span>
       </div>
     </div>

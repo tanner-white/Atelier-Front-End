@@ -72,15 +72,18 @@ function QuestionListEntry({ item }) {
             {item.question_body}
           </b>
         </span>
-        <button type="button" className="link-button" onClick={() => handleHelpful()}>
-          helpful?&nbsp;
-          {`(${helpful})`}
-        </button>
-        <button type="button" className="link-button" onClick={() => aModal.current.open()}>add answer</button>
+        <span id="question-spans">
+          <button type="button" className="link-button" id="add-answer-button" onClick={() => aModal.current.open()}>add answer</button>
+          <button type="button" className="link-button" onClick={() => handleHelpful()}>
+            <span id="question-helpful">Helpful?&nbsp;</span>
+            Yes
+            {`(${helpful})`}
+          </button>
+        </span>
         <AddAnswer ref={aModal} handleSubmit={handleAnswerSubmit} />
       </div>
       <br />
-      <div>
+      <div className="answer-list">
         {answers.map((answer) => <Answers answer={answer} key={answer.answer_id} />)}
       </div>
       {moreAnswersButton}

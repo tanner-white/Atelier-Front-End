@@ -8,7 +8,7 @@ import AddQuestion from './AddQuestionModal.jsx';
 function QuestionList({ props, handleQuestionSubmit }) {
   const [list, setList] = useState([]);
   const [matches, setMatches] = useState([]);
-  const [index, setIndex] = useState(4);
+  const [index, setIndex] = useState(2);
   const qModal = useRef(null);
 
   useEffect(() => {
@@ -30,10 +30,10 @@ function QuestionList({ props, handleQuestionSubmit }) {
           display.push(match);
         }
       });
-      setIndex(4);
+      setIndex(2);
       setList(display);
     } else {
-      setIndex(4);
+      setIndex(2);
       setList(props.results);
     }
   };
@@ -43,7 +43,7 @@ function QuestionList({ props, handleQuestionSubmit }) {
   };
 
   const showLessQuestions = () => {
-    setIndex(4);
+    setIndex(2);
   };
 
   const moreQuestionsButton = list.slice(index).length > 0
@@ -51,7 +51,7 @@ function QuestionList({ props, handleQuestionSubmit }) {
       <button className="question-buttons" type="submit" onClick={showMoreQuestions}>More Questions</button>
     ) : null;
 
-  const lessQuestionsButton = matches.length > 4
+  const lessQuestionsButton = matches.length > 2
     ? (
       <button className="question-buttons" type="submit" onClick={showLessQuestions}>Less Questions</button>
     ) : null;

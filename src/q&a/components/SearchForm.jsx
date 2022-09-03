@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 function SearchForm({ handleSubmit }) {
   const onChange = (input) => {
-    handleSubmit(input);
+    input.preventDefault();
+    handleSubmit(input.target.value);
   };
 
   return (
@@ -13,7 +14,7 @@ function SearchForm({ handleSubmit }) {
         type="text"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
         onChange={(e) => {
-          onChange(e.target.value);
+          onChange(e);
         }}
       />
     </form>

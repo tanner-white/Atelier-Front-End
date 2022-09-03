@@ -440,10 +440,11 @@ td { /*this may cause issues but I can go back later and fix */
   cursor: pointer;
   text-decoration: underline;
   display: inline;
-  margin: 5px;
+  margin: 1vw;
   float: right;
   padding: 0;
   font-size: 1.5vw;
+  font-weight: 300;
 }
 
 .question-buttons {
@@ -468,10 +469,17 @@ td { /*this may cause issues but I can go back later and fix */
   background-color: rgb(225, 225, 225, 0.95);
 }
 
+#answer-report-button {
+  float: none;
+  font-weight: 300;
+  border-right: none;
+}
+
 .question-entry {
   font-size: 2.0vw;
   padding: 5px;
-  margin: 10px;
+  margin-left: 1.5vw;
+  margin-bottom: 3vw;
 }
 
 .question-entry-answer {
@@ -480,18 +488,44 @@ td { /*this may cause issues but I can go back later and fix */
   margin: 10px;
   padding: 5px;
 }
-.answer {
-  margin-bottom: 2vw;
+
+#question-spans {
+  vertical-align: middle;
+  background-color: transparent;
+  border: none;
+  display: inline;
+  margin: 1vw;
+  float: right;
+  padding: 1vw;
+  font-size: 1.5vw;
+  font-weight: 300;
 }
+
+#question-helpful {
+  text-decoration: none;
+}
+
+.answer-list {
+  margin-bottom: 1vw;
+}
+
+.answer {
+  margin-bottom: 1vw;
+}
+
 .answer-spans {
   margin: 1vw;
   padding-right: 2vw;
   border-right: 1px solid grey;
 }
 
+#answer-report-span {
+  border-right: none;
+}
+
 .answerer-info {
   font-size: 1.5vw;
-  margin-left: 1.5vw;
+  margin-left: 2vw;
 }
 
 .answer-pic-container {
@@ -499,9 +533,12 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 .question-searchbar {
-  width: 92.5vw;
+  height: 5vw;
+  width: 95.5vw;
+  font-size: 1.5vw;
   padding: 5px;
-  margin-left: 2vw;
+  margin-left: 1.75vw;
+  margin-bottom: 1.5vw;
 }
 
 .QandA-modal {
@@ -542,6 +579,11 @@ td { /*this may cause issues but I can go back later and fix */
   margin-bottom: 1vw;
 }
 
+#answer-header {
+  font-size: 2.5vw;
+  font-weight: 600;
+}
+
 #answer-helpful {
   float: none;
   border: none;
@@ -549,6 +591,8 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 #question-body {
+  font-size: 2.5vw;
   font-weight: 600;
   margin-bottom: 15vw;
 }
+
