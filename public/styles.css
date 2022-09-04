@@ -284,7 +284,8 @@ h2 {
   display: flex;
   flex-direction: column;
   justify-content: start;
-  width: 30vw;
+  width: 20vw;
+  padding: 1vw;
   max-width: 30vw;
 
 }
@@ -294,20 +295,23 @@ h2 {
   justify-content: flex-start;
   text-align: center;
   gap: 15px;
-  width: 25vw;
+
+  padding-right: 2vw;
+  width: 20vw;
   max-width: 25vw;
 
 }
 #starRow {
   text-decoration: underline;
-  width: 28vw;
+  width: 20vw;
 }
 #rar_numAndStars {
   display: flex;
   flex-direction: row;
   justify-content: left;
   gap: 10px;
-  margin-bottom: 4vw;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
 }
 #rar_bigNum {
   font-weight: 900;
@@ -317,6 +321,7 @@ h2 {
   display: flex;
   flex-direction: column;
   margin-top: 2vw;
+  width: 45vw;
 
 }
 .rar_tile {
@@ -339,18 +344,22 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
 }
 #rar_name-date {
-  font-size: medium;
+  font-weight: lighter;
+  font-size: 1vw;
+  color: grey;
 }
 #rar_summary {
   margin-top: 1vw;
   margin-bottom: 1vw;
   font-weight: bold;
+  font-size: 1.6vw;
 }
 #rar_fullSummary {
   margin-top: 1vw;
-  font-size: medium;
+  font-size: 1.2vw;
 }
 #rar_recommendation {
   margin-top: 1vw;
@@ -371,6 +380,7 @@ h2 {
 }
 #rar_helpAndReport {
   display: flex;
+  color: grey;
   font-size: small;
   flex-direction: row;
   justify-content: flex-start;
@@ -389,6 +399,24 @@ h2 {
   margin-bottom: 5vw;
   gap: 20px;
 }
+#lessReviews,
+#moreReviews {
+  background-color: #ffffff;
+  border: 1px solid black;
+  font-size: 1.5vw;
+  width: 10vw;
+  height: 5vw;
+  text-align: left;
+}
+#rar_tileBoxButtons {
+  background-color: #ffffff;
+  border: 1px solid black;
+  font-size: 1vw;
+  width: 20vw;
+  height: 5vw;
+  margin-right: 1vw;
+  text-align: center;
+}
 #reviewSelector {
   text-decoration: underline;
   border: none;
@@ -404,10 +432,11 @@ meter::-webkit-meter-optimum-value {
 }
 #rar_recOverview {
   text-align: left;
-  font-size: small;
+  font-size: 1vw;
   white-space: nowrap;
-  margin-bottom: 5%;
-  max-width: 20vw;
+  margin-bottom: 4%;
+  width: 10vw;
+
 }
 .rar_dataMeter {
 text-align: left;
@@ -415,17 +444,19 @@ width: 20vw;
 max-width: 20vw;
 }
 #rar_met {
-  width: 55%;
+  width: 15vw;
 }
 #rar_barName {
   display: flex;
+  gap: 5px;
   flex-wrap: nowrap;
-  width: 100%;
+  width: 20vw;
+  font-size: 1vw;
 }
 #rar_sizeBar,
 #rar_comfortBar {
   display: flex;
-  width: 100%;
+  width: 20vw;
 }
 #starRow {
   display: flex;
@@ -453,19 +484,70 @@ max-width: 20vw;
   justify-content: space-around;
   align-items: center;
   gap: 10px;
-  background-color: #eae4e4;
+  background-color: #ffffff;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 3px solid black;
   height: 100%;
   width: 80%;
 }
+#rar_modalTitle {
+ font-size: 6vw;
+}
+#rar_modalProduct {
+  font-size: 3vw;
+}
 #rar_summaryBox {
-  width: 50vw;
-  height: 15vw;
+  width: 45vw;
+  height: 8vw;
+  font-size: 1vw;
+}
+#rar_reviewSummaryInput {
+  width: 45vw;
+  font-size: 1vw;
+}
+#rar_nicknameInput {
+  width: 20vw;
+  font-size: 1vw;
+}
+#rar_emailInput {
+  width: 20vw;
+  font-size: 1vw;
+}
+#rar_starRatingModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#rar_starRatingModal2 {
+  display: flex;
+  margin-top: 1vw;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+
+}
+#rar_yesNo {
+  display: flex;
+  margin-top: 1vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+textarea {
+  border: 2px solid currentColor;
+}
+textarea:invalid {
+  text-decoration: underline wavy red;
+}
+#rar_uploadPhotos {
+  font-size: 1vw;
 }
 #modalButton {
   display: flex;
+}
+#rar_modalSubmit {
+  font-size: 1vw;
 }
 .close {
   color: #aaa;
@@ -481,9 +563,9 @@ max-width: 20vw;
 }
 #radioTable2 {
   display: table;
-  font-size: large;
+  font-size: 1vw;
   text-align: center;
-  width: 60vw;
+  width: 45vw;
   border: 1px solid black;
   border-collapse: collapse;
 }
@@ -603,7 +685,7 @@ td { /*this may cause issues but I can go back later and fix */
 .QandA-modal {
   display: block;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   text-align: center;
   height: 100vw;
   width: 100vw;

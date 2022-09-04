@@ -6,6 +6,7 @@ class AddReview extends React.Component {
     super(props);
     this.state = {
       ratingStar: 0,
+      ratingStarCode: { 1: 'Poor', 2: 'Fair', 3: 'Average', 4: 'Good', 5: 'Great'},
       style: { display: 'none' },
       productId: null,
       revbody: '',
@@ -144,36 +145,49 @@ class AddReview extends React.Component {
   }
 
   render() {
-    const { style } = this.state;
+    const { style, revbody } = this.state;
     const { currentProductName } = this.props;
     return (
       <div id="modalChunk">
-        <button type="button" id="modalButton" onClick={this.handleModalClick.bind(this)}>
+        <button type="button" id="rar_tileBoxButtons" onClick={this.handleModalClick.bind(this)}>
           ADD A REVIEW +
         </button>
         <div id="myModal" className="modal" style={style}>
           <div id="myModal-content">
             <h2 id="rar_modalTitle">Write Your Review</h2>
-            <p>About the {currentProductName}</p>
-            <textarea id="rar_summaryBox" type="text" name="Type here" onChange={this.handlebodyChange.bind(this)} />
-            Overall rating
-            <StarRatings
-              name="react-star-rating"
-              totalStars={5}
-              rating={this.state.ratingStar}
-              changeRating={this.changeRating.bind(this)}
-              starRatedColor="gold"
-              starHoverColor="gold"
-            />
+            <h2 id="rar_modalProduct">
+              About the
+              {currentProductName}
+            </h2>
+            <div id="rar_starRatingModal">
+              <p>Overall rating</p>
+              <div id="rar_starRatingModal2">
+                <StarRatings
+                  name="react-star-rating"
+                  totalStars={5}
+                  rating={this.state.ratingStar}
+                  changeRating={this.changeRating.bind(this)}
+                  starRatedColor="gold"
+                  starHoverColor="gold"
+                  starDimension="3vw"
+                  starSpacing="3px"
+                />
+              </div>
+              <small>{(this.state.ratingStar > 0) ? `- ${this.state.ratingStarCode[this.state.ratingStar]}` : ''}</small>
+            </div>
             <div id="checkBoxRecommend">
-              <label htmlFor="happy">
-                Yes
-                <input type="radio" id="recommendBoolean" name="approve" value="Yes" onChange={this.handleRecRadioClick.bind(this)} />
-              </label>
-              <label htmlFor="sad">
-                No
-                <input type="radio" id="recommendBoolean" name="approve" value="No" onChange={this.handleRecRadioClick.bind(this)} />
-              </label>
+              <small>Do you recommend this product?</small>
+              <br />
+              <div id="rar_yesNo">
+                <label htmlFor="happy">
+                  Yes
+                  <input type="radio" id="recommendBoolean" name="approve" value="Yes" onChange={this.handleRecRadioClick.bind(this)} />
+                </label>
+                <label htmlFor="sad">
+                  No
+                  <input type="radio" id="recommendBoolean" name="approve" value="No" onChange={this.handleRecRadioClick.bind(this)} />
+                </label>
+              </div>
             </div>
             <div>
               <table id="radioTable2">
@@ -324,68 +338,23 @@ class AddReview extends React.Component {
                   </td>
                 </tr>
               </table>
-              {/* <br />
-              <div className="rar_selectorTable">
-                <div className="rar_selectorTableHeaders">
-                  <div>Metric</div>
-                  <div className="rar_selectorTableColumnOne">1</div>
-                  <div>2</div>
-                  <div>3</div>
-                  <div>4</div>
-                  <div>5</div>
-                </div>
-                <div className="rar_selectorTableRow">
-                  <div>Size</div>
-                  <div className="rar_selectorTableColumnOne">1</div>
-                  <div>2</div>
-                  <div>3</div>
-                  <div>4</div>
-                  <div>5</div>
-                </div>
-                <div className="rar_selectorTableRow">
-                  <div>Width</div>
-                  <div className="rar_selectorTableColumnOne">1</div>
-                  <div>2</div>
-                  <div>3</div>
-                  <div>4</div>
-                  <div>5</div>
-                </div>
-                <div className="rar_selectorTableRow">
-                  <div>Comfort</div>
-                  <div className="rar_selectorTableColumnOne">1</div>
-                  <div>2</div>
-                  <div>3</div>
-                  <div>4</div>
-                  <div>5</div>
-                </div>
-                <div className="rar_selectorTableRow">
-                  <div>Quality</div>
-                  <div className="rar_selectorTableColumnOne">1</div>
-                  <div>2</div>
-                  <div>3</div>
-                  <div>4</div>
-                  <div>5</div>
-                </div>
-                <div className="rar_selectorTableRow">
-                  <div>Length</div>
-                  <div className="rar_selectorTableColumnOne">1</div>
-                  <div>2</div>
-                  <div>3</div>
-                  <div>4</div>
-                  <div>5</div>
-                </div>
-                <div className="rar_selectorTableRow">
-                  <div>Fit</div>
-                  <div className="rar_selectorTableColumnOne">1</div>
-                  <div>2</div>
-                  <div>3</div>
-                  <div>4</div>
-                  <div>5</div>
-                </div>
-              </div> */}
             </div>
+            <small>Review summary</small>
+            <input id="rar_reviewSummaryInput" type="text" value="Example: Best purchase ever!" />
+            <small>Why did you like the product or not?</small>
+            <textarea id="rar_summaryBox" type="text" name="reviewSummary" minLength="50" onChange={this.handlebodyChange.bind(this)}>Write here...</textarea>
+            <div>
+              {(50 - revbody.length > 0 === true) ? ('Minimum required characters left: ' + '' + (50 - revbody.length)) : 'Minimum reached'}
+              {revbody.length > 1000 ? 'Maximum characteres reached' : ''}
+            </div>
+            <button id="rar_uploadPhotos" type="button">Upload Photos</button>
+            <small>What is your nickname?</small>
+            <input id="rar_nicknameInput" type="text" value="nickname" />
+            <small>What is your email?</small>
+            <small>For authentication reasons, you will not be emailed</small>
+            <input id="rar_emailInput" type="text" value="email" />
             <div className="close">
-              <button id="modalSubmit" type="button" style={style} onClick={this.handleSubmit.bind(this)}>Submit</button>
+              <button id="rar_modalSubmit" type="button" style={style} onClick={this.handleSubmit.bind(this)}>Submit</button>
             </div>
           </div>
         </div>

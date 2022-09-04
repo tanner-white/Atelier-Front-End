@@ -122,8 +122,8 @@ class ReviewList extends React.Component {
             index={this.state.index}
           />
           <div className="rar_reviewButtons">
-            <button className="button" type="submit" id="moreReviews" onClick={this.updateIndex.bind(this)}>MORE REVIEWS</button>
-            <button className="button" type="submit" id="lessReviews" onClick={this.resetIndex.bind(this)}>LESS REVIEWS</button>
+            <button type="submit" id="rar_tileBoxButtons" onClick={this.updateIndex.bind(this)}>MORE REVIEWS</button>
+            {this.state.index === 2 ? '' : <button type="submit" id="rar_tileBoxButtons" onClick={this.resetIndex.bind(this)}>LESS REVIEWS</button>}
             <div>
               <AddReview
                 addReview={this.props.addReview}

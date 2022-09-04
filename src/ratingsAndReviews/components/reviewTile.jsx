@@ -26,7 +26,7 @@ class ReviewTile extends React.Component {
                 rating={review.rating}
                 starRatedColor="black"
                 numberOfStars={5}
-                starDimension="20px"
+                starDimension="1.5vw"
                 starSpacing="1px"
               />
             </span>
@@ -43,7 +43,7 @@ class ReviewTile extends React.Component {
           {review.recommend ? <i id="rar_checkmark">&#10003; I recommend this product</i> : ''}
         </div>
         <div id="rar_responses">
-          {review.response ? `${'Response:'}${review.response}` : ''}
+          {review.response ? `${'Response from seller:'}${review.response}` : ''}
         </div>
         <div className="rar_pics">
           {review.photos.map((image) => (
