@@ -105,6 +105,7 @@ class ReviewList extends React.Component {
           <RatingTile
             product_data2={this.props.productInfo}
             setAverageStars={this.props.setAverageStars}
+            itemMeta={this.props.itemMeta}
           />
         </div>
         <div className="rar_tileBox">

@@ -48,9 +48,16 @@ app.get('/reviews/', (req, res) => {
     .catch((error) => res.send(error));
 });
 
-app.post('/reviews/addReview', (req, res) => {
-  axios.post(`${API}reviews?product_id=66642`, options) // body object
+app.get('/reviews/meta', (req, res) => {
+  axios.get(`${API}reviews/meta?product_id=66642`, options)
     .then((response) => res.send(response.data))
+    .catch((error) => res.send(error));
+});
+
+app.post('/reviews/addReview', (req, res) => {
+  const message = req.body;
+  axios.post(`${API}reviews123`, message, options) // body object
+    .then((response) => console.log(response))
     .catch((error) => res.send(error));
 });
 

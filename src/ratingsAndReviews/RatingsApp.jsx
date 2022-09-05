@@ -8,6 +8,7 @@ class RatingsApp extends React.Component {
     super(props);
     this.state = {
       currentItem: { results: [] },
+      currentMeta: {},
     };
   }
 
@@ -15,7 +16,14 @@ class RatingsApp extends React.Component {
     // gets all reviews for a specific product - still needs a way to send product id
     axios.get('http://localhost:3001/reviews/')
       .then((response) => this.setState({ currentItem: response.data }))
-      .catch((err) => (console.log('error in app get', err)));
+      .then(this.getMeta())
+      .catch((err) => (console.log(err)));
+  }
+
+  getMeta(productId) {
+    axios.get('http://localhost:3001/reviews/meta', productId)
+      .then((response) => this.setState({ currentMeta: response.data }))
+      .catch((err) => (console.log(err)));
   }
 
   addReview(message) {
@@ -25,13 +33,14 @@ class RatingsApp extends React.Component {
   }
 
   render() {
-    const { currentItem } = this.state;
+    const { currentItem, currentMeta } = this.state;
     const { setNumberReviews, setAverageStars, currentProductName } = this.props;
     setNumberReviews(currentItem.results.length);
     return (
       <div id="rarMain">
         <ReviewList
           productInfo={currentItem}
+          itemMeta={currentMeta}
           currentProductName={currentProductName}
           addReview={this.addReview.bind(this)}
           setAverageStars={setAverageStars}

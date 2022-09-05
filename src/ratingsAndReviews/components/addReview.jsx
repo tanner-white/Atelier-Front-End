@@ -8,18 +8,25 @@ class AddReview extends React.Component {
       ratingStar: 0,
       ratingStarCode: { 1: 'Poor', 2: 'Fair', 3: 'Average', 4: 'Good', 5: 'Great'},
       style: { display: 'none' },
-      productId: null,
+      stylePics: { display: 'none' },
+      productId: this.props.productId || 66642,
+      revSum: '',
       revbody: '',
+      userEmail: '',
+      userNickname: '',
+      userPhotos: [],
       recommendedBoolean: null,
       ratings: {
-        1: null, 2: null, 3: null, 4: null, 5: null,
+        1: 0, 2: 0, 3: 0, 4: 0, 5: 0,
       },
-      size: { id: 14, value: null },
-      width: { id: 15, value: null },
-      comfort: { id: 16, value: null },
-      quality: { id: 17, value: null },
-      length: { id: 18, value: null },
-      fit: { id: 19, value: null },
+      Characteristics: {
+        14: 0,
+        15: 0,
+        16: 0,
+        17: 0,
+        18: 0,
+        19: 0,
+      },
     };
 
     this.handleWindowClick = this.handleWindowClick.bind(this);
@@ -39,21 +46,21 @@ class AddReview extends React.Component {
     event.preventDefault();
     // invoke axios call to add a review
     const {
-      ratings, ratingStar, recommendedBoolean, size, width, comfort, quality,
-      length, fit, revbody,
+      ratingStar, recommendedBoolean, revSum, userPhotos,
+      revbody, productId, userEmail, userNickname, Characteristics,
     } = this.state;
-    const { addReview, productId } = this.props;
+    const { addReview } = this.props;
 
     const message = {
       product_id: productId,
       rating: ratingStar,
-      summary: null,
+      summary: revSum,
       body: revbody,
       recommend: recommendedBoolean,
-      name: null,
-      email: null,
-      photos: null,
-      characteristics: null,
+      name: userNickname,
+      email: userEmail,
+      photos: userPhotos,
+      characteristics: Characteristics,
     };
 
     addReview(message);
@@ -68,6 +75,14 @@ class AddReview extends React.Component {
 
     this.setState({
       style: { display: 'flex' },
+    });
+  }
+
+  handlePhotoClick(event) {
+    event.preventDefault();
+
+    this.setState({
+      stylePics: { display: 'block' },
     });
   }
 
@@ -135,6 +150,24 @@ class AddReview extends React.Component {
     console.log(this.state.recommendedBoolean);
   }
 
+  handleSummaryChange(event) {
+    this.setState({
+      revSum: event.target.value,
+    });
+  }
+
+  handleNicknameChange(event) {
+    this.setState({
+      userNickname: event.target.value,
+    });
+  }
+
+  handleEmailChange(event) {
+    this.setState({
+      userEmail: event.target.value,
+    });
+  }
+
   changeRating(event) {
     // todo: hook this up to state values for ratings
     const eventVal = event;
@@ -145,13 +178,17 @@ class AddReview extends React.Component {
   }
 
   render() {
-    const { style, revbody } = this.state;
+    const { style, revbody, stylePics} = this.state;
     const { currentProductName } = this.props;
     return (
       <div id="modalChunk">
         <button type="button" id="rar_tileBoxButtons" onClick={this.handleModalClick.bind(this)}>
           ADD A REVIEW +
         </button>
+        <div id="myPicModal" className="modal" style={stylePics}>
+          SubmitPics
+          <div id="myPicModalContent">SubmitMorePics</div>
+        </div>
         <div id="myModal" className="modal" style={style}>
           <div id="myModal-content">
             <h2 id="rar_modalTitle">Write Your Review</h2>
@@ -340,19 +377,19 @@ class AddReview extends React.Component {
               </table>
             </div>
             <small>Review summary</small>
-            <input id="rar_reviewSummaryInput" type="text" value="Example: Best purchase ever!" />
+            <input id="rar_reviewSummaryInput" type="text" value="Example: Best purchase ever!" onChange={this.handleSummaryChange.bind(this)} />
             <small>Why did you like the product or not?</small>
             <textarea id="rar_summaryBox" type="text" name="reviewSummary" minLength="50" onChange={this.handlebodyChange.bind(this)}>Write here...</textarea>
             <div>
               {(50 - revbody.length > 0 === true) ? ('Minimum required characters left: ' + '' + (50 - revbody.length)) : 'Minimum reached'}
               {revbody.length > 1000 ? 'Maximum characteres reached' : ''}
             </div>
-            <button id="rar_uploadPhotos" type="button">Upload Photos</button>
+            <button id="rar_uploadPhotos" type="button" onClick={this.handlePhotoClick.bind(this)}>Upload Photos</button>
             <small>What is your nickname?</small>
-            <input id="rar_nicknameInput" type="text" value="nickname" />
+            <input id="rar_nicknameInput" type="text" value="nickname" onChange={this.handleNicknameChange.bind(this)} />
             <small>What is your email?</small>
             <small>For authentication reasons, you will not be emailed</small>
-            <input id="rar_emailInput" type="text" value="email" />
+            <input id="rar_emailInput" type="text" value="email" onChange={this.handleEmailChange.bind(this)} />
             <div className="close">
               <button id="rar_modalSubmit" type="button" style={style} onClick={this.handleSubmit.bind(this)}>Submit</button>
             </div>

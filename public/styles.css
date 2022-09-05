@@ -334,6 +334,7 @@ h2 {
 }
 #rar_header {
   display: flex;
+  font-weight: 400;
 
 }
 .rar_ratingData {
@@ -417,10 +418,14 @@ h2 {
   margin-right: 1vw;
   text-align: center;
 }
+.rar_sortDropDown {
+  font-size: 1.7vw;
+  font-weight: bold;
+}
 #reviewSelector {
   text-decoration: underline;
   border: none;
-  font-size: 110%;
+  font-size: 1.7vw;
   font-weight: bold;
 }
 meter::-webkit-meter-bar {
