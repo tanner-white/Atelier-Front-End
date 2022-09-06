@@ -35,7 +35,12 @@ function App() {
         {' '}
         <u>NEW PRODUCT HIGHLIGHT</u>
       </div>
-      <Overview setCurrentProductName={setCurrentProductName} scrollToReviews={scrollToReviews} />
+      <Overview
+        averageStars={averageStars}
+        numberReviews={numberReviews}
+        setCurrentProductName={setCurrentProductName}
+        scrollToReviews={scrollToReviews}
+      />
       <Questions />
       <div ref={reviewsRef} />
       <RatingsApp

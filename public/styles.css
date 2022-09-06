@@ -92,7 +92,7 @@ h2 {
 }
 .basic-info-container {
   position: relative;
-  margin-left: 5%;
+  margin-left: 3%;
   width: 30vw;
   max-width: 364px;
   max-height: 574px;
@@ -106,7 +106,7 @@ h2 {
   color: rgb(181, 2, 2);
 }
 .see-reviews {
-  font-size: 100%;
+  font-size: 70%;
   margin-bottom: 1%;
   margin-top: 2%;
   cursor: pointer;
@@ -227,14 +227,16 @@ h2 {
   font-size: 100%;
 }
 .style-thumbnails {
-  width: 30vw;
+  width: 8vw;
   max-width: 380px;
   height: auto;
   cursor: pointer;
 }
 .thumbnail-div {
-  display: inline-block;
+  display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
   width: 5vw;
   max-width: 68px;
   height: 5vw;
@@ -253,7 +255,6 @@ h2 {
 .image-gallery-default {
   display: flex;
   position: relative;
-  overflow: hidden;
   background-color: #ffffff;
   flex-direction: column;
   margin: 0;
@@ -305,7 +306,7 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   width: 4vw;
-  margin: 4vw 0px 10% 5%;
+  margin: 5vw 0px 10% 5%;
 }
 .gallery-thumbnail {
   width: 100%;
@@ -341,11 +342,14 @@ h2 {
   z-index: 9;
 }
 @media screen and (min-width: 1280px) {
-  .product-category, .see-reviews, .price, .sale-price, .style-name {
+  .product-category, .price, .sale-price, .style-name {
     font-size: 19.2px;
   }
   .quantity-select, .add-to-bag, .size-select, .add-to-outfit {
     font-size: 15.3px;
+  }
+  .see-reviews {
+    font-size: 13.4px;
   }
   .product-name{font-size:  38.4px;}
   .slogan{font-size: 25.6px}

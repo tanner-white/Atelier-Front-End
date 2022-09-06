@@ -7,7 +7,10 @@ import StyleSelector from './components/StyleSelector.jsx';
 import AddToCart from './components/AddToCart.jsx';
 import ProductDetails from './components/ProductDetails.jsx';
 
-function Overview({ setCurrentProductName, scrollToReviews }) {
+function Overview({
+  setCurrentProductName, scrollToReviews,
+  averageStars, numberReviews,
+}) {
   const [product, setProduct] = useState({});
   useEffect(() => {
     axios.get('http://localhost:3001/products/66642')
@@ -40,7 +43,12 @@ function Overview({ setCurrentProductName, scrollToReviews }) {
       <div className="overview-widget">
         <ImageGallery current={currentPhotos} currentThumbnails={currentThumbnails} />
         <div className="basic-info-container">
-          <BasicInfo product={product} scrollToReviews={scrollToReviews} />
+          <BasicInfo
+            product={product}
+            scrollToReviews={scrollToReviews}
+            averageStars={averageStars}
+            numberReviews={numberReviews}
+          />
           <StyleSelector
             styles={styles}
             current={currentStyle}
