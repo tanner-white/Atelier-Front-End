@@ -27,15 +27,23 @@ class RatingsApp extends React.Component {
   }
 
   addReview(message) {
-    console.log(message);
     axios.post('http://localhost:3001/reviews/addReview', message)
-      .then((response) => console.log('Post request to reviews API successful', response))
-      .catch((error) => console.log('error posting to API', error));
+      .then((response) => console.log('POST new review request to server successful', response))
+      .catch((error) => console.log('error posting to server', error));
+  }
+
+  postHelpful(ID) {
+    console.log(ID);
+    axios.put('http://localhost:3001/reviews/putHelpful', ID)
+      .then((response) => console.log('POST new helpful request to server successful', response))
+      .catch((error) => console.log('error posting to server', error));
   }
 
   render() {
+    console.log(this.state.currentItem);
     const { currentItem, currentMeta } = this.state;
     const { setNumberReviews, setAverageStars, currentProductName } = this.props;
+    //const { addReview, postHelpful } = this;
     setNumberReviews(currentItem.results.length);
     return (
       <div id="rarMain">
@@ -45,6 +53,7 @@ class RatingsApp extends React.Component {
           currentProductName={currentProductName}
           addReview={this.addReview.bind(this)}
           setAverageStars={setAverageStars}
+          postHelpful={this.postHelpful.bind(this)}
         />
       </div>
     );

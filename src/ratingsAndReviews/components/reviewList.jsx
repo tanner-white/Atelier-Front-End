@@ -121,6 +121,7 @@ class ReviewList extends React.Component {
           <ReviewTile
             product_data1={this.props.productInfo}
             index={this.state.index}
+            addHelpful={this.props.postHelpful}
           />
           <div className="rar_reviewButtons">
             <button type="submit" id="rar_tileBoxButtons" onClick={this.updateIndex.bind(this)}>MORE REVIEWS</button>

@@ -390,8 +390,8 @@ h2 {
   margin-bottom: 20px;
   gap: 10px;
 }
-#rar_yes,
-#rar_report {
+.rar_yes,
+.rar_report {
   text-decoration: underline;
   font-weight: lighter;
   color: grey;
