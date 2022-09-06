@@ -80,11 +80,15 @@ function AddAnswer({ handleSubmit, questionBody, currentProductName }, ref) {
             <div className="modal-name">
               <small>Name: &nbsp;</small>
               <input className="amodal" type="text" maxLength="60" placeholder="Example: jack543!" onChange={(e) => setNickname(e.target.value)} />
+              <br />
+              For privacy reasons, do not use your full name or email address
             </div>
             <br />
             <div className="modal-email">
               <small>Email: &nbsp;</small>
               <input className="amodal" type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
+              <br />
+              For authentication reasons, you will not be emailed” will appear
             </div>
             <br />
             <div>

@@ -934,8 +934,8 @@ td { /*this may cause issues but I can go back later and fix */
   position: fixed; /* Stay in place */ /* Sit on top */
   top: 25%;
   left: 25%;
-  width: 50vw; /* Full width */
-  height: 50vw; /* Full height */
+  width: 55vw; /* Full width */
+  height: 55vw; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: white;
