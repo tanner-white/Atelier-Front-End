@@ -14,18 +14,18 @@ class AddReview extends React.Component {
       revbody: '',
       userEmail: '',
       userNickname: '',
-      userPhotos: [],
+      userPhotos: ['https://placebear.com/g/200/300'],
       recommendedBoolean: null,
       ratings: {
         1: 0, 2: 0, 3: 0, 4: 0, 5: 0,
       },
       Characteristics: {
-        14: 0,
-        15: 0,
-        16: 0,
-        17: 0,
-        18: 0,
-        19: 0,
+        14: 5,
+        15: 5,
+        16: 5,
+        17: 5,
+        18: 5,
+        19: 5,
       },
     };
 
@@ -33,13 +33,17 @@ class AddReview extends React.Component {
   }
 
   componentDidMount() {
-    const listener = document.getElementById('myModal');
-    listener.addEventListener('mousedown', this.handleWindowClick);
+    const listenerForm = document.getElementById('myModal');
+    listenerForm.addEventListener('mousedown', this.handleWindowClick);
+    const listenerPics = document.getElementById('myPicModal');
+    listenerPics.addEventListener('mousedown', this.handleWindowClick);
   }
 
   componentWillUnmount() {
-    const listener = document.getElementById('myModal');
-    listener.removeEventListener('mousedown', this.handleWindowClick);
+    const listenerForm = document.getElementById('myModal');
+    listenerForm.removeEventListener('mousedown', this.handleWindowClick);
+    const listenerPics = document.getElementById('myPicModal');
+    listenerPics.removeEventListener('mousedown', this.handleWindowClick);
   }
 
   handleSubmit(event) {
@@ -90,6 +94,12 @@ class AddReview extends React.Component {
     if (event.target === document.getElementById('myModal')) {
       this.setState({
         style: { display: 'none' },
+      });
+    }
+
+    if (event.target === document.getElementById('myPicModal')) {
+      this.setState({
+        stylePics: { display: 'none' },
       });
     }
   }
@@ -186,8 +196,11 @@ class AddReview extends React.Component {
           ADD A REVIEW +
         </button>
         <div id="myPicModal" className="modal" style={stylePics}>
-          SubmitPics
-          <div id="myPicModalContent">SubmitMorePics</div>
+          <div id="myPicModalContent">
+            Add Product Pictures Below
+            <input type="file" id="myPicsImagesInput" name="myPicsImagesInput" multiple accept="image/*" />
+            <button id="myPicsModalButtons" type="button">Upload All</button>
+          </div>
         </div>
         <div id="myModal" className="modal" style={style}>
           <div id="myModal-content">
@@ -377,7 +390,10 @@ class AddReview extends React.Component {
               </table>
             </div>
             <small>Review summary</small>
-            <input id="rar_reviewSummaryInput" type="text" value="Example: Best purchase ever!" onChange={this.handleSummaryChange.bind(this)} />
+            <label htmlFor="revSum">
+              <input id="rar_reviewSummaryInput" name="revSum" type="text" onChange={this.handleSummaryChange.bind(this)} />
+              <p id="rar_reviewSummaryInput">Example: Best purchase ever!</p>
+            </label>
             <small>Why did you like the product or not?</small>
             <textarea id="rar_summaryBox" type="text" name="reviewSummary" minLength="50" onChange={this.handlebodyChange.bind(this)}>Write here...</textarea>
             <div>
@@ -386,10 +402,10 @@ class AddReview extends React.Component {
             </div>
             <button id="rar_uploadPhotos" type="button" onClick={this.handlePhotoClick.bind(this)}>Upload Photos</button>
             <small>What is your nickname?</small>
-            <input id="rar_nicknameInput" type="text" value="nickname" onChange={this.handleNicknameChange.bind(this)} />
+            <input id="rar_nicknameInput" type="text" onChange={this.handleNicknameChange.bind(this)} />
             <small>What is your email?</small>
             <small>For authentication reasons, you will not be emailed</small>
-            <input id="rar_emailInput" type="text" value="email" onChange={this.handleEmailChange.bind(this)} />
+            <input id="rar_emailInput" type="text" onChange={this.handleEmailChange.bind(this)} />
             <div className="close">
               <button id="rar_modalSubmit" type="button" style={style} onClick={this.handleSubmit.bind(this)}>Submit</button>
             </div>

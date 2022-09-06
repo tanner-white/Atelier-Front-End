@@ -10,6 +10,16 @@ class ReviewTile extends React.Component {
     };
   }
 
+  handleHelpfulClick() {
+    // axios call for posting a new helpful
+    console.log('helpful');
+  }
+
+  handleReportClick() {
+    // axios call for posting a new report
+    console.log('report');
+  }
+
   formatDate(strDate) {
     let date = (new Date(strDate));
     date = date.toString().slice(3, 15);
@@ -52,14 +62,9 @@ class ReviewTile extends React.Component {
         </div>
         <div id="rar_helpAndReport">
           <div id="rar_helpful">Helpful?</div>
-          <div id="rar_yes">Yes(1)</div>
-          {/* <a href="">
-            (
-            {1}
-            )
-            </a> */}
+          <button type="button" id="rar_yes" onClick={this.handleHelpfulClick.bind(this)}>Yes({1}) </button>
           <div id="rar_symbol">|</div>
-          <div id="rar_report"> report</div>
+          <button type="button" id="rar_report" onClick={this.handleReportClick.bind(this)}> Report</button>
         </div>
       </div>
     ))

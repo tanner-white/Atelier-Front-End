@@ -27,6 +27,7 @@ class RatingsApp extends React.Component {
   }
 
   addReview(message) {
+    console.log(message);
     axios.post('http://localhost:3001/reviews/addReview', message)
       .then((response) => console.log('Post request to reviews API successful', response))
       .catch((error) => console.log('error posting to API', error));

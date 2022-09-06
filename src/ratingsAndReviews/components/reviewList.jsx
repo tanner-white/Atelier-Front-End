@@ -108,7 +108,7 @@ class ReviewList extends React.Component {
             itemMeta={this.props.itemMeta}
           />
         </div>
-        <div className="rar_tileBox">
+        <div id="rar_tileBox" className="rar_tileBox">
           <div>
             <Filter
               numReviews={this.props.productInfo.results.length}

@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+  /* transform: scale(.8); */
 }
 ol, ul {
 	list-style: none;
@@ -275,10 +276,6 @@ h2 {
 .rar_section {
   display: flex;
   flex-direction: row;
-  margin-top: 2vw;
-  margin-top: 5vw;
-  max-width: 60vw;
-  gap: 2vw;
 }
 .rar_ratingBox {
   display: flex;
@@ -287,6 +284,8 @@ h2 {
   width: 20vw;
   padding: 1vw;
   max-width: 30vw;
+  /* transform: scale(.7);
+  transform: translate(90px, 50px); */
 
 }
 .rar_reviewData {
@@ -320,17 +319,19 @@ h2 {
 .rar_tileBox {
   display: flex;
   flex-direction: column;
-  margin-top: 2vw;
-  width: 45vw;
-
+  margin-top: 3vw;
+  width: 100%;
+  max-height: 60%;
 }
+/* #rar_tileBox {
+  transform: scale(.75);
+} */
 .rar_tile {
   display:flex;
-  margin-top: 4vw;
+  margin-top: 3vw;
   border-bottom: 2px solid grey;
   flex-direction: column;
   max-width: 40vw;
-
 }
 #rar_header {
   display: flex;
@@ -356,7 +357,7 @@ h2 {
   margin-top: 1vw;
   margin-bottom: 1vw;
   font-weight: bold;
-  font-size: 1.6vw;
+  font-size: 1.4vw;
 }
 #rar_fullSummary {
   margin-top: 1vw;
@@ -377,10 +378,11 @@ h2 {
   border: 1px solid black;
   border-radius: 4px;
   padding: 5px;
-  width: 75px;
+  width: 5vw;
 }
 #rar_helpAndReport {
   display: flex;
+  align-items: baseline;
   color: grey;
   font-size: small;
   flex-direction: row;
@@ -388,17 +390,19 @@ h2 {
   margin-bottom: 20px;
   gap: 10px;
 }
-#rar_yes {
-  text-decoration: underline;
-}
+#rar_yes,
 #rar_report {
   text-decoration: underline;
+  font-weight: lighter;
+  color: grey;
+  background: none;
+  border: none;
 }
 .rar_reviewButtons {
   display: flex;
-  margin-top: 5vw;
+  margin-top: 2vw;
   margin-bottom: 5vw;
-  gap: 20px;
+  gap: 10px;
 }
 #lessReviews,
 #moreReviews {
@@ -412,9 +416,18 @@ h2 {
 #rar_tileBoxButtons {
   background-color: #ffffff;
   border: 1px solid black;
-  font-size: 1vw;
-  width: 20vw;
+  font-size: 1.3vw;
+  width: 15vw;
   height: 5vw;
+  margin-right: 1vw;
+  text-align: center;
+}
+#myPicsModalButtons {
+  background-color: #ffffff;
+  border: 1px solid black;
+  font-size: 1vw;
+  width: 15vw;
+  height: 3vw;
   margin-right: 1vw;
   text-align: center;
 }
@@ -445,8 +458,7 @@ meter::-webkit-meter-optimum-value {
 }
 .rar_dataMeter {
 text-align: left;
-width: 20vw;
-max-width: 20vw;
+width: 10%;
 }
 #rar_met {
   width: 15vw;
@@ -461,7 +473,7 @@ max-width: 20vw;
 #rar_sizeBar,
 #rar_comfortBar {
   display: flex;
-  width: 20vw;
+  width: 18.5vw;
 }
 #starRow {
   display: flex;
@@ -488,13 +500,40 @@ max-width: 20vw;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 10px;
+  gap: 2vw;
   background-color: #ffffff;
-  margin: 15% auto;
+  margin: 15vw;
   padding: 20px;
   border: 3px solid black;
+  height: 100vw;
+  width: 80vw;
+}
+#myPicModal {
+  display: none;
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
   height: 100%;
-  width: 80%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+#myPicModalContent {
+  display: flex;
+  font-size: 3vw;
+  border-radius: 2vw;
+  border-color: #5c5c5c;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  margin: 50% auto;
+  padding: 20px;
+  border: 3px solid black;
+  height: 40vw;
+  width: 50vw;
 }
 #rar_modalTitle {
  font-size: 6vw;
@@ -504,10 +543,15 @@ max-width: 20vw;
 }
 #rar_summaryBox {
   width: 45vw;
-  height: 8vw;
+  height: 6vw;
+  min-height: 4vw;
   font-size: 1vw;
 }
 #rar_reviewSummaryInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1vw;
   width: 45vw;
   font-size: 1vw;
 }
@@ -546,13 +590,28 @@ textarea:invalid {
   text-decoration: underline wavy red;
 }
 #rar_uploadPhotos {
+  background-color: #ffffff;
+  border: 1px solid black;
   font-size: 1vw;
+  width: 15vw;
+  height: 3vw;
+  margin-right: 1vw;
+  text-align: center;
 }
 #modalButton {
   display: flex;
 }
 #rar_modalSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid black;
   font-size: 1vw;
+  width: 15vw;
+  height: 3vw;
+  margin-right: 1vw;
+  text-align: center;
 }
 .close {
   color: #aaa;

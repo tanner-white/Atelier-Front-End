@@ -56,9 +56,9 @@ app.get('/reviews/meta', (req, res) => {
 
 app.post('/reviews/addReview', (req, res) => {
   const message = req.body;
-  axios.post(`${API}reviews123`, message, options) // body object
-    .then((response) => console.log(response))
-    .catch((error) => res.send(error));
+  axios.post(`${API}reviews`, message, options) // body object
+    .then((response) => console.log(response.data))
+    .catch((error) => console.log(error));
 });
 
 app.put('/qa/questions/:question_id/helpful', (req, res) => {
