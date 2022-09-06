@@ -28,10 +28,10 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
-body {
+/* body {
 	line-height: 1;
-  /* transform: scale(.8); */
-}
+  transform: scale(.8);
+} */
 ol, ul {
 	list-style: none;
 }
@@ -85,15 +85,14 @@ h2 {
 }
 /* overview */
 .overview-widget {
-  align-items: flex-start;
-  justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
   margin: 0px 0px;
   margin-top: 1%;
 }
 .basic-info-container {
-  position: absolute;
-  top: 9vw;
-  left: 65%;
+  position: relative;
+  margin-left: 5%;
   width: 30vw;
   max-width: 364px;
   max-height: 574px;
@@ -108,8 +107,8 @@ h2 {
 }
 .see-reviews {
   font-size: 100%;
-  margin-bottom: 1vw;
-  margin-top: 4vw;
+  margin-bottom: 1%;
+  margin-top: 2%;
   cursor: pointer;
 }
 .see-reviews:hover {
@@ -128,23 +127,24 @@ h2 {
   max-width: 220px;
   height: 5vw;
   max-height: 64px;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   border-radius: 2px;
-  margin-bottom: 1vw;
+  margin-bottom: 3%;
   margin-right: 1vw;
 }
 .quantity-select {
   width: 11vw;
+  margin-bottom: 3%;
   max-width: 120px;
   height: 5vw;
   max-height: 64px;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   border-radius: 2px;
 }
 .add-to-bag {
   background-color: #ffffff;
   border: 1px solid black;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
   width: 24vw;
   max-width: 270px;
   height: 5vw;
@@ -164,7 +164,9 @@ h2 {
 }
 .details-and-features {
   display: flex;
+  position: relative;
   flex-direction: row;
+  margin-top: 5%;
 }
 .product-details {
   display: flex;
@@ -172,7 +174,6 @@ h2 {
   /* background-color: #ffffff; */
   margin-bottom: 70px;
   margin-left: 7%;
-  margin-top: 20px;
   display: inline-block;
   width: 56vw;
   max-width: 743px;
@@ -222,7 +223,7 @@ h2 {
 }
 .style-name {
   margin-top: 8%;
-  margin-bottom: 1vw;
+  margin-bottom: 1%;
   font-size: 100%;
 }
 .style-thumbnails {
@@ -252,9 +253,10 @@ h2 {
 .image-gallery-default {
   display: flex;
   position: relative;
+  overflow: hidden;
   background-color: #ffffff;
   flex-direction: column;
-  margin: 0 0 0 0;
+  margin: 0;
   width: 62vw;
   max-width: 768px;
   height: 49vw;
@@ -265,11 +267,11 @@ h2 {
 }
 .image-gallery-expanded {
   display: flex;
-  position: sticky;
+  position: absolute;
   background-color: #ffffff;
   flex-direction: column;
   margin: 0px 0px;
-  width: 100vw;
+  width: 100%;
   max-width: 1280px;
   height: 55vw;
   align-items: center;
@@ -341,8 +343,8 @@ h2 {
   .product-category, .see-reviews, .price, .sale-price, .style-name {
     font-size: 19.2px;
   }
-  select, button {
-    font-size: 19.2px;
+  .quantity-select, .add-to-bag, .size-select, .add-to-outfit {
+    font-size: 15.3px;
   }
   .product-name{font-size:  38.4px;}
   .slogan{font-size: 25.6px}
