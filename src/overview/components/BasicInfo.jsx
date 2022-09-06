@@ -4,13 +4,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StarRatings from 'react-star-ratings';
 
-function BasicInfo({ product }) {
+function BasicInfo({ product, scrollToReviews }) {
   function handleReviewClick(e) {
     e.preventDefault();
-    window.scrollTo({
-      top: 1360,
-      behavior: 'smooth',
-    });
+    scrollToReviews();
   }
   return (
     <div className="basic-info">
@@ -18,7 +15,7 @@ function BasicInfo({ product }) {
         <StarRatings
           rating={3.6}
           starRatedColor="black"
-          starDimension="15px"
+          starDimension="1vw"
           starSpacing="1px"
           numberOfStars={5}
           name="rating"
@@ -27,8 +24,8 @@ function BasicInfo({ product }) {
           &nbsp;See all reviews...
         </small>
       </div>
-      <div>{product.category}</div>
-      <h2>{product.name}</h2>
+      <div className="product-category">{product.category && product.category.toUpperCase()}</div>
+      <h2 className="product-name">{product.name}</h2>
     </div>
   );
 }

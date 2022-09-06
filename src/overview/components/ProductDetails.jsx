@@ -7,8 +7,8 @@ function ProductDetails({ product }) {
   return (
     <div className="details-and-features">
       <div className="product-details">
-        <div><h2>{product.slogan}</h2></div>
-        <div>{product.description}</div>
+        <div><h2 className="slogan">{product.slogan}</h2></div>
+        <div className="description">{product.description}</div>
         <div className="social-media-icons">
           <a href="https://twitter.com"><img className="sm-icon twitter" src="https://cdn-icons-png.flaticon.com/512/733/733635.png" alt="twitter" /></a>
           <a href="https://facebook.com"><img className="sm-icon facebook" src="https://cdn-icons-png.flaticon.com/512/59/59439.png" alt="facebook" /></a>
