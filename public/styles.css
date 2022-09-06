@@ -273,7 +273,8 @@ h2 {
   margin: 0px 0px;
   width: 100%;
   max-width: 1280px;
-  height: 55vw;
+  height: 49vw;
+  max-height: 627px;
   align-items: center;
   justify-content: center;
   z-index: 5;
