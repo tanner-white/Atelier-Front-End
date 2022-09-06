@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QuestionList from './components/QuestionList.jsx';
 
-function Questions() {
+function Questions({ trackClick }) {
   const [questions, setQuestions] = useState({});
   const [questionsAdded, setQuestionsAdded] = useState(0);
   const [report, setReport] = useState(0);
@@ -25,6 +26,20 @@ function Questions() {
   const onReport = () => {
     setReport(report + 1);
   };
+
+  const handleTrackClick = (event) => {
+    const clickData = {
+      element: event.target.className,
+      widget: 'QandA',
+      time: new Date(),
+    };
+    trackClick(clickData);
+  };
+
+  useEffect(() => {
+    const element = document.getElementsByClassName('QandA-widget');
+    element[0].addEventListener('click', handleTrackClick);
+  }, []);
 
   return (
     <QuestionList

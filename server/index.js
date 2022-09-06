@@ -101,6 +101,14 @@ app.post('/addquestion', (req, res) => {
     .catch((err) => res.send(err));
 });
 
+app.post('/click', (req, res) => {
+  axios.post(`${API}interactions`, req.body, options)
+    .then((response) => {
+      res.send(response.data);
+    })
+    .catch((err) => res.send(err));
+});
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT);
 console.log('Listening on port 3001');
