@@ -796,6 +796,7 @@ td { /*this may cause issues but I can go back later and fix */
 
 .question-buttons:hover {
   background-color: rgb(215, 215, 215, 0.95);
+  cursor: pointer;
 }
 
 .answer-buttons {
@@ -910,16 +911,19 @@ td { /*this may cause issues but I can go back later and fix */
 .QandA-modal {
   display: block;
   position: fixed;
-  z-index: 10;
   text-align: center;
-  height: 100vw;
-  width: 100vw;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0, 0.4);
 }
 
 .QandA-modal-content {/* Hidden by default */
   display: block;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  position: fixed; /* Stay in place */ /* Sit on top */
   top: 25%;
   left: 25%;
   width: 50%; /* Full width */
