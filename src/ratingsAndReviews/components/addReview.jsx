@@ -366,7 +366,7 @@ class AddReview extends React.Component {
                 </tr>
                 <tr id="rar_radioTableRow6">
                   <td>Fit</td>
-                  <td id="rar_td_header">
+                  <td>
                     <input type="radio" id="radioTableSelector" name="rar_row6" value="1.000" onChange={this.handleFitChange.bind(this)} />
                     <p>Runs tight</p>
                   </td>
