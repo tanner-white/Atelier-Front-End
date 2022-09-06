@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import React, { useState, createRef } from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import Overview from './overview/overviewIndex.jsx';
 // eslint-disable-next-line import/extensions
 import RatingsApp from './ratingsAndReviews/RatingsApp.jsx';
@@ -19,6 +20,12 @@ function App() {
     });
   };
 
+  const trackClick = (input) => {
+    axios.post('http://localhost:3001/click', input)
+      .then(() => console.log('success'))
+      .catch((err) => console.error('client side click error: ', err));
+  };
+
   return (
     <div>
       <header>
@@ -35,13 +42,18 @@ function App() {
         {' '}
         <u>NEW PRODUCT HIGHLIGHT</u>
       </div>
-      <Overview setCurrentProductName={setCurrentProductName} scrollToReviews={scrollToReviews} />
-      <Questions />
+      <Overview
+        setCurrentProductName={setCurrentProductName}
+        scrollToReviews={scrollToReviews}
+        trackClick={trackClick}
+      />
+      <Questions trackClick={trackClick} />
       <div ref={reviewsRef} />
       <RatingsApp
         currentProductName={currentProductName}
         setAverageStars={setAverageStars}
         setNumberReviews={setNumberReviews}
+        trackClick={trackClick}
       />
     </div>
   );

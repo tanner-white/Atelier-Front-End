@@ -42,7 +42,7 @@ function Answers({ answer }) {
           </button>
         </span>
         <span className="answer-spans" id="answer-report-span">
-          <button type="button" className="link-button" id="answer-report-button" onClick={() => (console.log('report user'))}>report</button>
+          <button type="button" className="link-button" id="answer-report-button" onClick={() => (console.log('report user'))}>Report</button>
         </span>
       </div>
     </div>
