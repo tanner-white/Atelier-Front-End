@@ -53,20 +53,33 @@ function AddQuestion({ submit, props, currentProductName }, ref) {
       <div className="QandA-modal">
         <div className="QandA-modal-content">
           <div>
-            <h3>Ask Your Question</h3>
+            <h2>Ask Your Question</h2>
+            <br />
             <h4>
               About&nbsp;
               {currentProductName}
             </h4>
-            <textarea className="qmodal" placeholder="Add Question Here..." maxLength="1000" onChange={(e) => setBody(e.target.value)} />
             <br />
-            <input className="qmodal" type="text" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setName(e.target.value)} />
-            <input className="qmodal" type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
+            <div>
+              <textarea className="qmodal" placeholder="Add Question Here..." maxLength="1000" onChange={(e) => setBody(e.target.value)} />
+            </div>
+            <br />
+            <div>
+              <small>Name: &nbsp;</small>
+              <input className="qmodal" type="text" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setName(e.target.value)} />
+              <br />
+              For privacy reasons, do not use your full name or email address
+            </div>
+            <br />
+            <div>
+              <small>Email: &nbsp;</small>
+              <input className="qmodal" type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
+              <br />
+              For authentication reasons, you will not be emailed” will appear
+            </div>
           </div>
-          For privacy reasons, do not use your full name or email address
           <button className="qmodal" type="submit" onClick={(e) => onSubmit(e)}>submit</button>
           <br />
-          For authentication reasons, you will not be emailed” will appear
         </div>
       </div>
     );

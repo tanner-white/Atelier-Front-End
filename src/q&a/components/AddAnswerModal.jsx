@@ -65,20 +65,35 @@ function AddAnswer({ handleSubmit, questionBody, currentProductName }, ref) {
       <div className="QandA-modal">
         <div className="QandA-modal-content">
           <div>
-            <h3>Submit your Answer</h3>
+            <h2>Submit your Answer</h2>
+            <br />
             <h4>
               {currentProductName}
               &nbsp;:&nbsp;
               {questionBody}
             </h4>
-            <textarea className="amodal" placeholder="Add Answer Here..." maxLength="1000" onChange={(e) => setAnswer(e.target.value)} />
             <br />
-            <input className="amodal" type="text" maxLength="60" placeholder="Example: jack543!" onChange={(e) => setNickname(e.target.value)} />
-            <input className="amodal" type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
+            <div className="modal-body">
+              <textarea className="amodal" placeholder="Add Answer Here..." maxLength="1000" onChange={(e) => setAnswer(e.target.value)} />
+            </div>
+            <br />
+            <div className="modal-name">
+              <small>Name: &nbsp;</small>
+              <input className="amodal" type="text" maxLength="60" placeholder="Example: jack543!" onChange={(e) => setNickname(e.target.value)} />
+            </div>
+            <br />
+            <div className="modal-email">
+              <small>Email: &nbsp;</small>
+              <input className="amodal" type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
+            </div>
+            <br />
+            <div>
+              <small>Upload Photos:</small>
+              <form id="modal-picture-upload">
+                <input className="amodal" type="file" name="upload" accept="image/*" multiple onInput={onInput} />
+              </form>
+            </div>
           </div>
-          <form>
-            <input className="amodal" type="file" name="upload" accept="image/*" multiple onInput={onInput} />
-          </form>
           <button className="amodal" type="submit" onClick={onSubmit}>submit</button>
         </div>
       </div>
