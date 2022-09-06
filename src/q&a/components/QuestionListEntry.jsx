@@ -7,7 +7,7 @@ import axios from 'axios';
 import Answers from './Answers.jsx';
 import AddAnswer from './AddAnswerModal.jsx';
 
-function QuestionListEntry({ item, onReport }) {
+function QuestionListEntry({ item, onReport, currentProductName }) {
   const [list, setList] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [helpful, setHelpful] = useState(item.question_helpfulness);
@@ -89,7 +89,12 @@ function QuestionListEntry({ item, onReport }) {
           <button type="button" className="link-button" id="add-answer-button" onClick={() => aModal.current.open()}>Add Answer</button>
           <button type="button" className="link-button" id="question-report-button" onClick={handleReport}>Report</button>
         </span>
-        <AddAnswer ref={aModal} handleSubmit={handleAnswerSubmit} />
+        <AddAnswer
+          ref={aModal}
+          handleSubmit={handleAnswerSubmit}
+          currentProductName={currentProductName}
+          questionBody={item.question_body}
+        />
       </div>
       <div className="answer-list">
         {answers.map((answer) => <Answers answer={answer} key={answer.answer_id} />)}

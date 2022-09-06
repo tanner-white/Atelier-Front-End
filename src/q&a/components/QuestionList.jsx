@@ -65,6 +65,7 @@ function QuestionList({ props, handleQuestionSubmit, onReport, currentProductNam
             <QuestionListEntry
               item={match}
               onReport={onReport}
+              currentProductName={currentProductName}
               key={match.question_id}
             />
           )) }

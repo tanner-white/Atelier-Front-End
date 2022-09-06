@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
-function AddAnswer({ handleSubmit }, ref) {
+function AddAnswer({ handleSubmit, questionBody, currentProductName }, ref) {
   const [display, setDisplay] = useState(false);
   const [answer, setAnswer] = useState('');
   const [nickname, setNickname] = useState('');
@@ -65,8 +65,12 @@ function AddAnswer({ handleSubmit }, ref) {
       <div className="QandA-modal">
         <div className="QandA-modal-content">
           <div>
-            <h3>Ask Your Question</h3>
-            <h4>About the Product Here</h4>
+            <h3>Submit your Answer</h3>
+            <h4>
+              {currentProductName}
+              &nbsp;:&nbsp;
+              {questionBody}
+            </h4>
             <textarea className="amodal" placeholder="Add Answer Here..." maxLength="1000" onChange={(e) => setAnswer(e.target.value)} />
             <br />
             <input className="amodal" type="text" maxLength="60" placeholder="Example: jack543!" onChange={(e) => setNickname(e.target.value)} />
