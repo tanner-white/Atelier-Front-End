@@ -29,6 +29,7 @@ function AddQuestion({ submit, props }, ref) {
   }), []);
 
   const handleEscape = useCallback((event) => {
+    console.log(event.target);
     if (event.keyCode === 27) close();
     if (event.target.className !== 'QandA-modal-content'
     && event.target.className !== 'qmodal') {
