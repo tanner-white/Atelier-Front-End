@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable import/extensions */
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
@@ -51,36 +53,38 @@ function QuestionListEntry({ item }) {
 
   const moreAnswersButton = list.length > answers.length
     ? (
-      <button className="answer-buttons" type="submit" onClick={(e) => handleMoreAnswers(e)}>
-        More Answers
-      </button>
+      <p className="answer-buttons" onClick={(e) => handleMoreAnswers(e)}>
+        Load More Answers
+      </p>
     ) : null;
 
   const lessAnswersButton = answers.length > 2
     ? (
-      <button className="answer-buttons" type="submit" onClick={(e) => handleLessAnswers(e)}>
+      <p className="answer-buttons" onClick={(e) => handleLessAnswers(e)}>
         Collapse Answers
-      </button>
+      </p>
     ) : null;
 
   return (
     <div className="question-entry">
-      <div>
+      <div id="question-title">
         <span id="question-body">
           <b>
             Q:&nbsp;
             {item.question_body}
           </b>
         </span>
-        <button type="button" className="link-button" onClick={() => handleHelpful()}>
-          helpful?&nbsp;
-          {`(${helpful})`}
-        </button>
-        <button type="button" className="link-button" onClick={() => aModal.current.open()}>add answer</button>
+        <span id="question-spans">
+          Helpful?&nbsp;
+          <button type="button" className="link-button" id="question-helpful-button" onClick={() => handleHelpful()}>
+            Yes
+            {`(${helpful})`}
+          </button>
+          <button type="button" className="link-button" id="add-answer-button" onClick={() => aModal.current.open()}>Add Answer</button>
+        </span>
         <AddAnswer ref={aModal} handleSubmit={handleAnswerSubmit} />
       </div>
-      <br />
-      <div>
+      <div className="answer-list">
         {answers.map((answer) => <Answers answer={answer} key={answer.answer_id} />)}
       </div>
       {moreAnswersButton}
