@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 
-function AddQuestion({ submit, props }, ref) {
+function AddQuestion({ submit, props, currentProductName }, ref) {
   const [display, setDisplay] = useState(false);
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
@@ -54,7 +54,10 @@ function AddQuestion({ submit, props }, ref) {
         <div className="QandA-modal-content">
           <div>
             <h3>Ask Your Question</h3>
-            <h4>About the Product Here</h4>
+            <h4>
+              About&nbsp;
+              {currentProductName}
+            </h4>
             <textarea className="qmodal" placeholder="Add Question Here..." maxLength="1000" onChange={(e) => setBody(e.target.value)} />
             <br />
             <input className="qmodal" type="text" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setName(e.target.value)} />

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QuestionList from './components/QuestionList.jsx';
 
-function Questions({ trackClick }) {
+function Questions({ trackClick, currentProductName }) {
   const [questions, setQuestions] = useState({});
   const [questionsAdded, setQuestionsAdded] = useState(0);
   const [report, setReport] = useState(0);
@@ -46,6 +46,7 @@ function Questions({ trackClick }) {
       props={questions}
       handleQuestionSubmit={handleQuestionSubmit}
       onReport={onReport}
+      currentProductName={currentProductName}
     />
   );
 }

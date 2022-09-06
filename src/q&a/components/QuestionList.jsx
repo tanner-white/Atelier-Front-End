@@ -5,7 +5,7 @@ import SearchForm from './SearchForm.jsx';
 import QuestionListEntry from './QuestionListEntry.jsx';
 import AddQuestion from './AddQuestionModal.jsx';
 
-function QuestionList({ props, handleQuestionSubmit, onReport }) {
+function QuestionList({ props, handleQuestionSubmit, onReport, currentProductName }) {
   const [list, setList] = useState([]);
   const [matches, setMatches] = useState([]);
   const [index, setIndex] = useState(2);
@@ -68,7 +68,12 @@ function QuestionList({ props, handleQuestionSubmit, onReport }) {
               key={match.question_id}
             />
           )) }
-          <AddQuestion ref={qModal} submit={handleQuestionSubmit} props={props} />
+          <AddQuestion
+            ref={qModal}
+            submit={handleQuestionSubmit}
+            props={props}
+            currentProductName={currentProductName}
+          />
         </div>
         <div id="question-button-div">
           {moreQuestionsButton}
