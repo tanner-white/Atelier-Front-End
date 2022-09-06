@@ -9,12 +9,16 @@ import Questions from './q&a/QuestionsApp.jsx';
 
 function App() {
   const [currentProductName, setCurrentProductName] = useState('');
+  const [averageStars, setAverageStars] = useState(0);
+  const [numberReviews, setNumberReviews] = useState(0);
+
   const reviewsRef = createRef();
   const scrollToReviews = () => {
     reviewsRef.current.scrollIntoView({
       behavior: 'smooth',
     });
   };
+
   return (
     <div>
       <header>
@@ -34,7 +38,11 @@ function App() {
       <Overview setCurrentProductName={setCurrentProductName} scrollToReviews={scrollToReviews} />
       <Questions />
       <div ref={reviewsRef} />
-      <RatingsApp />
+      <RatingsApp
+        currentProductName={currentProductName}
+        setAverageStars={setAverageStars}
+        setNumberReviews={setNumberReviews}
+      />
     </div>
   );
 }

@@ -43,9 +43,22 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 });
 
 app.get('/reviews/', (req, res) => {
-  axios.get(`${API}reviews?product_id=66642&count=10`, options)
+  axios.get(`${API}reviews?product_id=66642&count=100`, options)
     .then((response) => res.send(response.data))
-    .catch((err) => res.send(err));
+    .catch((error) => res.send(error));
+});
+
+app.get('/reviews/meta', (req, res) => {
+  axios.get(`${API}reviews/meta?product_id=66642`, options)
+    .then((response) => res.send(response.data))
+    .catch((error) => res.send(error));
+});
+
+app.post('/reviews/addReview', (req, res) => {
+  const message = req.body;
+  axios.post(`${API}reviews`, message, options) // body object
+    .then((response) => console.log(response.data))
+    .catch((error) => console.log(error));
 });
 
 app.put('/qa/questions/:question_id/helpful', (req, res) => {

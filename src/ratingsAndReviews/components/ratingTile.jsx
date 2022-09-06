@@ -7,12 +7,14 @@ class RatingTile extends React.Component {
     this.state = {
       list: this.props.product_data2,
       rating: 3.5 || newRating,
+
     };
   }
 
   getAvgStars() {
     const resultArray = this.props.product_data2.results;
     const ratingArray = resultArray.map((result) => (result.rating));
+    const { setAverageStars } = this.props;
 
     let sum = 0;
 
@@ -23,6 +25,7 @@ class RatingTile extends React.Component {
     sum /= ratingArray.length;
     const average = Math.round(sum * 10) / 10;
 
+    setAverageStars(average);
     return average;
   }
 
@@ -53,27 +56,38 @@ class RatingTile extends React.Component {
   }
 
   getSizeFeedback() {
+    if (!this.props.itemMeta.characteristics) {
+      return 0;
+    }
+    const metaSize = this.props.itemMeta.characteristics;
+    let avg = (parseInt(metaSize.Comfort.value) + parseInt(metaSize.Fit.value)
+      + parseInt(metaSize.Length.value) + parseInt(metaSize.Quality.value)) / 4;
 
+    return Math.round(avg);
   }
 
   getComfortFeedback() {
-
+    if (!this.props.itemMeta.characteristics) {
+      return 0;
+    }
+    const metaComfort = this.props.itemMeta.characteristics.Comfort;
+    return Math.round(metaComfort.value);
   }
 
   render() {
     const productInfo = this.props.product_data2;
     const reviewArray = this.props.product_data2.results;
-
+    const { rating } = this.state;
     return (
       <div key={productInfo.product} className="rar_reviewData">
-        <h3>Ratings & Reviews</h3>
+        <h3 id="rar_header">Ratings & Reviews</h3>
         <div id="rar_numAndStars">
           <div id="rar_bigNum">{this.getAvgStars()}</div>
           <span className="rar_boxStars">
             <StarRatings
-              rating={this.state.rating}
-              starRatedColor="grey"
-              starDimension="20px"
+              rating={rating}
+              starRatedColor="black"
+              starDimension="1.5vw"
               starSpacing="1px"
               numberOfStars={5}
               name="rating"
@@ -110,11 +124,11 @@ class RatingTile extends React.Component {
         </div>
         <div className="rar_dataMeter">
           <p>Size</p>
-          <meter id="rar_sizeBar" />
+          <meter id="rar_sizeBar" value={this.getSizeFeedback()} min="0" max="5" />
         </div>
         <div className="rar_dataMeter">
           <p>Comfort</p>
-          <meter id="rar_comfortBar" />
+          <meter id="rar_comfortBar" value={this.getComfortFeedback()} min="0" max="5" />
         </div>
       </div>
     );

@@ -10,11 +10,11 @@ import RatingTile from './ratingTile.jsx';
 import Filter from './filter.jsx';
 
 class ReviewList extends React.Component {
-  constructor(props) {
+  constructor({ props, addReview, productInfo }) {
     super(props);
     this.state = {
       origin: null,
-      product: this.props.productInfo,
+      product: productInfo,
       index: 2,
     };
   }
@@ -35,19 +35,17 @@ class ReviewList extends React.Component {
       product: sortedAndMerged,
     });
 
-    this.sortByHelpful.bind(this);
-    this.sortByNewest.bind(this);
-    this.sortByOldest.bind(this);
-    this.sortByRelevance.bind(this);
+    // this.sortByHelpful.bind(this);
+    // this.sortByNewest.bind(this);
+    // this.sortByOldest.bind(this);
+    // this.sortByRelevance.bind(this);
   }
 
   sortByHelpful() {
     console.log('triggered');
-    const originals = this.state.product;
+    const originals = this.props.productInfo;
     const sorted = this.props.productInfo.results;
-    console.log(sorted);
     sorted.sort((a, b) => b.helpfulness - a.helpfulness);
-    console.log(sorted);
     const sortedAndMerged = originals;
     sortedAndMerged.results = sorted;
 
@@ -77,7 +75,6 @@ class ReviewList extends React.Component {
     console.log('triggered');
     const originals = this.state.product;
     const sorted = this.props.productInfo.results;
-
     sorted.sort(((a, b) => new Date(a.date) - new Date(b.date)));
     const sortedAndMerged = originals;
     sortedAndMerged.results = sorted;
@@ -89,8 +86,9 @@ class ReviewList extends React.Component {
   }
 
   updateIndex() {
+    let currentIndex = this.state.index;
     this.setState({
-      index: this.state.index + 2,
+      index: currentIndex + 2,
     });
   }
 
@@ -103,23 +101,37 @@ class ReviewList extends React.Component {
   render() {
     return (
       <div className="rar_section">
-        <div className="rar_ratingBox"><RatingTile product_data2={this.props.productInfo} /></div>
-        <div className="rar_tileBox">
+        <div className="rar_ratingBox">
+          <RatingTile
+            product_data2={this.props.productInfo}
+            setAverageStars={this.props.setAverageStars}
+            itemMeta={this.props.itemMeta}
+          />
+        </div>
+        <div id="rar_tileBox" className="rar_tileBox">
           <div>
             <Filter
               numReviews={this.props.productInfo.results.length}
-              sortRel={this.sortByRelevance}
-              sortHelp={this.sortByHelpful}
-              sortNew={this.sortByNewest}
-              sortOld={this.sortByOldest}
+              sortRel={this.sortByRelevance.bind(this)}
+              sortHelp={this.sortByHelpful.bind(this)}
+              sortNew={this.sortByNewest.bind(this)}
+              sortOld={this.sortByOldest.bind(this)}
             />
           </div>
-          <ReviewTile product_data1={this.props.productInfo} index={this.state.index} />
+          <ReviewTile
+            product_data1={this.props.productInfo}
+            index={this.state.index}
+          />
           <div className="rar_reviewButtons">
-
-            <button className="button" type="submit" id="moreReviews" onClick={this.updateIndex.bind(this)}>MORE REVIEWS</button>
-            <button className="button" type="submit" id="lessReviews" onClick={this.resetIndex.bind(this)}>LESS REVIEWS</button>
-            <div><AddReview /></div>
+            <button type="submit" id="rar_tileBoxButtons" onClick={this.updateIndex.bind(this)}>MORE REVIEWS</button>
+            {this.state.index === 2 ? '' : <button type="submit" id="rar_tileBoxButtons" onClick={this.resetIndex.bind(this)}>LESS REVIEWS</button>}
+            <div>
+              <AddReview
+                addReview={this.props.addReview}
+                currentProductName={this.props.currentProductName}
+                productId={this.props.productInfo.product}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -127,7 +139,4 @@ class ReviewList extends React.Component {
   }
 }
 
-// ReviewList.propTypes = {
-//   productInfo: PropTypes.shape.isRequired,
-// };
 export default ReviewList;

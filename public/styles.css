@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+  /* transform: scale(.8); */
 }
 ol, ul {
 	list-style: none;
@@ -351,52 +352,74 @@ h2 {
   header{height: 89.9px;}
 }
 /* Adam */
+#rarMain {
+  display: flex;
+  justify-content: center;
+}
 .rar_section {
   display: flex;
   flex-direction: row;
-  margin-top: 2%;
-  justify-content: center;
-  margin-left: 10%;
-  margin-right: 10vw;
-  gap: 50px;
 }
 .rar_ratingBox {
   display: flex;
   flex-direction: column;
-  width: 40vw;
+  justify-content: start;
+  width: 20vw;
+  padding: 1vw;
+  max-width: 30vw;
+  /* transform: scale(.7);
+  transform: translate(90px, 50px); */
+
 }
 .rar_reviewData {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   text-align: center;
+  gap: 15px;
+
+  padding-right: 2vw;
+  width: 20vw;
+  max-width: 25vw;
 
 }
 #starRow {
   text-decoration: underline;
+  width: 20vw;
 }
 #rar_numAndStars {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
   gap: 10px;
-  margin-bottom: 4%;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
 }
-
 #rar_bigNum {
-  font-weight: bolder;
-  font-size: 200%;
+  font-weight: 900;
+  font-size: 5vw;
 }
 .rar_tileBox {
   display: flex;
   flex-direction: column;
-  width: 60vw;
-
+  margin-top: 3vw;
+  width: 100%;
+  max-height: 60%;
 }
+/* #rar_tileBox {
+  transform: scale(.75);
+} */
 .rar_tile {
   display:flex;
-  margin-top: 4%;
+  margin-top: 3vw;
   border-bottom: 2px solid grey;
   flex-direction: column;
+  max-width: 40vw;
+}
+#rar_header {
+  display: flex;
+  font-weight: 400;
+
 }
 .rar_ratingData {
   display: flex;
@@ -406,6 +429,27 @@ h2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+}
+#rar_name-date {
+  font-weight: lighter;
+  font-size: 1vw;
+  color: grey;
+}
+#rar_summary {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  font-weight: bold;
+  font-size: 1.4vw;
+}
+#rar_fullSummary {
+  margin-top: 1vw;
+  font-size: 1.2vw;
+}
+#rar_recommendation {
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  font-size: medium;
 }
 .rar_pics {
   display:flex;
@@ -417,32 +461,67 @@ h2 {
   border: 1px solid black;
   border-radius: 4px;
   padding: 5px;
-  width: 75px;
+  width: 5vw;
 }
 #rar_helpAndReport {
   display: flex;
+  align-items: baseline;
+  color: grey;
   font-size: small;
   flex-direction: row;
   justify-content: flex-start;
   margin-bottom: 20px;
   gap: 10px;
 }
-#rar_yes {
-  text-decoration: underline;
-}
+#rar_yes,
 #rar_report {
   text-decoration: underline;
+  font-weight: lighter;
+  color: grey;
+  background: none;
+  border: none;
 }
 .rar_reviewButtons {
   display: flex;
-  margin-top: 5%;
-  margin-bottom: 5%;
-  gap: 20px;
+  margin-top: 2vw;
+  margin-bottom: 5vw;
+  gap: 10px;
+}
+#lessReviews,
+#moreReviews {
+  background-color: #ffffff;
+  border: 1px solid black;
+  font-size: 1.5vw;
+  width: 10vw;
+  height: 5vw;
+  text-align: left;
+}
+#rar_tileBoxButtons {
+  background-color: #ffffff;
+  border: 1px solid black;
+  font-size: 1.3vw;
+  width: 15vw;
+  height: 5vw;
+  margin-right: 1vw;
+  text-align: center;
+}
+#myPicsModalButtons {
+  background-color: #ffffff;
+  border: 1px solid black;
+  font-size: 1vw;
+  width: 15vw;
+  height: 3vw;
+  margin-right: 1vw;
+  text-align: center;
+}
+.rar_sortDropDown {
+  font-size: 1.7vw;
+  font-weight: bold;
 }
 #reviewSelector {
   text-decoration: underline;
   border: none;
-  font-size: 110%;
+  font-size: 1.7vw;
   font-weight: bold;
 }
 meter::-webkit-meter-bar {
@@ -453,30 +532,37 @@ meter::-webkit-meter-optimum-value {
   background-image: linear-gradient(90deg, #5c5c5c 50%, #5c5c5c 100%);
 }
 #rar_recOverview {
-  font-size: medium;
-  margin-bottom: 5%;
+  text-align: left;
+  font-size: 1vw;
+  white-space: nowrap;
+  margin-bottom: 4%;
+  width: 10vw;
+
 }
 .rar_dataMeter {
 text-align: left;
+width: 10%;
 }
 #rar_met {
-  width: 70%;
+  width: 15vw;
 }
 #rar_barName {
   display: flex;
+  gap: 5px;
   flex-wrap: nowrap;
-  width: 100%;
+  width: 20vw;
+  font-size: 1vw;
 }
 #rar_sizeBar,
 #rar_comfortBar {
   display: flex;
-  width: 100%;
+  width: 18.5vw;
 }
 #starRow {
   display: flex;
   flex-direction: column;
   list-style: none;
-  gap: 1px;
+  gap: 5px;
 }
 #myModal {
   display: none;
@@ -492,18 +578,124 @@ text-align: left;
 }
 #myModal-content { /* this is the only way to access my modal */
   display: flex;
+  border-radius: 2vw;
+  border-color: #5c5c5c;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  gap: 10px;
-  background-color: #fefefe;
-  margin: 15% auto;
+  gap: 2vw;
+  background-color: #ffffff;
+  margin: 15vw;
   padding: 20px;
-  border: 1px solid #888;
-  height: 80%;
-  width: 80%;
+  border: 3px solid black;
+  height: 100vw;
+  width: 80vw;
 }
+#myPicModal {
+  display: none;
+  position: fixed;
+  z-index: 5;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+#myPicModalContent {
+  display: flex;
+  font-size: 3vw;
+  border-radius: 2vw;
+  border-color: #5c5c5c;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #ffffff;
+  margin: 50% auto;
+  padding: 20px;
+  border: 3px solid black;
+  height: 40vw;
+  width: 50vw;
+}
+#rar_modalTitle {
+ font-size: 6vw;
+}
+#rar_modalProduct {
+  font-size: 3vw;
+}
+#rar_summaryBox {
+  width: 45vw;
+  height: 6vw;
+  min-height: 4vw;
+  font-size: 1vw;
+}
+#rar_reviewSummaryInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1vw;
+  width: 45vw;
+  font-size: 1vw;
+}
+#rar_nicknameInput {
+  width: 20vw;
+  font-size: 1vw;
+}
+#rar_emailInput {
+  width: 20vw;
+  font-size: 1vw;
+}
+#rar_starRatingModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#rar_starRatingModal2 {
+  display: flex;
+  margin-top: 1vw;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
 
+}
+#rar_yesNo {
+  display: flex;
+  margin-top: 1vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+textarea {
+  border: 2px solid currentColor;
+}
+textarea:invalid {
+  text-decoration: underline wavy red;
+}
+#rar_uploadPhotos {
+  background-color: #ffffff;
+  border: 1px solid black;
+  font-size: 1vw;
+  width: 15vw;
+  height: 3vw;
+  margin-right: 1vw;
+  text-align: center;
+}
+#modalButton {
+  display: flex;
+}
+#rar_modalSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid black;
+  font-size: 1vw;
+  width: 15vw;
+  height: 3vw;
+  margin-right: 1vw;
+  text-align: center;
+}
 .close {
   color: #aaa;
   float: right;
@@ -518,15 +710,17 @@ text-align: left;
 }
 #radioTable2 {
   display: table;
-  width: 65vw;
+  font-size: 1vw;
+  text-align: center;
+  width: 45vw;
   border: 1px solid black;
   border-collapse: collapse;
 }
-
 td { /*this may cause issues but I can go back later and fix */
   border: 1px solid black;
   text-align: center;
 }
+
 #rar_td_footer {
   text-align: center;
 }
@@ -535,8 +729,8 @@ td { /*this may cause issues but I can go back later and fix */
   flex-direction: row;
   justify-content: space-around;
   border: 1px solid black;
-
 }
+
 .rar_selectorTableRow {
   display: flex;
   flex-direction: row;
@@ -548,7 +742,6 @@ td { /*this may cause issues but I can go back later and fix */
   flex-direction: column;
   align-items: center;
 }
-
 /* Other */
 .QandA-widget {
   text-align: left;
@@ -698,7 +891,7 @@ td { /*this may cause issues but I can go back later and fix */
 .QandA-modal {
   display: block;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   text-align: center;
   height: 100vw;
   width: 100vw;

@@ -10,6 +10,16 @@ class ReviewTile extends React.Component {
     };
   }
 
+  handleHelpfulClick() {
+    // axios call for posting a new helpful
+    console.log('helpful');
+  }
+
+  handleReportClick() {
+    // axios call for posting a new report
+    console.log('report');
+  }
+
   formatDate(strDate) {
     let date = (new Date(strDate));
     date = date.toString().slice(3, 15);
@@ -26,12 +36,12 @@ class ReviewTile extends React.Component {
                 rating={review.rating}
                 starRatedColor="black"
                 numberOfStars={5}
-                starDimension="20px"
+                starDimension="1.5vw"
                 starSpacing="1px"
               />
             </span>
           </div>
-          <div>
+          <div id="rar_name-date">
             {review.reviewer_name}
             ,
             {this.formatDate(review.date)}
@@ -43,7 +53,7 @@ class ReviewTile extends React.Component {
           {review.recommend ? <i id="rar_checkmark">&#10003; I recommend this product</i> : ''}
         </div>
         <div id="rar_responses">
-          {review.response ? `${'Response:'}${review.response}` : ''}
+          {review.response ? `${'Response from seller:'}${review.response}` : ''}
         </div>
         <div className="rar_pics">
           {review.photos.map((image) => (
@@ -52,14 +62,9 @@ class ReviewTile extends React.Component {
         </div>
         <div id="rar_helpAndReport">
           <div id="rar_helpful">Helpful?</div>
-          <div id="rar_yes">Yes</div>
-          <a href="">
-            (
-            {1}
-            )
-            </a>
+          <button type="button" id="rar_yes" onClick={this.handleHelpfulClick.bind(this)}>Yes({1}) </button>
           <div id="rar_symbol">|</div>
-          <div id="rar_report"> report</div>
+          <button type="button" id="rar_report" onClick={this.handleReportClick.bind(this)}> Report</button>
         </div>
       </div>
     ))
