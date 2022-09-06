@@ -15,7 +15,7 @@ function BasicInfo({ product, scrollToReviews }) {
         <StarRatings
           rating={3.6}
           starRatedColor="black"
-          starDimension="15px"
+          starDimension="1vw"
           starSpacing="1px"
           numberOfStars={5}
           name="rating"
@@ -24,7 +24,7 @@ function BasicInfo({ product, scrollToReviews }) {
           &nbsp;See all reviews...
         </small>
       </div>
-      <div>{product.category && product.category.toUpperCase()}</div>
+      <div className="product-category">{product.category && product.category.toUpperCase()}</div>
       <h2 className="product-name">{product.name}</h2>
     </div>
   );

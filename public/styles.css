@@ -91,17 +91,22 @@ h2 {
 }
 .basic-info-container {
   position: absolute;
-  display: inline-block;
   top: 9vw;
-  left: 65vw;
+  left: 65%;
   width: 30vw;
   max-width: 364px;
+  max-height: 574px;
   z-index: 0;
 }
+.price {
+  font-size: 90%;
+}
 .sale-price {
+  font-size: 90%;
   color: rgb(181, 2, 2);
 }
 .see-reviews {
+  font-size: 100%;
   margin-bottom: 1vw;
   margin-top: 4vw;
   cursor: pointer;
@@ -109,15 +114,19 @@ h2 {
 .see-reviews:hover {
   text-decoration: underline;
 }
+.product-category {
+  font-size: 100%;
+}
 .product-name {
   margin-top: 0;
-  margin-bottom: 2vw;
+  margin-bottom: 8%;
   font-size: 200%;
 }
 .size-select {
   width: 18vw;
   max-width: 220px;
   height: 5vw;
+  max-height: 64px;
   font-size: 1.5vw;
   border-radius: 2px;
   margin-bottom: 1vw;
@@ -127,6 +136,7 @@ h2 {
   width: 11vw;
   max-width: 120px;
   height: 5vw;
+  max-height: 64px;
   font-size: 1.5vw;
   border-radius: 2px;
 }
@@ -137,6 +147,7 @@ h2 {
   width: 24vw;
   max-width: 270px;
   height: 5vw;
+  max-height: 64px;
   margin-right: 1vw;
   text-align: left;
 }
@@ -147,6 +158,8 @@ h2 {
   width: 5vw;
   max-width: 70px;
   height: 5vw;
+  max-height: 64px;
+
 }
 .details-and-features {
   display: flex;
@@ -161,7 +174,9 @@ h2 {
   margin-top: 20px;
   display: inline-block;
   width: 56vw;
+  max-width: 743px;
   height: 12vw;
+  max-height: 179px;
   padding: 1vw;
 }
 .slogan {
@@ -205,8 +220,9 @@ h2 {
   cursor: pointer;
 }
 .style-name {
-  margin-top: 2vw;
+  margin-top: 8%;
   margin-bottom: 1vw;
+  font-size: 100%;
 }
 .style-thumbnails {
   width: 30vw;
@@ -234,10 +250,10 @@ h2 {
 }
 .image-gallery-default {
   display: flex;
-  position: sticky;
+  position: relative;
   background-color: #ffffff;
   flex-direction: column;
-  margin: 0px 0px;
+  margin: 0 0 0 0;
   width: 62vw;
   max-width: 768px;
   height: 49vw;
@@ -285,7 +301,7 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   width: 4vw;
-  margin: 4vw 0px 10% 2%;
+  margin: 4vw 0px 10% 5%;
 }
 .gallery-thumbnail {
   width: 100%;
@@ -298,6 +314,7 @@ h2 {
 }
 .gallery-thumbnail-current {
   width: 100%;
+  max-width: 51px;
   padding-bottom: 10%;
   margin-bottom: 30%;
   cursor: pointer;
@@ -308,7 +325,7 @@ h2 {
   position: absolute;
   font-weight: 600;
   font-size: 3vw;
-  left: 10%;
+  left: 15%;
   cursor: pointer;
 }
 .carousel-right-arrow {
@@ -319,7 +336,20 @@ h2 {
   cursor: pointer;
   z-index: 9;
 }
-
+@media screen and (min-width: 1280px) {
+  .product-category, .see-reviews, .price, .sale-price, .style-name {
+    font-size: 19.2px;
+  }
+  select, button {
+    font-size: 19.2px;
+  }
+  .product-name{font-size:  38.4px;}
+  .slogan{font-size: 25.6px}
+  .description, .features{font-size: 15.3px}
+  .sitewide-sale{font-size: 14.08px}
+  .business-name{font-size: 76.8px;}
+  header{height: 89.9px;}
+}
 /* Adam */
 .rar_section {
   display: flex;

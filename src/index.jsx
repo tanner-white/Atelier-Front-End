@@ -23,7 +23,7 @@ function App() {
       <div className="sitewide-sale">
         <em>SITE-WIDE ANNOUNCEMENT MESSAGE!</em>
         {' '}
-        -- SALE / DISCOUNT
+        -- SALE / DISCOUNT&nbsp;
         {' '}
         <b>OFFER</b>
         {' '}
