@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import React, { useState, createRef } from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
 import Overview from './overview/overviewIndex.jsx';
 // eslint-disable-next-line import/extensions
 import RatingsApp from './ratingsAndReviews/RatingsApp.jsx';
@@ -17,6 +18,12 @@ function App() {
     reviewsRef.current.scrollIntoView({
       behavior: 'smooth',
     });
+  };
+
+  const trackClick = (input) => {
+    axios.post('http://localhost:3001/click', input)
+      .then(() => console.log('success'))
+      .catch((err) => console.error('client side click error: ', err));
   };
 
   return (
@@ -40,6 +47,7 @@ function App() {
         numberReviews={numberReviews}
         setCurrentProductName={setCurrentProductName}
         scrollToReviews={scrollToReviews}
+        trackClick={trackClick}
       />
       <Questions />
       <div ref={reviewsRef} />
@@ -47,6 +55,7 @@ function App() {
         currentProductName={currentProductName}
         setAverageStars={setAverageStars}
         setNumberReviews={setNumberReviews}
+        trackClick={trackClick}
       />
     </div>
   );

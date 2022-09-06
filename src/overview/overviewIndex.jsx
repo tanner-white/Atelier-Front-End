@@ -9,7 +9,7 @@ import ProductDetails from './components/ProductDetails.jsx';
 
 function Overview({
   setCurrentProductName, scrollToReviews,
-  averageStars, numberReviews,
+  averageStars, numberReviews, trackClick
 }) {
   const [product, setProduct] = useState({});
   useEffect(() => {
@@ -36,6 +36,20 @@ function Overview({
         setCurrentThumbnails(response.data.results[0]
           .photos.map((current) => current.thumbnail_url));
       });
+  }, []);
+
+  const handleTrackClick = (event) => {
+    const clickData = {
+      element: event.target.className,
+      widget: 'Overview',
+      time: new Date(),
+    };
+    trackClick(clickData);
+  };
+
+  useEffect(() => {
+    const element = document.getElementsByClassName('overview-widget');
+    element[0].addEventListener('click', handleTrackClick);
   }, []);
 
   return (

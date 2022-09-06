@@ -227,16 +227,16 @@ h2 {
   font-size: 100%;
 }
 .style-thumbnails {
-  width: 8vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 35vw;
   max-width: 380px;
-  height: auto;
   cursor: pointer;
 }
 .thumbnail-div {
   display: flex;
   position: relative;
-  align-items: center;
-  justify-content: center;
   width: 5vw;
   max-width: 68px;
   height: 5vw;
@@ -244,13 +244,14 @@ h2 {
   overflow: hidden;
   border-radius: 50%;
   border: 2px rgba(0, 0, 0, 0.156) solid;
-  margin-right: 6%;
+  margin-right: 5%;
   margin-bottom: 5%;
 }
 #current-thumb {
   position: absolute;
-  top: 0.3vw;
-  left: 3vw;
+  color: white;
+  top: 1.5vw;
+  left: 2vw;
 }
 .image-gallery-default {
   display: flex;
@@ -753,8 +754,10 @@ td { /*this may cause issues but I can go back later and fix */
 .QandA-widget {
   text-align: left;
   justify-content: left;
-  max-width: 1280px;
-  padding: 3%;
+  max-width: 85%;
+  margin-left: 8%;
+  margin-right: 3%;
+  margin-bottom: 6.5%;
 }
 
 .QandA-list {
@@ -776,32 +779,42 @@ td { /*this may cause issues but I can go back later and fix */
   margin-right: 1vw;
   float: right;
   padding: 0;
-  font-size: 1.5vw;
+  font-size: 1.25vw;
   font-weight: 300;
   font-family: 'Nunito Sans', sans-serif;
+}
+
+.question-button-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
 }
 
 .question-buttons {
   background-color: #ffffff;
   border: 1px solid black;
   font-size: 1.5vw;
-  width: 16vw;
+  width: 21vw;
   height: 5vw;
+  padding: 0;
   margin-right: 1vw;
   text-align: center;
 }
 
 .question-buttons:hover {
   background-color: rgb(215, 215, 215, 0.95);
+  cursor: pointer;
 }
 
 .answer-buttons {
   text-align: center;
-  font-size: 1.5vw;
+  font-size: 1.25vw;
   font-weight: 600;
   cursor: pointer;
-  margin-left: 1.8vw;
-  width: 15vw;
+  margin-top: 2vw;
+  margin-left: 0.7vw;
+  width: 18vw;
   height: 3vw;
 }
 
@@ -835,8 +848,11 @@ td { /*this may cause issues but I can go back later and fix */
   background-color: transparent;
   border: none;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: baseline;
   float: right;
-  font-size: 1.5vw;
+  font-size: 1.25vw;
   font-weight: 300;
   height: 100%;
 }
@@ -846,6 +862,11 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 #question-helpful-button {
+  padding-right: 1vw;
+  border-right: 1px solid grey;
+}
+
+#add-answer-button {
   padding-right: 1vw;
   border-right: 1px solid grey;
 }
@@ -887,7 +908,7 @@ td { /*this may cause issues but I can go back later and fix */
   width: 95%;
   font-size: 1.5vw;
   padding: 5px;
-  margin-right: 0vw;
+  border: 1px solid black;
   margin-bottom: 2vw;
   background-image: url(https://www.kindacode.com/wp-content/uploads/2020/12/search.png);
   background-repeat: no-repeat;
@@ -898,16 +919,19 @@ td { /*this may cause issues but I can go back later and fix */
 .QandA-modal {
   display: block;
   position: fixed;
-  z-index: 10;
   text-align: center;
-  height: 100vw;
-  width: 100vw;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0, 0.4);
 }
 
 .QandA-modal-content {/* Hidden by default */
   display: block;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  position: fixed; /* Stay in place */ /* Sit on top */
   top: 25%;
   left: 25%;
   width: 50%; /* Full width */
@@ -942,7 +966,7 @@ td { /*this may cause issues but I can go back later and fix */
 #answer-helpful {
   float: none;
   border: none;
-  font-size: 1.5vw;
+  font-size: 1.25vw;
   font-weight: 300;
 }
 
