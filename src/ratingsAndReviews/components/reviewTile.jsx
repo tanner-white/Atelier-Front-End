@@ -11,13 +11,13 @@ class ReviewTile extends React.Component {
   }
 
   handleHelpfulClick(event) {
-    // axios call for posting a new helpful
-    this.props.addHelpful(event.target.id);
+    const body = { review_id: parseInt(event.target.id) };
+    this.props.addHelpful(body);
   }
 
-  handleReportClick() {
-    // axios call for posting a new report
-    console.log('report');
+  handleReportClick(event) {
+    const body = { review_id: parseInt(event.target.id) };
+    this.props.addReport(body);
   }
 
   formatDate(strDate) {
@@ -57,7 +57,7 @@ class ReviewTile extends React.Component {
         </div>
         <div className="rar_pics">
           {review.photos.map((image) => (
-            <img className="rar_thumbs" id={image.id} alt="not found" src={image.url} />
+            <img className="rar_thumbs" id={image.id} alt="https://placeimg.com/640/480/any" onError={({ currentTarget }) => {currentTarget.onerror = null; currentTarget.src="https://placeimg.com/640/480/any"}} src={image.url} />
           ))}
         </div>
         <div id="rar_helpAndReport">

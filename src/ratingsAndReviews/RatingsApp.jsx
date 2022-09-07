@@ -9,6 +9,7 @@ class RatingsApp extends React.Component {
     this.state = {
       currentItem: { results: [] },
       currentMeta: {},
+      helpfulCount: 0,
     };
   }
 
@@ -18,6 +19,8 @@ class RatingsApp extends React.Component {
       .then((response) => this.setState({ currentItem: response.data }))
       .then(this.getMeta())
       .catch((err) => (console.log(err)));
+    // const element = document.getElementById('rarMain');
+    // element.addEventListener('click', handleWidgetClick);
   }
 
   getMeta(productId) {
@@ -28,7 +31,7 @@ class RatingsApp extends React.Component {
 
   addReview(message) {
     axios.post('http://localhost:3001/reviews/addReview', message)
-      .then((response) => console.log('POST new review request to server successful', response))
+      .then((response) => this.setState({ helpfulCount: response.data }))
       .catch((error) => console.log('error posting to server', error));
   }
 
@@ -39,8 +42,14 @@ class RatingsApp extends React.Component {
       .catch((error) => console.log('error posting to server', error));
   }
 
+  postReport(ID) {
+    console.log(ID);
+    axios.put('http://localhost:3001/reviews/putReport', ID)
+      .then((response) => console.log('POST new report request to server successful', response))
+      .catch((error) => console.log('error posting to server', error));
+  }
+
   render() {
-    console.log(this.state.currentItem);
     const { currentItem, currentMeta } = this.state;
     const { setNumberReviews, setAverageStars, currentProductName } = this.props;
     //const { addReview, postHelpful } = this;
@@ -52,6 +61,7 @@ class RatingsApp extends React.Component {
           itemMeta={currentMeta}
           currentProductName={currentProductName}
           addReview={this.addReview.bind(this)}
+          postReport={this.postReport.bind(this)}
           setAverageStars={setAverageStars}
           postHelpful={this.postHelpful.bind(this)}
         />
