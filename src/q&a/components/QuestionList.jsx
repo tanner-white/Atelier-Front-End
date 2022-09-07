@@ -6,7 +6,7 @@ import QuestionListEntry from './QuestionListEntry.jsx';
 import AddQuestion from './AddQuestionModal.jsx';
 
 function QuestionList({
-  props, handleQuestionSubmit, onReport, currentProductName,
+  props, handleQuestionSubmit, onReport, currentProductName, isDarkMode,
 }) {
   const [list, setList] = useState([]);
   const [matches, setMatches] = useState([]);
@@ -48,26 +48,31 @@ function QuestionList({
     setIndex(2);
   };
 
+  const darkMode = {
+    background: isDarkMode ? '#E2ECEB' : 'white',
+  };
+
   const moreQuestionsButton = list.slice(index).length > 0
     ? (
-      <button className="question-buttons" type="submit" onClick={showMoreQuestions}>MORE QUESTIONS</button>
+      <button className="question-buttons" type="submit" style={darkMode} onClick={showMoreQuestions}>MORE QUESTIONS</button>
     ) : null;
 
   const lessQuestionsButton = matches.length > 2
     ? (
-      <button className="question-buttons" type="submit" onClick={showLessQuestions}>COLLAPSE QUESTIONS</button>
+      <button className="question-buttons" type="submit" style={darkMode} onClick={showLessQuestions}>COLLAPSE QUESTIONS</button>
     ) : null;
 
   if (matches) {
     return (
-      <div className="QandA-widget">
+      <div className="QandA-widget" style={{ color: isDarkMode ? '#BDDEDB' : 'black' }}>
         <div className="QandA-list">
-          <SearchForm handleSubmit={handleSubmit} />
+          <SearchForm handleSubmit={handleSubmit} isDarkMode={isDarkMode} />
           {matches.map((match) => (
             <QuestionListEntry
               item={match}
               onReport={onReport}
               currentProductName={currentProductName}
+              isDarkMode={isDarkMode}
               key={match.question_id}
             />
           )) }
@@ -81,7 +86,7 @@ function QuestionList({
         <div id="question-button-div">
           {moreQuestionsButton}
           {lessQuestionsButton}
-          <button className="question-buttons" type="button" onClick={() => qModal.current.open()}>ADD A QUESTION +</button>
+          <button className="question-buttons" type="button" style={darkMode} onClick={() => qModal.current.open()}>ADD A QUESTION +</button>
         </div>
       </div>
     );

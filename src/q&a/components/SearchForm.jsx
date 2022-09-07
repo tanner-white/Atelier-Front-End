@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-function SearchForm({ handleSubmit }) {
+function SearchForm({ handleSubmit, isDarkMode }) {
   const onChange = (input) => {
     input.preventDefault();
     handleSubmit(input.target.value);
@@ -13,6 +13,7 @@ function SearchForm({ handleSubmit }) {
         className="question-searchbar"
         type="text"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+        style={{ background: isDarkMode ? '#E2ECEB' : 'white' }}
         onChange={(e) => {
           onChange(e);
         }}

@@ -881,7 +881,6 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 #question-spans {
-  color: grey;
   background-color: transparent;
   border: none;
   display: flex;
