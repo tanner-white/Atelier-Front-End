@@ -1,6 +1,7 @@
 /* eslint-disable import/extensions */
 import React, { useState, createRef } from 'react';
 import ReactDOM from 'react-dom';
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import axios from 'axios';
 import Overview from './overview/overviewIndex.jsx';
 // eslint-disable-next-line import/extensions
@@ -12,6 +13,11 @@ function App() {
   const [currentProductName, setCurrentProductName] = useState('');
   const [averageStars, setAverageStars] = useState(0);
   const [numberReviews, setNumberReviews] = useState(0);
+
+  const [isDarkMode, setDarkMode] = React.useState(false);
+  const toggleDarkMode = (checked) => {
+    setDarkMode(checked);
+  };
 
   const reviewsRef = createRef();
   const scrollToReviews = () => {
@@ -27,9 +33,22 @@ function App() {
   };
 
   return (
-    <div>
+    <div style={{
+      background: isDarkMode ? '#1b242c' : '#faf9f8',
+      color: isDarkMode ? '#BDDEDB' : 'black',
+      transition: '0.8s background',
+    }}
+    >
       <header>
-        <p className="business-name">Atelier&nbsp;</p>
+        <p
+          style={{
+            color: isDarkMode ? '#BDDEDB' : 'white',
+          }}
+          className="business-name"
+        >
+          Atelier&nbsp;
+
+        </p>
       </header>
       <div className="sitewide-sale">
         <em>SITE-WIDE ANNOUNCEMENT MESSAGE!</em>
@@ -41,11 +60,25 @@ function App() {
         --
         {' '}
         <u>NEW PRODUCT HIGHLIGHT</u>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <DarkModeSwitch
+          style={{ marginBottom: '2rem' }}
+          checked={isDarkMode}
+          onChange={toggleDarkMode}
+          size={20}
+
+        />
       </div>
       <Overview
+        averageStars={averageStars}
+        numberReviews={numberReviews}
         setCurrentProductName={setCurrentProductName}
         scrollToReviews={scrollToReviews}
         trackClick={trackClick}
+        isDarkMode={isDarkMode}
       />
       <Questions trackClick={trackClick} currentProductName={currentProductName} />
       <div ref={reviewsRef} />
