@@ -460,7 +460,7 @@ h2 {
 }
 #rar_fullSummary {
   margin-top: 1vw;
-  font-size: .9vw;
+  font-size: 1vw;
 }
 #rar_recommendation {
   margin-top: 1vw;
@@ -523,6 +523,23 @@ h2 {
   height: 4vw;
   margin-right: 1vw;
   text-align: center;
+}
+#rar_picModalLine {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  width: 45vw;
+  height: 10vw;
+  border: 3px solid #525151;
+  flex-direction: row;
+}
+#rar_picModalThumbs {
+  margin: 1vw;
+  padding: .6vw;
+  width: 5vw;
+  height: 5vw;
+  border: 1px solid #525151;
 }
 #myPicsModalButtons {
   background-color: #ffffff;
@@ -619,7 +636,6 @@ meter::-webkit-meter-optimum-value {
 #myModal-content { /* this is the only way to access my modal */
   display: flex;
   color: #525151;
-  border-radius: 2vw;
   border-color: #5c5c5c;
   flex-direction: column;
   justify-content: space-around;
@@ -629,9 +645,9 @@ meter::-webkit-meter-optimum-value {
   margin: 15vw;
   padding: 20px;
   border: 3px solid black;
-  height: 100vw;
+  height: 130vw;
   width: 80vw;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 #myPicModal {
   display: none;
@@ -648,7 +664,6 @@ meter::-webkit-meter-optimum-value {
 #myPicModalContent {
   display: flex;
   font-size: 3vw;
-  border-radius: 2vw;
   border-color: #5c5c5c;
   flex-direction: column;
   justify-content: space-around;

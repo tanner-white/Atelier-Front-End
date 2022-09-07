@@ -86,7 +86,6 @@ class RatingTile extends React.Component {
           <span className="rar_boxStars">
             <StarRatings
               rating={rating}
-              outline="black"
               starRatedColor="#525151"
               starDimension="1.5vw"
               starSpacing="1px"
