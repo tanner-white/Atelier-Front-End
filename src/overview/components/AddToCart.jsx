@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-function AddToCart({ current }) {
+function AddToCart({ current, isDarkMode }) {
   const [size, setSize] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [availableQty, setAvailableQty] = useState([]);
@@ -38,6 +38,7 @@ function AddToCart({ current }) {
   return (
     <form>
       <select
+        style={{ background: isDarkMode ? '#E2ECEB' : 'white' }}
         className="size-select"
         value={size}
         name="Select size"
@@ -47,6 +48,7 @@ function AddToCart({ current }) {
         {currentSizeQty.map((item, index) => <option key={index}>{item.size}</option>)}
       </select>
       <select
+        style={{ background: isDarkMode ? '#E2ECEB' : 'white' }}
         className="quantity-select"
         value={quantity}
         name="Quantity select"
@@ -56,8 +58,22 @@ function AddToCart({ current }) {
         {availableQty.length && availableQty.slice(0, 15).map((num) => <option>{num}</option>)}
       </select>
       <br />
-      <button className="add-to-bag" type="button">ADD TO BAG</button>
-      <button className="add-to-outfit" type="button">☆</button>
+      <button
+        className="add-to-bag"
+        type="button"
+        style={{ background: isDarkMode ? '#E2ECEB' : 'white' }}
+      >
+        ADD TO BAG
+
+      </button>
+      <button
+        className="add-to-outfit"
+        type="button"
+        style={{ background: isDarkMode ? '#E2ECEB' : 'white' }}
+      >
+        ☆
+
+      </button>
     </form>
   );
 }

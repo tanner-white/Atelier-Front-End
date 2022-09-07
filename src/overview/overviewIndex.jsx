@@ -9,7 +9,7 @@ import ProductDetails from './components/ProductDetails.jsx';
 
 function Overview({
   setCurrentProductName, scrollToReviews,
-  averageStars, numberReviews, trackClick
+  averageStars, numberReviews, trackClick, isDarkMode,
 }) {
   const [product, setProduct] = useState({});
   useEffect(() => {
@@ -55,13 +55,18 @@ function Overview({
   return (
     <div>
       <div className="overview-widget">
-        <ImageGallery current={currentPhotos} currentThumbnails={currentThumbnails} />
+        <ImageGallery
+          current={currentPhotos}
+          currentThumbnails={currentThumbnails}
+          isDarkMode={isDarkMode}
+        />
         <div className="basic-info-container">
           <BasicInfo
             product={product}
             scrollToReviews={scrollToReviews}
             averageStars={averageStars}
             numberReviews={numberReviews}
+            isDarkMode={isDarkMode}
           />
           <StyleSelector
             styles={styles}
@@ -70,10 +75,10 @@ function Overview({
             setCurrentPhotos={setCurrentPhotos}
             setCurrentThumbnails={setCurrentThumbnails}
           />
-          <AddToCart current={currentStyle} />
+          <AddToCart current={currentStyle} isDarkMode={isDarkMode} />
         </div>
       </div>
-      <ProductDetails product={product} />
+      <ProductDetails product={product} isDarkMode={isDarkMode} />
     </div>
   );
 }

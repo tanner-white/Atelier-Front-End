@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import ReactImageMagnify from 'react-image-magnify';
 import ImageGalleryThumbnail from './ImageGalleryThumbnail.jsx';
 
-function ImageGallery({ current, currentThumbnails }) {
+function ImageGallery({ current, currentThumbnails, isDarkMode }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
   const { length } = current;
@@ -31,7 +31,12 @@ function ImageGallery({ current, currentThumbnails }) {
     setExpanded(!expanded);
   }
   return (
-    <div className={classname}>
+    <div
+      className={classname}
+      style={{
+        background: isDarkMode ? '#1b242c' : 'white',
+      }}
+    >
       <img
         className="full-screen"
         src="https://img.icons8.com/ios/500/full-screen--v2.png"

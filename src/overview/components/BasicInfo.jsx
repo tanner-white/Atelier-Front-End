@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import StarRatings from 'react-star-ratings';
 
 function BasicInfo({
-  product, scrollToReviews, numberReviews, averageStars,
+  product, scrollToReviews, numberReviews, averageStars, isDarkMode
 }) {
   function handleReviewClick(e) {
     e.preventDefault();
@@ -17,7 +17,7 @@ function BasicInfo({
         {averageStars > 0 && (
         <StarRatings
           rating={averageStars}
-          starRatedColor="black"
+          starRatedColor={isDarkMode ? '#ECF1C6' : 'black'}
           starDimension="1vw"
           starSpacing="1px"
           numberOfStars={5}
