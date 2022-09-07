@@ -521,11 +521,13 @@ h2 {
   text-align: center;
 }
 .rar_sortDropDown {
+  color: #525151;
   font-size: 1.3vw;
   font-weight: bold;
 }
 #reviewSelector {
   margin: 5px;
+  color: #525151;
   background-color:transparent;
   border-top: 1px black;
   border-left: 1px black;
