@@ -1,5 +1,7 @@
 /node_modules/
-
-package-lock.json/
-
+package-lock.json
+public/bundle.js
+tests/index.test.js
+/coverage/
+src/q&a/Question.test.js
 .env
