@@ -1,10 +1,12 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // eslint-disable-next-line import/extensions
 import Thumbnail from './Thumbnail.jsx';
 
 function StyleSelector({
-  styles, current, setCurrentStyle, setCurrentPhotos, setCurrentThumbnails,
+  styles, current, setCurrentStyle, setCurrentPhotos, setCurrentThumbnails, isDarkMode,
 }) {
   const [currentThumb, setCurrentThumb] = useState('');
   useEffect(() => {
@@ -20,7 +22,7 @@ function StyleSelector({
           $
           {current.original_price}
         </s>
-        <span className="sale-price">
+        <span className="sale-price" style={{ color: isDarkMode ? '#C3A2DB' : 'rgb(181, 2, 2)' }}>
           $
           {current.sale_price}
         </span>
@@ -42,8 +44,9 @@ function StyleSelector({
         {current.name}
       </div>
       <div className="style-thumbnails">
-        {styles.map((style) => (
+        {styles.map((style, index) => (
           <Thumbnail
+            index={index}
             url={style.photos[0].thumbnail_url}
             current={style}
             currentThumb={currentThumb}
@@ -57,11 +60,11 @@ function StyleSelector({
     </div>
   );
 }
-StyleSelector.propTypes = {
-  styles: PropTypes.objectOf.isRequired,
-  current: PropTypes.objectOf.isRequired,
-  setCurrentPhotos: PropTypes.func.isRequired,
-  setCurrentStyle: PropTypes.func.isRequired,
-  setCurrentThumbnails: PropTypes.func.isRequired,
-};
+// StyleSelector.propTypes = {
+//   styles: PropTypes.objectOf.isRequired,
+//   current: PropTypes.objectOf.isRequired,
+//   setCurrentPhotos: PropTypes.func.isRequired,
+//   setCurrentStyle: PropTypes.func.isRequired,
+//   setCurrentThumbnails: PropTypes.func.isRequired,
+// };
 export default StyleSelector;

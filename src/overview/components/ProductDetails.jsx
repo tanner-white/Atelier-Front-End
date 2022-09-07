@@ -1,9 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 function ProductDetails({ product, isDarkMode }) {
-  // const { slogan } = item;
-  // const { description } = item;
+  let features;
+  if (Object.keys(product).length) {
+    features = product.features;
+  }
   return (
     <div className="details-and-features">
       <div className="product-details">
@@ -15,15 +18,24 @@ function ProductDetails({ product, isDarkMode }) {
           <a href="https://pinterest.com"><img className="sm-icon pinterest" src="https://www.iconpacks.net/icons/1/free-pinterest-icon-113-thumb.png" alt="pinterest" /></a>
         </div>
       </div>
+      {features
+      && (
       <div className="features">
-        <div>✓ Organic NON-GMO</div>
-        <div>✓ Vegan</div>
-        <div>✓ Cruelty-Free</div>
+        {features.map((feature) => (
+          <div>
+            ✓&nbsp;
+            {feature.feature}
+            :
+            {' '}
+            {feature.value}
+          </div>
+        ))}
       </div>
+      )}
     </div>
   );
 }
-ProductDetails.propTypes = {
-  product: PropTypes.shape.isRequired,
-};
+// ProductDetails.propTypes = {
+//   product: PropTypes.shape.isRequired,
+// };
 export default ProductDetails;

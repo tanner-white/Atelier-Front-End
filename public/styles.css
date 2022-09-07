@@ -292,7 +292,18 @@ h2 {
   right: 4%;
   width: 1.5vw;
 }
+.full-screen-dark-mode {
+  position: absolute;
+  filter: invert(80%);
+  top: 4%;
+  right: 4%;
+  width: 1.5vw;
+}
 .full-screen:hover {
+  width: 1.8vw;
+  cursor: pointer;
+}
+.full-screen-dark-mode:hover {
   width: 1.8vw;
   cursor: pointer;
 }
