@@ -57,8 +57,23 @@ app.get('/reviews/meta', (req, res) => {
 app.post('/reviews/addReview', (req, res) => {
   const message = req.body;
   axios.post(`${API}reviews`, message, options) // body object
-    .then((response) => console.log(response.data))
-    .catch((error) => console.log(error));
+    .then((response) => res.send(response.data))
+    .catch((error) => res.send(error));
+});
+
+app.put('/reviews/putHelpful', (req, res) => {
+  const ID = req.body;
+  axios.put(`${API}reviews/${ID.review_id}/helpful`, {}, options)
+    .then((response) => res.send(response.data))
+    .catch((error) => res.end(error));
+});
+
+app.put('/reviews/putReport', (req, res) => {
+  const ID = req.body;
+  console.log('This is the id', ID);
+  axios.put(`${API}reviews/${ID.review_id}/report`, {}, options)
+    .then((response) => res.send(response.data))
+    .catch((error) => res.end(error));
 });
 
 app.put('/qa/questions/:question_id/helpful', (req, res) => {

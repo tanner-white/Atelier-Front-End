@@ -6,18 +6,18 @@ class ReviewTile extends React.Component {
     super(props);
     this.state = {
       list: this.props.product_data1,
-      all: [], // on event this list will populate by two
+
     };
   }
 
-  handleHelpfulClick() {
-    // axios call for posting a new helpful
-    console.log('helpful');
+  handleHelpfulClick(event) {
+    const body = { review_id: parseInt(event.target.id) };
+    this.props.addHelpful(body);
   }
 
-  handleReportClick() {
-    // axios call for posting a new report
-    console.log('report');
+  handleReportClick(event) {
+    const body = { review_id: parseInt(event.target.id) };
+    this.props.addReport(body);
   }
 
   formatDate(strDate) {
@@ -34,7 +34,7 @@ class ReviewTile extends React.Component {
             <span>
               <StarRatings
                 rating={review.rating}
-                starRatedColor="black"
+                starRatedColor="#525151"
                 numberOfStars={5}
                 starDimension="1.5vw"
                 starSpacing="1px"
@@ -57,14 +57,18 @@ class ReviewTile extends React.Component {
         </div>
         <div className="rar_pics">
           {review.photos.map((image) => (
-            <img className="rar_thumbs" id={image.id} alt="not found" src={image.url} />
+            <img className="rar_thumbs" id={image.id} alt="https://placeimg.com/640/480/any" onError={({ currentTarget }) => {currentTarget.onerror = null; currentTarget.src="https://placeimg.com/640/480/any"}} src={image.url} />
           ))}
         </div>
         <div id="rar_helpAndReport">
           <div id="rar_helpful">Helpful?</div>
-          <button type="button" id="rar_yes" onClick={this.handleHelpfulClick.bind(this)}>Yes({1}) </button>
+          <button type="button" className="rar_yes" id={review.review_id} onClick={this.handleHelpfulClick.bind(this)}>
+            Yes(
+            {review.helpfulness}
+            )
+          </button>
           <div id="rar_symbol">|</div>
-          <button type="button" id="rar_report" onClick={this.handleReportClick.bind(this)}> Report</button>
+          <button type="button" className="rar_report" id={review.review_id} onClick={this.handleReportClick.bind(this)}> Report</button>
         </div>
       </div>
     ))

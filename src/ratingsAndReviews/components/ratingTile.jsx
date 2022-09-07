@@ -86,7 +86,8 @@ class RatingTile extends React.Component {
           <span className="rar_boxStars">
             <StarRatings
               rating={rating}
-              starRatedColor="black"
+              outline="black"
+              starRatedColor="#525151"
               starDimension="1.5vw"
               starSpacing="1px"
               numberOfStars={5}
@@ -125,10 +126,20 @@ class RatingTile extends React.Component {
         <div className="rar_dataMeter">
           <p>Size</p>
           <meter id="rar_sizeBar" value={this.getSizeFeedback()} min="0" max="5" />
+          <div id="rar_sizeMeterDiv">
+            <div id="rar_sizeMeter">Too small</div>
+            <div id="rar_sizeMeter">Perfect</div>
+            <div id="rar_sizeMeter">Too large</div>
+          </div>
+
         </div>
         <div className="rar_dataMeter">
           <p>Comfort</p>
           <meter id="rar_comfortBar" value={this.getComfortFeedback()} min="0" max="5" />
+          <div id="rar_comfortMeterDiv">
+            <p id="rar_comfortMeter">Poor</p>
+            <p id="rar_comfortMeter">Perfect</p>
+          </div>
         </div>
       </div>
     );

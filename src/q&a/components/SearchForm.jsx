@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
 
 function SearchForm({ handleSubmit }) {
   const onChange = (input) => {
@@ -20,9 +20,5 @@ function SearchForm({ handleSubmit }) {
     </form>
   );
 }
-
-SearchForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
-};
 
 export default SearchForm;
