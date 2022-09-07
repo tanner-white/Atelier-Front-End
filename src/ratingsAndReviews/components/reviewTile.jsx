@@ -34,7 +34,7 @@ class ReviewTile extends React.Component {
             <span>
               <StarRatings
                 rating={review.rating}
-                starRatedColor="black"
+                starRatedColor="#525151"
                 numberOfStars={5}
                 starDimension="1.5vw"
                 starSpacing="1px"

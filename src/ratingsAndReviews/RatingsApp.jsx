@@ -10,6 +10,7 @@ class RatingsApp extends React.Component {
       currentItem: { results: [] },
       currentMeta: {},
       helpfulCount: 0,
+      clickCount: 0,
     };
   }
 
@@ -19,8 +20,17 @@ class RatingsApp extends React.Component {
       .then((response) => this.setState({ currentItem: response.data }))
       .then(this.getMeta())
       .catch((err) => (console.log(err)));
-    // const element = document.getElementById('rarMain');
-    // element.addEventListener('click', handleWidgetClick);
+    const element = document.getElementById('rarMain');
+    element.addEventListener('mousedown', this.handleWidgetClick.bind(this));
+  }
+
+  handleWidgetClick() {
+    let clicks = this.state.clickCount;
+    clicks += 1;
+    this.setState({
+      clickCount: clicks,
+    });
+    console.log('clicked!');
   }
 
   getMeta(productId) {
