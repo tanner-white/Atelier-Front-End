@@ -965,6 +965,25 @@ td { /*this may cause issues but I can go back later and fix */
   background-size: 3vw;
 }
 
+.question-searchbar-dark-mode {
+  height: 4vw;
+  padding: 10%;
+  width: 95%;
+  font-size: 1.5vw;
+  padding: 5px;
+  border: 1px solid black;
+  margin-bottom: 2vw;
+  background: #E2ECEB;
+  background-image: url(https://www.kindacode.com/wp-content/uploads/2020/12/search.png);
+  background-repeat: no-repeat;
+  background-position: right 2% center;
+  background-size: 3vw;
+}
+
+.question-searchbar-dark-mode::placeholder {
+  color: black;
+}
+
 .QandA-modal {
   display: block;
   position: fixed;

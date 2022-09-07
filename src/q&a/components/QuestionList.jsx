@@ -50,6 +50,7 @@ function QuestionList({
 
   const darkMode = {
     background: isDarkMode ? '#E2ECEB' : 'white',
+    color: 'black',
   };
 
   const moreQuestionsButton = list.slice(index).length > 0

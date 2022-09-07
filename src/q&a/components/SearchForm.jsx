@@ -7,13 +7,14 @@ function SearchForm({ handleSubmit, isDarkMode }) {
     handleSubmit(input.target.value);
   };
 
+  const darkMode = isDarkMode ? 'question-searchbar-dark-mode' : 'question-searchbar';
+
   return (
     <form id="search-form">
       <input
-        className="question-searchbar"
+        className={darkMode}
         type="text"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-        style={{ background: isDarkMode ? '#E2ECEB' : null }}
         onChange={(e) => {
           onChange(e);
         }}
