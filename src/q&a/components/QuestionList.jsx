@@ -5,7 +5,7 @@ import SearchForm from './SearchForm.jsx';
 import QuestionListEntry from './QuestionListEntry.jsx';
 import AddQuestion from './AddQuestionModal.jsx';
 
-function QuestionList({ props, handleQuestionSubmit }) {
+function QuestionList({ props, handleQuestionSubmit, onReport }) {
   const [list, setList] = useState([]);
   const [matches, setMatches] = useState([]);
   const [index, setIndex] = useState(2);
@@ -48,12 +48,12 @@ function QuestionList({ props, handleQuestionSubmit }) {
 
   const moreQuestionsButton = list.slice(index).length > 0
     ? (
-      <button className="question-buttons" type="submit" onClick={showMoreQuestions}>More Questions</button>
+      <button className="question-buttons" type="submit" onClick={showMoreQuestions}>MORE QUESTIONS</button>
     ) : null;
 
   const lessQuestionsButton = matches.length > 2
     ? (
-      <button className="question-buttons" type="submit" onClick={showLessQuestions}>Less Questions</button>
+      <button className="question-buttons" type="submit" onClick={showLessQuestions}>COLLAPSE QUESTIONS</button>
     ) : null;
 
   if (matches) {
@@ -61,13 +61,19 @@ function QuestionList({ props, handleQuestionSubmit }) {
       <div className="QandA-widget">
         <div className="QandA-list">
           <SearchForm handleSubmit={handleSubmit} />
-          {matches.map((match) => <QuestionListEntry item={match} key={match.question_id} />) }
+          {matches.map((match) => (
+            <QuestionListEntry
+              item={match}
+              onReport={onReport}
+              key={match.question_id}
+            />
+          )) }
           <AddQuestion ref={qModal} submit={handleQuestionSubmit} props={props} />
         </div>
-        <div>
+        <div id="question-button-div">
           {moreQuestionsButton}
           {lessQuestionsButton}
-          <button className="question-buttons" type="button" onClick={() => qModal.current.open()}>Add a Question +</button>
+          <button className="question-buttons" type="button" onClick={() => qModal.current.open()}>ADD A QUESTION +</button>
         </div>
       </div>
     );
@@ -81,6 +87,7 @@ QuestionList.propTypes = {
   props: PropTypes.shape.isRequired,
   results: PropTypes.arrayOf.isRequired,
   handleQuestionSubmit: PropTypes.func.isRequired,
+  onReport: PropTypes.func.isRequired,
 };
 
 export default QuestionList;

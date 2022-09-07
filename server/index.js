@@ -84,6 +84,15 @@ app.put('/qa/questions/:question_id/helpful', (req, res) => {
     .catch((err) => res.send(err));
 });
 
+app.put('/qa/questions/:question_id/report', (req, res) => {
+  axios.put(`${API}qa/questions/${req.body.id}/report`, { question_id: req.body.id }, options)
+    .then((response) => {
+      console.log(response.data);
+      res.send(response);
+    })
+    .catch((err) => res.send(err));
+});
+
 app.put('/answers/helpful', (req, res) => {
   axios.put(`${API}qa/answers/${req.body.id}/helpful`, { answer_id: req.body.id }, options)
     .then((response) => {
@@ -102,6 +111,14 @@ app.post('/addquestion', (req, res) => {
   axios.post(`${API}qa/questions`, req.body, options)
     .then((response) => {
       console.log(response);
+      res.send(response.data);
+    })
+    .catch((err) => res.send(err));
+});
+
+app.post('/click', (req, res) => {
+  axios.post(`${API}interactions`, req.body, options)
+    .then((response) => {
       res.send(response.data);
     })
     .catch((err) => res.send(err));

@@ -7,7 +7,7 @@ import axios from 'axios';
 import Answers from './Answers.jsx';
 import AddAnswer from './AddAnswerModal.jsx';
 
-function QuestionListEntry({ item }) {
+function QuestionListEntry({ item, onReport }) {
   const [list, setList] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [helpful, setHelpful] = useState(item.question_helpfulness);
@@ -35,6 +35,12 @@ function QuestionListEntry({ item }) {
       .catch((err) => console.error('client side helpful error: ', err));
   };
 
+  const handleReport = () => {
+    axios.put('http://localhost:3001/qa/questions/:question_id/report', { id: item.question_id })
+      .then(() => { onReport(); })
+      .catch((err) => console.error('client side helpful error: ', err));
+  };
+
   const handleAnswerSubmit = (answer) => {
     axios.post(`http://localhost:3001/addanswer/${item.question_id}`, answer)
       .then(() => setAnswerAdded(answerAdded + 1))
@@ -54,7 +60,7 @@ function QuestionListEntry({ item }) {
   const moreAnswersButton = list.length > answers.length
     ? (
       <p className="answer-buttons" onClick={(e) => handleMoreAnswers(e)}>
-        Load More Answers
+        LOAD MORE ANSWERS
       </p>
     ) : null;
 
@@ -76,11 +82,12 @@ function QuestionListEntry({ item }) {
         </span>
         <span id="question-spans">
           Helpful?&nbsp;
-          <button type="button" className="link-button" id="question-helpful-button" onClick={() => handleHelpful()}>
+          <button type="button" className="link-button" id="question-helpful-button" onClick={handleHelpful}>
             Yes
             {`(${helpful})`}
           </button>
           <button type="button" className="link-button" id="add-answer-button" onClick={() => aModal.current.open()}>Add Answer</button>
+          <button type="button" className="link-button" id="question-report-button" onClick={handleReport}>Report</button>
         </span>
         <AddAnswer ref={aModal} handleSubmit={handleAnswerSubmit} />
       </div>
