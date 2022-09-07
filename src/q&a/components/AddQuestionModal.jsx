@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
 import React, {
   useState, useEffect, useImperativeHandle, forwardRef, useCallback,
 } from 'react';
-import PropTypes from 'prop-types';
 
-function AddQuestion({ submit, props }, ref) {
+function AddQuestion({ submit, props, currentProductName }, ref) {
   const [display, setDisplay] = useState(false);
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
@@ -53,27 +53,37 @@ function AddQuestion({ submit, props }, ref) {
       <div className="QandA-modal">
         <div className="QandA-modal-content">
           <div>
-            <h3>Ask Your Question</h3>
-            <h4>About the Product Here</h4>
-            <textarea className="qmodal" placeholder="Add Question Here..." maxLength="1000" onChange={(e) => setBody(e.target.value)} />
+            <h2>Ask Your Question</h2>
             <br />
-            <input className="qmodal" type="text" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setName(e.target.value)} />
-            <input className="qmodal" type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
+            <h4>
+              About&nbsp;
+              {currentProductName}
+            </h4>
+            <br />
+            <div>
+              <textarea className="qmodal" placeholder="Add Question Here..." maxLength="1000" onChange={(e) => setBody(e.target.value)} />
+            </div>
+            <br />
+            <div>
+              <small>Name: &nbsp;</small>
+              <input className="qmodal" type="text" maxLength="60" placeholder="Example: jackson11!" onChange={(e) => setName(e.target.value)} />
+              <br />
+              For privacy reasons, do not use your full name or email address
+            </div>
+            <br />
+            <div>
+              <small>Email: &nbsp;</small>
+              <input className="qmodal" type="text" maxLength="60" placeholder="Example: jack@email.com" onChange={(e) => setEmail(e.target.value)} />
+              <br />
+              For authentication reasons, you will not be emailed” will appear
+            </div>
           </div>
-          For privacy reasons, do not use your full name or email address
           <button className="qmodal" type="submit" onClick={(e) => onSubmit(e)}>submit</button>
           <br />
-          For authentication reasons, you will not be emailed” will appear
         </div>
       </div>
     );
   } return (null);
 }
-
-AddQuestion.propTypes = {
-  submit: PropTypes.func.isRequired,
-  props: PropTypes.shape.isRequired,
-  product_id: PropTypes.number.isRequired,
-};
 
 export default forwardRef(AddQuestion);

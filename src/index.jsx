@@ -47,7 +47,7 @@ function App() {
         scrollToReviews={scrollToReviews}
         trackClick={trackClick}
       />
-      <Questions trackClick={trackClick} />
+      <Questions trackClick={trackClick} currentProductName={currentProductName} />
       <div ref={reviewsRef} />
       <RatingsApp
         currentProductName={currentProductName}

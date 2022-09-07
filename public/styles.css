@@ -361,28 +361,26 @@ h2 {
 .rar_section {
   display: flex;
   flex-direction: row;
+  align-items: stretch;
+  margin-left: 12%;
+  margin-right: 12%;
+  max-width: 85%;
+  gap: 2vw;
 }
 .rar_ratingBox {
   display: flex;
   flex-direction: column;
-  justify-content: start;
   width: 20vw;
   padding: 1vw;
   max-width: 30vw;
-  /* transform: scale(.7);
-  transform: translate(90px, 50px); */
-
 }
 .rar_reviewData {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   text-align: center;
   gap: 15px;
-
   padding-right: 2vw;
-  width: 20vw;
-  max-width: 25vw;
+  /* max-width: 25vw; */
 
 }
 #starRow {
@@ -398,30 +396,34 @@ h2 {
   margin-bottom: 1vw;
 }
 #rar_bigNum {
+  color: #525151;
   font-weight: 900;
   font-size: 5vw;
 }
 .rar_tileBox {
   display: flex;
   flex-direction: column;
+  width: 55vw;
+  resize: vertical;
+  height: auto;
+  max-height: 60vw;
+  margin-bottom: 2vw;
+  border-bottom: 2px black;
+  overflow: auto;
   margin-top: 3vw;
-  width: 100%;
-  max-height: 60%;
+  /* height: 20vw; */
 }
-/* #rar_tileBox {
-  transform: scale(.75);
-} */
 .rar_tile {
   display:flex;
+  flex-direction: column;
+  flex-shrink: 2;
   margin-top: 3vw;
   border-bottom: 2px solid grey;
-  flex-direction: column;
-  max-width: 40vw;
+  max-width: 55vw;
 }
 #rar_header {
   display: flex;
   font-weight: 400;
-
 }
 .rar_ratingData {
   display: flex;
@@ -440,44 +442,47 @@ h2 {
 }
 #rar_summary {
   margin-top: 1vw;
+  color: #525151;
   margin-bottom: 1vw;
   font-weight: bold;
   font-size: 1.4vw;
 }
 #rar_fullSummary {
   margin-top: 1vw;
-  font-size: 1.2vw;
+  font-size: .9vw;
 }
 #rar_recommendation {
   margin-top: 1vw;
   margin-bottom: 1vw;
-  font-size: medium;
+  font-size: 1vw;
 }
 .rar_pics {
   display:flex;
   flex-direction: row;
+  max-width: 50vw;
   gap: 20px;
-  margin-bottom: 5%;
+  margin-bottom: 1vw;
 }
 .rar_thumbs {
   border: 1px solid black;
-  border-radius: 4px;
   padding: 5px;
-  width: 5vw;
+  max-width: 4vw;
+  max-height: 4vw;
 }
 #rar_helpAndReport {
   display: flex;
   align-items: baseline;
   color: grey;
-  font-size: small;
+  font-size: 1vw;
   flex-direction: row;
   justify-content: flex-start;
   margin-bottom: 20px;
   gap: 10px;
 }
-#rar_yes,
-#rar_report {
+.rar_yes,
+.rar_report {
   text-decoration: underline;
+  font-size: 1vw;
   font-weight: lighter;
   color: grey;
   background: none;
@@ -500,10 +505,11 @@ h2 {
 }
 #rar_tileBoxButtons {
   background-color: #ffffff;
-  border: 1px solid black;
-  font-size: 1.3vw;
-  width: 15vw;
-  height: 5vw;
+  border: 1px solid #525151;
+  color:#525151;
+  font-size: 1.2vw;
+  width: 12vw;
+  height: 4vw;
   margin-right: 1vw;
   text-align: center;
 }
@@ -517,21 +523,28 @@ h2 {
   text-align: center;
 }
 .rar_sortDropDown {
-  font-size: 1.7vw;
+  color: #525151;
+  font-size: 1.3vw;
   font-weight: bold;
 }
 #reviewSelector {
-  text-decoration: underline;
-  border: none;
-  font-size: 1.7vw;
+  margin: 5px;
+  color: #525151;
+  background-color:transparent;
+  border-top: 1px black;
+  border-left: 1px black;
+  border-right: 1px black;
+  border-bottom: 1px solid black;
+  font-size: 1.3vw;
   font-weight: bold;
 }
 meter::-webkit-meter-bar {
   background: none;
-  background: lightgrey;
+  background: rgb(233, 233, 233);
+  border-radius: 0;
 }
 meter::-webkit-meter-optimum-value {
-  background-image: linear-gradient(90deg, #5c5c5c 50%, #5c5c5c 100%);
+  background-image: linear-gradient(90deg, #525151 50%, #525151 100%);
 }
 #rar_recOverview {
   text-align: left;
@@ -542,8 +555,22 @@ meter::-webkit-meter-optimum-value {
 
 }
 .rar_dataMeter {
-text-align: left;
-width: 10%;
+  text-align: left;
+  width: 10%;
+}
+#rar_sizeMeterDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 18vw;
+  font-size: .8vw;
+}
+#rar_comfortMeterDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 18vw;
+  font-size: .8vw;
 }
 #rar_met {
   width: 15vw;
@@ -569,7 +596,7 @@ width: 10%;
 #myModal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   left: 0;
   top: 0;
   width: 100%;
@@ -580,6 +607,7 @@ width: 10%;
 }
 #myModal-content { /* this is the only way to access my modal */
   display: flex;
+  color: #525151;
   border-radius: 2vw;
   border-color: #5c5c5c;
   flex-direction: column;
@@ -592,11 +620,12 @@ width: 10%;
   border: 3px solid black;
   height: 100vw;
   width: 80vw;
+  overflow: scroll;
 }
 #myPicModal {
   display: none;
   position: fixed;
-  z-index: 5;
+  z-index: 11;
   left: 0;
   top: 0;
   width: 100%;
@@ -621,7 +650,7 @@ width: 10%;
   width: 50vw;
 }
 #rar_modalTitle {
- font-size: 6vw;
+ font-size: 5vw;
 }
 #rar_modalProduct {
   font-size: 3vw;
@@ -746,6 +775,7 @@ td { /*this may cause issues but I can go back later and fix */
 }
 /* Other */
 .QandA-widget {
+  color: #525151;
   text-align: left;
   justify-content: left;
   max-width: 85%;
@@ -753,7 +783,6 @@ td { /*this may cause issues but I can go back later and fix */
   margin-right: 3%;
   margin-bottom: 6.5%;
 }
-
 .QandA-list {
   max-height: 75vw;
   width: 100%;
@@ -765,6 +794,7 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 .link-button {
+  color: grey;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -773,7 +803,7 @@ td { /*this may cause issues but I can go back later and fix */
   margin-right: 1vw;
   float: right;
   padding: 0;
-  font-size: 1.25vw;
+  font-size: 1vw;
   font-weight: 300;
   font-family: 'Nunito Sans', sans-serif;
 }
@@ -786,6 +816,7 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 .question-buttons {
+  color: #525151;
   background-color: #ffffff;
   border: 1px solid black;
   font-size: 1.5vw;
@@ -839,6 +870,7 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 #question-spans {
+  color: grey;
   background-color: transparent;
   border: none;
   display: flex;
@@ -846,7 +878,7 @@ td { /*this may cause issues but I can go back later and fix */
   justify-content: flex-start;
   align-items: baseline;
   float: right;
-  font-size: 1.25vw;
+  font-size: 1vw;
   font-weight: 300;
   height: 100%;
 }
@@ -874,6 +906,8 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 .answer-spans {
+  font-size: 1vw;
+  color: grey;
   margin: 1vw;
   padding-right: 1vw;
   border-right: 1px solid grey;
@@ -897,7 +931,7 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 .question-searchbar {
-  height: 5vw;
+  height: 4vw;
   padding: 10%;
   width: 95%;
   font-size: 1.5vw;
@@ -924,15 +958,26 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 .QandA-modal-content {/* Hidden by default */
-  display: block;
+  font-size: 1.5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   position: fixed; /* Stay in place */ /* Sit on top */
   top: 25%;
   left: 25%;
-  width: 50%; /* Full width */
-  height: 50%; /* Full height */
+  width: 55vw; /* Full width */
+  height: 55vw; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgb(128, 128, 128, 0.95);
+  background-color: white;
+  border: 3px solid black;
+  border-radius: 2vw;
+}
+
+#modal-picture-upload {
+  margin-left: 15%;
+  margin-top: 2%;
 }
 
 .answer-pic-container {
@@ -960,7 +1005,7 @@ td { /*this may cause issues but I can go back later and fix */
 #answer-helpful {
   float: none;
   border: none;
-  font-size: 1.25vw;
+  font-size: 1vw;
   font-weight: 300;
 }
 
