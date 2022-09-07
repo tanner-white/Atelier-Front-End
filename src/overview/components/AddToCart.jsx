@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 function AddToCart({ current, isDarkMode }) {
   const [size, setSize] = useState('');
@@ -55,7 +56,8 @@ function AddToCart({ current, isDarkMode }) {
         onChange={handleQtyChange}
       >
         <option>QUANTITY</option>
-        {availableQty.length && availableQty.slice(0, 15).map((num) => <option>{num}</option>)}
+        {availableQty.length
+        && availableQty.slice(0, 15).map((num, index) => <option key={index}>{num}</option>)}
       </select>
       <br />
       <button
@@ -78,22 +80,22 @@ function AddToCart({ current, isDarkMode }) {
   );
 }
 
-AddToCart.propTypes = {
-  current: PropTypes.shape({
-    id: PropTypes.number,
-    campus: PropTypes.string,
-    name: PropTypes.string,
-    slogan: PropTypes.string,
-    description: PropTypes.string,
-    category: PropTypes.string,
-    default_price: PropTypes.string,
-    created_at: PropTypes.string,
-    updated_at: PropTypes.string,
-    features: PropTypes.arrayOf(PropTypes.shape({
-      feature: PropTypes.string,
-      value: PropTypes.string,
-    })),
-  }).isRequired,
-};
+// AddToCart.propTypes = {
+//   current: PropTypes.shape({
+//     id: PropTypes.number,
+//     campus: PropTypes.string,
+//     name: PropTypes.string,
+//     slogan: PropTypes.string,
+//     description: PropTypes.string,
+//     category: PropTypes.string,
+//     default_price: PropTypes.string,
+//     created_at: PropTypes.string,
+//     updated_at: PropTypes.string,
+//     features: PropTypes.arrayOf(PropTypes.shape({
+//       feature: PropTypes.string,
+//       value: PropTypes.string,
+//     })),
+//   }).isRequired,
+// };
 
 export default AddToCart;
