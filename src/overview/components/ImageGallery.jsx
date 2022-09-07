@@ -40,7 +40,7 @@ function ImageGallery({ current, currentThumbnails, isDarkMode }) {
       }}
     >
       <img
-        className="full-screen"
+        className={isDarkMode ? 'full-screen-dark-mode' : 'full-screen'}
         src="https://img.icons8.com/ios/500/full-screen--v2.png"
         alt="wide screen button"
         onClick={handleExpandedClick}
