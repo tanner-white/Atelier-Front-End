@@ -1,8 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable import/extensions */
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import Answers from './Answers.jsx';
 import AddAnswer from './AddAnswerModal.jsx';
@@ -104,9 +104,5 @@ function QuestionListEntry({ item, onReport, currentProductName }) {
     </div>
   );
 }
-
-QuestionListEntry.propTypes = {
-  item: PropTypes.arrayOf.isRequired,
-};
 
 export default QuestionListEntry;

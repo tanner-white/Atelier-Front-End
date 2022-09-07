@@ -744,6 +744,7 @@ td { /*this may cause issues but I can go back later and fix */
 }
 /* Other */
 .QandA-widget {
+  color: #525151;
   text-align: left;
   justify-content: left;
   max-width: 85%;
@@ -785,6 +786,7 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 .question-buttons {
+  color: #525151;
   background-color: #ffffff;
   border: 1px solid black;
   font-size: 1.5vw;

@@ -1,11 +1,13 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import SearchForm from './SearchForm.jsx';
 import QuestionListEntry from './QuestionListEntry.jsx';
 import AddQuestion from './AddQuestionModal.jsx';
 
-function QuestionList({ props, handleQuestionSubmit, onReport, currentProductName }) {
+function QuestionList({
+  props, handleQuestionSubmit, onReport, currentProductName,
+}) {
   const [list, setList] = useState([]);
   const [matches, setMatches] = useState([]);
   const [index, setIndex] = useState(2);
@@ -88,12 +90,5 @@ function QuestionList({ props, handleQuestionSubmit, onReport, currentProductNam
     <button type="button" onClick={() => qModal.current.open()}>Add a Question</button>
   );
 }
-
-QuestionList.propTypes = {
-  props: PropTypes.shape.isRequired,
-  results: PropTypes.arrayOf.isRequired,
-  handleQuestionSubmit: PropTypes.func.isRequired,
-  onReport: PropTypes.func.isRequired,
-};
 
 export default QuestionList;

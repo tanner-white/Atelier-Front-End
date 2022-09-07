@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import React, {
   useState, useEffect, useImperativeHandle, forwardRef, useCallback,
 } from 'react';
-import PropTypes from 'prop-types';
 
 function AddQuestion({ submit, props, currentProductName }, ref) {
   const [display, setDisplay] = useState(false);
@@ -85,11 +85,5 @@ function AddQuestion({ submit, props, currentProductName }, ref) {
     );
   } return (null);
 }
-
-AddQuestion.propTypes = {
-  submit: PropTypes.func.isRequired,
-  props: PropTypes.shape.isRequired,
-  product_id: PropTypes.number.isRequired,
-};
 
 export default forwardRef(AddQuestion);
