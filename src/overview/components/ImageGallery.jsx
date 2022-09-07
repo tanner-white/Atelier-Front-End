@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import ReactImageMagnify from 'react-image-magnify';
 import ImageGalleryThumbnail from './ImageGalleryThumbnail.jsx';
 
@@ -35,10 +36,11 @@ function ImageGallery({ current, currentThumbnails, isDarkMode }) {
       className={classname}
       style={{
         background: isDarkMode ? '#1b242c' : 'white',
+        transition: '0.8s background',
       }}
     >
       <img
-        className="full-screen"
+        className={isDarkMode ? 'full-screen-dark-mode' : 'full-screen'}
         src="https://img.icons8.com/ios/500/full-screen--v2.png"
         alt="wide screen button"
         onClick={handleExpandedClick}
@@ -53,6 +55,8 @@ function ImageGallery({ current, currentThumbnails, isDarkMode }) {
           />
         ))}
       </div>
+      {current
+      && (
       <div className="main-image">
         <ReactImageMagnify {...{
           smallImage: {
@@ -68,6 +72,7 @@ function ImageGallery({ current, currentThumbnails, isDarkMode }) {
         }}
         />
       </div>
+      )}
       {currentIndex > 0
       && <h1 className="carousel-left-arrow" onClick={previous}>&#8249;</h1>}
       {currentIndex < length - 1
@@ -75,8 +80,8 @@ function ImageGallery({ current, currentThumbnails, isDarkMode }) {
     </div>
   );
 }
-ImageGallery.propTypes = {
-  current: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentThumbnails: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
+// ImageGallery.propTypes = {
+//   current: PropTypes.arrayOf(PropTypes.string).isRequired,
+//   currentThumbnails: PropTypes.arrayOf(PropTypes.string).isRequired,
+// };
 export default ImageGallery;
