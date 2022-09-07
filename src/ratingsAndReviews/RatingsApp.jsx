@@ -9,6 +9,8 @@ class RatingsApp extends React.Component {
     this.state = {
       currentItem: { results: [] },
       currentMeta: {},
+      helpfulCount: 0,
+      clickCount: 0,
     };
   }
 
@@ -18,6 +20,17 @@ class RatingsApp extends React.Component {
       .then((response) => this.setState({ currentItem: response.data }))
       .then(this.getMeta())
       .catch((err) => (console.log(err)));
+    const element = document.getElementById('rarMain');
+    element.addEventListener('mousedown', this.handleWidgetClick.bind(this));
+  }
+
+  handleWidgetClick() {
+    let clicks = this.state.clickCount;
+    clicks += 1;
+    this.setState({
+      clickCount: clicks,
+    });
+    console.log('clicked!');
   }
 
   getMeta(productId) {
@@ -27,15 +40,29 @@ class RatingsApp extends React.Component {
   }
 
   addReview(message) {
-    console.log(message);
     axios.post('http://localhost:3001/reviews/addReview', message)
-      .then((response) => console.log('Post request to reviews API successful', response))
-      .catch((error) => console.log('error posting to API', error));
+      .then((response) => this.setState({ helpfulCount: response.data }))
+      .catch((error) => console.log('error posting to server', error));
+  }
+
+  postHelpful(ID) {
+    console.log(ID);
+    axios.put('http://localhost:3001/reviews/putHelpful', ID)
+      .then((response) => console.log('POST new helpful request to server successful', response))
+      .catch((error) => console.log('error posting to server', error));
+  }
+
+  postReport(ID) {
+    console.log(ID);
+    axios.put('http://localhost:3001/reviews/putReport', ID)
+      .then((response) => console.log('POST new report request to server successful', response))
+      .catch((error) => console.log('error posting to server', error));
   }
 
   render() {
     const { currentItem, currentMeta } = this.state;
     const { setNumberReviews, setAverageStars, currentProductName } = this.props;
+    //const { addReview, postHelpful } = this;
     setNumberReviews(currentItem.results.length);
     return (
       <div id="rarMain">
@@ -44,7 +71,9 @@ class RatingsApp extends React.Component {
           itemMeta={currentMeta}
           currentProductName={currentProductName}
           addReview={this.addReview.bind(this)}
+          postReport={this.postReport.bind(this)}
           setAverageStars={setAverageStars}
+          postHelpful={this.postHelpful.bind(this)}
         />
       </div>
     );
