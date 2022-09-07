@@ -92,7 +92,7 @@ h2 {
 }
 .basic-info-container {
   position: relative;
-  margin-left: 5%;
+  margin-left: 3%;
   width: 30vw;
   max-width: 364px;
   max-height: 574px;
@@ -106,7 +106,7 @@ h2 {
   color: rgb(181, 2, 2);
 }
 .see-reviews {
-  font-size: 100%;
+  font-size: 70%;
   margin-bottom: 1%;
   margin-top: 2%;
   cursor: pointer;
@@ -209,6 +209,11 @@ h2 {
   width: 2vw;
   margin-right: 1vw;
 }
+.social-media-icons-dark-mode {
+  filter: invert(80%);
+  align-self: flex-end;
+  margin: 4vw 2vw;
+}
 .facebook:hover {
   border: 1px solid black;
   cursor: pointer;
@@ -227,13 +232,15 @@ h2 {
   font-size: 100%;
 }
 .style-thumbnails {
-  width: 30vw;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 35vw;
   max-width: 380px;
-  height: auto;
   cursor: pointer;
 }
 .thumbnail-div {
-  display: inline-block;
+  display: flex;
   position: relative;
   width: 5vw;
   max-width: 68px;
@@ -242,18 +249,18 @@ h2 {
   overflow: hidden;
   border-radius: 50%;
   border: 2px rgba(0, 0, 0, 0.156) solid;
-  margin-right: 6%;
+  margin-right: 5%;
   margin-bottom: 5%;
 }
 #current-thumb {
   position: absolute;
-  top: 0.3vw;
-  left: 3vw;
+  color: white;
+  top: 1.5vw;
+  left: 2vw;
 }
 .image-gallery-default {
   display: flex;
   position: relative;
-  overflow: hidden;
   background-color: #ffffff;
   flex-direction: column;
   margin: 0;
@@ -273,7 +280,8 @@ h2 {
   margin: 0px 0px;
   width: 100%;
   max-width: 1280px;
-  height: 55vw;
+  height: 49vw;
+  max-height: 627px;
   align-items: center;
   justify-content: center;
   z-index: 5;
@@ -304,7 +312,7 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
   width: 4vw;
-  margin: 4vw 0px 10% 5%;
+  margin: 5vw 0px 10% 5%;
 }
 .gallery-thumbnail {
   width: 100%;
@@ -340,11 +348,14 @@ h2 {
   z-index: 9;
 }
 @media screen and (min-width: 1280px) {
-  .product-category, .see-reviews, .price, .sale-price, .style-name {
+  .product-category, .price, .sale-price, .style-name {
     font-size: 19.2px;
   }
   .quantity-select, .add-to-bag, .size-select, .add-to-outfit {
     font-size: 15.3px;
+  }
+  .see-reviews {
+    font-size: 13.4px;
   }
   .product-name{font-size:  38.4px;}
   .slogan{font-size: 25.6px}
