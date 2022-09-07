@@ -1,6 +1,6 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 
 function Answers({ answer }) {
   const [helpful, setHelpful] = useState(answer.helpfulness);
@@ -48,19 +48,5 @@ function Answers({ answer }) {
     </div>
   );
 }
-
-Answers.propTypes = {
-  answer: PropTypes.shape({
-    answer_id: PropTypes.number,
-    body: PropTypes.string,
-    date: PropTypes.string,
-    answerer_name: PropTypes.string,
-    helpfulness: PropTypes.number,
-    photos: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number,
-      url: PropTypes.string,
-    })),
-  }).isRequired,
-};
 
 export default Answers;

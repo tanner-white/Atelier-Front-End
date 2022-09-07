@@ -1,13 +1,13 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable import/extensions */
 import React, { useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
 import axios from 'axios';
 import Answers from './Answers.jsx';
 import AddAnswer from './AddAnswerModal.jsx';
 
-function QuestionListEntry({ item, onReport }) {
+function QuestionListEntry({ item, onReport, currentProductName }) {
   const [list, setList] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [helpful, setHelpful] = useState(item.question_helpfulness);
@@ -89,7 +89,12 @@ function QuestionListEntry({ item, onReport }) {
           <button type="button" className="link-button" id="add-answer-button" onClick={() => aModal.current.open()}>Add Answer</button>
           <button type="button" className="link-button" id="question-report-button" onClick={handleReport}>Report</button>
         </span>
-        <AddAnswer ref={aModal} handleSubmit={handleAnswerSubmit} />
+        <AddAnswer
+          ref={aModal}
+          handleSubmit={handleAnswerSubmit}
+          currentProductName={currentProductName}
+          questionBody={item.question_body}
+        />
       </div>
       <div className="answer-list">
         {answers.map((answer) => <Answers answer={answer} key={answer.answer_id} />)}
@@ -99,9 +104,5 @@ function QuestionListEntry({ item, onReport }) {
     </div>
   );
 }
-
-QuestionListEntry.propTypes = {
-  item: PropTypes.arrayOf.isRequired,
-};
 
 export default QuestionListEntry;
