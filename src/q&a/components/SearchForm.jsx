@@ -13,7 +13,7 @@ function SearchForm({ handleSubmit, isDarkMode }) {
         className="question-searchbar"
         type="text"
         placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
-        style={{ background: isDarkMode ? '#E2ECEB' : 'white' }}
+        style={{ background: isDarkMode ? '#E2ECEB' : null }}
         onChange={(e) => {
           onChange(e);
         }}

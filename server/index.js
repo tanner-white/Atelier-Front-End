@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
-// const path = require('path');
+const path = require('path');
 
 const API = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfc/';
 const options = {
@@ -16,7 +16,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/styles/:productId', (req, res) => {
   axios.get(`${API}products/${req.params.productId}/styles`, options)
@@ -126,4 +126,4 @@ app.post('/click', (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT);
-console.log('Listening on port 3001');
+console.log(`Listening on port ${PORT}`);
