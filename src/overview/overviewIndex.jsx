@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/extensions */
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -74,6 +75,7 @@ function Overview({
             setCurrentStyle={setCurrentStyle}
             setCurrentPhotos={setCurrentPhotos}
             setCurrentThumbnails={setCurrentThumbnails}
+            isDarkMode={isDarkMode}
           />
           <AddToCart current={currentStyle} isDarkMode={isDarkMode} />
         </div>

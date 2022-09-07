@@ -1,11 +1,12 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import StarRatings from 'react-star-ratings';
 
 function BasicInfo({
-  product, scrollToReviews, numberReviews, averageStars, isDarkMode
+  product, scrollToReviews, numberReviews, averageStars, isDarkMode,
 }) {
   function handleReviewClick(e) {
     e.preventDefault();
@@ -37,7 +38,7 @@ function BasicInfo({
     </div>
   );
 }
-BasicInfo.propTypes = {
-  product: PropTypes.shape.isRequired,
-};
+// BasicInfo.propTypes = {
+//   product: PropTypes.shape.isRequired,
+// };
 export default BasicInfo;

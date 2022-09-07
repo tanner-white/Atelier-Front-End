@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 function ImageGalleryThumbnail({
   thumbnail, index, setCurrentIndex, currentIndex,
@@ -11,7 +12,7 @@ function ImageGalleryThumbnail({
     setCurrentIndex(index);
   }
   return (
-    index === currentIndex
+    index === currentIndex && thumbnail
       ? (
         <img
           onClick={handleClick}
@@ -32,10 +33,10 @@ function ImageGalleryThumbnail({
       )
   );
 }
-ImageGalleryThumbnail.propTypes = {
-  thumbnail: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
-  currentIndex: PropTypes.number.isRequired,
-  setCurrentIndex: PropTypes.func.isRequired,
-};
+// ImageGalleryThumbnail.propTypes = {
+//   thumbnail: PropTypes.string.isRequired,
+//   index: PropTypes.number.isRequired,
+//   currentIndex: PropTypes.number.isRequired,
+//   setCurrentIndex: PropTypes.func.isRequired,
+// };
 export default ImageGalleryThumbnail;
