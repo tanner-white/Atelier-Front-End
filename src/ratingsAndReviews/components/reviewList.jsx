@@ -132,7 +132,7 @@ class ReviewList extends React.Component {
             product_data2={this.props.productInfo}
             setAverageStars={this.props.setAverageStars}
             itemMeta={this.props.itemMeta}
-            sortByClick={this.sortByClick.bind(this)}
+            sortByClickFunc={this.sortByClick.bind(this)}
 
           />
         </div>
