@@ -62,7 +62,6 @@ function ImageGallery({ current, currentThumbnails, isDarkMode }) {
         transition: '0.8s background',
       }}
     >
-      <div></div>
       <img
         className={isDarkMode ? 'full-screen-dark-mode' : 'full-screen'}
         src="https://img.icons8.com/ios/500/full-screen--v2.png"
