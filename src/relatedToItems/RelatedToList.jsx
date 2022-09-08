@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedToCard from './RelatedToCard.jsx';
 
-function RelatedToList({ currentProduct, setCurrentProduct }) {
+function RelatedToList({ currentProduct, setCurrentProduct, isDarkMode }) {
   const [relatedToCards, setRelatedToCards] = useState([]);
   const [displayedCards, setDisplayedCards] = useState([]);
   const [firstIndex, setFirstIndex] = useState(0);
@@ -37,22 +37,23 @@ function RelatedToList({ currentProduct, setCurrentProduct }) {
     // Left Arrow
     <div>
       {firstIndex === 0 ? null : (
-        <button className="related-to-left-arrow" type="button" onClick={goToPreviousSlide}>
-          &lt;
-        </button>
+        <h2 className="related-to-left-arrow" type="button" onClick={goToPreviousSlide}>
+          &#8249;
+        </h2>
       )}
       <div id="related-to-list">
         {displayedCards.map((id) => (
           <RelatedToCard
             id={id}
             setCurrentProduct={setCurrentProduct}
+            isDarkMode={isDarkMode}
           />
         ))}
       </div>
       {lastIndex === relatedToCards.length ? null : (
-        <button className="related-to-right-arrow" type="button" onClick={goToNextSlide}>
-          &gt;
-        </button>
+        <h2 className="related-to-right-arrow" type="button" onClick={goToNextSlide}>
+          &#8250;
+        </h2>
       )}
     </div>
   );

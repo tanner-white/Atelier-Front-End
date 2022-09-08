@@ -81,7 +81,11 @@ function App() {
         trackClick={trackClick}
         isDarkMode={isDarkMode}
       />
-      <RelatedToApp currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} />
+      <RelatedToApp
+        currentProduct={currentProduct}
+        setCurrentProduct={setCurrentProduct}
+        isDarkMode={isDarkMode}
+      />
       <Questions
         currentProduct={currentProduct}
         trackClick={trackClick}
