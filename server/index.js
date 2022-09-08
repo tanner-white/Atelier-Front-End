@@ -54,6 +54,12 @@ app.get('/reviews/meta', (req, res) => {
     .catch((error) => res.send(error));
 });
 
+app.get('/relatedTo/:productId', (req, res) => {
+  axios.get(`${API}products/${req.params.productId}/related`, options)
+    .then((response) => res.send(response.data))
+    .catch((err) => res.send(err));
+});
+
 app.post('/reviews/addReview', (req, res) => {
   const message = req.body;
   axios.post(`${API}reviews`, message, options) // body object
@@ -126,4 +132,4 @@ app.post('/click', (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT);
-console.log('Listening on port 3001');
+console.log(`Listening on port ${PORT}`);

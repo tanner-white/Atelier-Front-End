@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function Answers({ answer }) {
+function Answers({ answer, isDarkMode }) {
   const [helpful, setHelpful] = useState(answer.helpfulness);
 
   const handleHelpful = () => {
@@ -17,6 +17,10 @@ function Answers({ answer }) {
     return date;
   };
 
+  const darkMode = {
+    color: isDarkMode ? '#BDDEDB' : 'grey',
+  };
+
   return (
     <div className="answer">
       <div className="answer-body">
@@ -29,20 +33,20 @@ function Answers({ answer }) {
         ))}
       </div>
       <div className="answerer-info">
-        <span className="answer-spans" id="answer-date">
+        <span className="answer-spans" id="answer-date" style={darkMode}>
           {answer.answerer_name}
           , &nbsp;
           {formatDate(answer.date)}
         </span>
-        <span className="answer-spans">
+        <span className="answer-spans" style={darkMode}>
           Helpful?&nbsp;
-          <button type="button" className="link-button" id="answer-helpful" onClick={() => (handleHelpful())}>
+          <button type="button" className="link-button" id="answer-helpful" style={darkMode} onClick={() => (handleHelpful())}>
             Yes
             {`(${helpful})`}
           </button>
         </span>
         <span className="answer-spans" id="answer-report-span">
-          <button type="button" className="link-button" id="answer-report-button" onClick={() => (console.log('report user'))}>Report</button>
+          <button type="button" className="link-button" id="answer-report-button" style={darkMode} onClick={() => (console.log('report user'))}>Report</button>
         </span>
       </div>
     </div>
