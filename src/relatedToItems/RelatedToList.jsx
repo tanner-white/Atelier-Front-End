@@ -12,7 +12,7 @@ function RelatedToList({ currentProduct, setCurrentProduct, isDarkMode }) {
     setLastIndex(3);
   }, [currentProduct]);
   useEffect(() => {
-    axios.get(`http://localhost:3001/relatedTo/${currentProduct}`)
+    axios.get(`/relatedTo/${currentProduct}`)
       .then((response) => {
         setRelatedToCards(response.data);
         setDisplayedCards(response.data.slice(firstIndex, lastIndex));
