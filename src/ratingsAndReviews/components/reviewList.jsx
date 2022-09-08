@@ -10,13 +10,17 @@ import RatingTile from './ratingTile.jsx';
 import Filter from './filter.jsx';
 
 class ReviewList extends React.Component {
-  constructor({ props, addReview, productInfo }) {
+  constructor({ props, addReview, productInfo, results, isDarkMode}) {
     super(props);
     this.state = {
-      origin: null,
+      origin: productInfo,
       product: productInfo,
       index: 2,
+      usedVal: [],
+      flags: false,
     };
+
+    const darkMode = {};
   }
 
   sortByRelevance() {
@@ -34,24 +38,20 @@ class ReviewList extends React.Component {
       origin: originals,
       product: sortedAndMerged,
     });
-
-    // this.sortByHelpful.bind(this);
-    // this.sortByNewest.bind(this);
-    // this.sortByOldest.bind(this);
-    // this.sortByRelevance.bind(this);
+    console.log( this.state.origin);
   }
 
   sortByHelpful() {
     console.log('triggered');
     const originals = this.props.productInfo;
-    const sorted = this.props.productInfo.results;
+    const sorted = this.props.productInfo.results.slice();
     sorted.sort((a, b) => b.helpfulness - a.helpfulness);
     const sortedAndMerged = originals;
     sortedAndMerged.results = sorted;
 
     this.setState({
-      origin: originals,
       product: sortedAndMerged,
+      origin: originals,
     });
   }
 
@@ -85,6 +85,34 @@ class ReviewList extends React.Component {
     });
   }
 
+  sortByClick(val) {
+    if (this.state.usedVal.includes(val)) {
+      this.setState({
+        usedVal: [],
+        flags: false,
+      });
+      this.props.refreshList();
+    } else {
+      let reviewObj = this.props.productInfo;
+      let reviewArray = this.props.productInfo.results.slice();
+
+      const filtered = reviewArray.filter((rev) => {
+        if (rev.rating <= val) {
+          return rev;
+        }
+      });
+
+      reviewObj.results = filtered;
+      let tracked = this.state.usedVal;
+      tracked.push(val);
+      this.setState({
+        product: reviewObj,
+        usedVal: tracked,
+        flags: true,
+      });
+    }
+  }
+
   updateIndex() {
     let currentIndex = this.state.index;
     this.setState({
@@ -98,6 +126,7 @@ class ReviewList extends React.Component {
     });
   }
 
+
   render() {
     return (
       <div className="rar_section">
@@ -106,6 +135,8 @@ class ReviewList extends React.Component {
             product_data2={this.props.productInfo}
             setAverageStars={this.props.setAverageStars}
             itemMeta={this.props.itemMeta}
+            sortByClickFunc={this.sortByClick.bind(this)}
+
           />
         </div>
         <div id="rar_tileBox" className="rar_tileBox">

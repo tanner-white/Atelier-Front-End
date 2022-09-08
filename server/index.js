@@ -42,14 +42,17 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
     .catch((err) => res.send(err));
 });
 
-app.get('/reviews/', (req, res) => {
-  axios.get(`${API}reviews?product_id=66642&count=100`, options)
+app.get('/reviews/:review_id', (req, res) => {
+  const currentID = req.params.review_id;
+  axios.get(`${API}reviews?product_id=${currentID}&count=100`, options)
     .then((response) => res.send(response.data))
     .catch((error) => res.send(error));
 });
 
-app.get('/reviews/meta', (req, res) => {
-  axios.get(`${API}reviews/meta?product_id=66642`, options)
+app.get('/meta/:review_id', (req, res) => {
+  const currentID = req.params.review_id;
+  console.log(currentID);
+  axios.get(`${API}reviews/meta?product_id=${currentID}`, options)
     .then((response) => res.send(response.data))
     .catch((error) => res.send(error));
 });
