@@ -16,7 +16,7 @@ class RatingsApp extends React.Component {
 
   componentDidMount() {
     // gets all reviews for a specific product - still needs a way to send product id
-    axios.get('http://localhost:3001/reviews/')
+    axios.get('http://localhost:3001/reviews/', { ID: this.props.currentItem })
       .then((response) => this.setState({ currentItem: response.data }))
       .then(this.getMeta())
       .catch((err) => (console.log(err)));
@@ -33,8 +33,8 @@ class RatingsApp extends React.Component {
     console.log('clicked!');
   }
 
-  getMeta(productId) {
-    axios.get('http://localhost:3001/reviews/meta', productId)
+  getMeta() {
+    axios.get('http://localhost:3001/reviews/meta', { ID: this.props.currentItem })
       .then((response) => this.setState({ currentMeta: response.data }))
       .catch((err) => (console.log(err)));
   }
@@ -45,16 +45,16 @@ class RatingsApp extends React.Component {
       .catch((error) => console.log('error posting to server', error));
   }
 
-  postHelpful(ID) {
+  postHelpful() {
     console.log(ID);
-    axios.put('http://localhost:3001/reviews/putHelpful', ID)
+    axios.put('http://localhost:3001/reviews/putHelpful', { ID: this.props.currentItem })
       .then((response) => console.log('POST new helpful request to server successful', response))
       .catch((error) => console.log('error posting to server', error));
   }
 
-  postReport(ID) {
+  postReport() {
     console.log(ID);
-    axios.put('http://localhost:3001/reviews/putReport', ID)
+    axios.put('http://localhost:3001/reviews/putReport', { ID: this.props.currentItem })
       .then((response) => console.log('POST new report request to server successful', response))
       .catch((error) => console.log('error posting to server', error));
   }

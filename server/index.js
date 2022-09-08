@@ -43,6 +43,8 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
 });
 
 app.get('/reviews/', (req, res) => {
+  console.log('express got:', req);
+  console.log('booooooooooooo');
   axios.get(`${API}reviews?product_id=66642&count=100`, options)
     .then((response) => res.send(response.data))
     .catch((error) => res.send(error));

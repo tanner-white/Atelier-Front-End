@@ -27,7 +27,8 @@ class ReviewTile extends React.Component {
   }
 
   render() {
-    return (this.props.product_data1.results.slice(0, this.props.index).map((review) => (
+    console.log(this.props.product_data1);
+    return (this.props.product_data1.results.map((review) => (
       <div key={review.review_id} className="rar_tile">
         <div id="rar_userDateHeader">
           <div id="rar_tileStars">

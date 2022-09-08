@@ -34,11 +34,6 @@ class ReviewList extends React.Component {
       origin: originals,
       product: sortedAndMerged,
     });
-
-    // this.sortByHelpful.bind(this);
-    // this.sortByNewest.bind(this);
-    // this.sortByOldest.bind(this);
-    // this.sortByRelevance.bind(this);
   }
 
   sortByHelpful() {
