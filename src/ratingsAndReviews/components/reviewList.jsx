@@ -10,7 +10,7 @@ import RatingTile from './ratingTile.jsx';
 import Filter from './filter.jsx';
 
 class ReviewList extends React.Component {
-  constructor({ props, addReview, productInfo, results}) {
+  constructor({ props, addReview, productInfo, results, isDarkMode}) {
     super(props);
     this.state = {
       origin: productInfo,
@@ -19,6 +19,8 @@ class ReviewList extends React.Component {
       usedVal: [],
       flags: false,
     };
+
+    const darkMode = {};
   }
 
   sortByRelevance() {
@@ -123,6 +125,7 @@ class ReviewList extends React.Component {
       index: 2,
     });
   }
+
 
   render() {
     return (

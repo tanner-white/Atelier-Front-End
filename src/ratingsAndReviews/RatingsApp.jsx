@@ -3,7 +3,9 @@ import axios from 'axios';
 // eslint-disable-next-line import/extensions
 import ReviewList from './components/reviewList.jsx';
 
-function RatingsApp({ currentProduct, currentProductName, setAverageStars, setNumberReviews }) {
+function RatingsApp({
+  currentProduct, currentProductName, setAverageStars, setNumberReviews, isDarkMode
+}) {
   const [currentItem, setCurrentItem] = useState({ results: [] });
   const [currentMeta, setCurrentMeta] = useState({});
   const [incrementState, setIncrementState] = useState(0);
@@ -87,6 +89,7 @@ function RatingsApp({ currentProduct, currentProductName, setAverageStars, setNu
         setAverageStars={setAverageStars}
         postHelpful={postHelpful}
         refreshList={getReviews}
+        isDarkMode={isDarkMode}
       />
     </div>
   );

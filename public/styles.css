@@ -650,6 +650,11 @@ h2 {
   font-size: 1.3vw;
   font-weight: bold;
 }
+.rar_sortDropDown-dark-mode {
+  color: #eee7e7;
+  font-size: 1.3vw;
+  font-weight: bold;
+}
 #reviewSelector {
   margin: 5px;
   color: #525151;
