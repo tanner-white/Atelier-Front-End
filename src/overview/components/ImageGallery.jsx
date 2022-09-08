@@ -2,7 +2,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import PropTypes from 'prop-types';
 import ReactImageMagnify from 'react-image-magnify';
 import ImageGalleryThumbnail from './ImageGalleryThumbnail.jsx';
@@ -10,6 +10,29 @@ import ImageGalleryThumbnail from './ImageGalleryThumbnail.jsx';
 function ImageGallery({ current, currentThumbnails, isDarkMode }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expanded, setExpanded] = useState(false);
+  const [displayedThumbnails, setDisplayedThumbnails] = useState([]);
+  const [firstIndex, setFirstIndex] = useState(0);
+  const [lastIndex, setLastIndex] = useState(3);
+  useEffect(() => {
+    setFirstIndex(0);
+    setLastIndex(7);
+  }, [currentThumbnails]);
+  useEffect(() => {
+    setDisplayedThumbnails(currentThumbnails.slice(firstIndex, lastIndex));
+  }, [currentThumbnails]);
+  useEffect(() => {
+    setDisplayedThumbnails(currentThumbnails.slice(firstIndex, lastIndex));
+  }, [firstIndex, lastIndex]);
+
+  const goToNextSlide = () => {
+    setFirstIndex(firstIndex + 1);
+    setLastIndex(lastIndex + 1);
+  };
+
+  const goToPreviousSlide = () => {
+    setFirstIndex(firstIndex - 1);
+    setLastIndex(lastIndex - 1);
+  };
   const { length } = current;
   let classname;
   if (!expanded) {
@@ -46,7 +69,7 @@ function ImageGallery({ current, currentThumbnails, isDarkMode }) {
         onClick={handleExpandedClick}
       />
       <div className="thumbnail-selector">
-        {currentThumbnails.map((thumbnail, index) => (
+        {displayedThumbnails.map((thumbnail, index) => (
           <ImageGalleryThumbnail
             thumbnail={thumbnail}
             index={index}
@@ -73,6 +96,10 @@ function ImageGallery({ current, currentThumbnails, isDarkMode }) {
         />
       </div>
       )}
+      {firstIndex > 0
+      && <h1 className="carousel-up-arrow" onClick={goToPreviousSlide}>&and;</h1>}
+      {currentThumbnails.length > 7 && lastIndex !== currentThumbnails.length
+      && <h1 className="carousel-down-arrow" onClick={goToNextSlide}>&or;</h1>}
       {currentIndex > 0
       && <h1 className="carousel-left-arrow" onClick={previous}>&#8249;</h1>}
       {currentIndex < length - 1

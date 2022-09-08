@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
 import axios from 'axios';
 import Overview from './overview/overviewIndex.jsx';
-// eslint-disable-next-line import/extensions
+import RelatedToApp from './relatedToItems/RelatedToApp.jsx';
 import RatingsApp from './ratingsAndReviews/RatingsApp.jsx';
-// eslint-disable-next-line import/extensions
 import Questions from './q&a/QuestionsApp.jsx';
 
 function App() {
+  const [currentProduct, setCurrentProduct] = useState('66642');
   const [currentProductName, setCurrentProductName] = useState('');
   const [averageStars, setAverageStars] = useState(0);
   const [numberReviews, setNumberReviews] = useState(0);
@@ -73,6 +73,7 @@ function App() {
         />
       </div>
       <Overview
+        currentProduct={currentProduct}
         averageStars={averageStars}
         numberReviews={numberReviews}
         setCurrentProductName={setCurrentProductName}
@@ -80,13 +81,16 @@ function App() {
         trackClick={trackClick}
         isDarkMode={isDarkMode}
       />
+      <RelatedToApp currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} />
       <Questions
+        currentProduct={currentProduct}
         trackClick={trackClick}
         currentProductName={currentProductName}
         isDarkMode={isDarkMode}
       />
       <div ref={reviewsRef} />
       <RatingsApp
+        currentProduct={currentProduct}
         currentProductName={currentProductName}
         setAverageStars={setAverageStars}
         setNumberReviews={setNumberReviews}

@@ -170,7 +170,6 @@ h2 {
 }
 .product-details {
   display: flex;
-  border-right: solid black 1px;
   /* background-color: #ffffff; */
   margin-bottom: 70px;
   margin-left: 7%;
@@ -193,12 +192,13 @@ h2 {
 .features {
   display: flex;
   flex-direction: column;
+  border-left: 1px solid black;
   font-size: 1.2vw;
   gap: 3vw;
   /* background-color: white; */
   margin-top: 3.5vw;
   width: 20vw;
-  height: 22vw;
+  height: 16vw;
   padding-left: 3vw;
 }
 .social-media-icons {
@@ -326,7 +326,7 @@ h2 {
   margin: 5vw 0px 10% 5%;
 }
 .gallery-thumbnail {
-  width: 100%;
+  width: 90%;
   max-width: 51px;
   margin-bottom: 30%;
   cursor: pointer;
@@ -335,7 +335,7 @@ h2 {
   border-radius: 2px;
 }
 .gallery-thumbnail-current {
-  width: 100%;
+  width: 90%;
   max-width: 51px;
   padding-bottom: 10%;
   margin-bottom: 30%;
@@ -358,6 +358,20 @@ h2 {
   cursor: pointer;
   z-index: 9;
 }
+.carousel-down-arrow {
+  position: absolute;
+  z-index: 10;
+  font-weight: 600;
+  left: 7.2%;
+  top: 90%;
+}
+.carousel-up-arrow {
+  position: absolute;
+  z-index: 10;
+  font-weight: 600;
+  left: 7.2%;
+  top: 5%;
+}
 @media screen and (min-width: 1280px) {
   .product-category, .price, .sale-price, .style-name {
     font-size: 19.2px;
@@ -375,6 +389,67 @@ h2 {
   .business-name{font-size: 76.8px;}
   header{height: 89.9px;}
 }
+/* Related To*/
+#related-to-widget {
+  width: 100%;
+}
+.related-products {
+  margin-left: 11.5%;
+  margin-bottom: 2%;
+}
+#related-to-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3vw;
+  width: 70vw;
+  height: 40vw;
+  margin: auto;
+}
+.related-to-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  min-width: 23vw;
+  height: 33vw;
+  background-color: white;
+}
+.related-to-card-gallery {
+  display: flex;
+  width: 100%;
+  height: 60%;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+.related-to-info {
+  margin-left: 0.5vw;
+  margin-top: 1vw;
+}
+.related-to-category {
+  font-size: 1vw;
+}
+.related-to-name {
+  font-weight: 600;
+  font-size: 1.7vw;
+  margin-bottom: 0.5vw;
+}
+.related-to-price {
+  font-size: 1vw;
+}
+.related-to-right-arrow {
+  position: absolute;
+  top: 110vw;
+  right: 5%;
+}
+.related-to-left-arrow {
+  position: absolute;
+  top: 110vw;
+  left: 5%;
+}
+
+
+
 /* Adam */
 #rarMain {
   display: flex;
