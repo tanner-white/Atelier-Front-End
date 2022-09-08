@@ -394,6 +394,7 @@ h2 {
 /* Related To*/
 #related-to-widget {
   width: 100%;
+  margin-top: 2vw;
 }
 .related-products {
   margin-left: 11.5%;
