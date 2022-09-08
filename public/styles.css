@@ -375,6 +375,57 @@ h2 {
   .business-name{font-size: 76.8px;}
   header{height: 89.9px;}
 }
+/* Related To*/
+#related-to-widget {
+  width: 100%;
+}
+.related-products {
+  margin-left: 11.5%;
+  margin-bottom: 2%;
+}
+#related-to-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 3vw;
+  width: 70vw;
+  height: 40vw;
+  margin: auto;
+}
+.related-to-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  min-width: 23vw;
+  height: 33vw;
+  background-color: white;
+}
+.related-to-card-gallery {
+  display: flex;
+  width: 100%;
+  height: 60%;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+.related-to-info {
+  margin-left: 0.5vw;
+  margin-top: 1vw;
+}
+.related-to-category {
+  font-size: 1vw;
+}
+.related-to-name {
+  font-weight: 600;
+  font-size: 1.7vw;
+  margin-bottom: 0.5vw;
+}
+.related-to-price {
+  font-size: 1vw;
+}
+
+
+
 /* Adam */
 #rarMain {
   display: flex;

@@ -9,12 +9,16 @@ import AddToCart from './components/AddToCart.jsx';
 import ProductDetails from './components/ProductDetails.jsx';
 
 function Overview({
-  setCurrentProductName, scrollToReviews,
+  currentProduct, setCurrentProductName, scrollToReviews,
   averageStars, numberReviews, trackClick, isDarkMode,
 }) {
   const [product, setProduct] = useState({});
+  const [styles, setStyles] = useState([]);
+  const [currentStyle, setCurrentStyle] = useState({});
+  const [currentPhotos, setCurrentPhotos] = useState([]);
+  const [currentThumbnails, setCurrentThumbnails] = useState([]);
   useEffect(() => {
-    axios.get('http://localhost:3001/products/66642')
+    axios.get(`http://localhost:3001/products/${currentProduct}`)
       .then((response) => {
         setProduct(response.data);
         setCurrentProductName(response.data.name);
@@ -22,14 +26,7 @@ function Overview({
       .catch((err) => {
         console.log(err);
       });
-  }, []);
-
-  const [styles, setStyles] = useState([]);
-  const [currentStyle, setCurrentStyle] = useState({});
-  const [currentPhotos, setCurrentPhotos] = useState([]);
-  const [currentThumbnails, setCurrentThumbnails] = useState([]);
-  useEffect(() => {
-    axios.get('http://localhost:3001/styles/66642')
+    axios.get(`http://localhost:3001/styles/${currentProduct}`)
       .then((response) => {
         setStyles(response.data.results);
         setCurrentStyle(response.data.results[0]);
@@ -37,7 +34,8 @@ function Overview({
         setCurrentThumbnails(response.data.results[0]
           .photos.map((current) => current.thumbnail_url));
       });
-  }, []);
+  }, [currentProduct]);
+
 
   const handleTrackClick = (event) => {
     const clickData = {
