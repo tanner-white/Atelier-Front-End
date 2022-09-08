@@ -8,6 +8,7 @@ class RatingsApp extends React.Component {
     super(props);
     this.state = {
       currentItem: { results: [] },
+      currentProduct: this.props.currentProduct,
       currentMeta: {},
       incrementState: 0,
       clickCount: 0,
@@ -16,10 +17,11 @@ class RatingsApp extends React.Component {
   }
 
   componentDidMount() {
+    console.log(this.state.currentProduct)
     // gets all reviews for a specific product - still needs a way to send product id
-    axios.get('http://localhost:3001/reviews/')
+    axios.get(`http://localhost:3001/reviews/${this.props.currentProduct}`)
       .then((response) => this.setState({ currentItem: response.data }))
-      .then(this.getMeta())
+      .then(this.getMeta(this.props.currentProduct))
       .catch((err) => (console.log(err)));
     const element = document.getElementById('rarMain');
     element.addEventListener('mousedown', this.handleWidgetClick.bind(this));
@@ -35,14 +37,14 @@ class RatingsApp extends React.Component {
   }
 
   getReviews() {
-    axios.get('http://localhost:3001/reviews/')
+    axios.get(`http://localhost:3001/reviews/${this.props.currentProduct}`)
       .then((response) => this.setState({ currentItem: response.data }))
-      .then(this.getMeta())
+      .then(this.getMeta(this.props.currentProduct))
       .catch((err) => (console.log(err)));
   }
 
   getMeta(productId) {
-    axios.get('http://localhost:3001/reviews/meta', productId)
+    axios.get(`http://localhost:3001/meta/${productId}`)
       .then((response) => this.setState({ currentMeta: response.data }))
       .catch((err) => (console.log(err)));
   }

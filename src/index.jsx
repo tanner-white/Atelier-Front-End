@@ -95,6 +95,7 @@ function App() {
         setAverageStars={setAverageStars}
         setNumberReviews={setNumberReviews}
         trackClick={trackClick}
+        isDarkMode={isDarkMode}
       />
     </div>
   );
