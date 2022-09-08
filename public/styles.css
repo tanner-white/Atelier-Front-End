@@ -170,7 +170,6 @@ h2 {
 }
 .product-details {
   display: flex;
-  border-right: solid black 1px;
   /* background-color: #ffffff; */
   margin-bottom: 70px;
   margin-left: 7%;
@@ -193,12 +192,13 @@ h2 {
 .features {
   display: flex;
   flex-direction: column;
+  border-left: 1px solid black;
   font-size: 1.2vw;
   gap: 3vw;
   /* background-color: white; */
   margin-top: 3.5vw;
   width: 20vw;
-  height: 22vw;
+  height: 16vw;
   padding-left: 3vw;
 }
 .social-media-icons {
@@ -326,7 +326,7 @@ h2 {
   margin: 5vw 0px 10% 5%;
 }
 .gallery-thumbnail {
-  width: 100%;
+  width: 90%;
   max-width: 51px;
   margin-bottom: 30%;
   cursor: pointer;
@@ -335,7 +335,7 @@ h2 {
   border-radius: 2px;
 }
 .gallery-thumbnail-current {
-  width: 100%;
+  width: 90%;
   max-width: 51px;
   padding-bottom: 10%;
   margin-bottom: 30%;
@@ -357,6 +357,20 @@ h2 {
   right: 10%;
   cursor: pointer;
   z-index: 9;
+}
+.carousel-down-arrow {
+  position: absolute;
+  z-index: 10;
+  font-weight: 600;
+  left: 7.2%;
+  top: 90%;
+}
+.carousel-up-arrow {
+  position: absolute;
+  z-index: 10;
+  font-weight: 600;
+  left: 7.2%;
+  top: 5%;
 }
 @media screen and (min-width: 1280px) {
   .product-category, .price, .sale-price, .style-name {
@@ -422,6 +436,16 @@ h2 {
 }
 .related-to-price {
   font-size: 1vw;
+}
+.related-to-right-arrow {
+  position: absolute;
+  top: 110vw;
+  right: 5%;
+}
+.related-to-left-arrow {
+  position: absolute;
+  top: 110vw;
+  left: 5%;
 }
 
 

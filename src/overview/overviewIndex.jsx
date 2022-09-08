@@ -36,7 +36,6 @@ function Overview({
       });
   }, [currentProduct]);
 
-
   const handleTrackClick = (event) => {
     const clickData = {
       element: event.target.className,

@@ -82,9 +82,14 @@ function App() {
         isDarkMode={isDarkMode}
       />
       <RelatedToApp currentProduct={currentProduct} setCurrentProduct={setCurrentProduct} />
-      <Questions trackClick={trackClick} currentProductName={currentProductName} />
+      <Questions
+        currentProduct={currentProduct}
+        trackClick={trackClick}
+        currentProductName={currentProductName}
+      />
       <div ref={reviewsRef} />
       <RatingsApp
+        currentProduct={currentProduct}
         currentProductName={currentProductName}
         setAverageStars={setAverageStars}
         setNumberReviews={setNumberReviews}

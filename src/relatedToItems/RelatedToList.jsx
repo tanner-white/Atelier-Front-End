@@ -8,12 +8,16 @@ function RelatedToList({ currentProduct, setCurrentProduct }) {
   const [firstIndex, setFirstIndex] = useState(0);
   const [lastIndex, setLastIndex] = useState(3);
   useEffect(() => {
+    setFirstIndex(0);
+    setLastIndex(3);
+  }, [currentProduct]);
+  useEffect(() => {
     axios.get(`http://localhost:3001/relatedTo/${currentProduct}`)
       .then((response) => {
         setRelatedToCards(response.data);
         setDisplayedCards(response.data.slice(firstIndex, lastIndex));
       });
-  }, []);
+  }, [currentProduct]);
 
   useEffect(() => {
     setDisplayedCards(relatedToCards.slice(firstIndex, lastIndex));
@@ -33,7 +37,7 @@ function RelatedToList({ currentProduct, setCurrentProduct }) {
     // Left Arrow
     <div>
       {firstIndex === 0 ? null : (
-        <button id="leftArrow" type="button" onClick={goToPreviousSlide}>
+        <button className="related-to-left-arrow" type="button" onClick={goToPreviousSlide}>
           &lt;
         </button>
       )}
@@ -46,7 +50,7 @@ function RelatedToList({ currentProduct, setCurrentProduct }) {
         ))}
       </div>
       {lastIndex === relatedToCards.length ? null : (
-        <button id="rightArrow" type="button" onClick={goToNextSlide}>
+        <button className="related-to-right-arrow" type="button" onClick={goToNextSlide}>
           &gt;
         </button>
       )}
