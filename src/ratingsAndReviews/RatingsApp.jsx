@@ -17,34 +17,9 @@ function RatingsApp({
     console.log('clicked r&r!');
   }
 
-<<<<<<< HEAD
-  componentDidMount() {
-    // gets all reviews for a specific product - still needs a way to send product id
-    axios.get('http://localhost:3001/reviews/', { ID: this.props.currentItem })
-      .then((response) => this.setState({ currentItem: response.data }))
-      .then(this.getMeta())
-      .catch((err) => (console.log(err)));
-    const element = document.getElementById('rarMain');
-    element.addEventListener('mousedown', this.handleWidgetClick.bind(this));
-  }
-
-  handleWidgetClick() {
-    let clicks = this.state.clickCount;
-    clicks += 1;
-    this.setState({
-      clickCount: clicks,
-    });
-    console.log('clicked!');
-  }
-
-  getMeta() {
-    axios.get('http://localhost:3001/reviews/meta', { ID: this.props.currentItem })
-      .then((response) => this.setState({ currentMeta: response.data }))
-=======
   function getMeta(productId) {
     axios.get(`http://localhost:3001/meta/${productId}`)
       .then((response) => setCurrentMeta(response.data))
->>>>>>> ff48fecffddefc3977c72a57a38718441c00b556
       .catch((err) => (console.log(err)));
   }
 
@@ -72,22 +47,14 @@ function RatingsApp({
       .catch((error) => console.log('error posting to server', error));
   }
 
-<<<<<<< HEAD
-  postHelpful() {
-=======
   function postHelpful(ID) {
->>>>>>> ff48fecffddefc3977c72a57a38718441c00b556
     console.log(ID);
     axios.put('http://localhost:3001/reviews/putHelpful', { ID: this.props.currentItem })
       .then((response) => console.log('POST new helpful request to server successful', response))
       .catch((error) => console.log('error posting to server', error));
   }
 
-<<<<<<< HEAD
-  postReport() {
-=======
   function postReport(ID) {
->>>>>>> ff48fecffddefc3977c72a57a38718441c00b556
     console.log(ID);
     axios.put('http://localhost:3001/reviews/putReport', { ID: this.props.currentItem })
       .then((response) => console.log('POST new report request to server successful', response))

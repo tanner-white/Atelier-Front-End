@@ -38,10 +38,6 @@ class ReviewList extends React.Component {
       origin: originals,
       product: sortedAndMerged,
     });
-<<<<<<< HEAD
-=======
-    console.log( this.state.origin);
->>>>>>> ff48fecffddefc3977c72a57a38718441c00b556
   }
 
   sortByHelpful() {

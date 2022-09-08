@@ -42,16 +42,9 @@ app.get('/qa/questions/:question_id/answers', (req, res) => {
     .catch((err) => res.send(err));
 });
 
-<<<<<<< HEAD
-app.get('/reviews/', (req, res) => {
-  console.log('express got:', req);
-  console.log('booooooooooooo');
-  axios.get(`${API}reviews?product_id=66642&count=100`, options)
-=======
 app.get('/reviews/:review_id', (req, res) => {
   const currentID = req.params.review_id;
   axios.get(`${API}reviews?product_id=${currentID}&count=100`, options)
->>>>>>> ff48fecffddefc3977c72a57a38718441c00b556
     .then((response) => res.send(response.data))
     .catch((error) => res.send(error));
 });
