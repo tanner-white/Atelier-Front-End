@@ -7,7 +7,9 @@ import axios from 'axios';
 import Answers from './Answers.jsx';
 import AddAnswer from './AddAnswerModal.jsx';
 
-function QuestionListEntry({ item, onReport, currentProductName }) {
+function QuestionListEntry({
+  item, onReport, currentProductName, isDarkMode,
+}) {
   const [list, setList] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [helpful, setHelpful] = useState(item.question_helpfulness);
@@ -71,6 +73,10 @@ function QuestionListEntry({ item, onReport, currentProductName }) {
       </p>
     ) : null;
 
+  const darkMode = {
+    color: isDarkMode ? '#BDDEDB' : 'grey',
+  };
+
   return (
     <div className="question-entry">
       <div id="question-title">
@@ -80,14 +86,14 @@ function QuestionListEntry({ item, onReport, currentProductName }) {
             {item.question_body}
           </b>
         </span>
-        <span id="question-spans">
+        <span id="question-spans" style={darkMode}>
           Helpful?&nbsp;
-          <button type="button" className="link-button" id="question-helpful-button" onClick={handleHelpful}>
+          <button type="button" className="link-button" id="question-helpful-button" style={darkMode} onClick={handleHelpful}>
             Yes
             {`(${helpful})`}
           </button>
-          <button type="button" className="link-button" id="add-answer-button" onClick={() => aModal.current.open()}>Add Answer</button>
-          <button type="button" className="link-button" id="question-report-button" onClick={handleReport}>Report</button>
+          <button type="button" className="link-button" id="add-answer-button" style={darkMode} onClick={() => aModal.current.open()}>Add Answer</button>
+          <button type="button" className="link-button" id="question-report-button" style={darkMode} onClick={handleReport}>Report</button>
         </span>
         <AddAnswer
           ref={aModal}
@@ -97,7 +103,13 @@ function QuestionListEntry({ item, onReport, currentProductName }) {
         />
       </div>
       <div className="answer-list">
-        {answers.map((answer) => <Answers answer={answer} key={answer.answer_id} />)}
+        {answers.map((answer) => (
+          <Answers
+            answer={answer}
+            isDarkMode={isDarkMode}
+            key={answer.answer_id}
+          />
+        ))}
       </div>
       {moreAnswersButton}
       {lessAnswersButton}
