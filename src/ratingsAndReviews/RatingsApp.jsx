@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 // eslint-disable-next-line import/extensions
 import ReviewList from './components/reviewList.jsx';
 
-class RatingsApp extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentItem: { results: [] },
-      currentMeta: {},
-      helpfulCount: 0,
-      clickCount: 0,
-    };
+function RatingsApp({
+  currentProduct, currentProductName, setAverageStars, setNumberReviews, isDarkMode
+}) {
+  const [currentItem, setCurrentItem] = useState({ results: [] });
+  const [currentMeta, setCurrentMeta] = useState({});
+  const [incrementState, setIncrementState] = useState(0);
+  const [clickCount, setClickCount] = useState(0);
+  const [flag, setFlag] = useState(false);
+
+  function handleWidgetClick() {
+    setClickCount(clickCount + 1);
+    console.log('clicked r&r!');
   }
 
+<<<<<<< HEAD
   componentDidMount() {
     // gets all reviews for a specific product - still needs a way to send product id
     axios.get('http://localhost:3001/reviews/', { ID: this.props.currentItem })
@@ -36,48 +40,92 @@ class RatingsApp extends React.Component {
   getMeta() {
     axios.get('http://localhost:3001/reviews/meta', { ID: this.props.currentItem })
       .then((response) => this.setState({ currentMeta: response.data }))
+=======
+  function getMeta(productId) {
+    axios.get(`http://localhost:3001/meta/${productId}`)
+      .then((response) => setCurrentMeta(response.data))
+>>>>>>> ff48fecffddefc3977c72a57a38718441c00b556
       .catch((err) => (console.log(err)));
   }
 
-  addReview(message) {
+  function getReviews() {
+    axios.get(`http://localhost:3001/reviews/${currentProduct}`)
+      .then((response) => setCurrentItem(response.data))
+      .then(() => getMeta(currentProduct))
+      .catch((err) => (console.log(err)));
+  }
+
+  function refreshList() {
+    setIncrementState(incrementState + 1);
+    console.log(incrementState);
+
+    if (flag) {
+      setFlag(false);
+    } else {
+      setFlag(true);
+    }
+  }
+
+  function addReview(message) {
     axios.post('http://localhost:3001/reviews/addReview', message)
-      .then((response) => this.setState({ helpfulCount: response.data }))
+      .then((response) => setHelpfulCount(helpfulCount + 1))
       .catch((error) => console.log('error posting to server', error));
   }
 
+<<<<<<< HEAD
   postHelpful() {
+=======
+  function postHelpful(ID) {
+>>>>>>> ff48fecffddefc3977c72a57a38718441c00b556
     console.log(ID);
     axios.put('http://localhost:3001/reviews/putHelpful', { ID: this.props.currentItem })
       .then((response) => console.log('POST new helpful request to server successful', response))
       .catch((error) => console.log('error posting to server', error));
   }
 
+<<<<<<< HEAD
   postReport() {
+=======
+  function postReport(ID) {
+>>>>>>> ff48fecffddefc3977c72a57a38718441c00b556
     console.log(ID);
     axios.put('http://localhost:3001/reviews/putReport', { ID: this.props.currentItem })
       .then((response) => console.log('POST new report request to server successful', response))
       .catch((error) => console.log('error posting to server', error));
   }
 
-  render() {
-    const { currentItem, currentMeta } = this.state;
-    const { setNumberReviews, setAverageStars, currentProductName } = this.props;
-    //const { addReview, postHelpful } = this;
+  if (currentItem) {
     setNumberReviews(currentItem.results.length);
-    return (
-      <div id="rarMain">
-        <ReviewList
-          productInfo={currentItem}
-          itemMeta={currentMeta}
-          currentProductName={currentProductName}
-          addReview={this.addReview.bind(this)}
-          postReport={this.postReport.bind(this)}
-          setAverageStars={setAverageStars}
-          postHelpful={this.postHelpful.bind(this)}
-        />
-      </div>
-    );
   }
+
+  useEffect(() => {
+    axios.get(`http://localhost:3001/reviews/${currentProduct}`)
+      .then((response) => setCurrentItem(response.data))
+      .then(() => getMeta(currentProduct))
+      .catch((err) => (console.log(err)));
+
+    getMeta(currentProduct);
+
+    const element = document.getElementById('rarMain');
+    element.addEventListener('mousedown', handleWidgetClick);
+  }, [currentProduct]);
+
+  return (
+    <div id="rarMain">
+      <ReviewList
+        productInfo={currentItem}
+        flag={flag}
+        itemMeta={currentMeta}
+        currentProductName={currentProductName}
+        addReview={addReview}
+        postReport={postReport}
+        setAverageStars={setAverageStars}
+        postHelpful={postHelpful}
+        refreshList={getReviews}
+        isDarkMode={isDarkMode}
+      />
+    </div>
+  );
 }
 
 export default RatingsApp;

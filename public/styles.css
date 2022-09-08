@@ -489,6 +489,15 @@ h2 {
   text-decoration: underline;
   width: 20vw;
 }
+#rar_starButtons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 4vw;
+  background-color: white;
+  border: none;
+  font-weight: lighter;
+}
 #rar_numAndStars {
   display: flex;
   flex-direction: row;
@@ -551,7 +560,7 @@ h2 {
 }
 #rar_fullSummary {
   margin-top: 1vw;
-  font-size: .9vw;
+  font-size: 1vw;
 }
 #rar_recommendation {
   margin-top: 1vw;
@@ -615,6 +624,23 @@ h2 {
   margin-right: 1vw;
   text-align: center;
 }
+#rar_picModalLine {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  width: 45vw;
+  height: 10vw;
+  border: 3px solid #525151;
+  flex-direction: row;
+}
+#rar_picModalThumbs {
+  margin: 1vw;
+  padding: .6vw;
+  width: 5vw;
+  height: 6vw;
+  border: 1px solid #525151;
+}
 #myPicsModalButtons {
   background-color: #ffffff;
   border: 1px solid black;
@@ -626,6 +652,11 @@ h2 {
 }
 .rar_sortDropDown {
   color: #525151;
+  font-size: 1.3vw;
+  font-weight: bold;
+}
+.rar_sortDropDown-dark-mode {
+  color: #eee7e7;
   font-size: 1.3vw;
   font-weight: bold;
 }
@@ -675,13 +706,13 @@ meter::-webkit-meter-optimum-value {
   font-size: .8vw;
 }
 #rar_met {
-  width: 15vw;
+  width: 14vw;
 }
 #rar_barName {
   display: flex;
   gap: 5px;
   flex-wrap: nowrap;
-  width: 20vw;
+  width: 19vw;
   font-size: 1vw;
 }
 #rar_sizeBar,
@@ -710,7 +741,6 @@ meter::-webkit-meter-optimum-value {
 #myModal-content { /* this is the only way to access my modal */
   display: flex;
   color: #525151;
-  border-radius: 2vw;
   border-color: #5c5c5c;
   flex-direction: column;
   justify-content: space-around;
@@ -720,9 +750,9 @@ meter::-webkit-meter-optimum-value {
   margin: 15vw;
   padding: 20px;
   border: 3px solid black;
-  height: 100vw;
+  height: 130vw;
   width: 80vw;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 #myPicModal {
   display: none;
@@ -739,7 +769,6 @@ meter::-webkit-meter-optimum-value {
 #myPicModalContent {
   display: flex;
   font-size: 3vw;
-  border-radius: 2vw;
   border-color: #5c5c5c;
   flex-direction: column;
   justify-content: space-around;
@@ -748,8 +777,19 @@ meter::-webkit-meter-optimum-value {
   margin: 50% auto;
   padding: 20px;
   border: 3px solid black;
-  height: 40vw;
+  height: 70vw;
   width: 50vw;
+}
+#myPicsImagesInput {
+  width: 25vw;
+}
+#myPicsText {
+  font-size: 2vw;
+}
+#myPicsDiv {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 }
 #rar_modalTitle {
  font-size: 5vw;

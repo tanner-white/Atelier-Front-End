@@ -8,6 +8,8 @@ class ReviewTile extends React.Component {
       list: this.props.product_data1,
 
     };
+
+    const darkMode = { display: 'flex' };
   }
 
   handleHelpfulClick(event) {
@@ -27,9 +29,14 @@ class ReviewTile extends React.Component {
   }
 
   render() {
+<<<<<<< HEAD
     console.log(this.props.product_data1);
     return (this.props.product_data1.results.map((review) => (
       <div key={review.review_id} className="rar_tile">
+=======
+    return (this.props.product_data1.results.slice(0, this.props.index).map((review) => (
+      <div key={review.review_id} className="rar_tile" style={this.darkMode}>
+>>>>>>> ff48fecffddefc3977c72a57a38718441c00b556
         <div id="rar_userDateHeader">
           <div id="rar_tileStars">
             <span>

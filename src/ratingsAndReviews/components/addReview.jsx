@@ -1,10 +1,15 @@
 import React from 'react';
 import StarRatings from 'react-star-ratings';
+// eslint-disable-next-line import/extensions
+import RatingsModalTable from './ratingsModalTable.jsx';
 
 class AddReview extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      uploadImages: [],
+      imageText: '',
+      imageDivShow1: { display: 'flex' },
       ratingStar: 0,
       ratingStarCode: { 1: 'Poor', 2: 'Fair', 3: 'Average', 4: 'Good', 5: 'Great'},
       style: { display: 'none' },
@@ -37,6 +42,8 @@ class AddReview extends React.Component {
     listenerForm.addEventListener('mousedown', this.handleWindowClick);
     const listenerPics = document.getElementById('myPicModal');
     listenerPics.addEventListener('mousedown', this.handleWindowClick);
+    // const imageUploadButton = document.querySelector('#myPicsImagesInput');
+    // imageUploadButton.addEventListener('mousedown', this.handleImageUploadThumb);
   }
 
   componentWillUnmount() {
@@ -113,37 +120,38 @@ class AddReview extends React.Component {
 
   handleSizeChange(event) {
     this.setState({
-      size: { id: 14, value: event.target.value },
+      Characteristics: { 14: event.target.value },
     });
   }
 
   handleWidthChange(event) {
     this.setState({
-      width: { id: 15, value: event.target.value },
+      Characteristics: { 15: event.target.value },
     });
   }
 
   handleComfortChange(event) {
     this.setState({
-      comfort: { id: 16, value: event.target.value },
+      Characteristics: { 16: event.target.value },
     });
   }
 
   handleQualityChange(event) {
     this.setState({
-      quality: { id: 17, value: event.target.value },
+      Characteristics: { 17: event.target.value },
     });
   }
 
   handleLengthChange(event) {
+    console.log('length change');
     this.setState({
-      length: { id: 18, value: event.target.value },
+      Characteristics: { 18: event.target.value },
     });
   }
 
   handleFitChange(event) {
     this.setState({
-      fit: { id: 19, value: event.target.value },
+      Characteristics: { 19: event.target.value },
     });
   }
 
@@ -172,6 +180,26 @@ class AddReview extends React.Component {
     });
   }
 
+  handleImageUploadThumb(event) {
+    this.setState({
+      imageText: event.target.value,
+    });
+  }
+
+  handleImageSubmitThumb(event) {
+    const uploadArray = this.state.uploadImages;
+    uploadArray.push(this.state.imageText);
+    this.setState({
+      uploadImages: uploadArray,
+    });
+  }
+
+  handleUploadAll() {
+    this.setState({
+      userPhotos: this.state.uploadImages,
+    });
+  }
+
   handleEmailChange(event) {
     this.setState({
       userEmail: event.target.value,
@@ -188,7 +216,7 @@ class AddReview extends React.Component {
   }
 
   render() {
-    const { style, revbody, stylePics} = this.state;
+    const { style, revbody, stylePics } = this.state;
     const { currentProductName } = this.props;
     return (
       <div id="modalChunk">
@@ -197,9 +225,34 @@ class AddReview extends React.Component {
         </button>
         <div id="myPicModal" className="modal" style={stylePics}>
           <div id="myPicModalContent">
-            Add Product Pictures Below
-            <input type="file" id="myPicsImagesInput" name="myPicsImagesInput" multiple accept="image/*" />
-            <button id="myPicsModalButtons" type="button">Upload All</button>
+            Add up to 5 product pictures below
+            <div id="rar_picModalLine">{this.state.uploadImages.map((image) => (<img src={image} id="rar_picModalThumbs" alt="file not found" />))}</div>
+            <p id="myPicsText" style={this.state.imageDivShow1}>Image 1:</p>
+            <div id="myPicsDiv" style={this.state.imageDivShow1}>
+              <input type="text" id="myPicsImagesInput" name="myPicsImagesInput1" onChange={this.handleImageUploadThumb.bind(this)} />
+              <button id="rar_image1" type="submit" onClick={this.handleImageSubmitThumb.bind(this)}>Upload</button>
+            </div>
+            <p id="myPicsText">Image 2:</p>
+            <div id="myPicsDiv">
+              <input type="text" id="myPicsImagesInput" name="myPicsImagesInput2" onChange={this.handleImageUploadThumb.bind(this)} />
+              <button id="rar_image2" type="submit" onClick={this.handleImageSubmitThumb.bind(this)}>Upload</button>
+            </div>
+            <p id="myPicsText">Image 3:</p>
+            <div id="myPicsDiv">
+              <input type="text" id="myPicsImagesInput" name="myPicsImagesInput3" onChange={this.handleImageUploadThumb.bind(this)} />
+              <button id="rar_image3" type="submit" onClick={this.handleImageSubmitThumb.bind(this)}>Upload</button>
+            </div>
+            <p id="myPicsText">Image 4:</p>
+            <div id="myPicsDiv">
+              <input type="text" id="myPicsImagesInput" name="myPicsImagesInput4" onChange={this.handleImageUploadThumb.bind(this)} />
+              <button id="rar_image4" type="submit" onClick={this.handleImageSubmitThumb.bind(this)}>Upload</button>
+            </div>
+            <p id="myPicsText">Image 5:</p>
+            <div id="myPicsDiv">
+              <input type="text" id="myPicsImagesInput" name="myPicsImagesInput5" onChange={this.handleImageUploadThumb.bind(this)} />
+              <button id="rar_image5" type="submit" onClick={this.handleImageSubmitThumb.bind(this)}>Upload</button>
+            </div>
+            <button id="myPicsModalButtons" type="button" onClick={this.handleUploadAll.bind(this)}>Upload All</button>
           </div>
         </div>
         <div id="myModal" className="modal" style={style}>
@@ -240,154 +293,14 @@ class AddReview extends React.Component {
               </div>
             </div>
             <div>
-              <table id="radioTable2">
-                <tr id="rar_rowName">
-                  <th id="rar_radioTableHeader"> </th>
-                  <th id="rar_radioTableHeader1">1 </th>
-                  <th id="rar_radioTableHeader">2 </th>
-                  <th id="rar_radioTableHeader">3 </th>
-                  <th id="rar_radioTableHeader">4 </th>
-                  <th id="rar_radioTableHeader">5 </th>
-                </tr>
-                <tr id="rar_radioTableRow">
-                  <td>Size</td>
-                  <td id="rar_eachColumn">
-                    <input type="radio" id="radioTableSelector" name="rar_row1" value="1.000" onChange={this.handleSizeChange.bind(this)} />
-                    <p>A size too small</p>
-                  </td>
-                  <td id="rar_eachColumn">
-                    <input type="radio" id="radioTableSelector" name="rar_row1" value="2.000" onChange={this.handleSizeChange.bind(this)} />
-                    <p>1/2 a size too small</p>
-                  </td>
-                  <td id="rar_eachColumn">
-                    <input type="radio" id="radioTableSelector" name="rar_row1" value="3.000" onChange={this.handleSizeChange.bind(this)} />
-                    <p>Perfect</p>
-                  </td>
-                  <td id="rar_eachColumn">
-                    <input type="radio" id="radioTableSelector" name="rar_row1" value="4.000" onChange={this.handleSizeChange.bind(this)} />
-                    <p>1/2 a size too big</p>
-                  </td>
-                  <td id="rar_eachColumn">
-                    <input type="radio" id="radioTableSelector" name="rar_row1" value="5.000" onChange={this.handleSizeChange.bind(this)} />
-                    <p>A size too wide</p>
-                  </td>
-                </tr>
-                <tr id="rar_radioTableRow">
-                  <td>Width</td>
-                  <td id="rar_eachColumn">
-                    <input type="radio" id="radioTableSelector" name="rar_row2" value="1.000" onChange={this.handleWidthChange.bind(this)} />
-                    <p>Too narrow</p>
-                  </td>
-                  <td id="rar_eachColumn">
-                    <input type="radio" id="radioTableSelector" name="rar_row2" value="2.000" onChange={this.handleWidthChange.bind(this)} />
-                    <p>Slightly narrow</p>
-                  </td>
-                  <td id="rar_eachColumn">
-                    <input type="radio" id="radioTableSelector" name="rar_row2" value="3.000" onChange={this.handleWidthChange.bind(this)} />
-                    <p>Perfect</p>
-                  </td>
-                  <td id="rar_eachColumn">
-                    <input type="radio" id="radioTableSelector" name="rar_row2" value="4.000" onChange={this.handleWidthChange.bind(this)} />
-                    <p>Slightly wide</p>
-                  </td>
-                  <td id="rar_eachColumn">
-                    <input type="radio" id="radioTableSelector" name="rar_row2" value="5.000" onChange={this.handleWidthChange.bind(this)} />
-                    <p>Too wide</p>
-                  </td>
-                </tr>
-                <tr id="rar_radioTableRow">
-                  <td>Comfort</td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row3" value="1.000" onChange={this.handleComfortChange.bind(this)} />
-                    <p>Uncomfortable</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row3" value="2.000" onChange={this.handleComfortChange.bind(this)} />
-                    <p>Slightly uncomfortable</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row3" value="3.000" onChange={this.handleComfortChange.bind(this)} />
-                    <p>Ok</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row3" value="4.000" onChange={this.handleComfortChange.bind(this)} />
-                    <p>Comfortable</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row3" value="5.000" onChange={this.handleComfortChange.bind(this)} />
-                    <p>Perfect</p>
-                  </td>
-                </tr>
-                <tr id="rar_radioTableRow">
-                  <td>Quality</td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row4" value="1.000" onChange={this.handleQualityChange.bind(this)} />
-                    <p>Poor</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row4" value="2.000" onChange={this.handleQualityChange.bind(this)} />
-                    <p>Below average</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row4" value="3.000" onChange={this.handleQualityChange.bind(this)} />
-                    <p>What I expected</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row4" value="4.000" onChange={this.handleQualityChange.bind(this)} />
-                    <p>Pretty great</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row4" value="5.000" onChange={this.handleQualityChange.bind(this)} />
-                    <p>Perfect</p>
-                  </td>
-                </tr>
-                <tr id="rar_radioTableRow">
-                  <td>Length</td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row5" value="1.000" onChange={this.handleLengthChange.bind(this)} />
-                    <p>Runs short</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row5" value="2.000" onChange={this.handleLengthChange.bind(this)} />
-                    <p>Runs slightly short</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row5" value="3.000" onChange={this.handleLengthChange.bind(this)} />
-                    <p>Perfect</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row5" value="4.000" onChange={this.handleLengthChange.bind(this)} />
-                    <p>Runs slightly long</p>
-                  </td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row5" value="5.000" onChange={this.handleLengthChange.bind(this)} />
-                    <p>Runs long</p>
-                  </td>
-                </tr>
-                <tr id="rar_radioTableRow6">
-                  <td>Fit</td>
-                  <td>
-                    <input type="radio" id="radioTableSelector" name="rar_row6" value="1.000" onChange={this.handleFitChange.bind(this)} />
-                    <p>Runs tight</p>
-                  </td>
-                  <td id="rar_td_header">
-                    <input type="radio" id="radioTableSelector" name="rar_row6" value="2.000" onChange={this.handleFitChange.bind(this)} />
-                    <p>Runs slightly tight</p>
-                  </td>
-                  <td id="rar_td_header">
-                    <input type="radio" id="radioTableSelector" name="rar_row6" value="3.000" onChange={this.handleFitChange.bind(this)} />
-                    <p>Perfect</p>
-                  </td>
-                  <td id="rar_td_header">
-                    <input type="radio" id="radioTableSelector" name="rar_row6" value="4.000" onChange={this.handleFitChange.bind(this)} />
-                    <p>Runs slightly long</p>
-                  </td>
-                  <td id="rar_td_header">
-                    <input type="radio" id="radioTableSelector" name="rar_row6" value="5.000" onChange={this.handleFitChange.bind(this)} />
-                    <p>Runs long</p>
-                  </td>
-                </tr>
-              </table>
+              <RatingsModalTable
+                handleSizeChange={this.handleSizeChange.bind(this)}
+                handleWidthChange={this.handleWidthChange.bind(this)}
+                handleComfortChange={this.handleComfortChange.bind(this)}
+                handleQualityChange={this.handleQualityChange.bind(this)}
+                handleLengthChange={this.handleLengthChange.bind(this)}
+                handleFitChange={this.handleFitChange.bind(this)}
+              />
             </div>
             <small>Review summary</small>
             <label htmlFor="revSum">
