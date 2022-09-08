@@ -13,7 +13,7 @@ function Questions({
   const [report, setReport] = useState(0);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/qa/questions/${currentProduct}`)
+    axios.get(`/qa/questions/${currentProduct}`)
       .then((list) => {
         setQuestions(list.data);
       })
@@ -21,7 +21,7 @@ function Questions({
   }, [questionsAdded, report, currentProduct]);
 
   const handleQuestionSubmit = (question) => {
-    axios.post('http://localhost:3001/addquestion', question)
+    axios.post('/addquestion', question)
       .then(() => setQuestionsAdded(questionsAdded + 1))
       .catch((err) => console.error(err));
   };

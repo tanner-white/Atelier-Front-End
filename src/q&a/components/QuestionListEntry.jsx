@@ -18,7 +18,7 @@ function QuestionListEntry({
   const aModal = useRef(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/qa/questions/${item.question_id}/answers`)
+    axios.get(`/qa/questions/${item.question_id}/answers`)
       .then((response) => {
         if (response.data) {
           setList(response.data);
@@ -32,19 +32,19 @@ function QuestionListEntry({
   }, [index, list]);
 
   const handleHelpful = () => {
-    axios.put('http://localhost:3001/qa/questions/:question_id/helpful', { id: item.question_id })
+    axios.put('/qa/questions/:question_id/helpful', { id: item.question_id })
       .then(() => setHelpful(helpful + 1))
       .catch((err) => console.error('client side helpful error: ', err));
   };
 
   const handleReport = () => {
-    axios.put('http://localhost:3001/qa/questions/:question_id/report', { id: item.question_id })
+    axios.put('/qa/questions/:question_id/report', { id: item.question_id })
       .then(() => { onReport(); })
       .catch((err) => console.error('client side helpful error: ', err));
   };
 
   const handleAnswerSubmit = (answer) => {
-    axios.post(`http://localhost:3001/addanswer/${item.question_id}`, answer)
+    axios.post(`/addanswer/${item.question_id}`, answer)
       .then(() => setAnswerAdded(answerAdded + 1))
       .catch((err) => console.error(err));
   };
