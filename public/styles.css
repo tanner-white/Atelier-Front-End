@@ -364,6 +364,7 @@ h2 {
   font-weight: 600;
   left: 7.2%;
   top: 90%;
+  cursor: pointer;
 }
 .carousel-up-arrow {
   position: absolute;
@@ -371,6 +372,7 @@ h2 {
   font-weight: 600;
   left: 7.2%;
   top: 5%;
+  cursor: pointer;
 }
 @media screen and (min-width: 1280px) {
   .product-category, .price, .sale-price, .style-name {
@@ -392,6 +394,7 @@ h2 {
 /* Related To*/
 #related-to-widget {
   width: 100%;
+  margin-top: 2vw;
 }
 .related-products {
   margin-left: 11.5%;
@@ -441,11 +444,13 @@ h2 {
   position: absolute;
   top: 110vw;
   right: 5%;
+  cursor: pointer;
 }
 .related-to-left-arrow {
   position: absolute;
   top: 110vw;
   left: 5%;
+  cursor: pointer;
 }
 
 
