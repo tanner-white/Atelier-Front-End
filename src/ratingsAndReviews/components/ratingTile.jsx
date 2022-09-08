@@ -74,6 +74,11 @@ class RatingTile extends React.Component {
     return Math.round(metaComfort.value);
   }
 
+  sortByClick(event) {
+    const clickNum = parseInt(event.target.outerText);
+    this.props.sortByClick(clickNum);
+  }
+
   render() {
     const productInfo = this.props.product_data2;
     const reviewArray = this.props.product_data2.results;
@@ -102,23 +107,23 @@ class RatingTile extends React.Component {
         </div>
         <div id="starRow">
           <li id="rar_barName">
-            5 stars
+            <button type="submit" id="rar_starButtons" onClick={this.sortByClick.bind(this)}>5 stars</button>
             <meter id="rar_met" value={this.getStarScores(5)} min="0" max={reviewArray.length} />
           </li>
           <li id="rar_barName">
-            4 stars
+            <button type="submit" id="rar_starButtons" onClick={this.sortByClick.bind(this)}>4 stars</button>
             <meter id="rar_met" value={this.getStarScores(4)} min="0" max={reviewArray.length} />
           </li>
           <li id="rar_barName">
-            3 stars
+            <button type="submit" id="rar_starButtons" onClick={this.sortByClick.bind(this)}>3 stars</button>
             <meter id="rar_met" value={this.getStarScores(3)} min="0" max={reviewArray.length} />
           </li>
           <li id="rar_barName">
-            2 stars
+            <button type="submit" id="rar_starButtons" onClick={this.sortByClick.bind(this)}>2 stars</button>
             <meter id="rar_met" value={this.getStarScores(2)} min="0" max={reviewArray.length} />
           </li>
           <li id="rar_barName">
-            1 stars
+            <button type="submit" id="rar_starButtons" onClick={this.sortByClick.bind(this)}>1 stars</button>
             <meter id="rar_met" value={this.getStarScores(1)} min="0" max={reviewArray.length} />
           </li>
         </div>

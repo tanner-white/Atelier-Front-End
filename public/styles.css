@@ -409,6 +409,15 @@ h2 {
   text-decoration: underline;
   width: 20vw;
 }
+#rar_starButtons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 4vw;
+  background-color: white;
+  border: none;
+  font-weight: lighter;
+}
 #rar_numAndStars {
   display: flex;
   flex-direction: row;
@@ -549,7 +558,7 @@ h2 {
   margin: 1vw;
   padding: .6vw;
   width: 5vw;
-  height: 5vw;
+  height: 6vw;
   border: 1px solid #525151;
 }
 #myPicsModalButtons {
@@ -612,13 +621,13 @@ meter::-webkit-meter-optimum-value {
   font-size: .8vw;
 }
 #rar_met {
-  width: 15vw;
+  width: 14vw;
 }
 #rar_barName {
   display: flex;
   gap: 5px;
   flex-wrap: nowrap;
-  width: 20vw;
+  width: 19vw;
   font-size: 1vw;
 }
 #rar_sizeBar,
@@ -683,8 +692,19 @@ meter::-webkit-meter-optimum-value {
   margin: 50% auto;
   padding: 20px;
   border: 3px solid black;
-  height: 40vw;
+  height: 70vw;
   width: 50vw;
+}
+#myPicsImagesInput {
+  width: 25vw;
+}
+#myPicsText {
+  font-size: 2vw;
+}
+#myPicsDiv {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
 }
 #rar_modalTitle {
  font-size: 5vw;

@@ -8,6 +8,8 @@ class AddReview extends React.Component {
     super(props);
     this.state = {
       uploadImages: [],
+      imageText: '',
+      imageDivShow1: { display: 'flex' },
       ratingStar: 0,
       ratingStarCode: { 1: 'Poor', 2: 'Fair', 3: 'Average', 4: 'Good', 5: 'Great'},
       style: { display: 'none' },
@@ -118,37 +120,38 @@ class AddReview extends React.Component {
 
   handleSizeChange(event) {
     this.setState({
-      size: { id: 14, value: event.target.value },
+      Characteristics: { 14: event.target.value },
     });
   }
 
   handleWidthChange(event) {
     this.setState({
-      width: { id: 15, value: event.target.value },
+      Characteristics: { 15: event.target.value },
     });
   }
 
   handleComfortChange(event) {
     this.setState({
-      comfort: { id: 16, value: event.target.value },
+      Characteristics: { 16: event.target.value },
     });
   }
 
   handleQualityChange(event) {
     this.setState({
-      quality: { id: 17, value: event.target.value },
+      Characteristics: { 17: event.target.value },
     });
   }
 
   handleLengthChange(event) {
+    console.log('length change');
     this.setState({
-      length: { id: 18, value: event.target.value },
+      Characteristics: { 18: event.target.value },
     });
   }
 
   handleFitChange(event) {
     this.setState({
-      fit: { id: 19, value: event.target.value },
+      Characteristics: { 19: event.target.value },
     });
   }
 
@@ -178,11 +181,22 @@ class AddReview extends React.Component {
   }
 
   handleImageUploadThumb(event) {
-    console.log(event.target.value, event.target);
+    this.setState({
+      imageText: event.target.value,
+    });
+  }
+
+  handleImageSubmitThumb(event) {
     const uploadArray = this.state.uploadImages;
-    uploadArray.push(event.target.value);
+    uploadArray.push(this.state.imageText);
     this.setState({
       uploadImages: uploadArray,
+    });
+  }
+
+  handleUploadAll() {
+    this.setState({
+      userPhotos: this.state.uploadImages,
     });
   }
 
@@ -213,17 +227,32 @@ class AddReview extends React.Component {
           <div id="myPicModalContent">
             Add up to 5 product pictures below
             <div id="rar_picModalLine">{this.state.uploadImages.map((image) => (<img src={image} id="rar_picModalThumbs" alt="file not found" />))}</div>
-            <p>Image 1:</p>
-            <input type="text" id="myPicsImagesInput" name="myPicsImagesInput1" onChange={this.handleImageUploadThumb.bind(this)} />
-            <p>Image 2:</p>
-            <input type="text" id="myPicsImagesInput" name="myPicsImagesInput2" onChange={this.handleImageUploadThumb.bind(this)} />
-            <p>Image 3:</p>
-            <input type="text" id="myPicsImagesInput" name="myPicsImagesInput3" onChange={this.handleImageUploadThumb.bind(this)} />
-            <p>Image 4:</p>
-            <input type="text" id="myPicsImagesInput" name="myPicsImagesInput4" onChange={this.handleImageUploadThumb.bind(this)} />
-            <p>Image 5:</p>
-            <input type="text" id="myPicsImagesInput" name="myPicsImagesInput5" onChange={this.handleImageUploadThumb.bind(this)} />
-            <button id="myPicsModalButtons" type="button">Upload All</button>
+            <p id="myPicsText" style={this.state.imageDivShow1}>Image 1:</p>
+            <div id="myPicsDiv" style={this.state.imageDivShow1}>
+              <input type="text" id="myPicsImagesInput" name="myPicsImagesInput1" onChange={this.handleImageUploadThumb.bind(this)} />
+              <button id="rar_image1" type="submit" onClick={this.handleImageSubmitThumb.bind(this)}>Upload</button>
+            </div>
+            <p id="myPicsText">Image 2:</p>
+            <div id="myPicsDiv">
+              <input type="text" id="myPicsImagesInput" name="myPicsImagesInput2" onChange={this.handleImageUploadThumb.bind(this)} />
+              <button id="rar_image2" type="submit" onClick={this.handleImageSubmitThumb.bind(this)}>Upload</button>
+            </div>
+            <p id="myPicsText">Image 3:</p>
+            <div id="myPicsDiv">
+              <input type="text" id="myPicsImagesInput" name="myPicsImagesInput3" onChange={this.handleImageUploadThumb.bind(this)} />
+              <button id="rar_image3" type="submit" onClick={this.handleImageSubmitThumb.bind(this)}>Upload</button>
+            </div>
+            <p id="myPicsText">Image 4:</p>
+            <div id="myPicsDiv">
+              <input type="text" id="myPicsImagesInput" name="myPicsImagesInput4" onChange={this.handleImageUploadThumb.bind(this)} />
+              <button id="rar_image4" type="submit" onClick={this.handleImageSubmitThumb.bind(this)}>Upload</button>
+            </div>
+            <p id="myPicsText">Image 5:</p>
+            <div id="myPicsDiv">
+              <input type="text" id="myPicsImagesInput" name="myPicsImagesInput5" onChange={this.handleImageUploadThumb.bind(this)} />
+              <button id="rar_image5" type="submit" onClick={this.handleImageSubmitThumb.bind(this)}>Upload</button>
+            </div>
+            <button id="myPicsModalButtons" type="button" onClick={this.handleUploadAll.bind(this)}>Upload All</button>
           </div>
         </div>
         <div id="myModal" className="modal" style={style}>

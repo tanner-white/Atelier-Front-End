@@ -9,8 +9,9 @@ class RatingsApp extends React.Component {
     this.state = {
       currentItem: { results: [] },
       currentMeta: {},
-      helpfulCount: 0,
+      incrementState: 0,
       clickCount: 0,
+      flag: false,
     };
   }
 
@@ -33,10 +34,36 @@ class RatingsApp extends React.Component {
     console.log('clicked!');
   }
 
+  getReviews() {
+    axios.get('http://localhost:3001/reviews/')
+      .then((response) => this.setState({ currentItem: response.data }))
+      .then(this.getMeta())
+      .catch((err) => (console.log(err)));
+  }
+
   getMeta(productId) {
     axios.get('http://localhost:3001/reviews/meta', productId)
       .then((response) => this.setState({ currentMeta: response.data }))
       .catch((err) => (console.log(err)));
+  }
+
+  refreshList() {
+    let currentState = this.state.incrementState;
+    currentState += 1;
+    this.setState({
+      incrementState: currentState,
+    });
+    console.log(this.state.incrementState);
+
+    if (this.state.flag) {
+      this.setState({
+        flag: false,
+      });
+    } else {
+      this.setState({
+        flag: true,
+      });
+    }
   }
 
   addReview(message) {
@@ -60,7 +87,7 @@ class RatingsApp extends React.Component {
   }
 
   render() {
-    const { currentItem, currentMeta } = this.state;
+    const { currentItem, currentMeta, flag } = this.state;
     const { setNumberReviews, setAverageStars, currentProductName } = this.props;
     //const { addReview, postHelpful } = this;
     setNumberReviews(currentItem.results.length);
@@ -68,12 +95,14 @@ class RatingsApp extends React.Component {
       <div id="rarMain">
         <ReviewList
           productInfo={currentItem}
+          flag={flag}
           itemMeta={currentMeta}
           currentProductName={currentProductName}
           addReview={this.addReview.bind(this)}
           postReport={this.postReport.bind(this)}
           setAverageStars={setAverageStars}
           postHelpful={this.postHelpful.bind(this)}
+          refreshList={this.getReviews.bind(this)}
         />
       </div>
     );
