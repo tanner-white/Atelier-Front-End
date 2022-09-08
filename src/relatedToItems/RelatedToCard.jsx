@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import StarRatings from 'react-star-ratings';
 
-function RelatedToCard({ id, setCurrentProduct }) {
+function RelatedToCard({ id, setCurrentProduct, isDarkMode }) {
   const [productInfo, setProductInfo] = useState({});
   const [productImage, setProductImage] = useState('');
   useEffect(() => {
@@ -19,28 +19,29 @@ function RelatedToCard({ id, setCurrentProduct }) {
   const handleClick = (e) => {
     e.preventDefault();
     setCurrentProduct(id);
-  }
+  };
 
   return (
     !Object.keys(productInfo).length ? null
       : (
-        <div className="related-to-card" onClick={handleClick}>
-          <div className="related-to-card-gallery">
+        <div className="related-to-card" onClick={handleClick} style={{ background: isDarkMode ? '#1b242c' : 'white' }}>
+          <div className="related-to-card-gallery" style={{ background: isDarkMode ? '#1b242c' : 'white' }}>
             <img className="related-to-img" style={{ width: '50%' }} src={productImage} alt="404 Not Found" />
           </div>
           <div className="related-to-info">
             <div className="related-to-category">{productInfo.category.toUpperCase()}</div>
             <div className="related-to-name">{productInfo.name}</div>
             <div className="related-to-price">{productInfo.default_price}</div>
+            <br />
+            <StarRatings
+              rating={4}
+              starRatedColor={isDarkMode ? '#ECF1C6' : 'black'}
+              starDimension="1.5vw"
+              starSpacing="1px"
+              numberOfStars={5}
+              name="rating"
+            />
           </div>
-          <StarRatings
-            rating={3}
-            starRatedColor="black"
-            starDimension="1.5vw"
-            starSpacing="1px"
-            numberOfStars={5}
-            name="rating"
-          />
         </div>
       )
   );
