@@ -86,6 +86,7 @@ function App() {
         currentProduct={currentProduct}
         trackClick={trackClick}
         currentProductName={currentProductName}
+        isDarkMode={isDarkMode}
       />
       <div ref={reviewsRef} />
       <RatingsApp

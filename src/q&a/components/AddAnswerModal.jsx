@@ -67,11 +67,11 @@ function AddAnswer({ handleSubmit, questionBody, currentProductName }, ref) {
           <div>
             <h2>Submit your Answer</h2>
             <br />
-            <h4>
+            <h2>
               {currentProductName}
               &nbsp;:&nbsp;
               {questionBody}
-            </h4>
+            </h2>
             <br />
             <div className="modal-body">
               <textarea className="amodal" placeholder="Add Answer Here..." maxLength="1000" onChange={(e) => setAnswer(e.target.value)} />
