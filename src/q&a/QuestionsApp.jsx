@@ -5,21 +5,23 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QuestionList from './components/QuestionList.jsx';
 
-function Questions({ trackClick, currentProductName, isDarkMode }) {
+function Questions({
+  trackClick, currentProductName, isDarkMode, currentProduct,
+}) {
   const [questions, setQuestions] = useState({});
   const [questionsAdded, setQuestionsAdded] = useState(0);
   const [report, setReport] = useState(0);
 
   useEffect(() => {
-    axios.get('http://localhost:3001/qa/questions')
+    axios.get(`/qa/questions/${currentProduct}`)
       .then((list) => {
         setQuestions(list.data);
       })
       .catch((err) => (console.error(err)));
-  }, [questionsAdded, report]);
+  }, [questionsAdded, report, currentProduct]);
 
   const handleQuestionSubmit = (question) => {
-    axios.post('http://localhost:3001/addquestion', question)
+    axios.post('/addquestion', question)
       .then(() => setQuestionsAdded(questionsAdded + 1))
       .catch((err) => console.error(err));
   };

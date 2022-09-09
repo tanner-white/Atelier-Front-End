@@ -12,10 +12,16 @@ function RelatedToList({ currentProduct, setCurrentProduct, isDarkMode }) {
     setLastIndex(3);
   }, [currentProduct]);
   useEffect(() => {
-    axios.get(`http://localhost:3001/relatedTo/${currentProduct}`)
+    axios.get(`/relatedTo/${currentProduct}`)
       .then((response) => {
-        setRelatedToCards(response.data);
-        setDisplayedCards(response.data.slice(firstIndex, lastIndex));
+        const relatedCards = [];
+        response.data.forEach((id) => {
+          if (id !== 66643 && !relatedCards.includes(id)) {
+            relatedCards.push(id);
+          }
+        });
+        setRelatedToCards(relatedCards);
+        setDisplayedCards(relatedCards.slice(firstIndex, lastIndex));
       });
   }, [currentProduct]);
 
@@ -43,11 +49,13 @@ function RelatedToList({ currentProduct, setCurrentProduct, isDarkMode }) {
       )}
       <div id="related-to-list">
         {displayedCards.map((id) => (
-          <RelatedToCard
-            id={id}
-            setCurrentProduct={setCurrentProduct}
-            isDarkMode={isDarkMode}
-          />
+          (
+            <RelatedToCard
+              id={id}
+              setCurrentProduct={setCurrentProduct}
+              isDarkMode={isDarkMode}
+            />
+          )
         ))}
       </div>
       {lastIndex === relatedToCards.length ? null : (

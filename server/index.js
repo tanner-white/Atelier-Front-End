@@ -30,8 +30,8 @@ app.get('/products/:productId', (req, res) => {
     .catch((err) => res.send(err));
 });
 
-app.get('/qa/questions', (req, res) => {
-  axios.get(`${API}qa/questions/?product_id=66642&count=100`, options)
+app.get('/qa/questions/:product_id', (req, res) => {
+  axios.get(`${API}qa/questions/?product_id=${req.params.product_id}&count=100`, options)
     .then((response) => res.send(response.data))
     .catch((err) => res.send(err));
 });

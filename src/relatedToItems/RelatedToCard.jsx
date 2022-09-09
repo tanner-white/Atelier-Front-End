@@ -6,11 +6,11 @@ function RelatedToCard({ id, setCurrentProduct, isDarkMode }) {
   const [productInfo, setProductInfo] = useState({});
   const [productImage, setProductImage] = useState('');
   useEffect(() => {
-    axios.get(`http://localhost:3001/products/${id}`)
+    axios.get(`/products/${id}`)
       .then((response) => {
         setProductInfo(response.data);
       });
-    axios.get(`http://localhost:3001/styles/${id}`)
+    axios.get(`/styles/${id}`)
       .then((response) => {
         setProductImage(response.data.results[0].photos[0].thumbnail_url);
       });
@@ -26,7 +26,7 @@ function RelatedToCard({ id, setCurrentProduct, isDarkMode }) {
       : (
         <div className="related-to-card" onClick={handleClick} style={{ background: isDarkMode ? '#1b242c' : 'white' }}>
           <div className="related-to-card-gallery" style={{ background: isDarkMode ? '#1b242c' : 'white' }}>
-            <img className="related-to-img" style={{ width: '50%' }} src={productImage} alt="404 Not Found" />
+            <img className="related-to-img" style={{ width: '50%' }} src={productImage} alt="404 Not Found" onError={({ currentTarget }) => {currentTarget.onerror = null; currentTarget.src="https://cdn.fleetfeet.com/products/goodr/Front-View-A-Gingers-Soul-OG-BK-BK1-copy.jpg/width:640-height:480-fit:trim/Front-View-A-Gingers-Soul-OG-BK-BK1-copy.jpg?signature=10ff1173"}} />
           </div>
           <div className="related-to-info">
             <div className="related-to-category">{productInfo.category.toUpperCase()}</div>

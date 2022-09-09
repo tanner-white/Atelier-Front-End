@@ -6,7 +6,7 @@ function Answers({ answer, isDarkMode }) {
   const [helpful, setHelpful] = useState(answer.helpfulness);
 
   const handleHelpful = () => {
-    axios.put('http://localhost:3001/answers/helpful', { id: answer.answer_id })
+    axios.put('/answers/helpful', { id: answer.answer_id })
       .then(() => setHelpful(helpful + 1))
       .catch((err) => console.error('client side helpful error: ', err));
   };

@@ -42,14 +42,12 @@ function RatingsApp({
   }
 
   function addReview(message) {
-    console.log('message received');
     axios.post('/reviews/addReview', message)
       .then((response) => setHelpfulCount(helpfulCount + 1))
       .catch((error) => console.log('error posting to server', error));
   }
 
   function postHelpful(ID) {
-    console.log(ID);
     axios.put('/reviews/putHelpful', ID)
       .then((response) => console.log('POST new helpful request to server successful', response))
       .then(() => getReviews())
