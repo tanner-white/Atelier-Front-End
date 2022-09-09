@@ -413,8 +413,10 @@ h2 {
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  min-width: 23vw;
+  min-width: 23%;
+  max-width: 296.4px;
   height: 33vw;
+  max-height: 424.4px;
   background-color: white;
 }
 .related-to-card-gallery {
@@ -452,7 +454,21 @@ h2 {
   left: 5%;
   cursor: pointer;
 }
-
+@media screen and (min-width: 1280px) {
+  .related-products {
+    font-size: 19.2px;
+  }
+  .related-to-card {
+    width: 296.4px;
+    height: 424.4px;
+  }
+  .related-to-category, .related-to-price {
+    font-size: 12.8px;
+  }
+  .related-to-name {
+    font-size: 21.7px;
+  }
+}
 
 
 /* Adam */
