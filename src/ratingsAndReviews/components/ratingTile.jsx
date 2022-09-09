@@ -49,15 +49,11 @@ function RatingTile({ sortByClickFunc, itemMeta, product_data2, setAverageStars,
 
   function getSizeFeedback() {
     if (Object.keys(itemMeta).length > 0) {
-      const metaSize = itemMeta.characteristics;
-      const properties = Object.values(metaSize);
-      let avg = 0;
-      for (var i = 0; i < properties.length; i++ ) {
-        let current = parseInt(properties[i].value);
-        avg += current;
+      const metaComfort = itemMeta.characteristics.Size;
+      if (metaComfort) {
+        const val = Math.round(metaComfort.value);
+        return val;
       }
-      avg /= properties.length;
-      return avg;
     }
     return 1;
   }
