@@ -996,7 +996,7 @@ td { /*this may cause issues but I can go back later and fix */
 
 .question-entry {
   vertical-align: middle;
-  font-size: 2.0vw;
+  font-size: 1.75vw;
   padding-right: 3vw;
   margin-left: 1.5vw;
   margin-right: 1.5vw;
@@ -1073,7 +1073,7 @@ td { /*this may cause issues but I can go back later and fix */
 .question-searchbar {
   height: 4vw;
   padding: 10%;
-  width: 95%;
+  width: 100%;
   font-size: 1.5vw;
   padding: 5px;
   border: 1px solid black;
@@ -1152,11 +1152,11 @@ td { /*this may cause issues but I can go back later and fix */
 
 .answer-body {
   margin-bottom: 1vw;
-  font-size: 1.5vw;
+  font-size: 1.2vw;
 }
 
 #answer-header {
-  font-size: 2vw;
+  font-size: 1.75vw;
   font-weight: 600;
 }
 
@@ -1168,7 +1168,7 @@ td { /*this may cause issues but I can go back later and fix */
 }
 
 #question-body {
-  font-size: 2vw;
+  font-size: 1.75vw;
   font-weight: 600;
 }
 
