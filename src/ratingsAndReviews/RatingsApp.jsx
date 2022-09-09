@@ -48,9 +48,9 @@ function RatingsApp({
   }
 
   function postHelpful(ID) {
-    console.log(ID);
     axios.put('/reviews/putHelpful', ID)
       .then((response) => console.log('POST new helpful request to server successful', response))
+      .then(() => getReviews())
       .catch((error) => console.log('error posting to server', error));
   }
 

@@ -51,7 +51,6 @@ app.get('/reviews/:review_id', (req, res) => {
 
 app.get('/meta/:review_id', (req, res) => {
   const currentID = req.params.review_id;
-  console.log(currentID);
   axios.get(`${API}reviews/meta?product_id=${currentID}`, options)
     .then((response) => res.send(response.data))
     .catch((error) => res.send(error));
@@ -72,7 +71,7 @@ app.post('/reviews/addReview', (req, res) => {
 
 app.put('/reviews/putHelpful', (req, res) => {
   const ID = req.body;
-  axios.put(`${API}reviews/${ID.review_id}/helpful`, {}, options)
+  axios.put(`${API}reviews/${ID.review_id}/helpful`, ID, options)
     .then((response) => res.send(response.data))
     .catch((error) => res.end(error));
 });
@@ -80,7 +79,7 @@ app.put('/reviews/putHelpful', (req, res) => {
 app.put('/reviews/putReport', (req, res) => {
   const ID = req.body;
   console.log('This is the id', ID);
-  axios.put(`${API}reviews/${ID.review_id}/report`, {}, options)
+  axios.put(`${API}reviews/${ID.review_id}/report`, ID, options)
     .then((response) => res.send(response.data))
     .catch((error) => res.end(error));
 });
