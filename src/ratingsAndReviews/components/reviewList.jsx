@@ -18,9 +18,8 @@ class ReviewList extends React.Component {
       index: 2,
       usedVal: [],
       flags: false,
+      isDark: isDarkMode,
     };
-
-    const darkMode = {};
   }
 
   sortByRelevance() {
@@ -125,8 +124,8 @@ class ReviewList extends React.Component {
     });
   }
 
-
   render() {
+    const darkMode = { backgroundColor: this.isDarkMode ? '#BDDEDB' : 'white', color: this.isDarkMode ? '#BDDEDB' : 'black' };
     return (
       <div className="rar_section">
         <div className="rar_ratingBox">
@@ -135,6 +134,7 @@ class ReviewList extends React.Component {
             setAverageStars={this.props.setAverageStars}
             itemMeta={this.props.itemMeta}
             sortByClickFunc={this.sortByClick.bind(this)}
+            isDarkMode={this.props.isDarkMode}
 
           />
         </div>
@@ -146,6 +146,7 @@ class ReviewList extends React.Component {
               sortHelp={this.sortByHelpful.bind(this)}
               sortNew={this.sortByNewest.bind(this)}
               sortOld={this.sortByOldest.bind(this)}
+              isDarkMode={this.props.isDarkMode}
             />
           </div>
           <ReviewTile
@@ -153,15 +154,17 @@ class ReviewList extends React.Component {
             index={this.state.index}
             addHelpful={this.props.postHelpful}
             addReport={this.props.postReport}
+            isDarkMode={this.props.isDarkMode}
           />
           <div className="rar_reviewButtons">
-            <button type="submit" id="rar_tileBoxButtons" onClick={this.updateIndex.bind(this)}>MORE REVIEWS</button>
-            {this.state.index === 2 ? '' : <button type="submit" id="rar_tileBoxButtons" onClick={this.resetIndex.bind(this)}>LESS REVIEWS</button>}
-            <div>
+            <button type="submit" id="rar_tileBoxButtons" style={darkMode} onClick={this.updateIndex.bind(this)}>MORE REVIEWS</button>
+            {this.state.index === 2 ? '' : <button type="submit" id="rar_tileBoxButtons" style={darkMode} onClick={this.resetIndex.bind(this)}>LESS REVIEWS</button>}
+            <div style={{'background-color': this.isDarkMode ? '#1b242c' : 'white' }}>
               <AddReview
                 addReview={this.props.addReview}
                 currentProductName={this.props.currentProductName}
                 productId={this.props.productInfo.product}
+                isDarkMode={this.props.isDarkMode}
               />
             </div>
           </div>

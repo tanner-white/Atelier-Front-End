@@ -24,14 +24,12 @@ class AddReview extends React.Component {
       ratings: {
         1: 0, 2: 0, 3: 0, 4: 0, 5: 0,
       },
-      Characteristics: {
-        14: 5,
-        15: 5,
-        16: 5,
-        17: 5,
-        18: 5,
-        19: 5,
-      },
+      C14: 5,
+      C15: 5,
+      C16: 5,
+      C17: 5,
+      C18: 5,
+      C19: 5,
     };
 
     this.handleWindowClick = this.handleWindowClick.bind(this);
@@ -58,7 +56,7 @@ class AddReview extends React.Component {
     // invoke axios call to add a review
     const {
       ratingStar, recommendedBoolean, revSum, userPhotos,
-      revbody, productId, userEmail, userNickname, Characteristics,
+      revbody, productId, userEmail, userNickname, C14, C15, C16, C17, C18, C19,
     } = this.state;
     const { addReview } = this.props;
 
@@ -71,11 +69,11 @@ class AddReview extends React.Component {
       name: userNickname,
       email: userEmail,
       photos: userPhotos,
-      characteristics: Characteristics,
+      characteristics: { 14: C14, 15: C15, 16: C16, 17: C17, 18: C18, 19: C19 },
     };
 
     addReview(message);
-
+    console.log(message);
     this.setState({
       style: { display: 'none' },
     });
@@ -120,38 +118,37 @@ class AddReview extends React.Component {
 
   handleSizeChange(event) {
     this.setState({
-      Characteristics: { 14: event.target.value },
+      C14: parseInt(event.target.value),
     });
   }
 
   handleWidthChange(event) {
     this.setState({
-      Characteristics: { 15: event.target.value },
+      C15: parseInt(event.target.value),
     });
   }
 
   handleComfortChange(event) {
     this.setState({
-      Characteristics: { 16: event.target.value },
+      C16: parseInt(event.target.value),
     });
   }
 
   handleQualityChange(event) {
     this.setState({
-      Characteristics: { 17: event.target.value },
+      C17: parseInt(event.target.value),
     });
   }
 
   handleLengthChange(event) {
-    console.log('length change');
     this.setState({
-      Characteristics: { 18: event.target.value },
+      C18: parseInt(event.target.value),
     });
   }
 
   handleFitChange(event) {
     this.setState({
-      Characteristics: { 19: event.target.value },
+      C19: parseInt(event.target.value),
     });
   }
 
@@ -218,9 +215,11 @@ class AddReview extends React.Component {
   render() {
     const { style, revbody, stylePics } = this.state;
     const { currentProductName } = this.props;
+    const darkMode = { background: this.isDarkMode ? '#e2eceb' : 'white', color: this.isDarkMode ? '#e2eceb' : 'black' };
+    const darkModeModal = {'background-color': this.isDarkMode ? '#e2eceb' : 'white'}
     return (
-      <div id="modalChunk">
-        <button type="button" id="rar_tileBoxButtons" onClick={this.handleModalClick.bind(this)}>
+      <div id="modalChunk" style={darkModeModal}>
+        <button type="button" id="rar_tileBoxButtons" style={darkMode} onClick={this.handleModalClick.bind(this)}>
           ADD A REVIEW +
         </button>
         <div id="myPicModal" className="modal" style={stylePics}>
@@ -256,7 +255,7 @@ class AddReview extends React.Component {
           </div>
         </div>
         <div id="myModal" className="modal" style={style}>
-          <div id="myModal-content">
+          <div id="myModal-content" style={{'background-color': this.isDarkMode ? '#525151 !important' : '#ffffff !imporant'}}>
             <h2 id="rar_modalTitle">Write Your Review</h2>
             <h2 id="rar_modalProduct">
               About the
@@ -313,14 +312,14 @@ class AddReview extends React.Component {
               {(50 - revbody.length > 0 === true) ? ('Minimum required characters left: ' + '' + (50 - revbody.length)) : 'Minimum reached'}
               {revbody.length > 1000 ? 'Maximum characteres reached' : ''}
             </div>
-            <button id="rar_uploadPhotos" type="button" onClick={this.handlePhotoClick.bind(this)}>Upload Photos</button>
+            <button id="rar_uploadPhotos" type="button" style={{ background: this.isDarkMode ? '#e2eceb' : 'white', color: this.isDarkMode ? '#e2eceb' : 'black' }} onClick={this.handlePhotoClick.bind(this)}>Upload Photos</button>
             <small>What is your nickname?</small>
             <input id="rar_nicknameInput" type="text" onChange={this.handleNicknameChange.bind(this)} />
             <small>What is your email?</small>
             <small>For authentication reasons, you will not be emailed</small>
             <input id="rar_emailInput" type="text" onChange={this.handleEmailChange.bind(this)} />
             <div className="close">
-              <button id="rar_modalSubmit" type="button" style={style} onClick={this.handleSubmit.bind(this)}>Submit</button>
+              <button id="rar_modalSubmit" type="button" style={darkMode} onClick={this.handleSubmit.bind(this)}>Submit</button>
             </div>
           </div>
         </div>
